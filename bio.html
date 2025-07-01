@@ -20,6 +20,37 @@
         align-items: center;
         line-height: 1;
         }  
+
+        /* Navbar styling */
+        .navbar {
+        margin-top: 20px;
+        }
+
+        .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 10px;
+        padding: 10px 20px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 100px;
+        backdrop-filter: blur(40px);
+        }
+
+        .nav-links a {
+        text-decoration: none;
+        color: #fff;
+        padding: 6px 14px;
+        border-radius: 90px;
+        font-size: 14px;
+        transition:  0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+        background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Bio text section */
         h1 {
         font-family: Labrada;
         font-size: 2.5em;
@@ -34,6 +65,14 @@
     </style>
 </head>
 <body>
+    <nav class="navbar">
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="#">Projects</a></li>
+      <li><a href="bio.html">Bio</a></li>
+      <li><a href="https://drive.google.com/file/d/1zK-V6wiQ66ybcEyTerjuPo0Z_oLqxKnx/view?usp=sharing"  target="_blank">CV</a></li>
+    </ul>
+    </nav>
     <h1>Bio</h1>
     <p>My name is Rumaysa Fatima, and I am a UI/UX design student with a passion for creating intuitive and engaging user experiences. I have a strong background in design principles and a keen eye for detail, which allows me to craft visually appealing interfaces that are also functional.</p>
     <p>I believe that good design is not just about aesthetics, but also about understanding the needs of users and solving their problems effectively. My goal is to create designs that not only look great but also enhance usability and accessibility.</p>

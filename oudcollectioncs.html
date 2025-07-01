@@ -16,7 +16,7 @@
         a {
         text-decoration: none;
         }
-        
+
         body {
         font-family: lato;
         color: #fff;
@@ -25,10 +25,47 @@
         flex-direction: column;
         align-items: center;
         line-height: 1;
-        } 
+        }
+        
+        /* Navbar styling */
+        .navbar {
+        margin-top: 20px;
+        }
+
+        .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 10px;
+        padding: 10px 20px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 100px;
+        backdrop-filter: blur(40px);
+        }
+
+        .nav-links a {
+        text-decoration: none;
+        color: #fff;
+        padding: 6px 14px;
+        border-radius: 90px;
+        font-size: 14px;
+        transition:  0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+        background: rgba(255, 255, 255, 0.15);
+        }
     </style> 
 </head>
 <body>
+    <nav class="navbar">
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="#">Projects</a></li>
+      <li><a href="bio.html">Bio</a></li>
+      <li><a href="https://drive.google.com/file/d/1zK-V6wiQ66ybcEyTerjuPo0Z_oLqxKnx/view?usp=sharing"  target="_blank">CV</a></li>
+    </ul>
+    </nav>
     <a href="https://www.behance.net/gallery/225603421/Redesign-of-Oud-Collection-Website">View in Behance</a>
 </body>
 </html>
