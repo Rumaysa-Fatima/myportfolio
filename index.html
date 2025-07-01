@@ -14,71 +14,74 @@
         }
 
         body {
-        font-family: 'Georgia', serif;
+        font-family: lato;
         color: #fff;
         background: #000000;
-        height: 100vh;
         display: flex;
         flex-direction: column;
         align-items: center;
-        }
+        line-height: 1;
+        }   
+
 
         /* Background circles */
         .background-circles {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: -1;
-}
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: -1;
+        }
 
-.circle {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.3;
-  animation: move 30s ease-in-out infinite alternate;
-}
+        .circle {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.3;
+        animation: move 30s ease-in-out infinite alternate;
+        }
 
-/* Customizable circle classes */
-.circle1 {
-  width: 400px;
-  height: 400px;
-  background: #ff8ba7;
-  top: 20%;
-  left: 10%;
-  animation-delay: 0s;
-}
+        /* Customizable circle classes */
+        .circle1 {
+        width: 400px;
+        height: 400px;
+        background: #ffffff;
+        top: -10%;
+        left: 80%;
+        animation-delay: 3000ms;
+        }
 
-.circle2 {
-  width: 500px;
-  height: 500px;
-  background: #8bd3ff;
-  top: 50%;
-  left: 60%;
-  animation-delay: 5s;
-}
+        .circle2 {
+        width: 500px;
+        height: 500px;
+        background: #8bd3ff;
+        top: 70%;
+        left: 0%;
+        animation-delay: 3000ms;
+        }
 
-.circle3 {
-  width: 300px;
-  height: 300px;
-  background: #5d38a7;
-  top: 70%;
-  left: 30%;
-  animation-delay: 10s;
-}
+        .circle3 {
+        width: 300px;
+        height: 300px;
+        background: #5d38a7;
+        top: 70%;
+        left: 30%;
+        animation-delay: 3000ms;
+        }
 
-/* Keyframes for smooth movement */
-@keyframes move {
-  0% {
-    transform: translate(0, 0) scale(1);
-  }
-  100% {
-    transform: translate(100px, -100px) scale(1.1);
-  }
-}
+        /* Keyframes for smooth movement */
+        @keyframes move {
+        0% {
+            transform: translate(0, 0) scale(1);
+        }
+        100% {
+            transform: translate(100px, -100px) scale(1.1);
+        }
+        }
+
+
         /* Navbar styling */
         .navbar {
         margin-top: 20px;
@@ -89,16 +92,16 @@
         display: flex;
         gap: 10px;
         padding: 10px 20px;
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 20px;
-        backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 100px;
+        backdrop-filter: blur(40px);
         }
 
         .nav-links a {
         text-decoration: none;
         color: #fff;
         padding: 6px 14px;
-        border-radius: 12px;
+        border-radius: 90px;
         font-size: 14px;
         transition:  0.3s ease;
         }
@@ -110,39 +113,149 @@
 
         /* Intro text section */
         .intro {
-        flex-grow: 1;
         display: flex;
         align-items: center;
         justify-content: center;
+        padding: 250px 20px 80px;
         }
 
         .intro-text {
         border-left: 2px solid #fff;
         padding-left: 20px;
-        max-width: 300px;
+        max-width: 500px;
+        height: 140px;
         }
 
         .intro-text h1 {
-        font-size: 24px;
+        font-size: 32px;
         margin-bottom: 10px;
         font-family: labrada;
+        font-weight: 300;
         }
 
         .intro-text p {
-        font-size: 14px;
+        font-size: 18px;
         margin-bottom: 4px;
         color: #cccccc;
         font-family: lato;
+        }
+
+        /* Projects section */
+        .projects {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        width: 100%;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 250px 20px 250px;
+        }
+
+        .project-card {
+        background: rgba(128, 128, 128, 0.2);
+        backdrop-filter: blur(40px);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 30px;
+        width: 100%;
+        gap: 20px;
+        flex-wrap: wrap;
+        height: 300px;
+        }
+
+        .project-text {
+        max-width: 400px;
+        }
+
+        .project-text h2 {
+        font-size: 40px;
+        font-family: labrada;
+        margin-bottom: 8px;
+        font-weight: 200;
+        }
+
+        .project-subtitle,
+        .project-description {
+        font-size: 14px;
+        color: #cccccc;
+        margin-bottom: 4px;
+        }
+
+        .project-description {
+        margin-bottom: 120px;
+        }
+
+        .case-study-link {
+        display: inline-block;
+        margin-top: 10px;
+        font-size: 14px;
+        color: #fff;
+        text-decoration: none;
+        border: 1px solid #fff;
+        padding: 6px 12px;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+        }
+
+        .case-study-link:hover {
+        background-color: #fff;
+        color: #000;
+        }
+
+        .project-image img {
+        width: 320px;
+        border-radius: 12px;
+        object-fit: cover;
+        }
+
+        /* Case study 2 placeholder */
+        .project-placeholder {
+        background-color: rgba(128, 128, 128, 0.2);
+        padding: 60px 30px;
+        width: 100%;
+        text-align: center;
+        font-family: 'Brush Script MT', cursive, sans-serif;
+        font-size: 50px;
+        color: #d9aeb2;
+        line-height: 1.4;
+        height: 300px;
+        }
+
+        /* Footer */
+        .contact {
+        text-align: center;
+        padding: 60px 20px;
+        color: #fff;
+        font-size: 16px;
+        }
+
+        .contact-links {
+        margin-top: 12px;
+        margin-bottom: 28px;
+        }
+
+        .contact-links a {
+        margin: 0 10px;
+        text-decoration: none;
+        font-size: 14px;
+        transition: color 0.3s ease;
+        color:#A78989;
+        }
+
+        .contact-links a:hover {
+        color: #fff;
         }
     </style>
 </head>
 <body>
      <nav class="navbar">
     <ul class="nav-links">
-      <li><a href="#" class="active">Home</a></li>
+      <li><a href="index.html" class="active">Home</a></li>
       <li><a href="#">Projects</a></li>
       <li><a href="#">Bio</a></li>
-      <li><a href="#">CV</a></li>
+      <li><a href="https://drive.google.com/file/d/1QvmIB7P7CWPWzqPigcbJlwtEmkPS9OaA/view?usp=sharing">CV</a></li>
     </ul>
   </nav>
 
@@ -161,5 +274,31 @@
       <p>Welcome to my portfolio</p>
     </div>
   </main>
+  <section class="projects">
+  <div class="project-card">
+    <div class="project-text">
+      <h2>Oud Collection</h2>
+      <p class="project-subtitle">University Project</p>
+      <p class="project-description">Redesign of the website Oud Collection</p>
+      <a href="#" class="case-study-link">See Case Study →</a>
+    </div>
+    <div class="project-image">
+      <img src="casestudy1card.png" alt="Oud Collection Preview" />
+    </div>
+  </div>
+
+  <div class="project-placeholder">
+    <p>Case Study 2<br>incoming</p>
+  </div>
+</section>
+
+<footer class="contact">
+  <p style="margin-bottom: 20px;">Reach out to me</p>
+  <div class="contact-links">
+    <a href="mailto:rumaysa.fatima09@gmail.com">Email</a>
+    <a href="https://www.linkedin.com/in/rumaysa-fatima/">LinkedIn</a>
+    <a href="https://www.behance.net/rumaysa_fatima">Behance</a>
+  </div>
+</footer>
 </body>
 </html>
