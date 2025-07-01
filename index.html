@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rumaysa Fatima</title>
+    <link href='https://fonts.googleapis.com/css?family=Labrada' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
+    <style>
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+
+        body {
+        font-family: 'Georgia', serif;
+        color: #fff;
+        background: #000000;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        }
+
+        /* Background circles */
+        .background-circles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.3;
+  animation: move 30s ease-in-out infinite alternate;
+}
+
+/* Customizable circle classes */
+.circle1 {
+  width: 400px;
+  height: 400px;
+  background: #ff8ba7;
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.circle2 {
+  width: 500px;
+  height: 500px;
+  background: #8bd3ff;
+  top: 50%;
+  left: 60%;
+  animation-delay: 5s;
+}
+
+.circle3 {
+  width: 300px;
+  height: 300px;
+  background: #5d38a7;
+  top: 70%;
+  left: 30%;
+  animation-delay: 10s;
+}
+
+/* Keyframes for smooth movement */
+@keyframes move {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(100px, -100px) scale(1.1);
+  }
+}
+        /* Navbar styling */
+        .navbar {
+        margin-top: 20px;
+        }
+
+        .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 10px;
+        padding: 10px 20px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        }
+
+        .nav-links a {
+        text-decoration: none;
+        color: #fff;
+        padding: 6px 14px;
+        border-radius: 12px;
+        font-size: 14px;
+        transition:  0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+        background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Intro text section */
+        .intro {
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        }
+
+        .intro-text {
+        border-left: 2px solid #fff;
+        padding-left: 20px;
+        max-width: 300px;
+        }
+
+        .intro-text h1 {
+        font-size: 24px;
+        margin-bottom: 10px;
+        font-family: labrada;
+        }
+
+        .intro-text p {
+        font-size: 14px;
+        margin-bottom: 4px;
+        color: #cccccc;
+        font-family: lato;
+        }
+    </style>
+</head>
+<body>
+     <nav class="navbar">
+    <ul class="nav-links">
+      <li><a href="#" class="active">Home</a></li>
+      <li><a href="#">Projects</a></li>
+      <li><a href="#">Bio</a></li>
+      <li><a href="#">CV</a></li>
+    </ul>
+  </nav>
+
+  <div class="background-circles">
+  <div class="circle circle1"></div>
+  <div class="circle circle2"></div>
+  <div class="circle circle3"></div>
+  </div>
+
+  <main class="intro">
+    <div class="intro-text">
+      <h1>Rumaysa Fatima</h1>
+      <p>Student at Unimelb</p>
+      <p>Life long learner</p>
+      <p>Generalist</p>
+      <p>Welcome to my portfolio</p>
+    </div>
+  </main>
+</body>
+</html>
