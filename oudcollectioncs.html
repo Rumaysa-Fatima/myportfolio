@@ -13,12 +13,14 @@
         box-sizing: border-box;
         }
 
-        a {
+      a {
         text-decoration: none;
-        }
+        color: inherit;
+      }
 
         body {
         font-family: lato;
+        font-weight: 200;
         color: #fff;
         background: #000000;
         display: flex;
@@ -55,17 +57,126 @@
         .nav-links a.active {
         background: rgba(255, 255, 255, 0.15);
         }
+
+           /* Reusable section break */
+        .section-break {
+        width: 80%;
+        margin: 3rem auto;
+        height: 2px;
+        background-color: #ffffff;
+        opacity: 0.3;
+        border-radius: 2px;
+        }
+        /* Project title and description */
+        h1 {
+        font-family: Labrada;
+        font-weight: 200;
+        font-size: 2.5em;
+        margin-bottom: 20px;
+        text-align: left;
+        margin-top: 50px;
+        }
+        .project-description {
+        font-size: 1em;
+        margin: 10px 0;
+        text-align: left;
+        }
+        /* Project image */
+        .project-image {
+        width: 100%;
+        max-width: 800px;
+        margin: 20px auto;
+        }
+        .project-image img {
+        width: 100%;
+        height: auto;
+        }
+
+        /* Section titles */
+        .section {
+        font-size: 0.9em;
+        margin: 20px 0;
+        color: grey;
+        }
+
+        h2 {
+        font-size: 2em;
+        margin-bottom: 40px;
+        font-family: Labrada;
+        font-weight: 200;
+        }
+        /* List cards */
+        .list-cards {
+        margin-bottom: 40px;
+        margin-top: 40px;
+        }
+        .card {
+        flex: 1; /* equal width for all cards */
+        display: flex;
+        margin: 10px;
+        background: rgba(128, 128, 128, 0.2);
+        padding: 30px;
+        justify-content: space-between;
+        flex-direction: column;
+        backdrop-filter: blur(40px);
+        display: flex;
+        align-items: stretch; /* full height for both sides */
+        height: auto;
+        }
+
+        .card-content {
+        font-size: 1em;
+        }
+        p {
+        font-size: 1em;
+        margin: 10px 0;
+        }
+
     </style> 
 </head>
 <body>
     <nav class="navbar">
     <ul class="nav-links">
       <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="#">Projects</a></li>
+      <li><a href="index.html#projects">Projects</a></li>
       <li><a href="bio.html">Bio</a></li>
       <li><a href="https://drive.google.com/file/d/1zK-V6wiQ66ybcEyTerjuPo0Z_oLqxKnx/view?usp=sharing"  target="_blank">CV</a></li>
     </ul>
     </nav>
-    <a href="https://www.behance.net/gallery/225603421/Redesign-of-Oud-Collection-Website">View in Behance</a>
+    <h1>Oud Collection Redesign</h1>
+    <p class="project-description">A case study on the redesign of the Oud Collection website, focusing on enhancing user experience and visual appeal.</p>
+    <a href="https://www.behance.net/gallery/225603421/Redesign-of-Oud-Collection-Website" style="color: grey;">View in Behance</a>
+    <p style="color: rgb(174, 10, 10);" >Note: This page is incomplete</p>
+    <div class="project-image">
+        <img src="case study img1.png" alt="Oud Collection Redesign">
+    </div>
+    <!--
+    <p class="section">Context</p>
+    <h2>Project Overview</h2>
+    ...
+      
+    <div class="section-break"></div>
+
+    <p class="section">Problems</p>
+    <h2>Identified Issues</h2>
+    <img src="5122c92eba734979870fe6a7765d9f0e-ezgif.com-crop.gif">
+    <section class="list-cards">
+        <div class="card">
+            <p class="card-content"><span style="color: #A78989;">Disruptive Navigation — </span> of the first problem identified in the original design.</p>
+        </div>
+        <div class="card">
+            <p class="card-content"><span style="color: #A78989;">Poor Visual Hierarchy — </span>Description of the second problem identified in the original design.</p> 
+        </div>
+        <div class="card">
+            <p class="card-content"><span style="color: #A78989;">Unintuitive purchase flow — </span>Description of the third problem identified in the original design.</p>
+        </div>
+        <div class="card">
+            <p class="card-content"><span style="color: #A78989;">Unpolished Design and no visible colour palette — </span>Description of the third problem identified in the original design.</p>
+        </div>
+    </section>
+    <div class="section-break"></div>
+    <p class="section">Solutions</p>
+    <h2>Proposed Solutions</h2>
+    -->
 </body>
 </html>
