@@ -15,8 +15,9 @@
 
         body {
         font-family: lato;
+        font-weight: 200;
         color: black;
-        background: #A78989;
+        background: #f5f5f5;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -37,14 +38,14 @@
         display: flex;
         gap: 10px;
         padding: 10px 20px;
-        background: rgba(255, 255, 255, 0.2);
+        background: rgba(176, 176, 176, 0.39);
         border-radius: 100px;
         backdrop-filter: blur(40px);
         }
 
         .nav-links a {
         text-decoration: none;
-        color: #fff;
+        color: #000000;
         padding: 6px 14px;
         border-radius: 90px;
         font-size: 14px;
@@ -53,48 +54,48 @@
 
         .nav-links a:hover,
         .nav-links a.active {
-        background: rgba(255, 255, 255, 0.15);
+        background: rgba(176, 176, 176, 0.39);
         }
 
         /* Background circles inside scrollable flow */
-.background-circles {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  pointer-events: none;
-  z-index: -1;
-}
+        .background-circles {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        pointer-events: none;
+        z-index: -1;
+        }
 
-.circle {
-  position: absolute;
-  border-radius: 80%;
-  filter: blur(80px);
-  opacity: 0.7;
-}
+        .circle {
+        position: absolute;
+        border-radius: 80%;
+        filter: blur(80px);
+        opacity: 0.7;
+        }
 
-.circle1 {
-  width: 200px;
-  height: 200px;
-  background-color: #ffffff;
-  top: -100px;
-  right: -100px;
-   overflow: hidden;
-  animation: moveAcross 20s ease-in-out infinite alternate;
-}
+        .circle1 {
+        width: 200px;
+        height: 200px;
+        background-color: #C49CA9;
+        top: -100px;
+        right: -100px;
+        overflow: hidden;
+        animation: moveAcross 20s ease-in-out infinite alternate;
+        }
 
-@keyframes moveAcross {
-  0% {
-    transform: translate(0, 0);
-  }
-    20% {
-        transform: translate(-30vw, 60vh);
-    }
-  100% {
-    transform: translate(-100vw, 80vh);
-  }
-}
-        
+        @keyframes moveAcross {
+        0% {
+            transform: translate(0, 0);
+        }
+            20% {
+                transform: translate(-30vw, 60vh);
+            }
+        100% {
+            transform: translate(-100vw, 80vh);
+        }
+        }
+                
 
 
 
@@ -131,9 +132,10 @@
       <li><a href="https://drive.google.com/file/d/1zK-V6wiQ66ybcEyTerjuPo0Z_oLqxKnx/view?usp=sharing"  target="_blank">CV</a></li>
     </ul>
     </nav>
-    <h1>Bio</h1>
-    <p>My name is Rumaysa Fatima, and I am a UI/UX design student with a passion for creating intuitive and engaging user experiences. I have a strong background in design principles and a keen eye for detail, which allows me to craft visually appealing interfaces that are also functional.</p>
-    <p>I believe that good design is not just about aesthetics, but also about understanding the needs of users and solving their problems effectively. My goal is to create designs that not only look great but also enhance usability and accessibility.</p>
+    <h1>Who is Rumaysa?</h1>
+    <p>I'm a UI/UX design student at the University of Melbourne with a deep passion for creating intuitive and engaging user experiences. My curiosity across a wide range of topics has sharpened my ability to design with empathy and attention to detail.</p>
+    <p>With a strong foundation in design principles, I strive to craft experiences that are not only functional but also emotionally resonant. I believe that good design goes beyond aesthetics — it’s about understanding users, addressing their needs, and solving real problems in thoughtful ways.</p>
+    <p>My goal is to design interfaces that not only look great but also improve usability, accessibility, and connection between people and technology.</p>
     <p>Feel free check out my portfolio for more of my work!</p>
 
     <div class="background-circles">
