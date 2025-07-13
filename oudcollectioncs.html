@@ -7,31 +7,36 @@
     <link href='https://fonts.googleapis.com/css?family=Labrada' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
     <style>
-            * {
+        * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
         }
 
-      a {
-        text-decoration: none;
-        color: inherit;
-      }
-
         body {
-        font-family: lato;
-        font-weight: 200;
+        font-family: 'Lato', sans-serif;
+        background-color: #000;
         color: #f5f5f5;
-        background: #000000;
+        padding: 40px 20px;
+        line-height: 1.6;
         display: flex;
         flex-direction: column;
         align-items: center;
-        line-height: 1;
         }
-        
-        /* Navbar styling */
+
+        a {
+        text-decoration: none;
+        color: inherit;
+        }
+
+        /* Navbar */
         .navbar {
         margin-top: 20px;
+        margin-bottom: 20px;
+        position: fixed;
+        top: 0;
+        z-index: 999; 
+        line-height: 1;
         }
 
         .nav-links {
@@ -58,96 +63,135 @@
         background: rgba(176, 176, 176, 0.39);
         }
 
-           /* Reusable section break */
-        .section-break {
-        width: 80%;
-        margin: 3rem auto;
-        height: 2px;
-        background-color: #f5f5f5;
-        opacity: 0.3;
-        border-radius: 2px;
-        }
-        /* Project title and description */
+        /* Main Title */
         h1 {
-        font-family: Labrada;
-        font-weight: 200;
-        font-size: 2.5em;
-        margin-bottom: 20px;
-        text-align: left;
-        margin-top: 50px;
+        font-family: 'Labrada', serif;
+        font-size: 2.8rem;
+        font-weight: 300;
+        margin: 40px 0 10px;
+        text-align: center;
         }
-        .project-description {
-        font-size: 0.9em;
-        margin: 10px 0;
-        text-align: left;
-        }
-        /* Project image */
-        .project-image {
-        width: 100%;
+
+        /* Section Text */
+        .project-description,
+        .section,
+        .descriptions {
         max-width: 800px;
-        margin: 20px auto;
+        text-align: center;
+        margin: 0 auto;
         }
+
+        .project-description {
+        font-size: 1rem;
+        color: #ccc;
+        margin-bottom: 10px;
+        }
+
+        .section {
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        color: #888;
+        letter-spacing: 1px;
+        margin-top: 20px;
+        }
+
+        /* Section Heading */
+        h2 {
+        font-family: 'Labrada', serif;
+        font-size: 2rem;
+        font-weight: 300;
+        text-align: center;
+        margin-bottom: 20px;
+        }
+
+        /* Image */
+        .project-image {
+        max-width: 800px;
+        margin: 24px 0;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+        }
+
         .project-image img {
         width: 100%;
         height: auto;
+        display: block;
         }
 
-        /* Section titles */
-        .section {
-        font-size: 0.9em;
-        margin: 20px 0;
-        color: grey;
-        }
-
-        h2 {
-        font-size: 2em;
-        margin-bottom: 40px;
-        font-family: Labrada;
-        font-weight: 200;
-        }
-        /* List cards */
+        /* Cards Section */
         .list-cards {
-        margin-bottom: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        max-width: 800px;
+        margin: 0 auto 60px;
         margin-top: 40px;
         }
+
         .card {
-        flex: 1; /* equal width for all cards */
-        display: flex;
-        margin: 10px;
-        background: rgba(128, 128, 128, 0.2);
-        padding: 30px;
-        justify-content: space-between;
-        flex-direction: column;
-        backdrop-filter: blur(40px);
-        display: flex;
-        align-items: stretch; /* full height for both sides */
-        height: auto;
+        width: 100%;
+        background:  rgba(175, 175, 175, 0.2);
+        padding: 24px;
+        backdrop-filter: blur(20px);
+        transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+        transform: translateY(-4px);
         }
 
         .card-content {
-        font-size: 1em;
-        }
-        p {
-        font-size: 1em;
-        margin: 10px 0;
+        font-size: 1rem;
+        color: #ddd;
+        line-height: 1.6;
         }
 
+        .card-content span {
+        color: #BDA9A9;
+        font-weight: bold;
+        }
+
+        /* Horizontal Rule */
+        .section-break {
+        width: 80%;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.1);
+        margin: 40px auto;
+        border-radius: 1px;
+        }
+
+        /* Responsive Tweaks */
+        @media (max-width: 768px) {
+        .card {
+            padding: 18px;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+        }
+        }
     </style> 
 </head>
 <body>
     
     <nav class="navbar">
     <ul class="nav-links">
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="index.html#projects">Projects</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#projects" class="active">Projects</a></li>
       <li><a href="bio.html">Bio</a></li>
       <li><a href="https://drive.google.com/file/d/1zK-V6wiQ66ybcEyTerjuPo0Z_oLqxKnx/view?usp=sharing"  target="_blank">CV</a></li>
     </ul>
     </nav>
     <h1>Oud Collection Redesign</h1>
     <p class="project-description">A case study on the redesign of the Oud Collection website, focusing on enhancing user experience and visual appeal.</p>
-    <a href="https://www.behance.net/gallery/225603421/Redesign-of-Oud-Collection-Website" style="color: grey;">View in Behance</a>
-    <p style="color: rgb(174, 10, 10);" >Note: This page is incomplete</p>
+    <a href="https://www.behance.net/gallery/225603421/Redesign-of-Oud-Collection-Website" class="btn-secondary" style="color: grey;">View in Behance</a>
+    <p style="color: rgb(217, 98, 98);" >Note: This page is incomplete</p>
     <div class="project-image">
         <img src="case study img1.png" alt="Oud Collection Redesign">
     </div>
@@ -155,30 +199,77 @@
     <!--
     <p class="section">Context</p>
     <h2>Project Overview</h2>
-    ...
+    <p class="descriptions"> This project focused on redesigning an existing luxury fragrance brand's collection website as part of a semester-long university assignment. The primary objective was to identify and resolve key usability, aesthetic, and structural issues that were affecting user experience and brand perception.
+        The goal is to transform the website into a luxurious, trustworthy, and intuitive digital platform that reflects the exclusivity and aesthetic refinement of the products. 
+        The target users are fragrance enthusiasts seeking premium experiences—both in product and presentation.</p>
       
     <div class="section-break"></div>
 
     <p class="section">Problems</p>
     <h2>Identified Issues</h2>
-    <img src="5122c92eba734979870fe6a7765d9f0e-ezgif.com-crop.gif">
+    <p class="descriptions">The original website suffered from multiple UX and visual design issues that created friction for users and failed to reflect the brand’s luxury positioning. Some of the key problems included:</p>
+    <img class="project-image" src="5122c92eba734979870fe6a7765d9f0e-ezgif.com-crop.gif">
     <section class="list-cards">
         <div class="card">
-            <p class="card-content"><span style="color: #B09B9B;">Disruptive Navigation — </span> Due to the logo and the navigation links below it the navigation bar is too large.</p>
+            <p class="card-content"><span style="color: #BDA9A9;" >Inconsistent typography and colour palette — </span> The visual identity was disjointed and failed to build user trust.</p>
         </div>
         <div class="card">
-            <p class="card-content"><span style="color: #B09B9B;">Poor Visual Hierarchy — </span> it is hard to differenciate important information from unimportant information.</p> 
+            <p class="card-content"><span style="color: #BDA9A9;">Unintuitive navigation — </span> Oversized navigation disrupted the flow and overwhelmed users.</p>
         </div>
         <div class="card">
-            <p class="card-content"><span style="color: #B09B9B;">Unintuitive purchase flow — </span> ...</p>
+            <p class="card-content"><span style="color: #BDA9A9;">Cluttered layout and poor hierarchy — </span> Information was scattered and difficult to process, with misaligned sections and weak visual guidance.</p> 
         </div>
         <div class="card">
-            <p class="card-content"><span style="color: #B09B9B;">Unpolished Design and no visible colour palette — </span>Description of the third problem identified in the original design.</p>
+            <p class="card-content"><span style="color: #BDA9A9;">Lack of brand alignment — </span>Despite claiming to be a luxury brand, the site failed to visually convey exclusivity or elegance.</p>
         </div>
     </section>
+
+    <p class="descriptions">Target Users: Based on the product type and branding claims, 
+        I identified the ideal users as middle- to high-income fragrance enthusiasts. 
+        These users likely value exclusivity, authenticity, and aesthetically refined digital experiences that reflect the luxury nature of the product.</p>
+
     <div class="section-break"></div>
-    <p class="section">Solutions</p>
-    <h2>Proposed Solutions</h2>
-    -->
+    <p class="section">Design</p>
+    <h2>Design Solutions</h2>
+ 
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

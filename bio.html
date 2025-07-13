@@ -1,36 +1,48 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bio</title>
-     <link href='https://fonts.googleapis.com/css?family=Labrada' rel='stylesheet'>
-    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
-    <style>
-        * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rumaysa Fatima · Product / UI Designer</title>
 
-        body {
-        font-family: lato;
-        font-weight: 200;
-        color: black;
-        background: #f5f5f5;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        line-height: 1;
-        }  
+  <!--  Google Fonts  -->
+  <link href="https://fonts.googleapis.com/css2?family=Labrada:wght@200;400;600&family=Lato:wght@300;400;600&display=swap" rel="stylesheet" />
 
-        html, body {
-          overflow-x: hidden;
-        }
+  <style>
+    /* ==========  Design Tokens  ========== */
+    :root {
+      --clr-bg          : #f5f5f5;
+      --clr-ink         : #0e0e0e;
+      --clr-muted       : #6d6d6d;
+      --clr-accent      : #5f3945;
+      --clr-accent-light: #a58487;
+      --radius          : 8px;
+      --max-width       : 1000px;
+    }
 
-        /* Navbar styling */
+    /* ==========  Base  ========== */
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;overflow-x:hidden}
+    body{
+      font-family:"Lato",sans-serif;
+      font-weight:500;
+      color:var(--clr-ink);
+      background:var(--clr-bg);
+      line-height:1.6;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+    }
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    h1,h2,h3{font-family:Labrada;font-weight:400;line-height:1.2}
+
+    /* ==========  Navigation  ========== */
+    /* Navbar styling */
         .navbar {
         margin-top: 20px;
+        position: fixed;
+        top: 0;
+        z-index: 999; 
         }
 
         .nav-links {
@@ -57,89 +69,128 @@
         background: rgba(176, 176, 176, 0.39);
         }
 
-        /* Background circles inside scrollable flow */
-        .background-circles {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        pointer-events: none;
-        z-index: -1;
+        #home {
+          min-height: 100vh;
         }
-
-        .circle {
-        position: absolute;
-        border-radius: 80%;
-        filter: blur(80px);
-        opacity: 0.7;
-        }
-
-        .circle1 {
-        width: 200px;
-        height: 200px;
-        background-color: #C49CA9;
-        top: -100px;
-        right: -100px;
-        overflow: hidden;
-        animation: moveAcross 20s ease-in-out infinite alternate;
-        }
-
-        @keyframes moveAcross {
-        0% {
-            transform: translate(0, 0);
-        }
-            20% {
-                transform: translate(-30vw, 60vh);
-            }
-        100% {
-            transform: translate(-100vw, 80vh);
-        }
-        }
-                
 
 
 
-        /* Navbar styling */
-        .navbar {
-        margin-top: 20px;
-        position: fixed;
-        top: 0;
-        z-index: 999; 
-        }
+    /* ==========  Hero  ========== */
+    .hero{max-width:var(--max-width);padding:180px 1rem 2rem;text-align:center}
+    .hero h1{font-size:2.8rem;margin-bottom:1rem}
+    .hero p{max-width:700px;margin-inline:auto;color:var(--clr-muted)}
+    
+    /* ==========  Statement Split Block  ========== */
+    .statement{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      align-items:center;
+      background:rgba(0,0,0,.05);
+    }
+    .statement__text{padding:1.5rem 2rem;font-family:Labrada;font-style:italic}
+    .statement__img img{height:100%;object-fit:cover}
+    @media(max-width:720px){.statement{grid-template-columns:1fr}.statement__img{order:-1;height:250px}}
 
-        /* Bio text section */
-        h1 {
-        font-family: Labrada;
-        font-size: 2.5em;
-        margin-bottom: 20px;
-        padding: 150px 20px 20px;
-        font-weight: 200;
-        }  
-        p {
-        font-size: 1em;
-        margin: 10px 0;
-        max-width: 600px;
-        text-align: center;
-        }       
-    </style>
+    /* ==========  Primary Buttons  ========== */
+    .btn-wrap{display:flex;justify-content:center;gap:1.2rem;margin:2.5rem 0 4rem}
+    .btn{
+      display:inline-block;border:none;cursor:pointer;font-family:"Lato",sans-serif;
+      padding:.85rem 3rem;font-size:.95rem;color:#fff;
+      border-radius:var(--radius);
+      background:linear-gradient(135deg,var(--clr-accent),var(--clr-accent-light));
+      transition:transform .25s,box-shadow .25s;
+    }
+    .btn:hover{transform:translateY(-3px);box-shadow:0 8px 18px rgba(0,0,0,.15)}
+
+    /* ==========  About Strip  ========== */
+    .about{
+      display:grid;grid-template-columns:260px 1fr;
+      background:#111;color:#fafafa;
+    }
+    .about__img img{width:100%;height:100%;object-fit:cover}
+    .about__text{padding:3rem 2rem;text-align:center;font-size:1rem;display:flex;flex-direction:column;justify-content:center;gap:1rem}
+    @media(max-width:720px){.about{grid-template-columns:1fr}.about__img{height:240px}}
+
+    /* ==========  Gallery  ========== */
+    .gallery{background:#e5e5e5;padding:4rem 1rem;width:100%}
+    .gallery h2{font-size:1.5rem;font-style:italic;text-align:center;margin-bottom:2rem}
+    .masonry{columns:3 220px;column-gap:1rem;margin-inline:auto;max-width:var(--max-width)}
+    .masonry img{width:100%;border-radius:var(--radius);margin-bottom:1rem;break-inside:avoid}
+    @media(max-width:600px){.masonry{columns:2 140px}}
+
+    /* ==========  Footer  ========== */
+    footer{margin:4rem 0 2rem;text-align:center;font-size:.8rem;color:var(--clr-muted)}
+  </style>
 </head>
 <body>
-    <nav class="navbar">
+  <!--  NAV  -->
+  <nav class="navbar">
     <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html" >Home</a></li>
       <li><a href="index.html#projects">Projects</a></li>
       <li><a href="bio.html" class="active">Bio</a></li>
-      <li><a href="https://drive.google.com/file/d/1zK-V6wiQ66ybcEyTerjuPo0Z_oLqxKnx/view?usp=sharing"  target="_blank">CV</a></li>
+      <li><a href="https://drive.google.com/file/d/1zK-V6wiQ66ybcEyTerjuPo0Z_oLqxKnx/view?usp=sharing" target="_blank">CV</a></li>
     </ul>
-    </nav>
-    <h1>Who is Rumaysa?</h1>
-    <p>I'm a UI/UX design student at the University of Melbourne with a deep passion for creating intuitive and engaging user experiences. My curiosity across a wide range of topics has sharpened my ability to design with empathy and attention to detail.</p>
-    <p>With a strong foundation in design principles, I strive to craft experiences that are not only functional but also emotionally resonant. I believe that good design goes beyond aesthetics — it’s about understanding users, addressing their needs, and solving real problems in thoughtful ways.</p>
-    <p>My goal is to design interfaces that not only look great but also improve usability, accessibility, and connection between people and technology.</p>
-    <p>Feel free check out my portfolio for more of my work!</p>
+  </nav>
 
-    <div class="background-circles">
-      <div class="circle circle1"></div>
+  <!--  HERO  -->
+  <header class="hero" id="top">
+    <h1>Who is Rumaysa?</h1>
+    <p>Product &amp; UI designer adventurous, curious and confident.</p>
+  </header>
+
+  <!--  STATEMENT  -->
+  <section class="statement">
+    <div class="statement__text">
+      To me, design is care. I’m drawn to excellence, balance and quiet beauty—not for perfection, but for the ease it offers others.
+      Whether it’s a screen, flow or button, my goal is always the same: clarity with warmth and intention without noise.
     </div>
+    <div class="statement__img" aria-hidden="true">
+      <img src="IMG-20250713-WA0016.jpg" alt="Hand holding a daisy on a sunny path" />
+    </div>
+  </section>
+
+  <!--  SOCIAL  -->
+  <div class="btn-wrap">
+    <a href="https://linkedin.com/in/rumaysa" target="_blank" rel="noopener" class="btn">LinkedIn</a>
+    <a href="https://behance.net/rumaysa"  target="_blank" rel="noopener" class="btn">Behance</a>
+  </div>
+
+  <!--  ABOUT  -->
+  <section class="about" id="about">
+    <div class="about__img"><img src="IMG-20250713-WA0020.jpg" alt="Close‑up of a pink dahlia" /></div>
+    <div class="about__text">
+      <p>Hi! I’m Rumaysa Fatima, a Melbourne‑based UI/UX design student with an eye for systems and the small details that make them human. My background in visual design and front‑end thinking lets me bridge aesthetics and usability—crafting interfaces that simply work and quietly delight.</p>
+      <p>I believe good design starts with empathy and ends with measurable impact. My practice focuses on accessible patterns, inclusive research and purposeful motion.</p>
+      <p>Outside of pixels, you’ll find me chasing golden hours with a camera in hand. Scroll on to explore a few frames.</p>
+    </div>
+  </section>
+
+  <!--  GALLERY  -->
+  <section class="gallery" id="gallery">
+    <h2>Want to know more? Here’s some of my photography.</h2>
+    <div class="masonry">
+      <!--  Replace src values with your own images  -->
+      <img src="IMG-20250713-WA0012.jpg" alt="Soft pink dusk sky with crescent moon" />
+      <img src="IMG-20250713-WA0018.jpg" alt="Reflection selfie on tram window" />
+      <img src="IMG-20250713-WA0019.jpg" alt="Brick rooftop with a lone plant against blue sky" />
+      <img src="IMG-20250713-WA0010 - Copy.jpg" alt="Night scene with green glass spheres" />
+      <img src="IMG-20250713-WA0021.jpg" alt="Hand holding a single rose" />
+      <img src="IMG-20250713-WA0013.jpg" alt="Vibrant train interior with mountain view on screen" />
+      <img src="IMG-20250713-WA0015.jpg" alt="River bend surrounded by lush greenery" />
+      <img src="IMG-20250713-WA0017 - Copy.jpg" alt="Latte art close‑up" />
+      <img src="IMG-20250713-WA0023.jpg" alt="White clover in grass" />
+      <img src="IMG-20250713-WA0014.jpg" alt="Sunset over suburban skyline" />
+      <img src="IMG-20250713-WA0011.jpg" alt="Close‑up of a pink dahlia" />
+      <img src="IMG-20250713-WA0016.jpg" alt="Hand holding a daisy on a sunny path" />
+      <img src="IMG-20250713-WA0022.jpg" alt="Close‑up of a pink flower with raindrops" />
+      <img src="IMG-20250713-WA0020.jpg" alt="" />
+      <!--  add more →  -->
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Rumaysa Fatima · Made with care and vanilla HTML/CSS
+  </footer>
 </body>
 </html>
