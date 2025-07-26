@@ -76,10 +76,10 @@
         }
 
         .circle3 {
-          width: 500px;
-          height: 500px;
+          width: 400px;
+          height: 400px;
           background-color:#373737;
-          top: 1200px;    /* near footer */
+          top: 900px;    /* near footer */
           right: 10px;
           --color1: #373737;
           --color2: #B09B9B;
@@ -172,133 +172,78 @@
 
         /* Projects section */
         .projects {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
         gap: 40px;
-        width: 100%;
-        max-width: 1000px;
-        margin: 0 auto;
-        padding: 150px 20px 150px;
         z-index: 1; /* ensure projects are above background circles */
+        margin-bottom: 300px;
+
         }
 
-        .project-card {
-          display: flex;
-          justify-content: space-between;
-          align-items: stretch; /* full height for both sides */
-          gap: 20px;
-          background: rgba(128, 128, 128, 0.2);
-          backdrop-filter: blur(40px);
-          padding: 30px;
-          width: 100%;
-          height: auto;
-        }
-
-        .project-content {
+          .project-card {
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          height: 100%;
-          max-width: 400px;
-          flex-grow: 1;
+          background-color: rgba(128, 128, 128, 0.2);
+          backdrop-filter: blur(40px);
+          padding: 0;
+          width: 240px;
+          border-radius: 12px;
+          overflow: hidden;
+          transition: transform 0.3s ease;
+          box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
         }
 
-        .project-text {
-        max-width: 400px;
+        .projects h2 {
+          margin-bottom: 2rem;
+          font-size: 1.5rem;
+          align-items: center;
         }
 
-        .project-text h2 {
-        font-size: 40px;
-        font-family: labrada;
-        margin-bottom: 8px;
-        font-weight: 200;
+        .project-grid {
+          display: flex;
+          justify-content: center;
+          gap: 3rem;
+          flex-wrap: wrap;
         }
 
-        .project-subtitle,
-        .project-description {
-        font-size: 14px;
-        color: #cccccc;
-        margin-bottom: 4px;
+        .project-card:hover {
+          transform: translateY(-5px);
         }
 
-
-        .case-study-link {
-        display: inline-block;
-        margin-top: 10px;
-        font-size: 14px;
-        color: #f5f5f5;
-        text-decoration: none;
-        border: 1px solid #f5f5f5;
-        padding: 6px 12px;
-        border-radius: 4px;
-        transition: all 0.3s ease;
-        width: 140px;
+        .project-card img {
+          width: 100%;
+          height: auto;
+          display: block;
         }
 
-        .case-study-link:hover {
-        background-color: #f5f5f5;
-        color: #000;
+        .project-info {
+          padding: 1rem;
+          text-align: left;
+          line-height: 20px;
         }
 
-        .project-image img {
-        width: 320px;
-        border-radius: 12px;
-        object-fit: cover;
+        .project-info small {
+          color: #B09B9B;
         }
 
-        /* Case study 2 placeholder */
-        .project-placeholder {
-        background-color: rgba(128, 128, 128, 0.2);
-        padding: 60px 30px;
-        width: 100%;
-        text-align: center;
-        font-family: 'Brush Script MT', cursive, sans-serif;
-        font-size: 50px;
-        color: #B09B9B;
-        line-height: 1.4;
-        height: 300px;
+          .card-icon-open {
+          display: block;
+          text-align: right;
+          margin-top: 20px;
+          font-size: 18px;
+          color: #fff;
+          width: 20px;
+          margin-left: auto;
         }
 
-        @media (max-width: 768px) {
-          .project-card {
-            flex-direction: column;
-            align-items: flex-start;
-            padding: 20px;
-          }
-
-          .project-content {
-            width: 100%;
-            height: auto;
-          }
-
-          .project-text {
-            max-width: 100%;
-            order: 1;
-          }
-
-          .project-image {
-            order: 2;
-            width: 100%;
-            text-align: center;
-          }
-
-          .project-image img {
-            width: 100%;
-            max-width: 300px;
-            height: auto;
-          }
-
-          .case-study-link {
-            order: 3;
-            display: block;
-            margin: 20px auto 0;
-            text-align: center;
-          }
-
-          .project-description {
-            margin-bottom: 20px;
-          }
+        .card-icon-none {
+          display: block;
+          text-align: right;
+          margin-top: 20px;
+          font-size: 18px;
+          color: #fff;
+          opacity: 0.4;
+          width: 20px;
+          margin-left: auto;
         }
 
         /* Footer */
@@ -306,7 +251,8 @@
         text-align: center;
         padding: 60px 20px;
         color: #f5f5f5;
-        font-size: 16px;
+         font-size: 16px;
+         z-index: 1;
         }
 
         .contact-links {
@@ -406,26 +352,36 @@
   </div>
 </section>
 
-<section class="projects" id="projects">
-  <div class="project-card">
-    <div class="project-content">
-      <div class="project-text">
-        <h2>Oud Collection</h2>
-        <p class="project-subtitle">University Project</p>
-        <p class="project-description">Redesign of the website Oud Collection</p>
+ <section class="projects">
+    <h2>My Projects</h2>
+    <div class="project-grid">
+      <div class="project-card">
+        <img src="324shots_so.png" alt="Oud Collection Redesign" />
+        <div class="project-info">
+          <small>UI Project</small>
+          <h3>Oud Collection Redesign</h3>
+          <span class="card-icon-open">
+            <a href="oudcollectioncs.html"><img src="icon-park-solid_click.png"></a>
+          </span>
+        </div>
       </div>
-      <a href="oudcollectioncs.html" class="case-study-link">See Case Study →</a>
-    </div>
-
-    <div class="project-image">
-      <img src="casestudy1card.png" alt="Oud Collection Preview" />
-    </div>
-  </div>
-
-  <div class="project-placeholder">
-    <p>Case Study 2<br>incoming</p>
-  </div>
-</section>
+      <div class="project-card coming-soon">
+        <img src="722shots_so.png" alt="Coming Soon" />
+        <div class="project-info">
+          <small>Featured Project</small>
+          <h3>Coming Soon</h3>
+          <span class="card-icon-none"><img src="icon-park-solid_click.png"></span>
+        </div>
+      </div>
+      <div class="project-card coming-soon">
+        <img src="722shots_so.png" alt="Coming Soon" />
+        <div class="project-info">
+          <small>Featured Project</small>
+          <h3>Coming Soon</h3>
+          <span class="card-icon-none"><img src="icon-park-solid_click.png"></span>
+        </div>
+      </div>  
+      </section>
 
   <footer class="contact">
     <p style="margin-bottom: 20px;">Reach out to me</p>
