@@ -2,41 +2,42 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rumaysa Fatima · Product / UI Designer</title>
+  <title>Rumaysa Fatima Bio</title>
 
   <!--  Google Fonts  -->
   <link href="https://fonts.googleapis.com/css2?family=Labrada:wght@200;400;600&family=Lato:wght@300;400;600&display=swap" rel="stylesheet" />
 
   <style>
-    /* ==========  Design Tokens  ========== */
-    :root {
-      --clr-bg          : #f5f5f5;
-      --clr-ink         : #0e0e0e;
-      --clr-muted       : #6d6d6d;
-      --clr-accent      : #5f3945;
-      --clr-accent-light: #a58487;
-      --radius          : 8px;
-      --max-width       : 1000px;
-    }
+      html {
+        scroll-behavior: smooth;
+      }
+      @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700&display=swap');
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
 
-    /* ==========  Base  ========== */
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth;overflow-x:hidden}
-    body{
-      font-family:"Lato",sans-serif;
-      font-weight:500;
-      color:var(--clr-ink);
-      background:var(--clr-bg);
-      line-height:1.6;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-    }
-    img{max-width:100%;display:block}
-    a{color:inherit;text-decoration:none}
-    h1,h2,h3{font-family:Labrada;font-weight:400;line-height:1.2}
+        body {
+        font-family: lato;
+        color: #f5f5f5;
+        background: #000000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        line-height: 1;
+        }   
 
-    /* ==========  Navigation  ========== */
+          /* Horizontal Rule */
+        .section-break {
+        width: 80%;
+        height: 1px;
+        background: #fff;
+        margin: 40px auto;
+        border-radius: 1px;
+        opacity: 0.4;
+        }
+
     /* Navbar styling */
         .navbar {
         margin-top: 20px;
@@ -57,7 +58,7 @@
 
         .nav-links a {
         text-decoration: none;
-        color: #000000;
+        color: #fff;
         padding: 6px 14px;
         border-radius: 90px;
         font-size: 14px;
@@ -66,63 +67,821 @@
 
         .nav-links a:hover,
         .nav-links a.active {
-        background: rgba(176, 176, 176, 0.39);
+        background: rgba(196, 156, 169, 0.6);
         }
 
-        #home {
-          min-height: 100vh;
+        /* Custom circle positions */
+       .circle1 {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 600px;
+          height: 400px;
+          background-color: #A78989;
+          border-radius: 80%;
+          filter: blur(80px);
+          opacity: 0.5;
+          pointer-events: none;
+          z-index: -1;
         }
 
+/* Bio Section */
+.bio-section {
+  max-width: 1000px;
+  margin-top: 100px; 
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.bio-section h1 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  top:50px;
+  font-family: 'Labrada', serif;
+  font-weight: 700;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.bio-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Bio Text */
+.bio-text {
+  flex: 1 1 400px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 20px;
+  border-radius: 12px;
+  line-height: 1.6;
+  text-align: left;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Animation classes for bio paragraphs */
+.bio-paragraph {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  margin-bottom: 24px; /* Compact spacing */
+  position: relative;
+}
+
+.bio-paragraph:last-child {
+  margin-bottom: 0;
+}
+
+.bio-paragraph.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Clean hover effects */
+.bio-paragraph {
+  cursor: default;
+  transition: all 0.3s ease, opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.bio-paragraph:hover {
+  transform: translateY(-2px);
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* Image Stack Animations */
+.bio-image {
+  flex: 1 1 300px;
+  display: flex;
+  justify-content: center;
+}
+
+.card-stack {
+  position: relative;
+  width: 400px;
+  height: 243px;
+  opacity: 0;
+  transform: translateX(50px) rotate(5deg);
+  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.card-stack.animate {
+  opacity: 1;
+  transform: translateX(0) rotate(0deg);
+  transition-delay: 0.3s;
+}
+
+.card {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.card-stack.animate .card1 {
+  animation: cardFloat1 3s ease-in-out infinite;
+  animation-delay: 0.5s;
+}
+
+.card-stack.animate .card2 {
+  animation: cardFloat2 3s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+@keyframes cardFloat1 {
+  0%, 100% { transform: rotate(-5.11deg) translateY(0px); }
+  50% { transform: rotate(-5.11deg) translateY(-5px); }
+}
+
+@keyframes cardFloat2 {
+  0%, 100% { transform: rotate(4deg) translateY(0px); }
+  50% { transform: rotate(4deg) translateY(3px); }
+}
+
+.card1 {
+  background: #A78989;
+  transform: rotate(-5.11deg);
+}
+
+.card2 {
+  background: #633B48;
+  transform: rotate(4deg);
+}
+
+.card3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  overflow: hidden;
+}
+
+.card3 img {
+  transition: transform 0.3s ease;
+}
+
+.card-stack:hover .card3 img {
+  transform: scale(1.05);
+}
+
+/* Scroll progress indicator */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, #A78989, #633B48);
+  z-index: 1000;
+  transition: width 0.1s ease;
+}
+
+/* Enhanced loading animation for the entire section */
+.bio-section {
+  opacity: 0;
+  animation: sectionFadeIn 1.5s ease forwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes sectionFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Experience Section */
+.experience-section {
+  max-width: 1000px;
+  margin-top: 60px;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.experience-section h1 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  font-family: 'Labrada', serif;
+  font-weight: 700;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.experience-section h1.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.experience-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Experience Quote */
+.experience-quote {
+  flex: 1 1 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quote-text {
+  font-family: 'Labrada', serif;
+  font-style: italic;
+  font-size: 1.5rem;
+  line-height: 1.4;
+  text-align: left;
+  color: #f5f5f5;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.quote-text.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Experience Text */
+.experience-text {
+  flex: 1 1 400px;
+  text-align: left;
+}
+
+.experience-paragraph {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  margin-bottom: 24px;
+  position: relative;
+  line-height: 1.6;
+}
+
+.experience-paragraph:last-child {
+  margin-bottom: 0;
+}
+
+.experience-paragraph.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 
-    /* ==========  Hero  ========== */
-    .hero{max-width:var(--max-width);padding:180px 1rem 2rem;text-align:center}
-    .hero h1{font-size:2.8rem;margin-bottom:1rem}
-    .hero p{max-width:700px;margin-inline:auto;color:var(--clr-muted)}
-    
-    /* ==========  Statement Split Block  ========== */
-    .statement{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      align-items:center;
-      background:rgba(0,0,0,.05);
-    }
-    .statement__text{padding:1.5rem 2rem;font-family:Labrada;font-style:italic}
-    .statement__img img{height:100%;object-fit:cover}
-    @media(max-width:720px){.statement{grid-template-columns:1fr}.statement__img{order:-1;height:250px}}
+/* Responsive */
+@media (max-width: 768px) {
+  .experience-content {
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  .quote-text {
+    font-size: 1.3rem;
+    text-align: center;
+  }
+  
+  .experience-text {
+    text-align: left;
+  }
+}
+.card-stack.celebrate {
+  animation: celebrateComplete 0.6s ease-in-out;
+}
 
-    /* ==========  Primary Buttons  ========== */
-    .btn-wrap{display:flex;justify-content:center;gap:1.2rem;margin:2.5rem 0 4rem}
-    .btn{
-      display:inline-block;border:none;cursor:pointer;font-family:"Lato",sans-serif;
-      padding:.85rem 3rem;font-size:.95rem;color:#fff;
-      border-radius:var(--radius);
-      background:linear-gradient(135deg,var(--clr-accent),var(--clr-accent-light));
-      transition:transform .25s,box-shadow .25s;
-    }
-    .btn:hover{transform:translateY(-3px);box-shadow:0 8px 18px rgba(0,0,0,.15)}
+@keyframes celebrateComplete {
+  0% { transform: translateX(0) rotate(0deg); }
+  50% { transform: translateX(0) rotate(1deg); }
+  100% { transform: translateX(0) rotate(0deg); }
+}
 
-    /* ==========  About Strip  ========== */
-    .about{
-      display:grid;grid-template-columns:260px 1fr;
-      background:#111;color:#fafafa;
-    }
-    .about__img img{width:100%;height:100%;object-fit:cover}
-    .about__text{padding:3rem 2rem;text-align:center;font-size:1rem;display:flex;flex-direction:column;justify-content:center;gap:1rem}
-    @media(max-width:720px){.about{grid-template-columns:1fr}.about__img{height:240px}}
+/* Responsive adjustments for individual reveals */
+@media (max-width: 768px) {
+  .bio-content {
+    flex-direction: column;
+  }
+  
+  .card-stack {
+    width: 300px;
+    height: 182px;
+  }
+  
+  .bio-paragraph {
+    transform: translateY(25px);
+    margin-bottom: 20px;
+  }
+}
 
-    /* ==========  Gallery  ========== */
-    .gallery{background:#e5e5e5;padding:4rem 1rem;width:100%}
-    .gallery h2{font-size:1.5rem;font-style:italic;text-align:center;margin-bottom:2rem}
-    .masonry{columns:3 220px;column-gap:1rem;margin-inline:auto;max-width:var(--max-width)}
-    .masonry img{width:100%;border-radius:var(--radius);margin-bottom:1rem;break-inside:avoid}
-    @media(max-width:600px){.masonry{columns:2 140px}}
+/* Timeline Section */
+.timeline-section {
+  max-width: 1100px;
+  margin: 80px auto;
+  padding: 60px 20px;
+}
 
-    /* ==========  Footer  ========== */
-    footer{margin:4rem 0 2rem;text-align:center;font-size:.8rem;color:var(--clr-muted)}
+.timeline-container {
+  position: relative;
+}
+
+/* Timeline Header */
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.timeline-year,
+.timeline-divider {
+  font-size: 1rem;
+  color: #f5f5f5;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.timeline-year.animate,
+.timeline-divider.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.future-year {
+  color: #A78989;
+}
+
+/* Timeline Line */
+.timeline-line {
+  position: relative;
+  height: 2px;
+  margin: 0 0 40px 0;
+  display: flex;
+}
+
+.timeline-line-past {
+  flex: 1;
+  background: #f5f5f5;
+  height: 100%;
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.timeline-line-future {
+  flex: 0.3;
+  background: #A78989;
+  height: 100%;
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition-delay: 0.6s;
+}
+
+.timeline-line-past.animate {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.timeline-line-future.animate {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+/* Experience Bars */
+.experience-bars {
+  margin-bottom: 60px;
+  position: relative;
+}
+
+.experience-bar {
+  height: 40px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  position: relative;
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.experience-bar.animate {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Bar sizes and colors */
+.bar-large {
+  width: 75%;
+  background: rgba(245, 245, 245, 0.9);
+  transition-delay: 0.2s;
+}
+
+.bar-medium {
+  width: 45%;
+  background: rgba(245, 245, 245, 0.8);
+  margin-left: 20%;
+  transition-delay: 0.4s;
+}
+
+.bar-small {
+  width: 30%;
+  background: rgba(245, 245, 245, 0.7);
+  margin-left: 35%;
+  transition-delay: 0.6s;
+}
+
+.bar-future {
+  width: 35%;
+  background: #A78989;
+  margin-left: 65%;
+  transition-delay: 0.8s;
+}
+
+/* Bar labels */
+.experience-bar::before {
+  content: attr(data-title);
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.9rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.bar-future::before {
+  color: #fff;
+}
+
+/* Experience Descriptions */
+.experience-descriptions {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.experience-description {
+  line-height: 1.6;
+  color: #f5f5f5;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.experience-description.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.experience-description:first-child {
+  transition-delay: 0.3s;
+}
+
+.experience-description:last-child {
+  transition-delay: 0.5s;
+}
+
+/* Hover effects */
+.experience-bar {
+  cursor: default;
+  transition: all 0.3s ease, opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.experience-bar:hover {
+  transform: translateX(0) translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.bar-future:hover {
+  box-shadow: 0 4px 15px rgba(167, 137, 137, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .timeline-section {
+    margin: 60px auto;
+    padding: 40px 15px;
+  }
+  
+  .timeline-header {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+  
+  .timeline-line-future {
+    flex: 0.4;
+  }
+  
+  .experience-bar {
+    height: 35px;
+    margin-bottom: 15px;
+  }
+  
+  .experience-bar::before {
+    font-size: 0.8rem;
+    left: 10px;
+  }
+  
+  .bar-large {
+    width: 85%;
+  }
+  
+  .bar-medium {
+    width: 55%;
+    margin-left: 15%;
+  }
+  
+  .bar-small {
+    width: 40%;
+    margin-left: 25%;
+  }
+  
+  .bar-future {
+    width: 45%;
+    margin-left: 55%;
+  }
+}
+
+/* My Tiny Superpowers Section */
+.superpowers-section {
+  max-width: 1100px;
+  margin: 80px auto;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.superpowers-section h1 {
+  font-size: 2rem;
+  margin-bottom: 50px;
+  font-family: 'Labrada', serif;
+  font-weight: 700;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.superpowers-section h1.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Skills Grid */
+.superpowers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+/* Superpower Category */
+.superpower-category {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 30px 25px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.superpower-category.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.superpower-category:nth-child(1) {
+  transition-delay: 0.1s;
+}
+
+.superpower-category:nth-child(2) {
+  transition-delay: 0.2s;
+}
+
+.superpower-category:nth-child(3) {
+  transition-delay: 0.3s;
+}
+
+/* Category Header */
+.category-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 25px;
+  justify-content: center;
+}
+
+.category-icon {
+  font-size: 1.5rem;
+  opacity: 0.9;
+}
+
+.category-header h3 {
+  font-family: 'Labrada', serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0;
+  color: #f5f5f5;
+}
+
+/* Skills Container */
+.skills-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Individual Skill Items */
+.skill-item {
+  text-align: left;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.skill-item.animate {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.skill-item:nth-child(1) { transition-delay: 0.4s; }
+.skill-item:nth-child(2) { transition-delay: 0.5s; }
+.skill-item:nth-child(3) { transition-delay: 0.6s; }
+.skill-item:nth-child(4) { transition-delay: 0.7s; }
+
+.skill-name {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  color: #f5f5f5;
+  font-weight: 400;
+}
+
+/* Skill Bars */
+.skill-bar {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+
+.skill-progress {
+  height: 100%;
+  background: linear-gradient(90deg, #A78989, #633B48);
+  border-radius: 3px;
+  width: 0%;
+  transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+}
+
+.skill-progress::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transform: translateX(-100%);
+  animation: shimmer 1.5s ease-in-out;
+  animation-delay: 1.5s;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.skill-item.animate .skill-progress {
+  width: var(--progress-width);
+}
+
+/* Skills Philosophy */
+.skills-philosophy {
+  margin-top: 50px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.skills-philosophy.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.philosophy-text {
+  max-width: 600px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  padding: 25px 30px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.philosophy-text p {
+  font-family: 'Labrada', serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #f5f5f5;
+  margin: 0;
+  font-style: italic;
+}
+
+/* Hover Effects */
+.superpower-category:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+}
+
+.skill-item:hover .skill-name {
+  color: #A78989;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .superpowers-section {
+    margin: 60px auto;
+    padding: 40px 15px;
+  }
+  
+  .superpowers-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-bottom: 40px;
+  }
+  
+  .superpower-category {
+    padding: 25px 20px;
+  }
+  
+  .philosophy-text {
+    padding: 20px 25px;
+  }
+  
+  .philosophy-text p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .superpowers-section h1 {
+    font-size: 1.8rem;
+    margin-bottom: 40px;
+  }
+  
+  .category-header {
+    justify-content: flex-start;
+  }
+  
+  .skills-container {
+    gap: 18px;
+  }
+  
+  .philosophy-text {
+    padding: 18px 20px;
+  }
+}
+
+
+/* Footer */
+footer{margin:4rem 0 2rem;text-align:center;font-size:.8rem;color:var(--clr-muted)}
   </style>
 </head>
 <body>
+  <!-- Scroll progress bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
   <!--  NAV  -->
   <nav class="navbar">
     <ul class="nav-links">
@@ -133,78 +892,394 @@
     </ul>
   </nav>
 
-  <!--  HERO  -->
-  <header class="hero" id="top">
-    <h1>Who is Rumaysa?</h1>
-    <p>Product &amp; UI designer adventurous, curious and confident.
-      <br> this page is currently under construction
-    </p>
-  </header>
-
- 
-  <!--  STATEMENT  -->
-    <!--
-  <section class="statement">
-    <div class="statement__text">
-      To me, design is care. I’m drawn to excellence, balance and quiet beauty—not for perfection, but for the ease it offers others.
-      Whether it’s a screen, flow or button, my goal is always the same: clarity with warmth and intention without noise.
-    </div>
-    <div class="statement__img" aria-hidden="true">
-      <img src="IMG-20250713-WA0016.jpg" alt="Hand holding a daisy on a sunny path" />
-    </div>
-  </section>
--->
-
-  <!--  SOCIAL  -->
-    <!--
-  <div class="btn-wrap">
-    <a href="https://linkedin.com/in/rumaysa" target="_blank" rel="noopener" class="btn">LinkedIn</a>
-    <a href="https://behance.net/rumaysa"  target="_blank" rel="noopener" class="btn">Behance</a>
-  </div>
--->
-  
-  <!--  ABOUT  -->
-    <!--
-  <section class="about" id="about">
-    <div class="about__img"><img src="IMG-20250713-WA0020.jpg" alt="Close‑up of a pink dahlia" /></div>
-    <div class="about__text">
-  <p>Hi! I’m Rumaysa Fatima, a UI/UX design student at the University of Melbourne with an eye for systems and the small details that make them feel human. With a background in visual design and front-end thinking, I bridge aesthetics and usability—crafting interfaces that not only work seamlessly but also quietly delight.</p>
-  
-  <p>I believe good design starts with empathy and ends with measurable impact. My practice focuses on accessible design patterns, inclusive research, and purposeful motion.</p>
-  
-  <p>Beyond the screen, you'll often find me nose-deep in all kinds of knowledge and experiences,<br><br><em>one of which involves chasing golden hour with a camera in hand. Scroll on to explore a few frames.</em></p>
-</div>
-  </section>
--->
-  <!--  GALLERY  -->
-    <!--
-  <section class="gallery" id="gallery">
-    <h2>Want to know more? Here’s some of my photography.</h2>
-    <div class="masonry">
+   <!-- Bio Section -->
+  <section class="bio-section">
+    <h1>Hi, I am Rumaysa!</h1>
+    <div class="bio-content">
       
-      <img src="IMG-20250713-WA0012.jpg" alt="Soft pink dusk sky with crescent moon" />
-      <img src="IMG-20250713-WA0018.jpg" alt="Reflection selfie on tram window" />
-      <img src="IMG-20250713-WA0019.jpg" alt="Brick rooftop with a lone plant against blue sky" />
-      <img src="IMG-20250713-WA0010 - Copy.jpg" alt="Night scene with green glass spheres" />
-      <img src="IMG-20250713-WA0021.jpg" alt="Hand holding a single rose" />
-      <img src="IMG-20250713-WA0013.jpg" alt="Vibrant train interior with mountain view on screen" />
-      <img src="IMG-20250713-WA0015.jpg" alt="River bend surrounded by lush greenery" />
-      <img src="IMG-20250713-WA0017 - Copy.jpg" alt="Latte art close‑up" />
-      <img src="IMG-20250713-WA0023.jpg" alt="White clover in grass" />
-      <img src="IMG-20250713-WA0014.jpg" alt="Sunset over suburban skyline" />
-      <img src="IMG-20250713-WA0011.jpg" alt="Close‑up of a pink dahlia" />
-      <img src="IMG-20250713-WA0016.jpg" alt="Hand holding a daisy on a sunny path" />
-      <img src="IMG-20250713-WA0022.jpg" alt="Close‑up of a pink flower with raindrops" />
-      <img src="IMG-20250713-WA0020.jpg" alt="" />
-      -->
-      <!--  add more →  -->
+      <!-- Left Text -->
+     <div class="bio-text">
+        <div class="bio-paragraph">
+          I'm a UI/UX design student with a background in visual design and a love for systems that feel effortless and human.
+        </div>
+        <div class="bio-paragraph">
+          To me, design is care, whether it's an interface, a journey, or a button, I aim to make it clear, warm, and purposeful. I'm drawn to accessibility, quiet storytelling, and experiences that guide rather than overwhelm.
+        </div>
+        <div class="bio-paragraph">
+          I'm still exploring my niche, but my direction is intentional: to build with empathy, design with meaning, and quietly improve lives through clarity, function, and beauty.
+        </div>
+      </div>
+
+      <!-- Right Image Stack -->
+      <div class="bio-image">
+        <div class="card-stack">
+          <div class="circle circle1"></div>
+          <div class="card card1"></div>
+          <div class="card card2"></div>
+          <div class="card card3">
+            <img src="profheadshot.jpg" alt="headshot" style="width: 100%; height: 100%; border-radius: 10px; object-fit: cover;" />
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
-<!-- 
-  <footer>
-    © 2025 Rumaysa Fatima · Made with care and vanilla HTML/CSS
-  </footer>
 
- -->
+  <div class="section-break"></div>
+
+  <!-- Where I've Been Section -->
+  <section class="experience-section">
+    <h1>Where I've been</h1>
+    <div class="experience-content">
+      
+      <!-- Left Quote -->
+      <div class="experience-quote">
+        <div class="quote-text">
+          "Replace with a good quote to showcase personality"
+        </div>
+      </div>
+
+      <!-- Right Text -->
+      <div class="experience-text">
+        <div class="experience-paragraph">
+          As a generalist, I have taken many roles and explored many ideas.
+        </div>
+        <div class="experience-paragraph">
+          But most importantly, these experiences have helped me form a strong soft skills and lived experience that I can uniquely integrate into the way I design and how I solve problems.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+   <!-- Timeline Section -->
+  <section class="timeline-section">
+    <div class="timeline-container">
+      <!-- Timeline header -->
+      <div class="timeline-header">
+        <div class="timeline-year start-year">2022</div>
+        <div class="timeline-divider today-divider">Today</div>
+        <div class="timeline-year future-year">Tomorrow, with you.</div>
+      </div>
+
+      <!-- Timeline line -->
+      <div class="timeline-line">
+        <div class="timeline-line-past"></div>
+        <div class="timeline-line-future"></div>
+      </div>
+
+      <!-- Experience bars -->
+      <div class="experience-bars">
+        <div class="experience-bar bar-large" data-title="Smile for Kids"></div>
+        <div class="experience-bar bar-medium" data-title="Youth Nexus"></div>
+        <div class="experience-bar bar-small" data-title="ISRA Academy"></div>
+        <div class="experience-bar bar-future" data-title="Future Role"></div>
+      </div>
+
+      <!-- Experience descriptions -->
+      <div class="experience-descriptions">
+        <div class="experience-description">
+          I work as a student mentor and Quran teacher at Sirius College, where I lead memorisation and Islamic studies sessions. These roles have given me experience in event facilitation, youth engagement, and workshop planning.
+        </div>
+        <div class="experience-description">
+          In addition, I work as an admin assistant and social media manager at Smile for Kids. Through this role, I've gained valuable experience in communications, digital content, and organisational management.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-break"></div>
+
+  
+
+  <!-- My Tiny Superpowers Section 
+<section class="superpowers-section">
+  <h1>My Tiny Superpowers</h1>
+  
+  <div class="superpowers-grid">
+    
+    <!-- Design Skills 
+    <div class="superpower-category">
+      <div class="category-header">
+        <div class="category-icon">✨</div>
+        <h3>Design & Vision</h3>
+      </div>
+      <div class="skills-container">
+        <div class="skill-item" data-level="85">
+          <span class="skill-name">UI/UX Design</span>
+          <div class="skill-bar">
+            <div class="skill-progress"></div>
+          </div>
+        </div>
+        <div class="skill-item" data-level="75">
+          <span class="skill-name">Visual Design</span>
+          <div class="skill-bar">
+            <div class="skill-progress"></div>
+          </div>
+        </div>
+        <div class="skill-item" data-level="70">
+          <span class="skill-name">Prototyping</span>
+          <div class="skill-bar">
+            <div class="skill-progress"></div>
+          </div>
+        </div>
+        <div class="skill-item" data-level="80">
+          <span class="skill-name">Design Systems</span>
+          <div class="skill-bar">
+            <div class="skill-progress"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Technical Skills 
+    <div class="superpower-category">
+      <div class="category-header">
+        <div class="category-icon">⚡</div>
+        <h3>Technical</h3>
+      </div>
+      <div class="skills-container">
+        <div class="skill-item" data-level="65">
+          <span class="skill-name">HTML/CSS</span>
+          <div class="skill-bar">
+            <div class="skill-progress"></div>
+          </div>
+        </div>
+        <div class="skill-item" data-level="55">
+          <span class="skill-name">JavaScript</span>
+          <div class="skill-bar">
+            <div class="skill-progress"></div>
+          </div>
+        </div>
+        <div class="skill-item" data-level="75">
+          <span class="skill-name">Figma</span>
+          <div class="skill-bar">
+            <div class="skill-progress"></div>
+          </div>
+        </div>
+        <div class="skill-item" data-level="60">
+          <span class="skill-name">Adobe Creative</span>
+          <div class="skill-bar">
+            <div class="skill-progress"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Soft Skills 
+    <div class="superpower-category">
+      <div class="category-header">
+        <div class="category-icon">💫</div>
+        <h3>Human Skills</h3>
+      </div>
+      <div class="skills-container">
+        <div class="skill-item" data-level="90">
+          <span class="skill-name">Empathy & Research</span>
+          <div class="skill-bar">
+            <div class="skill-progress"></div>
+          </div>
+        </div>
+        <div class="skill-item" data-level="85">
+          <span class="skill-name">Communication</span>
+          <div class="skill-bar">
+            <div class="skill-progress"></div>
+          </div>
+        </div>
+        <div class="skill-item" data-level="80">
+          <span class="skill-name">Problem Solving</span>
+          <div class="skill-bar">
+            <div class="skill-progress"></div>
+          </div>
+        </div>
+        <div class="skill-item" data-level="75">
+          <span class="skill-name">Mentoring</span>
+          <div class="skill-bar">
+            <div class="skill-progress"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Skills Philosophy 
+  <div class="skills-philosophy">
+    <div class="philosophy-text">
+      <p>I believe the best designs come from understanding people, not just pixels. My "tiny superpowers" aren't just technical skills—they're ways of seeing, listening, and caring that I bring to every project.</p>
+    </div>
+  </div>
+</section>
+-->
+
+
+    <script>
+    // Enhanced Intersection Observer for individual paragraph reveals
+    const observerOptions = {
+      threshold: 0.4, // Reduced threshold for more natural timing
+      rootMargin: '0px 0px -20% 0px' // Less restrictive margins
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+        }
+      });
+    }, observerOptions);
+
+    // Separate observer for image stack with different timing
+    const imageObserverOptions = {
+      threshold: 0.3,
+      rootMargin: '0px 0px -20% 0px'
+    };
+
+    const imageObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+        }
+      });
+    }, imageObserverOptions);
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Observe each bio paragraph individually
+      const bioParagraphs = document.querySelectorAll('.bio-paragraph');
+      const experienceParagraphs = document.querySelectorAll('.experience-paragraph');
+      const experienceHeading = document.querySelector('.experience-section h1');
+      const quoteText = document.querySelector('.quote-text');
+      const cardStack = document.querySelector('.card-stack');
+      
+      // Timeline elements
+      const timelineYears = document.querySelectorAll('.timeline-year');
+      const timelineDivider = document.querySelector('.timeline-divider');
+      const timelineLinePast = document.querySelector('.timeline-line-past');
+      const timelineLineFuture = document.querySelector('.timeline-line-future');
+      const experienceBars = document.querySelectorAll('.experience-bar');
+      const experienceDescriptions = document.querySelectorAll('.experience-description');
+      
+      // Observe bio paragraphs
+      bioParagraphs.forEach((paragraph, index) => {
+        observer.observe(paragraph);
+      });
+
+      // Observe experience section elements
+      if (experienceHeading) observer.observe(experienceHeading);
+      if (quoteText) observer.observe(quoteText);
+      
+      experienceParagraphs.forEach((paragraph) => {
+        observer.observe(paragraph);
+      });
+
+      // Observe timeline elements
+      timelineYears.forEach(year => observer.observe(year));
+      if (timelineDivider) observer.observe(timelineDivider);
+      if (timelineLinePast) observer.observe(timelineLinePast);
+      if (timelineLineFuture) observer.observe(timelineLineFuture);
+      
+      experienceBars.forEach(bar => observer.observe(bar));
+      experienceDescriptions.forEach(desc => observer.observe(desc));
+      
+      // Observe image stack separately
+      if (cardStack) {
+        imageObserver.observe(cardStack);
+      }
+      
+      // Enhanced scroll progress bar
+      const scrollProgress = document.getElementById('scrollProgress');
+      
+      window.addEventListener('scroll', () => {
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight - windowHeight;
+        const scrolled = window.scrollY;
+        const progress = (scrolled / documentHeight) * 100;
+        
+        scrollProgress.style.width = progress + '%';
+      });
+
+      // Smooth parallax effect for background circle
+      const circle = document.querySelector('.circle1');
+      if (circle) {
+        window.addEventListener('scroll', () => {
+          const scrolled = window.pageYOffset;
+          const rate = scrolled * -0.2;
+          circle.style.transform = `translate(-50%, calc(-50% + ${rate}px))`;
+        });
+      }
+
+      // Simple reading completion check for bio section
+      const bioSection = document.querySelector('.bio-section');
+      
+      const updateReadingProgress = () => {
+        const animatedBioParagraphs = document.querySelectorAll('.bio-paragraph.animate').length;
+        const totalBioParagraphs = bioParagraphs.length;
+        
+        if (animatedBioParagraphs === totalBioParagraphs && cardStack && !cardStack.classList.contains('celebrate')) {
+          setTimeout(() => {
+            cardStack.classList.add('celebrate');
+          }, 300);
+        }
+      };
+
+      // Monitor when bio paragraphs become animated
+      const mutationObserver = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+            if (mutation.target.classList.contains('bio-paragraph')) {
+              updateReadingProgress();
+            }
+          }
+        });
+      });
+
+      bioParagraphs.forEach(paragraph => {
+        mutationObserver.observe(paragraph, { attributes: true });
+      });
+    });
+  </script>
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Observer for superpowers section elements
+  const superpowersObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate');
+        
+        // Special handling for skill items to animate progress bars
+        if (entry.target.classList.contains('superpower-category')) {
+          const skillItems = entry.target.querySelectorAll('.skill-item');
+          
+          skillItems.forEach((skillItem, index) => {
+            setTimeout(() => {
+              skillItem.classList.add('animate');
+              
+              // Animate the progress bar
+              const progressBar = skillItem.querySelector('.skill-progress');
+              const level = skillItem.getAttribute('data-level');
+              
+              setTimeout(() => {
+                progressBar.style.setProperty('--progress-width', level + '%');
+                progressBar.style.width = level + '%';
+              }, 200);
+              
+            }, index * 100 + 300);
+          });
+        }
+      }
+    });
+  }, {
+    threshold: 0.3,
+    rootMargin: '0px 0px -20% 0px'
+  });
+
+  // Observe superpowers elements
+  const superpowersHeading = document.querySelector('.superpowers-section h1');
+  const superpowerCategories = document.querySelectorAll('.superpower-category');
+  const skillsPhilosophy = document.querySelector('.skills-philosophy');
+  
+  if (superpowersHeading) superpowersObserver.observe(superpowersHeading);
+  superpowerCategories.forEach(category => superpowersObserver.observe(category));
+  if (skillsPhilosophy) superpowersObserver.observe(skillsPhilosophy);
+});
+</script>
 </body>
 </html>
