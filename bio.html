@@ -89,7 +89,7 @@
 /* Bio Section */
 .bio-section {
   max-width: 1000px;
-  margin-top: 100px; 
+  margin-top: 80px; 
   padding: 40px 20px;
   text-align: center;
 }
@@ -97,7 +97,6 @@
 .bio-section h1 {
   font-size: 2rem;
   margin-bottom: 40px;
-  top:50px;
   font-family: 'Labrada', serif;
   font-weight: 700;
   opacity: 0;
@@ -110,6 +109,21 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.experience-section h1 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  font-family: 'Labrada', serif;
+  font-weight: 700;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.experience-section h1.animate {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .bio-content {
@@ -277,28 +291,14 @@
   text-align: center;
 }
 
-.experience-section h1 {
-  font-size: 2rem;
-  margin-bottom: 40px;
-  font-family: 'Labrada', serif;
-  font-weight: 700;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.experience-section h1.animate {
-  opacity: 1;
-  transform: translateY(0);
-}
 
 .experience-content {
   display: flex;
   flex-wrap: wrap;
-  gap: 60px;
+  gap: 40px;
   align-items: center;
   justify-content: center;
-  min-height: 300px;
+  min-height: 200px;
   background: rgba(255, 255, 255, 0.08);
 }
 
@@ -944,13 +944,13 @@ footer{margin:4rem 0 2rem;text-align:center;font-size:.8rem;color:var(--clr-mute
     <h1>Where I've been</h1>
     <div class="experience-content">
       
-      <!-- Left Quote -->
+      <!-- Left Quote 
       <div class="experience-quote">
         <div class="quote-text">
           "Replace with a good quote to showcase personality"
         </div>
       </div>
-
+-->
       <!-- Right Text -->
       <div class="experience-text">
         <div class="experience-paragraph">
