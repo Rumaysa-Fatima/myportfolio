@@ -111,21 +111,6 @@
   }
 }
 
-.experience-section h1 {
-  font-size: 2rem;
-  margin-bottom: 40px;
-  font-family: 'Labrada', serif;
-  font-weight: 700;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.experience-section h1.animate {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 .bio-content {
   display: flex;
   flex-wrap: wrap;
@@ -286,20 +271,42 @@
 /* Experience Section */
 .experience-section {
   max-width: 1000px;
-  margin-top: 60px;
-  padding: 40px 20px;
+  margin: 60px auto 0;
+   padding: 0 20px;
   text-align: center;
 }
 
+.experience-section h1 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  font-family: 'Labrada', serif;
+  font-weight: 700;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.experience-section h1.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Background band */
+.experience-background {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 40px 0; /* vertical space */
+}
 
 .experience-content {
+  max-width: 1000px;
+  margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   gap: 40px;
   align-items: center;
   justify-content: center;
   min-height: 200px;
-  background: rgba(255, 255, 255, 0.08);
 }
 
 /* Experience Quote */
@@ -643,7 +650,6 @@
 /* My Tiny Superpowers Section */
 .superpowers-section {
   max-width: 1100px;
-  margin: 80px auto;
   padding: 60px 20px;
   text-align: center;
 }
@@ -940,29 +946,33 @@ footer{margin:4rem 0 2rem;text-align:center;font-size:.8rem;color:var(--clr-mute
   <div class="section-break"></div>
 
   <!-- Where I've Been Section -->
+   
   <section class="experience-section">
-    <h1>Where I've been</h1>
+  <h1>Where I've been</h1>
+
+  <div class="experience-background">
     <div class="experience-content">
-      
-      <!-- Left Quote 
+      <!-- Left Quote -->
       <div class="experience-quote">
         <div class="quote-text">
-          "Replace with a good quote to showcase personality"
+          "Driven by curiosity, guided by purpose"
         </div>
       </div>
--->
+
       <!-- Right Text -->
       <div class="experience-text">
         <div class="experience-paragraph">
           As a generalist, I have taken many roles and explored many ideas.
         </div>
         <div class="experience-paragraph">
-          But most importantly, these experiences have helped me form a strong soft skills and lived experience that I can uniquely integrate into the way I design and how I solve problems.
+          But most importantly, these experiences have helped me form strong soft skills
+          and lived experience that I can uniquely integrate into the way I design and
+          how I solve problems.
         </div>
       </div>
-
     </div>
-  </section>
+  </div>
+</section>
 
    <!-- Timeline Section -->
   <section class="timeline-section">
@@ -991,7 +1001,7 @@ footer{margin:4rem 0 2rem;text-align:center;font-size:.8rem;color:var(--clr-mute
       <!-- Experience descriptions -->
       <div class="experience-descriptions">
         <div class="experience-description">
-          I work as a student mentor and Quran teacher at Sirius College, where I lead memorisation and Islamic studies sessions. These roles have given me experience in event facilitation, youth engagement, and workshop planning.
+          I work as a student mentor at Sirius College where I organise discussions and activities for after-school care programs, which gives me the opportunity to guide young people in exploring new ideas, self-reflection, and critical thinking. 
         </div>
         <div class="experience-description">
           In addition, I work as an admin assistant and social media manager at Smile for Kids. Through this role, I've gained valuable experience in communications, digital content, and organisational management.
@@ -1004,7 +1014,7 @@ footer{margin:4rem 0 2rem;text-align:center;font-size:.8rem;color:var(--clr-mute
 
   
 
-  <!-- My Tiny Superpowers Section 
+  <!--My Tiny Superpowers Section -->
 <section class="superpowers-section">
   <h1>My Tiny Superpowers</h1>
   

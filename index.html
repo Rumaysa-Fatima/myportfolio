@@ -32,6 +32,18 @@
           overflow-x: hidden;
         }
 
+        /* Scroll progress indicator */
+        .scroll-progress {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 0%;
+          height: 3px;
+          background: linear-gradient(90deg, #A78989, #633B48);
+          z-index: 1000;
+          transition: width 0.1s ease;
+        }
+
 
         /* Background circles inside scrollable flow */
         .background-circles {
@@ -315,6 +327,9 @@
     </style>
 </head>
 <body>
+  <!-- Scroll progress bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
       <div class="background-circles">
       <div class="circle circle1"></div>
       <div class="circle circle2"></div>
@@ -415,6 +430,18 @@
       }
     });
   });
+</script>
+<script>
+      const scrollProgress = document.getElementById('scrollProgress');
+      
+      window.addEventListener('scroll', () => {
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight - windowHeight;
+        const scrolled = window.scrollY;
+        const progress = (scrolled / documentHeight) * 100;
+        
+        scrollProgress.style.width = progress + '%';
+      });
 </script>
 </body>
 </html>

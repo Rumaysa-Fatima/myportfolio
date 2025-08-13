@@ -29,6 +29,18 @@
         color: inherit;
         }
 
+        /* Scroll progress indicator */
+        .scroll-progress {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 0%;
+          height: 3px;
+          background: linear-gradient(90deg, #A78989, #633B48);
+          z-index: 1000;
+          transition: width 0.1s ease;
+        }
+
         /* Navbar */
         .navbar {
         margin-top: 20px;
@@ -179,7 +191,8 @@
     </style> 
 </head>
 <body>
-    
+      <!-- Scroll progress bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
     <nav class="navbar">
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
@@ -196,7 +209,7 @@
         <img src="case study img1.png" alt="Oud Collection Redesign">
     </div>
     <img src="problem 3d gif.gif" alt="Problem GIF" class="project-image">
-    <!--
+  
     <p class="section">Context</p>
     <h2>Project Overview</h2>
     <p class="descriptions"> This project focused on redesigning an existing luxury fragrance brand's collection website as part of a semester-long university assignment. The primary objective was to identify and resolve key usability, aesthetic, and structural issues that were affecting user experience and brand perception.
@@ -233,7 +246,6 @@
     <h2>Design Solutions</h2>
  
 
--->
 
 
 
@@ -244,7 +256,18 @@
 
 
 
-
+<script>
+      const scrollProgress = document.getElementById('scrollProgress');
+      
+      window.addEventListener('scroll', () => {
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight - windowHeight;
+        const scrolled = window.scrollY;
+        const progress = (scrolled / documentHeight) * 100;
+        
+        scrollProgress.style.width = progress + '%';
+      });
+</script>
 
 
 </body>
