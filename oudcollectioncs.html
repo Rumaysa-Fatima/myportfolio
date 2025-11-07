@@ -188,6 +188,148 @@
             font-size: 1.5rem;
         }
         }
+
+        /* Infinite Scroll Showcases */
+        .infinite-showcase {
+            margin: 80px 0;
+            position: relative;
+            width: 100%;
+            max-width: 100vw;
+            padding: 0 20px; /* 20px padding from screen edges */
+        }
+
+        .infinite-showcase-container {
+            overflow: hidden;
+            position: relative;
+            border-radius: 16px;
+            max-width: 100%;
+        }
+
+        .infinite-showcase-container::before,
+        .infinite-showcase-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 80px;
+            height: 100%;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .infinite-showcase-container::before {
+            left: 0;
+            background: linear-gradient(90deg, 
+                #000 0%, 
+                rgba(0, 0, 0, 0.9) 20%, 
+                rgba(0, 0, 0, 0.7) 40%, 
+                rgba(0, 0, 0, 0.3) 70%, 
+                transparent 100%);
+        }
+
+        .infinite-showcase-container::after {
+            right: 0;
+            background: linear-gradient(-90deg, 
+                #000 0%, 
+                rgba(0, 0, 0, 0.9) 20%, 
+                rgba(0, 0, 0, 0.7) 40%, 
+                rgba(0, 0, 0, 0.3) 70%, 
+                transparent 100%);
+        }
+
+        .showcase-track {
+            display: flex;
+            animation: scroll-horizontal 120s linear infinite;
+            gap: 30px;
+            width: max-content;
+        }
+
+        .showcase-track:hover {
+            animation-play-state: paused;
+        }
+
+        /* Desktop Showcase Items */
+        .desktop-showcase-item {
+            flex-shrink: 0;
+            width: 400px;
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            transition: transform 0.9s ease;
+        }
+
+        .desktop-showcase-item:hover {
+            transform: scale(1.05);
+        }
+
+        .desktop-showcase-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .desktop-showcase-label {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Mobile Showcase Items */
+        .mobile-showcase-item {
+            flex-shrink: 0;
+            width: 200px;
+            position: relative;
+            transition: transform 0.9s ease;
+        }
+
+        .mobile-showcase-item:hover {
+            transform: scale(1.05);
+        }
+
+        .mobile-showcase-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .mobile-showcase-label {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Slower mobile animation */
+        .mobile-showcase .showcase-track {
+            animation: scroll-horizontal 140s linear infinite;
+        }
+
+        /* Animation */
+        @keyframes scroll-horizontal {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
     </style> 
 </head>
 <body>
@@ -242,14 +384,148 @@
     <p class="descriptions">Target Users: Based on the product type and branding claims, 
         I identified the ideal users as middle- to high-income fragrance enthusiasts. 
         These users likely value exclusivity, authenticity, and aesthetically refined digital experiences that reflect the luxury nature of the product.</p>
-    <!--
+
     <div class="section-break"></div>
     <p class="section">Design</p>
     <h2>Design Solutions</h2>
  
-        -->
+        <div class="screens-showcase reveal-on-scroll">
+            <h3 class="subsection-title">Desktop Experience</h3>
+            
+            <!-- Desktop Infinite Scroll Showcase -->
+            <div class="infinite-showcase">
+                <div class="showcase-track">
+                    <!-- First set of images -->
+                    <div class="desktop-showcase-item">
+                        <img src="desktop-homepage.jpg" alt="Desktop homepage design">
+                        <div class="desktop-showcase-label">Homepage</div>
+                    </div>
+                    <div class="desktop-showcase-item">
+                        <img src="desktop-product.jpg" alt="Desktop product page design">
+                        <div class="desktop-showcase-label">Product Page</div>
+                    </div>
+                    <div class="desktop-showcase-item">
+                        <img src="desktop-collection.jpg" alt="Desktop collection page design">
+                        <div class="desktop-showcase-label">Collection</div>
+                    </div>
+                    <div class="desktop-showcase-item">
+                        <img src="desktop-cart.jpg" alt="Desktop shopping cart design">
+                        <div class="desktop-showcase-label">Shopping Cart</div>
+                    </div>
+                    <div class="desktop-showcase-item">
+                        <img src="desktop-checkout.jpg" alt="Desktop checkout design">
+                        <div class="desktop-showcase-label">Checkout</div>
+                    </div>
+                    <div class="desktop-showcase-item">
+                        <img src="desktop-search.jpg" alt="Desktop search results design">
+                        <div class="desktop-showcase-label">Search Results</div>
+                    </div>
+                    <!-- Duplicate set for infinite scroll -->
+                    <div class="desktop-showcase-item">
+                        <img src="desktop-homepage.jpg.png" alt="Desktop homepage design">
+                        <div class="desktop-showcase-label">Homepage</div>
+                    </div>
+                    <div class="desktop-showcase-item">
+                        <img src="desktop-product.jpg.png" alt="Desktop product page design">
+                        <div class="desktop-showcase-label">Product Page</div>
+                    </div>
+                    <div class="desktop-showcase-item">
+                        <img src="desktop-collection.jpg" alt="Desktop collection page design">
+                        <div class="desktop-showcase-label">Collection</div>
+                    </div>
+                    <div class="desktop-showcase-item">
+                        <img src="desktop-cart.jpg" alt="Desktop shopping cart design">
+                        <div class="desktop-showcase-label">Shopping Cart</div>
+                    </div>
+                    <div class="desktop-showcase-item">
+                        <img src="desktop-checkout.jpg" alt="Desktop checkout design">
+                        <div class="desktop-showcase-label">Checkout</div>
+                    </div>
+                    <div class="desktop-showcase-item">
+                        <img src="desktop-search.jpg" alt="Desktop search results design">
+                        <div class="desktop-showcase-label">Search Results</div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-
+        <!-- Mobile Screens -->
+        <div class="screens-showcase mobile-showcase reveal-on-scroll">
+            <h3 class="subsection-title">Mobile Experience</h3>
+            
+            <!-- Mobile Infinite Scroll Showcase -->
+            <div class="infinite-showcase">
+                <div class="showcase-track">
+                    <!-- First set of images -->
+                    <div class="mobile-showcase-item">
+                        <img src="mobile-homepage.jpg.png" alt="Mobile homepage design">
+                        <div class="mobile-showcase-label">Homepage</div>
+                    </div>
+                    <div class="mobile-showcase-item">
+                        <img src="mobile-product.jpg.png" alt="Mobile product page design">
+                        <div class="mobile-showcase-label">Product</div>
+                    </div>
+                    <div class="mobile-showcase-item">
+                        <img src="mobile-collection.jpg" alt="Mobile collection page design">
+                        <div class="mobile-showcase-label">Collection</div>
+                    </div>
+                    <div class="mobile-showcase-item">
+                        <img src="mobile-navigation.jpg" alt="Mobile navigation design">
+                        <div class="mobile-showcase-label">Navigation</div>
+                    </div>
+                    <div class="mobile-showcase-item">
+                        <img src="mobile-cart.jpg" alt="Mobile shopping cart design">
+                        <div class="mobile-showcase-label">Cart</div>
+                    </div>
+                    <div class="mobile-showcase-item">
+                        <img src="mobile-checkout.jpg" alt="Mobile checkout design">
+                        <div class="mobile-showcase-label">Checkout</div>
+                    </div>
+                    <div class="mobile-showcase-item">
+                        <img src="mobile-search.jpg" alt="Mobile search design">
+                        <div class="mobile-showcase-label">Search</div>
+                    </div>
+                    <div class="mobile-showcase-item">
+                        <img src="mobile-profile.jpg" alt="Mobile user profile design">
+                        <div class="mobile-showcase-label">Profile</div>
+                    </div>
+                    <!-- Duplicate set for infinite scroll -->
+                    <div class="mobile-showcase-item">
+                        <img src="mobile-homepage.jpg" alt="Mobile homepage design">
+                        <div class="mobile-showcase-label">Homepage</div>
+                    </div>
+                    <div class="mobile-showcase-item">
+                        <img src="mobile-product.jpg" alt="Mobile product page design">
+                        <div class="mobile-showcase-label">Product</div>
+                    </div>
+                    <div class="mobile-showcase-item">
+                        <img src="mobile-collection.jpg" alt="Mobile collection page design">
+                        <div class="mobile-showcase-label">Collection</div>
+                    </div>
+                    <div class="mobile-showcase-item">
+                        <img src="mobile-navigation.jpg" alt="Mobile navigation design">
+                        <div class="mobile-showcase-label">Navigation</div>
+                    </div>
+                    <div class="mobile-showcase-item">
+                        <img src="mobile-cart.jpg" alt="Mobile shopping cart design">
+                        <div class="mobile-showcase-label">Cart</div>
+                    </div>
+                    <div class="mobile-showcase-item">
+                        <img src="mobile-checkout.jpg" alt="Mobile checkout design">
+                        <div class="mobile-showcase-label">Checkout</div>
+                    </div>
+                    <div class="mobile-showcase-item">
+                        <img src="mobile-search.jpg" alt="Mobile search design">
+                        <div class="mobile-showcase-label">Search</div>
+                    </div>
+                    <div class="mobile-showcase-item">
+                        <img src="mobile-profile.jpg" alt="Mobile user profile design">
+                        <div class="mobile-showcase-label">Profile</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
 

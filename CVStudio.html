@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Studio Case Study</title>
+        <link href='https://fonts.googleapis.com/css?family=Labrada' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
+    <style>
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+
+        body {
+        font-family: 'Lato', sans-serif;
+        background-color: #000;
+        color: #f5f5f5;
+        padding: 40px 20px;
+        line-height: 1.6;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        }
+
+        a {
+        text-decoration: none;
+        color: inherit;
+        }
+
+        /* Scroll progress indicator */
+        .scroll-progress {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 0%;
+          height: 3px;
+          background: linear-gradient(90deg, #A78989, #633B48);
+          z-index: 1000;
+          transition: width 0.1s ease;
+        }
+
+        /* Navbar */
+        .navbar {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        position: fixed;
+        top: 0;
+        z-index: 999; 
+        line-height: 1;
+        }
+
+        .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 10px;
+        padding: 10px 20px;
+        background: rgba(176, 176, 176, 0.39);
+        border-radius: 100px;
+        backdrop-filter: blur(40px);
+        }
+
+        .nav-links a {
+        text-decoration: none;
+        color: #f5f5f5;
+        padding: 6px 14px;
+        border-radius: 90px;
+        font-size: 14px;
+        transition:  0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+        background: rgba(196, 156, 169, 0.6);
+        }
+
+                /* Main Title */
+        h1 {
+        font-family: 'Labrada', serif;
+        font-size: 2.8rem;
+        font-weight: 300;
+        margin: 40px 0 10px;
+        text-align: center;
+        }
+
+        /* Section Text */
+        .project-description,
+        .section,
+        .descriptions {
+        max-width: 800px;
+        text-align: center;
+        margin: 0 auto;
+        }
+
+        .project-description {
+        font-size: 1rem;
+        color: #ccc;
+        margin-bottom: 10px;
+        }
+
+        .section {
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        color: #888;
+        letter-spacing: 1px;
+        margin-top: 20px;
+        }
+
+        /* Section Heading */
+        h2 {
+        font-family: 'Labrada', serif;
+        font-size: 2rem;
+        font-weight: 300;
+        text-align: center;
+        margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+      <!-- Scroll progress bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+    <nav class="navbar">
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#projects" class="active">Projects</a></li>
+      <li><a href="bio.html">Bio</a></li>
+      <li><a href="https://drive.google.com/file/d/1zK-V6wiQ66ybcEyTerjuPo0Z_oLqxKnx/view?usp=sharing"  target="_blank">CV</a></li>
+    </ul>
+    </nav>
+    <h1>AI CV Studio Case Study</h1>
+    <p class="project-description">Students often struggle to showcase their individuality in portfolios. Existing AI builders automate too much and inhibit creativity.
+I helped design CV Studio, an AI-powered portfolio tool that balances guidance and freedom.
+My focus was understanding student needs, defining interaction flows, and ensuring AI builds confidence not constraint.</p>
+        
+</body>
+</html>
