@@ -189,6 +189,289 @@
         }
         }
 
+         /* Solution Preview */
+        .solution-preview {
+            background: radial-gradient(ellipse at center, rgba(167, 137, 137, 0.05) 0%, transparent 70%);
+            padding: 80px 0;
+            text-align: center;
+            margin: 80px 0;
+            border-radius: 24px;
+        }
+
+        .solution-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .solution-metric {
+            padding: 30px;
+            background: rgba(189, 169, 169, 0.05);
+            border-radius: 16px;
+            border: 1px solid rgba(189, 169, 169, 0.1);
+        }
+
+        .solution-metric-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #BDA9A9;
+            margin-bottom: 10px;
+        }
+
+        .solution-metric-label {
+            color: #ccc;
+        }
+
+            /* Project Image */
+        .project-image {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            margin: 60px 0;
+            transition: transform 0.3s ease;
+        }
+
+        .project-image:hover {
+            transform: scale(1.02);
+        }
+
+        .project-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Process Sections */
+        .process-subsection {
+            margin: 60px 0;
+        }
+
+        .subsection-title {
+            font-family: 'Labrada', serif;
+            font-size: 1.8rem;
+            font-weight: 300;
+            margin-bottom: 16px;
+            color: #BDA9A9;
+        }
+
+        .subsection-description {
+            color: #ccc;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .wireframe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .wireframe-item {
+            text-align: center;
+        }
+
+        .design-system-showcase {
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .image-caption {
+            margin-top: 12px;
+            font-size: 0.9rem;
+            color: #888;
+            font-style: italic;
+        }
+
+    /* Screens Showcase */
+        .screens-showcase {
+            margin: 60px 0;
+        }
+
+        .screen-item {
+            margin: 60px 0;
+            text-align: center;
+        }
+
+        .screen-details {
+            margin-top: 24px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .screen-details h4 {
+            color: #BDA9A9;
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .mobile-screens-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+
+        .mobile-screen {
+            text-align: center;
+        }
+
+        .mobile-caption {
+            margin-top: 16px;
+            font-size: 0.9rem;
+            color: #BDA9A9;
+        }
+     /* Impact Section */
+        .impact-details {
+            margin: 60px 0;
+        }
+
+        .impact-title {
+            font-family: 'Labrada', serif;
+            font-size: 1.8rem;
+            font-weight: 300;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #BDA9A9;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .impact-item {
+            background: rgba(189, 169, 169, 0.05);
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid rgba(189, 169, 169, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .impact-item:hover {
+            transform: translateY(-4px);
+        }
+
+        .impact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .impact-item h4 {
+            color: #BDA9A9;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+
+        /* Reflection Section */
+        .reflection-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            margin: 40px 0;
+        }
+
+        .reflection-section {
+            background: rgba(175, 175, 175, 0.05);
+            padding: 30px;
+            border-radius: 16px;
+            border-left: 4px solid #A78989;
+        }
+
+        .reflection-title {
+            font-family: 'Labrada', serif;
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+            color: #BDA9A9;
+        }
+
+        .reflection-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .reflection-list li {
+            margin-bottom: 16px;
+            padding-left: 20px;
+            position: relative;
+            color: #ddd;
+            line-height: 1.6;
+        }
+
+        .reflection-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #A78989;
+            font-weight: bold;
+        }
+
+        .skills-demonstrated {
+            margin-top: 60px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 16px;
+            margin-top: 30px;
+        }
+
+        .skill-item {
+            background: rgba(167, 137, 137, 0.1);
+            padding: 16px 20px;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 0.95rem;
+            color: #ddd;
+            border: 1px solid rgba(167, 137, 137, 0.2);
+        }
+
+
+    /* Animations */
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-5px) translateX(-50%);
+            }
+        }
+
         /* Infinite Scroll Showcases */
         .infinite-showcase {
             margin: 80px 0;
@@ -246,8 +529,7 @@
         .showcase-track:hover {
             animation-play-state: paused;
         }
-
-        /* Desktop Showcase Items */
+/* Desktop Showcase Items */
         .desktop-showcase-item {
             flex-shrink: 0;
             width: 400px;
@@ -329,7 +611,69 @@
                 transform: translateX(-50%);
             }
         }
+ /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .metrics-preview {
+                flex-direction: column;
+                gap: 20px;
+            }
 
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .comparison {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .problem-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .solution-metrics {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .wireframe-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .mobile-screens-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 20px;
+            }
+
+            .impact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .reflection-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+  
     </style> 
 </head>
 <body>
@@ -386,64 +730,181 @@
         These users likely value exclusivity, authenticity, and aesthetically refined digital experiences that reflect the luxury nature of the product.</p>
 
     <div class="section-break"></div>
-    <p class="section">Design</p>
-    <h2>Design Solutions</h2>
- 
+     <!-- Solution Preview -->
+    <section class="solution-preview reveal-on-scroll" id="solution">
+        <p class="section">Solution</p>
+        <h2>The transformation</h2>
+        <p class="section-description">
+            A complete redesign focused on luxury aesthetics, intuitive navigation, and conversion optimization.
+        </p>
+
+        <div class="solution-metrics reveal-on-scroll">
+            <div class="solution-metric">
+                <div class="solution-metric-number">100%</div>
+                <p class="solution-metric-label">Brand Consistency Achieved</p>
+            </div>
+            <div class="solution-metric">
+                <div class="solution-metric-number">4</div>
+                <p class="solution-metric-label">Major UX Problems Solved</p>
+            </div>
+            <div class="solution-metric">
+                <div class="solution-metric-number">1</div>
+                <p class="solution-metric-label">Cohesive Design System</p>
+            </div>
+        </div>
+    </section>
+    <div class="section-break"></div>
+     <!-- Design Process Section -->
+    <section class="content reveal-on-scroll">
+        <div class="section-header">
+            <p class="section">Process</p>
+            <h2>How I Approrached This?</h2>
+            <p class="section-description">
+                Starting with user research and wireframe exploration, I systematically worked through different layout approaches to find the optimal solution.
+            </p>
+        </div>
+
+        <!-- Wireframes & Sketches -->
+        <div class="process-subsection reveal-on-scroll">
+            <h3 class="subsection-title">Wireframe Exploration</h3>
+            <p class="subsection-description">
+                I explored 4 different layout directions through hand-drawn wireframes, focusing on homepage and product page information architecture. While sketchy, these helped me think through structural solutions before high-fidelity design.
+            </p>
+            
+            
+                <div class="wireframe-item">
+                    <!-- Add your wireframe image here -->
+                     <img src="Screenshot 2025-04-23 212723.png" alt="wireframes" class="project-image" style="border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                    <p class="image-caption">Initial layout explorations</p>
+                </div>
+                <div class="wireframe-item">
+                    <!-- Add your wireframe image here -->
+                     <img src="wireframe-1.jpg.png" alt="userflow" class="project-image" style=" border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                    <p class="image-caption">User flow iterations</p>
+                </div>
+            
+        </div>
+
+        <!-- Design System -->
+        <div class="process-subsection reveal-on-scroll">
+            <h3 class="subsection-title">Design System & Visual Direction</h3>
+            <p class="subsection-description">
+                I established a cohesive design system focusing on luxury aesthetics with a dark, sophisticated palette and refined typography hierarchy.
+            </p>
+            
+            <div class="design-system-showcase">
+                <!-- Add your design system image here -->
+                <img src="design-system.jpg" alt="Design system showing colors, typography, and components" style="width: 100%; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1);">
+                <p class="image-caption">Color palette, typography, and component system</p>
+            </div>
+        </div>
+    </section>
+
+
+   <!-- Before/After Comparison -->
+    <section class="content reveal-on-scroll">
+        <div class="section-header">
+            <p class="section">Transformation</p>
+            <h2>Before vs After</h2>
+            <p class="section-description">
+                See the dramatic transformation from cluttered, unprofessional design to clean, luxury-focused experience.
+            </p>
+        </div>
+
+        <div class="comparison reveal-on-scroll">
+            <div class="comparison-item">
+                <div class="comparison-label before-label">Before</div>
+                <!-- Add your "before" screenshot here -->
+                <img src="before-homepage.jpg" alt="Original cluttered homepage design">
+            </div>
+            <div class="comparison-item">
+                <div class="comparison-label after-label">After</div>
+                <!-- Add your "after" screenshot here -->
+                <img src="after-homepage.jpg" alt="Redesigned clean homepage">
+            </div>
+        </div>
+
+        <div class="comparison reveal-on-scroll">
+            <div class="comparison-item">
+                <div class="comparison-label before-label">Before</div>
+                <!-- Add your "before" product page here -->
+                <img src="before-product.jpg" alt="Original product page design">
+            </div>
+            <div class="comparison-item">
+                <div class="comparison-label after-label">After</div>
+                <!-- Add your "after" product page here -->
+                <img src="after-product.jpg" alt="Redesigned product page">
+            </div>
+        </div>
+    </section>
+
+  <!-- Key Screens Showcase -->
+    <section class="content reveal-on-scroll">
+        <div class="section-header">
+            <p class="section">Final Designs</p>
+            <h2>Key Screen Designs</h2>
+            <p class="section-description">
+                Explore the final designs across desktop and mobile, showcasing the complete user experience transformation.
+            </p>
+        </div>
+
         <div class="screens-showcase reveal-on-scroll">
             <h3 class="subsection-title">Desktop Experience</h3>
             
             <!-- Desktop Infinite Scroll Showcase -->
             <div class="infinite-showcase">
-                <div class="showcase-track">
-                    <!-- First set of images -->
-                    <div class="desktop-showcase-item">
-                        <img src="desktop-homepage.jpg" alt="Desktop homepage design">
-                        <div class="desktop-showcase-label">Homepage</div>
-                    </div>
-                    <div class="desktop-showcase-item">
-                        <img src="desktop-product.jpg" alt="Desktop product page design">
-                        <div class="desktop-showcase-label">Product Page</div>
-                    </div>
-                    <div class="desktop-showcase-item">
-                        <img src="desktop-collection.jpg" alt="Desktop collection page design">
-                        <div class="desktop-showcase-label">Collection</div>
-                    </div>
-                    <div class="desktop-showcase-item">
-                        <img src="desktop-cart.jpg" alt="Desktop shopping cart design">
-                        <div class="desktop-showcase-label">Shopping Cart</div>
-                    </div>
-                    <div class="desktop-showcase-item">
-                        <img src="desktop-checkout.jpg" alt="Desktop checkout design">
-                        <div class="desktop-showcase-label">Checkout</div>
-                    </div>
-                    <div class="desktop-showcase-item">
-                        <img src="desktop-search.jpg" alt="Desktop search results design">
-                        <div class="desktop-showcase-label">Search Results</div>
-                    </div>
-                    <!-- Duplicate set for infinite scroll -->
-                    <div class="desktop-showcase-item">
-                        <img src="desktop-homepage.jpg.png" alt="Desktop homepage design">
-                        <div class="desktop-showcase-label">Homepage</div>
-                    </div>
-                    <div class="desktop-showcase-item">
-                        <img src="desktop-product.jpg.png" alt="Desktop product page design">
-                        <div class="desktop-showcase-label">Product Page</div>
-                    </div>
-                    <div class="desktop-showcase-item">
-                        <img src="desktop-collection.jpg" alt="Desktop collection page design">
-                        <div class="desktop-showcase-label">Collection</div>
-                    </div>
-                    <div class="desktop-showcase-item">
-                        <img src="desktop-cart.jpg" alt="Desktop shopping cart design">
-                        <div class="desktop-showcase-label">Shopping Cart</div>
-                    </div>
-                    <div class="desktop-showcase-item">
-                        <img src="desktop-checkout.jpg" alt="Desktop checkout design">
-                        <div class="desktop-showcase-label">Checkout</div>
-                    </div>
-                    <div class="desktop-showcase-item">
-                        <img src="desktop-search.jpg" alt="Desktop search results design">
-                        <div class="desktop-showcase-label">Search Results</div>
+                <div class="infinite-showcase-container">
+                    <div class="showcase-track">
+                        <!-- First set of images -->
+                        <div class="desktop-showcase-item">
+                            <img src="desktop-homepage.jpg" alt="Desktop homepage design">
+                            <div class="desktop-showcase-label">Homepage</div>
+                        </div>
+                        <div class="desktop-showcase-item">
+                            <img src="desktop-product.jpg" alt="Desktop product page design">
+                            <div class="desktop-showcase-label">Product Page</div>
+                        </div>
+                        <div class="desktop-showcase-item">
+                            <img src="desktop-collection.jpg" alt="Desktop collection page design">
+                            <div class="desktop-showcase-label">Collection</div>
+                        </div>
+                        <div class="desktop-showcase-item">
+                            <img src="desktop-cart.jpg" alt="Desktop shopping cart design">
+                            <div class="desktop-showcase-label">Shopping Cart</div>
+                        </div>
+                        <div class="desktop-showcase-item">
+                            <img src="desktop-checkout.jpg" alt="Desktop checkout design">
+                            <div class="desktop-showcase-label">Checkout</div>
+                        </div>
+                        <div class="desktop-showcase-item">
+                            <img src="desktop-search.jpg" alt="Desktop search results design">
+                            <div class="desktop-showcase-label">Search Results</div>
+                        </div>
+                        <!-- Duplicate set for infinite scroll -->
+                        <div class="desktop-showcase-item">
+                            <img src="desktop-homepage.jpg" alt="Desktop homepage design">
+                            <div class="desktop-showcase-label">Homepage</div>
+                        </div>
+                        <div class="desktop-showcase-item">
+                            <img src="desktop-product.jpg" alt="Desktop product page design">
+                            <div class="desktop-showcase-label">Product Page</div>
+                        </div>
+                        <div class="desktop-showcase-item">
+                            <img src="desktop-collection.jpg" alt="Desktop collection page design">
+                            <div class="desktop-showcase-label">Collection</div>
+                        </div>
+                        <div class="desktop-showcase-item">
+                            <img src="desktop-cart.jpg" alt="Desktop shopping cart design">
+                            <div class="desktop-showcase-label">Shopping Cart</div>
+                        </div>
+                        <div class="desktop-showcase-item">
+                            <img src="desktop-checkout.jpg" alt="Desktop checkout design">
+                            <div class="desktop-showcase-label">Checkout</div>
+                        </div>
+                        <div class="desktop-showcase-item">
+                            <img src="desktop-search.jpg" alt="Desktop search results design">
+                            <div class="desktop-showcase-label">Search Results</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -455,77 +916,175 @@
             
             <!-- Mobile Infinite Scroll Showcase -->
             <div class="infinite-showcase">
-                <div class="showcase-track">
-                    <!-- First set of images -->
-                    <div class="mobile-showcase-item">
-                        <img src="mobile-homepage.jpg.png" alt="Mobile homepage design">
-                        <div class="mobile-showcase-label">Homepage</div>
-                    </div>
-                    <div class="mobile-showcase-item">
-                        <img src="mobile-product.jpg.png" alt="Mobile product page design">
-                        <div class="mobile-showcase-label">Product</div>
-                    </div>
-                    <div class="mobile-showcase-item">
-                        <img src="mobile-collection.jpg" alt="Mobile collection page design">
-                        <div class="mobile-showcase-label">Collection</div>
-                    </div>
-                    <div class="mobile-showcase-item">
-                        <img src="mobile-navigation.jpg" alt="Mobile navigation design">
-                        <div class="mobile-showcase-label">Navigation</div>
-                    </div>
-                    <div class="mobile-showcase-item">
-                        <img src="mobile-cart.jpg" alt="Mobile shopping cart design">
-                        <div class="mobile-showcase-label">Cart</div>
-                    </div>
-                    <div class="mobile-showcase-item">
-                        <img src="mobile-checkout.jpg" alt="Mobile checkout design">
-                        <div class="mobile-showcase-label">Checkout</div>
-                    </div>
-                    <div class="mobile-showcase-item">
-                        <img src="mobile-search.jpg" alt="Mobile search design">
-                        <div class="mobile-showcase-label">Search</div>
-                    </div>
-                    <div class="mobile-showcase-item">
-                        <img src="mobile-profile.jpg" alt="Mobile user profile design">
-                        <div class="mobile-showcase-label">Profile</div>
-                    </div>
-                    <!-- Duplicate set for infinite scroll -->
-                    <div class="mobile-showcase-item">
-                        <img src="mobile-homepage.jpg" alt="Mobile homepage design">
-                        <div class="mobile-showcase-label">Homepage</div>
-                    </div>
-                    <div class="mobile-showcase-item">
-                        <img src="mobile-product.jpg" alt="Mobile product page design">
-                        <div class="mobile-showcase-label">Product</div>
-                    </div>
-                    <div class="mobile-showcase-item">
-                        <img src="mobile-collection.jpg" alt="Mobile collection page design">
-                        <div class="mobile-showcase-label">Collection</div>
-                    </div>
-                    <div class="mobile-showcase-item">
-                        <img src="mobile-navigation.jpg" alt="Mobile navigation design">
-                        <div class="mobile-showcase-label">Navigation</div>
-                    </div>
-                    <div class="mobile-showcase-item">
-                        <img src="mobile-cart.jpg" alt="Mobile shopping cart design">
-                        <div class="mobile-showcase-label">Cart</div>
-                    </div>
-                    <div class="mobile-showcase-item">
-                        <img src="mobile-checkout.jpg" alt="Mobile checkout design">
-                        <div class="mobile-showcase-label">Checkout</div>
-                    </div>
-                    <div class="mobile-showcase-item">
-                        <img src="mobile-search.jpg" alt="Mobile search design">
-                        <div class="mobile-showcase-label">Search</div>
-                    </div>
-                    <div class="mobile-showcase-item">
-                        <img src="mobile-profile.jpg" alt="Mobile user profile design">
-                        <div class="mobile-showcase-label">Profile</div>
+                <div class="infinite-showcase-container">
+                    <div class="showcase-track">
+                        <!-- First set of images -->
+                        <div class="mobile-showcase-item">
+                            <img src="mobile-homepage.jpg" alt="Mobile homepage design">
+                            <div class="mobile-showcase-label">Homepage</div>
+                        </div>
+                        <div class="mobile-showcase-item">
+                            <img src="mobile-product.jpg" alt="Mobile product page design">
+                            <div class="mobile-showcase-label">Product</div>
+                        </div>
+                        <div class="mobile-showcase-item">
+                            <img src="mobile-collection.jpg" alt="Mobile collection page design">
+                            <div class="mobile-showcase-label">Collection</div>
+                        </div>
+                        <div class="mobile-showcase-item">
+                            <img src="mobile-navigation.jpg" alt="Mobile navigation design">
+                            <div class="mobile-showcase-label">Navigation</div>
+                        </div>
+                        <div class="mobile-showcase-item">
+                            <img src="mobile-cart.jpg" alt="Mobile shopping cart design">
+                            <div class="mobile-showcase-label">Cart</div>
+                        </div>
+                        <div class="mobile-showcase-item">
+                            <img src="mobile-checkout.jpg" alt="Mobile checkout design">
+                            <div class="mobile-showcase-label">Checkout</div>
+                        </div>
+                        <div class="mobile-showcase-item">
+                            <img src="mobile-search.jpg" alt="Mobile search design">
+                            <div class="mobile-showcase-label">Search</div>
+                        </div>
+                        <div class="mobile-showcase-item">
+                            <img src="mobile-profile.jpg" alt="Mobile user profile design">
+                            <div class="mobile-showcase-label">Profile</div>
+                        </div>
+                        <!-- Duplicate set for infinite scroll -->
+                        <div class="mobile-showcase-item">
+                            <img src="mobile-homepage.jpg" alt="Mobile homepage design">
+                            <div class="mobile-showcase-label">Homepage</div>
+                        </div>
+                        <div class="mobile-showcase-item">
+                            <img src="mobile-product.jpg" alt="Mobile product page design">
+                            <div class="mobile-showcase-label">Product</div>
+                        </div>
+                        <div class="mobile-showcase-item">
+                            <img src="mobile-collection.jpg" alt="Mobile collection page design">
+                            <div class="mobile-showcase-label">Collection</div>
+                        </div>
+                        <div class="mobile-showcase-item">
+                            <img src="mobile-navigation.jpg" alt="Mobile navigation design">
+                            <div class="mobile-showcase-label">Navigation</div>
+                        </div>
+                        <div class="mobile-showcase-item">
+                            <img src="mobile-cart.jpg" alt="Mobile shopping cart design">
+                            <div class="mobile-showcase-label">Cart</div>
+                        </div>
+                        <div class="mobile-showcase-item">
+                            <img src="mobile-checkout.jpg" alt="Mobile checkout design">
+                            <div class="mobile-showcase-label">Checkout</div>
+                        </div>
+                        <div class="mobile-showcase-item">
+                            <img src="mobile-search.jpg" alt="Mobile search design">
+                            <div class="mobile-showcase-label">Search</div>
+                        </div>
+                        <div class="mobile-showcase-item">
+                            <img src="mobile-profile.jpg" alt="Mobile user profile design">
+                            <div class="mobile-showcase-label">Profile</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Impact & Results -->
+    <section class="content reveal-on-scroll">
+        <div class="section-header">
+             <p class="section">Results</p>
+            <h2>Design Impact</h2>
+            <p class="section-description">
+                The redesign successfully transforms the brand's digital presence into a cohesive, luxury experience that matches their premium product quality.
+            </p>
+        </div>
+
+        <div class="impact-details reveal-on-scroll">
+            <div class="impact-section">
+                <h3 class="impact-title">Key Improvements Delivered</h3>
+                <div class="impact-grid">
+                    <div class="impact-item">
+                        <div class="impact-icon">🎯</div>
+                        <h4>Streamlined Navigation</h4>
+                        <p>Simplified oversized navigation into clean, intuitive system with strategic logo placement and improved mobile responsiveness.</p>
+                    </div>
+                    <div class="impact-item">
+                        <div class="impact-icon">📱</div>
+                        <h4>Enhanced Hierarchy</h4>
+                        <p>Product names, prices, and CTAs now clearly emphasized with thoughtful typography and proper spacing that guides user attention.</p>
+                    </div>
+                    <div class="impact-item">
+                        <div class="impact-icon">🛍️</div>
+                        <h4>Optimized Shopping</h4>
+                        <p>Product details reorganized for easy scanning, with clean cart design and professional payment process that builds user confidence.</p>
+                    </div>
+                    <div class="impact-item">
+                        <div class="impact-icon">🔍</div>
+                        <h4>Improved Search</h4>
+                        <p>Search interface redesigned to stand out when active while maintaining luxury aesthetic and better site integration.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reflection -->
+    <section class="content reveal-on-scroll">
+        <div class="section-header">
+            <p class="section">Reflection</p>
+            <h2>What I Learned</h2>
+            <p class="section-description">
+                Every project teaches valuable lessons. Here's what worked well and what I'd improve in future iterations.
+            </p>
+        </div>
+
+        <div class="reflection-content reveal-on-scroll">
+            <div class="reflection-section">
+                <h3 class="reflection-title">What Worked Well</h3>
+                <ul class="reflection-list">
+                    <li><strong>Dark luxury palette</strong> immediately elevated brand perception and user trust</li>
+                    <li><strong>Simplified navigation</strong> dramatically improved user flow and reduced cognitive load</li>
+                    <li><strong>Strategic content organization</strong> made product discovery intuitive and efficient</li>
+                    <li><strong>Professional checkout process</strong> built user confidence through clear, secure design</li>
+                </ul>
+            </div>
+
+            <div class="reflection-section">
+                <h3 class="reflection-title">Future Improvements</h3>
+                <ul class="reflection-list">
+                    <li><strong>Homepage product recommendations</strong> could benefit from enhanced typography and better visual hierarchy</li>
+                    <li><strong>Fragrance notes section</strong> needs horizontal layout optimization to eliminate awkward spacing</li>
+                    <li><strong>Search results enhancement</strong> with price range filters would improve product discovery</li>
+                    <li><strong>Overall spacing consistency</strong> could be refined further for more polished professional feel</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="skills-demonstrated reveal-on-scroll">
+            <h3 class="reflection-title">Skills Demonstrated</h3>
+            <div class="skills-grid">
+                <div class="skill-item">Problem identification through UX analysis</div>
+                <div class="skill-item">User-centered design thinking</div>
+                <div class="skill-item">Visual design execution aligned with brand goals</div>
+                <div class="skill-item">Systematic approach to complex redesign challenges</div>
+                <div class="skill-item">Critical evaluation for continuous improvement</div>
+                <div class="skill-item">Business impact consideration in design decisions</div>
+            </div>
+        </div>
+    </section>
+
+  
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -535,18 +1094,57 @@
 
 
 <script>
-      const scrollProgress = document.getElementById('scrollProgress');
-      
-      window.addEventListener('scroll', () => {
-        const windowHeight = window.innerHeight;
-        const documentHeight = document.documentElement.scrollHeight - windowHeight;
-        const scrolled = window.scrollY;
-        const progress = (scrolled / documentHeight) * 100;
+        // Scroll progress
+        const scrollProgress = document.getElementById('scrollProgress');
+        const navbar = document.getElementById('navbar');
         
-        scrollProgress.style.width = progress + '%';
-      });
-</script>
+        function updateScrollProgress() {
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight - windowHeight;
+            const scrolled = window.scrollY;
+            const progress = (scrolled / documentHeight) * 100;
+            
+            scrollProgress.style.width = progress + '%';
+            
+            // Show navbar after scrolling past hero
+            if (scrolled > windowHeight * 0.3) {
+                navbar.classList.add('visible');
+            } else {
+                navbar.classList.remove('visible');
+            }
+        }
 
+        // Reveal on scroll animation
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.reveal-on-scroll');
+            
+            reveals.forEach(reveal => {
+                const windowHeight = window.innerHeight;
+                const elementTop = reveal.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    reveal.classList.add('revealed');
+                }
+            });
+        }
+
+        // Smooth scroll for CTA button
+        document.querySelector('a[href="#solution"]').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector('#solution').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            updateScrollProgress();
+            revealOnScroll();
+        });
+
+        // Initial reveal check
+        revealOnScroll();
+    </script>
 
 </body>
 </html>
