@@ -3,237 +3,217 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oud Collection Case Study</title>
+    <title>Oud Collection Redesign</title>
     <link href='https://fonts.googleapis.com/css?family=Labrada' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
     <style>
         * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-        font-family: 'Lato', sans-serif;
-        background-color: #000;
-        color: #f5f5f5;
-        padding: 40px 20px;
-        line-height: 1.6;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+            font-family: 'Lato', sans-serif;
+            background-color: #000;
+            color: #f5f5f5;
+            padding: 40px 20px;
+            line-height: 1.7;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         a {
-        text-decoration: none;
-        color: inherit;
+            text-decoration: none;
+            color: inherit;
         }
 
         /* Scroll progress indicator */
         .scroll-progress {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 0%;
-          height: 3px;
-          background: linear-gradient(90deg, #A78989, #633B48);
-          z-index: 1000;
-          transition: width 0.1s ease;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, #A78989, #633B48);
+            z-index: 1000;
+            transition: width 0.1s ease;
         }
 
         /* Navbar */
         .navbar {
-        margin-top: 20px;
-        margin-bottom: 20px;
-        position: fixed;
-        top: 0;
-        z-index: 999; 
-        line-height: 1;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            position: fixed;
+            top: 0;
+            z-index: 999;
+            line-height: 1;
         }
 
         .nav-links {
-        list-style: none;
-        display: flex;
-        gap: 10px;
-        padding: 10px 20px;
-        background: rgba(176, 176, 176, 0.39);
-        border-radius: 100px;
-        backdrop-filter: blur(40px);
+            list-style: none;
+            display: flex;
+            gap: 10px;
+            padding: 10px 20px;
+            background: rgba(176, 176, 176, 0.39);
+            border-radius: 100px;
+            backdrop-filter: blur(40px);
         }
 
         .nav-links a {
-        text-decoration: none;
-        color: #f5f5f5;
-        padding: 6px 14px;
-        border-radius: 90px;
-        font-size: 14px;
-        transition:  0.3s ease;
+            text-decoration: none;
+            color: #f5f5f5;
+            padding: 6px 14px;
+            border-radius: 90px;
+            font-size: 14px;
+            transition: 0.3s ease;
         }
 
         .nav-links a:hover,
         .nav-links a.active {
-        background: rgba(196, 156, 169, 0.6);
+            background: rgba(196, 156, 169, 0.6);
         }
 
         /* Main Title */
         h1 {
-        font-family: 'Labrada', serif;
-        font-size: 2.8rem;
-        font-weight: 300;
-        margin: 40px 0 10px;
-        text-align: center;
+            font-family: 'Labrada', serif;
+            font-size: 2.8rem;
+            font-weight: 300;
+            margin: 80px 0 20px;
+            text-align: center;
+            line-height: 1.2;
         }
 
-        /* Section Text */
-        .project-description,
-        .section,
-        .descriptions {
-        max-width: 800px;
-        text-align: center;
-        margin: 0 auto;
+        .subtitle {
+            font-size: 1.1rem;
+            color: #A78989;
+            text-align: center;
+            margin-bottom: 15px;
+            font-weight: 400;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .project-description {
-        font-size: 1rem;
-        color: #ccc;
-        margin-bottom: 10px;
+        .behance-link {
+            display: inline-block;
+            color: #999;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            transition: color 0.3s;
         }
 
-        .section {
-        text-transform: uppercase;
-        font-size: 0.75rem;
-        color: #888;
-        letter-spacing: 1px;
-        margin-top: 20px;
+        .behance-link:hover {
+            color: #A78989;
+        }
+     
+
+        /* Container */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
-        /* Section Heading */
-        h2 {
-        font-family: 'Labrada', serif;
-        font-size: 2rem;
-        font-weight: 300;
-        text-align: center;
-        margin-bottom: 20px;
+        section {
+            margin: 80px auto;
         }
 
-        /* Image */
-        .project-image {
-        max-width: 800px;
-        margin: 24px 0;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-        }
-
-        .project-image img {
-        width: 100%;
-        height: auto;
-        display: block;
-        }
-
-        /* Cards Section */
-        .list-cards {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-        max-width: 800px;
-        margin: 0 auto 60px;
-        margin-top: 40px;
-        }
-
-        .card {
-        width: 100%;
-        background:  rgba(175, 175, 175, 0.2);
-        padding: 24px;
-        backdrop-filter: blur(20px);
-        transition: transform 0.2s ease;
-        }
-
-        .card:hover {
-        transform: translateY(-4px);
-        }
-
-        .card-content {
-        font-size: 1rem;
-        color: #ddd;
-        line-height: 1.6;
-        }
-
-        .card-content span {
-        color: #BDA9A9;
-        font-weight: bold;
+        /* Section Label */
+        .section-label {
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            color: #A78989;
+            letter-spacing: 1.5px;
+            margin-bottom: 15px;
+            font-weight: 500;
+            text-align: center;
         }
 
         /* Horizontal Rule */
         .section-break {
-        width: 80%;
-        height: 1px;
-        background: rgba(255, 255, 255, 0.1);
-        margin: 40px auto;
-        border-radius: 1px;
+            width: 80%;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 60px auto;
+            border-radius: 1px;
         }
 
-        /* Responsive Tweaks */
-        @media (max-width: 768px) {
-        .card {
-            padding: 18px;
-        }
-
-        h1 {
-            font-size: 2rem;
-        }
-
+        /* Section Heading */
         h2 {
-            font-size: 1.5rem;
-        }
-        }
-
-         /* Solution Preview */
-        .solution-preview {
-            background: radial-gradient(ellipse at center, rgba(167, 137, 137, 0.05) 0%, transparent 70%);
-            padding: 80px 0;
+            font-family: 'Labrada', serif;
+            font-size: 2rem;
+            font-weight: 300;
+            margin-bottom: 30px;
+            color: #f5f5f5;
             text-align: center;
-            margin: 80px 0;
-            border-radius: 24px;
         }
 
-        .solution-metrics {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            margin-top: 40px;
+        h3 {
+            font-family: 'Labrada', serif;
+            font-size: 1.4rem;
+            font-weight: 300;
+            color: #f5f5f5;
+            margin: 50px 0 20px 0;
+            text-align: center;
         }
 
-        .solution-metric {
-            padding: 30px;
-            background: rgba(189, 169, 169, 0.05);
-            border-radius: 16px;
-            border: 1px solid rgba(189, 169, 169, 0.1);
-        }
-
-        .solution-metric-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #BDA9A9;
+        h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #f5f5f5;
             margin-bottom: 10px;
         }
 
-        .solution-metric-label {
+        p {
             color: #ccc;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            line-height: 1.8;
         }
 
-            /* Project Image */
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .slide-in.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .stagger-item {
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+
+        .stagger-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Image */
         .project-image {
-            border-radius: 16px;
+            max-width: 80%;
+            margin: 40px 0;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-            margin: 60px 0;
-            transition: transform 0.3s ease;
-        }
-
-        .project-image:hover {
-            transform: scale(1.02);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
         }
 
         .project-image img {
@@ -242,30 +222,67 @@
             display: block;
         }
 
-        /* Process Sections */
-        .process-subsection {
-            margin: 60px 0;
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 40px 0;
         }
 
-        .subsection-title {
-            font-family: 'Labrada', serif;
-            font-size: 1.8rem;
+        .stat {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
             font-weight: 300;
-            margin-bottom: 16px;
-            color: #BDA9A9;
+            font-family: 'Labrada', serif;
+            color: #A78989;
+            display: block;
+            margin-bottom: 8px;
         }
 
-        .subsection-description {
-            color: #ccc;
-            margin-bottom: 40px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+        .stat-label {
+            font-size: 0.85rem;
+            color: #999;
         }
 
+        /* Problem Cards */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .problem-card {
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .problem-card h4 {
+            color: #A78989;
+            margin-bottom: 12px;
+        }
+
+        .problem-card p {
+            color: #999;
+            font-size: 0.95rem;
+            margin: 0;
+            line-height: 1.7;
+        }
+
+        /* Wireframe Grid */
         .wireframe-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 30px;
             margin: 40px 0;
         }
@@ -274,218 +291,70 @@
             text-align: center;
         }
 
-        .design-system-showcase {
-            margin: 40px 0;
-            text-align: center;
+        .wireframe-item img {
+            width: 100%;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .image-caption {
             margin-top: 12px;
-            font-size: 0.9rem;
-            color: #888;
+            font-size: 0.85rem;
+            color: #666;
             font-style: italic;
         }
 
-    /* Screens Showcase */
-        .screens-showcase {
-            margin: 60px 0;
-        }
-
-        .screen-item {
-            margin: 60px 0;
-            text-align: center;
-        }
-
-        .screen-details {
-            margin-top: 24px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .screen-details h4 {
-            color: #BDA9A9;
-            font-size: 1.3rem;
-            margin-bottom: 12px;
-            font-weight: 500;
-        }
-
-        .mobile-screens-grid {
+        /* Comparison Grid */
+        .comparison-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            max-width: 800px;
-            margin: 40px auto;
-        }
-
-        .mobile-screen {
-            text-align: center;
-        }
-
-        .mobile-caption {
-            margin-top: 16px;
-            font-size: 0.9rem;
-            color: #BDA9A9;
-        }
-     /* Impact Section */
-        .impact-details {
-            margin: 60px 0;
-        }
-
-        .impact-title {
-            font-family: 'Labrada', serif;
-            font-size: 1.8rem;
-            font-weight: 300;
-            margin-bottom: 40px;
-            text-align: center;
-            color: #BDA9A9;
-        }
-
-        .impact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 30px;
+            margin: 50px 0;
         }
 
-        .impact-item {
-            background: rgba(189, 169, 169, 0.05);
-            padding: 30px;
-            border-radius: 16px;
-            border: 1px solid rgba(189, 169, 169, 0.1);
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .impact-item:hover {
-            transform: translateY(-4px);
-        }
-
-        .impact-icon {
-            font-size: 2.5rem;
-            margin-bottom: 16px;
-        }
-
-        .impact-item h4 {
-            color: #BDA9A9;
-            margin-bottom: 12px;
-            font-size: 1.1rem;
-        }
-
-        /* Reflection Section */
-        .reflection-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 40px;
-            margin: 40px 0;
-        }
-
-        .reflection-section {
-            background: rgba(175, 175, 175, 0.05);
-            padding: 30px;
-            border-radius: 16px;
-            border-left: 4px solid #A78989;
-        }
-
-        .reflection-title {
-            font-family: 'Labrada', serif;
-            font-size: 1.5rem;
-            font-weight: 300;
-            margin-bottom: 20px;
-            color: #BDA9A9;
-        }
-
-        .reflection-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .reflection-list li {
-            margin-bottom: 16px;
-            padding-left: 20px;
+        .comparison-item {
             position: relative;
-            color: #ddd;
-            line-height: 1.6;
         }
 
-        .reflection-list li::before {
-            content: "→";
+        .comparison-label {
             position: absolute;
-            left: 0;
-            color: #A78989;
-            font-weight: bold;
-        }
-
-        .skills-demonstrated {
-            margin-top: 60px;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 16px;
-            margin-top: 30px;
-        }
-
-        .skill-item {
-            background: rgba(167, 137, 137, 0.1);
-            padding: 16px 20px;
+            top: 15px;
+            left: 15px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 6px 16px;
             border-radius: 50px;
-            text-align: center;
-            font-size: 0.95rem;
-            color: #ddd;
-            border: 1px solid rgba(167, 137, 137, 0.2);
+            font-size: 0.85rem;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            z-index: 10;
         }
 
-
-    /* Animations */
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .before-label {
+            background: rgba(217, 98, 98, 0.9);
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .after-label {
+            background: rgba(134, 176, 144, 0.9);
         }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0) translateX(-50%);
-            }
-            40% {
-                transform: translateY(-10px) translateX(-50%);
-            }
-            60% {
-                transform: translateY(-5px) translateX(-50%);
-            }
+        .comparison-item img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
         }
 
-        /* Infinite Scroll Showcases */
+        /* Infinite Scroll Showcase */
         .infinite-showcase {
-            margin: 80px 0;
+            margin: 60px 0;
             position: relative;
             width: 100%;
-            max-width: 100vw;
-            padding: 0 20px; /* 20px padding from screen edges */
         }
 
         .infinite-showcase-container {
             overflow: hidden;
             position: relative;
             border-radius: 16px;
-            max-width: 100%;
         }
 
         .infinite-showcase-container::before,
@@ -493,7 +362,7 @@
             content: '';
             position: absolute;
             top: 0;
-            width: 80px;
+            width: 100px;
             height: 100%;
             z-index: 10;
             pointer-events: none;
@@ -503,9 +372,7 @@
             left: 0;
             background: linear-gradient(90deg, 
                 #000 0%, 
-                rgba(0, 0, 0, 0.9) 20%, 
                 rgba(0, 0, 0, 0.7) 40%, 
-                rgba(0, 0, 0, 0.3) 70%, 
                 transparent 100%);
         }
 
@@ -513,9 +380,7 @@
             right: 0;
             background: linear-gradient(-90deg, 
                 #000 0%, 
-                rgba(0, 0, 0, 0.9) 20%, 
                 rgba(0, 0, 0, 0.7) 40%, 
-                rgba(0, 0, 0, 0.3) 70%, 
                 transparent 100%);
         }
 
@@ -529,15 +394,15 @@
         .showcase-track:hover {
             animation-play-state: paused;
         }
-/* Desktop Showcase Items */
+
         .desktop-showcase-item {
             flex-shrink: 0;
-            width: 400px;
+            width: 450px;
             position: relative;
-            border-radius: 16px;
+            border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-            transition: transform 0.9s ease;
+            transition: transform 0.3s ease;
         }
 
         .desktop-showcase-item:hover {
@@ -558,17 +423,16 @@
             color: white;
             padding: 8px 16px;
             border-radius: 50px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 500;
             backdrop-filter: blur(10px);
         }
 
-        /* Mobile Showcase Items */
         .mobile-showcase-item {
             flex-shrink: 0;
-            width: 200px;
+            width: 220px;
             position: relative;
-            transition: transform 0.9s ease;
+            transition: transform 0.3s ease;
         }
 
         .mobile-showcase-item:hover {
@@ -592,17 +456,15 @@
             color: white;
             padding: 6px 14px;
             border-radius: 50px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 500;
             backdrop-filter: blur(10px);
         }
 
-        /* Slower mobile animation */
         .mobile-showcase .showcase-track {
             animation: scroll-horizontal 140s linear infinite;
         }
 
-        /* Animation */
         @keyframes scroll-horizontal {
             0% {
                 transform: translateX(0);
@@ -611,564 +473,531 @@
                 transform: translateX(-50%);
             }
         }
- /* Responsive adjustments */
+
+        /* Impact Grid */
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .impact-item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .impact-item:hover {
+            transform: translateY(-4px);
+        }
+
+        .impact-icon {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+
+        .impact-item h4 {
+            color: #A78989;
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+        }
+
+        .impact-item p {
+            color: #999;
+            font-size: 0.95rem;
+            margin: 0;
+            line-height: 1.7;
+        }
+
+        /* Reflection Grid */
+        .reflection-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .reflection-section {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 3px solid #A78989;
+        }
+
+        .reflection-section h4 {
+            font-family: 'Labrada', serif;
+            font-size: 1.3rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+            color: #A78989;
+        }
+
+        .reflection-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .reflection-section li {
+            margin-bottom: 16px;
+            padding-left: 20px;
+            position: relative;
+            color: #ccc;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .reflection-section li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: #A78989;
+            font-weight: 300;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin: 30px 0;
+        }
+
+        .skill-item {
+            background: rgba(167, 137, 137, 0.1);
+            padding: 16px 20px;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #ccc;
+            border: 1px solid rgba(167, 137, 137, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 100px;
+            padding: 50px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer p {
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .metrics-preview {
-                flex-direction: column;
-                gap: 20px;
+            h1 {
+                font-size: 2rem;
+                margin: 60px 0 15px;
             }
 
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
+            .subtitle {
+                font-size: 1rem;
             }
 
-            .comparison {
-                grid-template-columns: 1fr;
-                gap: 30px;
+            h2 {
+                font-size: 1.6rem;
             }
 
-            .problem-grid {
-                grid-template-columns: 1fr;
+            h3 {
+                font-size: 1.2rem;
             }
 
-            .solution-metrics {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .wireframe-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .mobile-screens-grid {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                gap: 20px;
-            }
-
-            .impact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .reflection-content {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
+            .stats-grid,
+            .problem-grid,
+            .wireframe-grid,
+            .comparison-grid,
+            .impact-grid,
+            .reflection-grid,
             .skills-grid {
                 grid-template-columns: 1fr;
             }
+
+            section {
+                margin: 60px auto;
+            }
+
+            .desktop-showcase-item {
+                width: 350px;
+            }
+
+            .mobile-showcase-item {
+                width: 180px;
+            }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-  
-    </style> 
+    </style>
 </head>
 <body>
-      <!-- Scroll progress bar -->
-  <div class="scroll-progress" id="scrollProgress"></div>
+    <!-- Scroll progress bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+    
     <nav class="navbar">
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="index.html#projects" class="active">Projects</a></li>
-      <li><a href="bio.html">Bio</a></li>
-      <li><a href="https://drive.google.com/file/d/1zK-V6wiQ66ybcEyTerjuPo0Z_oLqxKnx/view?usp=sharing"  target="_blank">CV</a></li>
-    </ul>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#projects" class="active">Projects</a></li>
+            <li><a href="bio.html">Bio</a></li>
+            <li><a href="https://drive.google.com/file/d/1zK-V6wiQ66ybcEyTerjuPo0Z_oLqxKnx/view?usp=sharing" target="_blank">CV</a></li>
+        </ul>
     </nav>
-    <h1>Oud Collection Redesign</h1>
-    <p class="project-description">A case study on the redesign of the Oud Collection website, focusing on enhancing user experience and visual appeal.</p>
-    <a href="https://www.behance.net/gallery/225603421/Redesign-of-Oud-Collection-Website" class="btn-secondary" style="color: grey;">View in Behance</a>
-    <p style="color: rgb(217, 98, 98);" >Note: This page is incomplete</p>
-    <div class="project-image">
+
+    <h1 class="fade-in">Oud Collection Redesign</h1>
+    <p class="subtitle fade-in">Transforming a fragrance website into a luxury digital experience</p>
+    <a href="https://www.behance.net/gallery/225603421/Redesign-of-Oud-Collection-Website" class="behance-link" target="_blank">View on Behance →</a>
+
+    <div class="project-image fade-in">
         <img src="case study img1.png" alt="Oud Collection Redesign">
     </div>
-    
-  
-    <p class="section">Context</p>
-    <h2>Project Overview</h2>
-    <p class="descriptions"> This project focused on redesigning an existing luxury fragrance brand's collection website as part of a semester-long university assignment. The primary objective was to identify and resolve key usability, aesthetic, and structural issues that were affecting user experience and brand perception.
-        The goal is to transform the website into a luxurious, trustworthy, and intuitive digital platform that reflects the exclusivity and aesthetic refinement of the products. 
-        The target users are fragrance enthusiasts seeking premium experiences—both in product and presentation.</p>
-      
-    <div class="section-break"></div>
 
-    <p class="section">Problems</p>
-    <h2>Identified Issues</h2>
-    <p class="descriptions">The original website suffered from multiple UX and visual design issues that created friction for users and failed to reflect the brand’s luxury positioning. Some of the key problems included:</p>
-    <img src="problem 3d gif.gif" alt="Problems in og site GIF" class="project-image">
-    <!--
-    <img class="project-image" src="5122c92eba734979870fe6a7765d9f0e-ezgif.com-crop.gif">
-    <section class="list-cards">
-        <div class="card">
-            <p class="card-content"><span style="color: #BDA9A9;" >Inconsistent typography and colour palette — </span> The visual identity was disjointed and failed to build user trust.</p>
-        </div>
-        <div class="card">
-            <p class="card-content"><span style="color: #BDA9A9;">Unintuitive navigation — </span> Oversized navigation disrupted the flow and overwhelmed users.</p>
-        </div>
-        <div class="card">
-            <p class="card-content"><span style="color: #BDA9A9;">Cluttered layout and poor hierarchy — </span> Information was scattered and difficult to process, with misaligned sections and weak visual guidance.</p> 
-        </div>
-        <div class="card">
-            <p class="card-content"><span style="color: #BDA9A9;">Lack of brand alignment — </span>Despite claiming to be a luxury brand, the site failed to visually convey exclusivity or elegance.</p>
-        </div>
-    </section>
-    -->
-    <p class="descriptions">Target Users: Based on the product type and branding claims, 
-        I identified the ideal users as middle- to high-income fragrance enthusiasts. 
-        These users likely value exclusivity, authenticity, and aesthetically refined digital experiences that reflect the luxury nature of the product.</p>
+    <div class="container">
+        <section class="fade-in">
+            <p class="section-label">Context</p>
+            <h2>The Challenge</h2>
+            <p>A luxury fragrance brand's website failed to match its premium products. Inconsistent design, cluttered layouts, and poor navigation undermined trust and usability. The goal: create a digital experience worthy of the brand's exclusivity.</p>
+        </section>
 
-    <div class="section-break"></div>
-     <!-- Solution Preview -->
-    <section class="solution-preview reveal-on-scroll" id="solution">
-        <p class="section">Solution</p>
-        <h2>The transformation</h2>
-        <p class="section-description">
-            A complete redesign focused on luxury aesthetics, intuitive navigation, and conversion optimization.
-        </p>
+        <div class="section-break"></div>
 
-        <div class="solution-metrics reveal-on-scroll">
-            <div class="solution-metric">
-                <div class="solution-metric-number">100%</div>
-                <p class="solution-metric-label">Brand Consistency Achieved</p>
-            </div>
-            <div class="solution-metric">
-                <div class="solution-metric-number">4</div>
-                <p class="solution-metric-label">Major UX Problems Solved</p>
-            </div>
-            <div class="solution-metric">
-                <div class="solution-metric-number">1</div>
-                <p class="solution-metric-label">Cohesive Design System</p>
-            </div>
-        </div>
-    </section>
-    <div class="section-break"></div>
-     <!-- Design Process Section -->
-    <section class="content reveal-on-scroll">
-        <div class="section-header">
-            <p class="section">Process</p>
-            <h2>How I Approrached This?</h2>
-            <p class="section-description">
-                Starting with user research and wireframe exploration, I systematically worked through different layout approaches to find the optimal solution.
-            </p>
-        </div>
-
-        <!-- Wireframes & Sketches -->
-        <div class="process-subsection reveal-on-scroll">
-            <h3 class="subsection-title">Wireframe Exploration</h3>
-            <p class="subsection-description">
-                I explored 4 different layout directions through hand-drawn wireframes, focusing on homepage and product page information architecture. While sketchy, these helped me think through structural solutions before high-fidelity design.
-            </p>
+        <section class="fade-in">
+            <p class="section-label">Problems</p>
+            <h2>What Wasn't Working</h2>
             
+            <div class="project-image">
+                <img src="problem 3d gif.gif" alt="Problems in original site">
+            </div>
+
+            <div class="problem-grid">
+                <div class="problem-card stagger-item">
+                    <h4>Inconsistent Visual Identity</h4>
+                    <p>Typography and colors were disjointed, failing to build user trust or convey luxury</p>
+                </div>
+                <div class="problem-card stagger-item">
+                    <h4>Poor Navigation</h4>
+                    <p>Oversized menus disrupted flow and overwhelmed users trying to browse products</p>
+                </div>
+                <div class="problem-card stagger-item">
+                    <h4>Cluttered Layouts</h4>
+                    <p>Information was scattered with weak hierarchy, making content difficult to process</p>
+                </div>
+                <div class="problem-card stagger-item">
+                    <h4>Misaligned Brand</h4>
+                    <p>Despite claiming luxury status, the site failed to visually convey exclusivity</p>
+                </div>
+            </div>
+
+            <p class="slide-in">The target audience—middle to high-income fragrance enthusiasts—expects refined digital experiences that match product quality.</p>
+        </section>
+
+        <div class="section-break"></div>
+
+        <section class="fade-in">
+            <p class="section-label">Solution</p>
+            <h2>The Transformation</h2>
             
-                <div class="wireframe-item">
-                    <!-- Add your wireframe image here -->
-                     <img src="Screenshot 2025-04-23 212723.png" alt="wireframes" class="project-image" style="border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+            <div class="stats-grid">
+                <div class="stat stagger-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Brand Consistency</span>
+                </div>
+                <div class="stat stagger-item">
+                    <span class="stat-number">4</span>
+                    <span class="stat-label">UX Problems Solved</span>
+                </div>
+                <div class="stat stagger-item">
+                    <span class="stat-number">1</span>
+                    <span class="stat-label">Cohesive System</span>
+                </div>
+            </div>
+
+            <p class="slide-in">A complete redesign focused on luxury aesthetics, intuitive navigation, and conversion optimization.</p>
+        </section>
+
+        <div class="section-break"></div>
+
+        <section class="fade-in">
+            <p class="section-label">Process</p>
+            <h2>Design Approach</h2>
+
+            <h3 class="slide-in">Wireframe Exploration</h3>
+            <p class="slide-in">I explored 4 different layout directions through hand-drawn wireframes, focusing on homepage and product page information architecture.</p>
+            
+            <div class="wireframe-grid">
+                <div class="wireframe-item stagger-item">
+                    <img src="Screenshot 2025-04-23 212723.png" alt="Initial wireframes">
                     <p class="image-caption">Initial layout explorations</p>
                 </div>
-                <div class="wireframe-item">
-                    <!-- Add your wireframe image here -->
-                     <img src="wireframe-1.jpg.png" alt="userflow" class="project-image" style=" border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                <div class="wireframe-item stagger-item">
+                    <img src="wireframe-1.jpg.png" alt="User flow">
                     <p class="image-caption">User flow iterations</p>
                 </div>
-            
-        </div>
+            </div>
 
-        <!-- Design System -->
-        <div class="process-subsection reveal-on-scroll">
-            <h3 class="subsection-title">Design System & Visual Direction</h3>
-            <p class="subsection-description">
-                I established a cohesive design system focusing on luxury aesthetics with a dark, sophisticated palette and refined typography hierarchy.
-            </p>
+            <h3 class="slide-in">Design System</h3>
+            <p class="slide-in">I established a cohesive system with a dark, sophisticated palette and refined typography hierarchy.</p>
             
-            <div class="design-system-showcase">
-                <!-- Add your design system image here -->
-                <img src="design-system.jpg" alt="Design system showing colors, typography, and components" style="width: 100%; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1);">
+            <div class="project-image fade-in">
+                <img src="design-system.jpg" alt="Design system">
                 <p class="image-caption">Color palette, typography, and component system</p>
             </div>
-        </div>
-    </section>
+        </section>
 
+        <div class="section-break"></div>
 
-   <!-- Before/After Comparison -->
-    <section class="content reveal-on-scroll">
-        <div class="section-header">
-            <p class="section">Transformation</p>
+        <section class="fade-in">
+            <p class="section-label">Transformation</p>
             <h2>Before vs After</h2>
-            <p class="section-description">
-                See the dramatic transformation from cluttered, unprofessional design to clean, luxury-focused experience.
-            </p>
-        </div>
 
-        <div class="comparison reveal-on-scroll">
-            <div class="comparison-item">
-                <div class="comparison-label before-label">Before</div>
-                <!-- Add your "before" screenshot here -->
-                <img src="before-homepage.jpg" alt="Original cluttered homepage design">
+            <div class="comparison-grid">
+                <div class="comparison-item stagger-item">
+                    <div class="comparison-label before-label">Before</div>
+                    <img src="Screenshot 2025-03-29 222702.png" alt="Original homepage">
+                </div>
+                <div class="comparison-item stagger-item">
+                    <div class="comparison-label after-label">After</div>
+                    <img src="desktop-homepage.jpg.png" alt="Redesigned homepage">
+                </div>
             </div>
-            <div class="comparison-item">
-                <div class="comparison-label after-label">After</div>
-                <!-- Add your "after" screenshot here -->
-                <img src="after-homepage.jpg" alt="Redesigned clean homepage">
-            </div>
-        </div>
 
-        <div class="comparison reveal-on-scroll">
-            <div class="comparison-item">
-                <div class="comparison-label before-label">Before</div>
-                <!-- Add your "before" product page here -->
-                <img src="before-product.jpg" alt="Original product page design">
+            <div class="comparison-grid">
+                <div class="comparison-item stagger-item">
+                    <div class="comparison-label before-label">Before</div>
+                    <img src="Screenshot 2025-03-29 223533.png" alt="Original product page">
+                </div>
+                <div class="comparison-item stagger-item">
+                    <div class="comparison-label after-label">After</div>
+                    <img src="desktop-product.jpg.png" alt="Redesigned product page">
+                </div>
             </div>
-            <div class="comparison-item">
-                <div class="comparison-label after-label">After</div>
-                <!-- Add your "after" product page here -->
-                <img src="after-product.jpg" alt="Redesigned product page">
-            </div>
-        </div>
-    </section>
+        </section>
 
-  <!-- Key Screens Showcase -->
-    <section class="content reveal-on-scroll">
-        <div class="section-header">
-            <p class="section">Final Designs</p>
-            <h2>Key Screen Designs</h2>
-            <p class="section-description">
-                Explore the final designs across desktop and mobile, showcasing the complete user experience transformation.
-            </p>
-        </div>
+        <div class="section-break"></div>
 
-        <div class="screens-showcase reveal-on-scroll">
-            <h3 class="subsection-title">Desktop Experience</h3>
+        <section class="fade-in">
+            <p class="section-label">Final Designs</p>
+            <h2>Desktop Experience</h2>
             
-            <!-- Desktop Infinite Scroll Showcase -->
             <div class="infinite-showcase">
                 <div class="infinite-showcase-container">
                     <div class="showcase-track">
-                        <!-- First set of images -->
                         <div class="desktop-showcase-item">
-                            <img src="desktop-homepage.jpg" alt="Desktop homepage design">
+                            <img src="desktop-homepage.jpg.png" alt="Desktop homepage">
                             <div class="desktop-showcase-label">Homepage</div>
                         </div>
                         <div class="desktop-showcase-item">
-                            <img src="desktop-product.jpg" alt="Desktop product page design">
+                            <img src="desktop-product.jpg.png" alt="Desktop product page">
                             <div class="desktop-showcase-label">Product Page</div>
                         </div>
                         <div class="desktop-showcase-item">
-                            <img src="desktop-collection.jpg" alt="Desktop collection page design">
+                            <img src="desktop-collection.jpg" alt="Desktop collection">
                             <div class="desktop-showcase-label">Collection</div>
                         </div>
                         <div class="desktop-showcase-item">
-                            <img src="desktop-cart.jpg" alt="Desktop shopping cart design">
+                            <img src="desktop-cart.jpg" alt="Desktop cart">
                             <div class="desktop-showcase-label">Shopping Cart</div>
                         </div>
                         <div class="desktop-showcase-item">
-                            <img src="desktop-checkout.jpg" alt="Desktop checkout design">
+                            <img src="desktop-checkout.jpg" alt="Desktop checkout">
                             <div class="desktop-showcase-label">Checkout</div>
                         </div>
                         <div class="desktop-showcase-item">
-                            <img src="desktop-search.jpg" alt="Desktop search results design">
+                            <img src="desktop-search.jpg" alt="Desktop search">
                             <div class="desktop-showcase-label">Search Results</div>
                         </div>
-                        <!-- Duplicate set for infinite scroll -->
+                        <!-- Duplicate for infinite scroll -->
                         <div class="desktop-showcase-item">
-                            <img src="desktop-homepage.jpg" alt="Desktop homepage design">
+                            <img src="desktop-homepage.jpg.png" alt="Desktop homepage">
                             <div class="desktop-showcase-label">Homepage</div>
                         </div>
                         <div class="desktop-showcase-item">
-                            <img src="desktop-product.jpg" alt="Desktop product page design">
+                            <img src="desktop-product.jpg.png" alt="Desktop product page">
                             <div class="desktop-showcase-label">Product Page</div>
                         </div>
                         <div class="desktop-showcase-item">
-                            <img src="desktop-collection.jpg" alt="Desktop collection page design">
+                            <img src="desktop-collection.jpg" alt="Desktop collection">
                             <div class="desktop-showcase-label">Collection</div>
                         </div>
                         <div class="desktop-showcase-item">
-                            <img src="desktop-cart.jpg" alt="Desktop shopping cart design">
+                            <img src="desktop-cart.jpg" alt="Desktop cart">
                             <div class="desktop-showcase-label">Shopping Cart</div>
                         </div>
                         <div class="desktop-showcase-item">
-                            <img src="desktop-checkout.jpg" alt="Desktop checkout design">
+                            <img src="desktop-checkout.jpg" alt="Desktop checkout">
                             <div class="desktop-showcase-label">Checkout</div>
                         </div>
                         <div class="desktop-showcase-item">
-                            <img src="desktop-search.jpg" alt="Desktop search results design">
+                            <img src="desktop-search.jpg" alt="Desktop search">
                             <div class="desktop-showcase-label">Search Results</div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Mobile Screens -->
-        <div class="screens-showcase mobile-showcase reveal-on-scroll">
-            <h3 class="subsection-title">Mobile Experience</h3>
+        <section class="fade-in mobile-showcase">
+            <h2>Mobile Experience</h2>
             
-            <!-- Mobile Infinite Scroll Showcase -->
             <div class="infinite-showcase">
                 <div class="infinite-showcase-container">
                     <div class="showcase-track">
-                        <!-- First set of images -->
                         <div class="mobile-showcase-item">
-                            <img src="mobile-homepage.jpg" alt="Mobile homepage design">
+                            <img src="mobile-homepage.jpg.png" alt="Mobile homepage">
                             <div class="mobile-showcase-label">Homepage</div>
                         </div>
                         <div class="mobile-showcase-item">
-                            <img src="mobile-product.jpg" alt="Mobile product page design">
+                            <img src="mobile-product.jpg.png" alt="Mobile product">
                             <div class="mobile-showcase-label">Product</div>
                         </div>
                         <div class="mobile-showcase-item">
-                            <img src="mobile-collection.jpg" alt="Mobile collection page design">
+                            <img src="mobile-collection.jpg" alt="Mobile collection">
                             <div class="mobile-showcase-label">Collection</div>
                         </div>
                         <div class="mobile-showcase-item">
-                            <img src="mobile-navigation.jpg" alt="Mobile navigation design">
+                            <img src="mobile-navigation.jpg" alt="Mobile navigation">
                             <div class="mobile-showcase-label">Navigation</div>
                         </div>
                         <div class="mobile-showcase-item">
-                            <img src="mobile-cart.jpg" alt="Mobile shopping cart design">
+                            <img src="mobile-cart.jpg" alt="Mobile cart">
                             <div class="mobile-showcase-label">Cart</div>
                         </div>
                         <div class="mobile-showcase-item">
-                            <img src="mobile-checkout.jpg" alt="Mobile checkout design">
+                            <img src="mobile-checkout.jpg" alt="Mobile checkout">
                             <div class="mobile-showcase-label">Checkout</div>
                         </div>
                         <div class="mobile-showcase-item">
-                            <img src="mobile-search.jpg" alt="Mobile search design">
+                            <img src="mobile-search.jpg" alt="Mobile search">
                             <div class="mobile-showcase-label">Search</div>
                         </div>
                         <div class="mobile-showcase-item">
-                            <img src="mobile-profile.jpg" alt="Mobile user profile design">
-                            <div class="mobile-showcase-label">Profile</div>
-                        </div>
-                        <!-- Duplicate set for infinite scroll -->
-                        <div class="mobile-showcase-item">
-                            <img src="mobile-homepage.jpg" alt="Mobile homepage design">
-                            <div class="mobile-showcase-label">Homepage</div>
-                        </div>
-                        <div class="mobile-showcase-item">
-                            <img src="mobile-product.jpg" alt="Mobile product page design">
-                            <div class="mobile-showcase-label">Product</div>
-                        </div>
-                        <div class="mobile-showcase-item">
-                            <img src="mobile-collection.jpg" alt="Mobile collection page design">
-                            <div class="mobile-showcase-label">Collection</div>
-                        </div>
-                        <div class="mobile-showcase-item">
-                            <img src="mobile-navigation.jpg" alt="Mobile navigation design">
-                            <div class="mobile-showcase-label">Navigation</div>
-                        </div>
-                        <div class="mobile-showcase-item">
-                            <img src="mobile-cart.jpg" alt="Mobile shopping cart design">
-                            <div class="mobile-showcase-label">Cart</div>
-                        </div>
-                        <div class="mobile-showcase-item">
-                            <img src="mobile-checkout.jpg" alt="Mobile checkout design">
-                            <div class="mobile-showcase-label">Checkout</div>
-                        </div>
-                        <div class="mobile-showcase-item">
-                            <img src="mobile-search.jpg" alt="Mobile search design">
-                            <div class="mobile-showcase-label">Search</div>
-                        </div>
-                        <div class="mobile-showcase-item">
-                            <img src="mobile-profile.jpg" alt="Mobile user profile design">
+                            <img src="mobile-profile.jpg" alt="Mobile profile">
                             <div class="mobile-showcase-label">Profile</div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Impact & Results -->
-    <section class="content reveal-on-scroll">
-        <div class="section-header">
-             <p class="section">Results</p>
+        <div class="section-break"></div>
+
+        <section class="fade-in">
+            <p class="section-label">Results</p>
             <h2>Design Impact</h2>
-            <p class="section-description">
-                The redesign successfully transforms the brand's digital presence into a cohesive, luxury experience that matches their premium product quality.
-            </p>
-        </div>
-
-        <div class="impact-details reveal-on-scroll">
-            <div class="impact-section">
-                <h3 class="impact-title">Key Improvements Delivered</h3>
-                <div class="impact-grid">
-                    <div class="impact-item">
-                        <div class="impact-icon">🎯</div>
-                        <h4>Streamlined Navigation</h4>
-                        <p>Simplified oversized navigation into clean, intuitive system with strategic logo placement and improved mobile responsiveness.</p>
-                    </div>
-                    <div class="impact-item">
-                        <div class="impact-icon">📱</div>
-                        <h4>Enhanced Hierarchy</h4>
-                        <p>Product names, prices, and CTAs now clearly emphasized with thoughtful typography and proper spacing that guides user attention.</p>
-                    </div>
-                    <div class="impact-item">
-                        <div class="impact-icon">🛍️</div>
-                        <h4>Optimized Shopping</h4>
-                        <p>Product details reorganized for easy scanning, with clean cart design and professional payment process that builds user confidence.</p>
-                    </div>
-                    <div class="impact-item">
-                        <div class="impact-icon">🔍</div>
-                        <h4>Improved Search</h4>
-                        <p>Search interface redesigned to stand out when active while maintaining luxury aesthetic and better site integration.</p>
-                    </div>
+            
+            <div class="impact-grid">
+                <div class="impact-item stagger-item">
+                    <div class="impact-icon">🎯</div>
+                    <h4>Streamlined Navigation</h4>
+                    <p>Simplified oversized navigation into clean, intuitive system with improved mobile responsiveness</p>
+                </div>
+                <div class="impact-item stagger-item">
+                    <div class="impact-icon">📱</div>
+                    <h4>Enhanced Hierarchy</h4>
+                    <p>Product names, prices, and CTAs now clearly emphasized with thoughtful typography and spacing</p>
+                </div>
+                <div class="impact-item stagger-item">
+                    <div class="impact-icon">🛍️</div>
+                    <h4>Optimized Shopping</h4>
+                    <p>Product details reorganized for easy scanning with clean cart design and professional payment process</p>
+                </div>
+                <div class="impact-item stagger-item">
+                    <div class="impact-icon">🔍</div>
+                    <h4>Improved Search</h4>
+                    <p>Search interface redesigned to stand out when active while maintaining luxury aesthetic</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Reflection -->
-    <section class="content reveal-on-scroll">
-        <div class="section-header">
-            <p class="section">Reflection</p>
+        <div class="section-break"></div>
+
+        <section class="fade-in">
+            <p class="section-label">Reflection</p>
             <h2>What I Learned</h2>
-            <p class="section-description">
-                Every project teaches valuable lessons. Here's what worked well and what I'd improve in future iterations.
-            </p>
-        </div>
+            
+            <div class="reflection-grid">
+                <div class="reflection-section stagger-item">
+                    <h4>What Worked Well</h4>
+                    <ul>
+                        <li>Dark luxury palette immediately elevated brand perception and user trust</li>
+                        <li>Simplified navigation dramatically improved user flow and reduced cognitive load</li>
+                        <li>Strategic content organization made product discovery intuitive and efficient</li>
+                        <li>Professional checkout process built user confidence through clear, secure design</li>
+                    </ul>
+                </div>
 
-        <div class="reflection-content reveal-on-scroll">
-            <div class="reflection-section">
-                <h3 class="reflection-title">What Worked Well</h3>
-                <ul class="reflection-list">
-                    <li><strong>Dark luxury palette</strong> immediately elevated brand perception and user trust</li>
-                    <li><strong>Simplified navigation</strong> dramatically improved user flow and reduced cognitive load</li>
-                    <li><strong>Strategic content organization</strong> made product discovery intuitive and efficient</li>
-                    <li><strong>Professional checkout process</strong> built user confidence through clear, secure design</li>
-                </ul>
+                <div class="reflection-section stagger-item">
+                    <h4>Future Improvements</h4>
+                    <ul>
+                        <li>Homepage product recommendations could benefit from enhanced typography and better visual hierarchy</li>
+                        <li>Fragrance notes section needs horizontal layout optimization to eliminate awkward spacing</li>
+                        <li>Search results enhancement with price range filters would improve product discovery</li>
+                        <li>Overall spacing consistency could be refined further for more polished professional feel</li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="reflection-section">
-                <h3 class="reflection-title">Future Improvements</h3>
-                <ul class="reflection-list">
-                    <li><strong>Homepage product recommendations</strong> could benefit from enhanced typography and better visual hierarchy</li>
-                    <li><strong>Fragrance notes section</strong> needs horizontal layout optimization to eliminate awkward spacing</li>
-                    <li><strong>Search results enhancement</strong> with price range filters would improve product discovery</li>
-                    <li><strong>Overall spacing consistency</strong> could be refined further for more polished professional feel</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="skills-demonstrated reveal-on-scroll">
-            <h3 class="reflection-title">Skills Demonstrated</h3>
+            <h3 class="slide-in">Skills Demonstrated</h3>
             <div class="skills-grid">
-                <div class="skill-item">Problem identification through UX analysis</div>
-                <div class="skill-item">User-centered design thinking</div>
-                <div class="skill-item">Visual design execution aligned with brand goals</div>
-                <div class="skill-item">Systematic approach to complex redesign challenges</div>
-                <div class="skill-item">Critical evaluation for continuous improvement</div>
-                <div class="skill-item">Business impact consideration in design decisions</div>
+                <div class="skill-item stagger-item">Problem identification through UX analysis</div>
+                <div class="skill-item stagger-item">User-centered design thinking</div>
+                <div class="skill-item stagger-item">Visual design aligned with brand goals</div>
+                <div class="skill-item stagger-item">Systematic approach to complex redesigns</div>
+                <div class="skill-item stagger-item">Critical evaluation for improvement</div>
+                <div class="skill-item stagger-item">Business impact consideration</div>
             </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>Oud Collection Redesign • UI/UX Case Study • 2024</p>
         </div>
-    </section>
+    </footer>
 
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script>
-        // Scroll progress
+    <script>
+        // Scroll progress bar
         const scrollProgress = document.getElementById('scrollProgress');
-        const navbar = document.getElementById('navbar');
         
-        function updateScrollProgress() {
+        window.addEventListener('scroll', () => {
             const windowHeight = window.innerHeight;
             const documentHeight = document.documentElement.scrollHeight - windowHeight;
             const scrolled = window.scrollY;
             const progress = (scrolled / documentHeight) * 100;
             
             scrollProgress.style.width = progress + '%';
-            
-            // Show navbar after scrolling past hero
-            if (scrolled > windowHeight * 0.3) {
-                navbar.classList.add('visible');
-            } else {
-                navbar.classList.remove('visible');
-            }
-        }
+        });
 
-        // Reveal on scroll animation
-        function revealOnScroll() {
-            const reveals = document.querySelectorAll('.reveal-on-scroll');
-            
-            reveals.forEach(reveal => {
-                const windowHeight = window.innerHeight;
-                const elementTop = reveal.getBoundingClientRect().top;
-                const elementVisible = 150;
-                
-                if (elementTop < windowHeight - elementVisible) {
-                    reveal.classList.add('revealed');
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
                 }
             });
-        }
-
-        // Smooth scroll for CTA button
-        document.querySelector('a[href="#solution"]').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.querySelector('#solution').scrollIntoView({
-                behavior: 'smooth'
+        }, observerOptions);
+        
+        // Observe all animated elements
+        document.addEventListener('DOMContentLoaded', () => {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            const slideElements = document.querySelectorAll('.slide-in');
+            const staggerElements = document.querySelectorAll('.stagger-item');
+            
+            fadeElements.forEach(el => observer.observe(el));
+            slideElements.forEach(el => observer.observe(el));
+            
+            // Stagger animation for items in a group
+            staggerElements.forEach((el, index) => {
+                el.style.transitionDelay = `${index * 0.1}s`;
+                observer.observe(el);
             });
         });
-
-        window.addEventListener('scroll', () => {
-            updateScrollProgress();
-            revealOnScroll();
-        });
-
-        // Initial reveal check
-        revealOnScroll();
     </script>
-
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
