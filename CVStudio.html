@@ -411,16 +411,13 @@
         .image-container {
             width: 100%;
             height: 450px;
-            background: rgba(255, 255, 255, 0.03);
+            
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 8px;
             margin: 50px 0;
             display: flex;
-            align-items: center;
+            
             justify-content: center;
-            color: #666;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
         }
 
         /* Takeaways */
@@ -461,6 +458,50 @@
         footer p {
             color: #666;
             font-size: 0.85rem;
+        }
+
+        /* Next Case Study */
+        .next-case-study {
+            max-width: 800px;
+            margin: 80px auto 0;
+            padding: 50px 40px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .next-case-study:hover {
+            transform: translateY(-5px);
+            border-color: rgba(167, 137, 137, 0.3);
+        }
+
+        .next-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #A78989;
+            margin-bottom: 15px;
+        }
+
+        .next-title {
+            font-family: 'Labrada', serif;
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: #f5f5f5;
+            margin-bottom: 10px;
+        }
+
+        .next-description {
+            color: #999;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+        }
+
+        .next-arrow {
+            color: #A78989;
+            font-size: 1.2rem;
         }
 
         /* Responsive */
@@ -518,6 +559,7 @@
             <li><a href="https://drive.google.com/file/d/1zK-V6wiQ66ybcEyTerjuPo0Z_oLqxKnx/view?usp=sharing" target="_blank">CV</a></li>
         </ul>
     </nav>
+
 
     <h1 class="fade-in">AI CV Studio</h1>
     <p class="subtitle fade-in">Balancing AI guidance with creative freedom in portfolio building</p>
@@ -634,7 +676,7 @@
                 </div>
 
                 <div class="persona stagger-item">
-                    <div class="persona-name">Ava Thompson</div>
+                    <div class="persona-name">Michelle Choi</div>
                     <div class="persona-role">The Innovator</div>
                     
                     <div class="persona-section">
@@ -683,14 +725,13 @@
                 </div>
             </div>
 
-            <div class="image-container fade-in">
-                Dashboard Interface
-            </div>
+            
+            <video class="image-container fade-in" controls>
+                <source src="Video Project.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
 
-            <div class="image-container fade-in">
-                Workspace with AI Suggestions
-            </div>
-        </section>
+          <p style="font-style: italic;">Voice over by team mate, Ava Thompson</p>
 
         <div class="section-break"></div>
 
@@ -763,6 +804,13 @@
             </ul>
         </section>
     </div>
+
+    <a href="oudcollectioncs.html" class="next-case-study fade-in">
+        <p class="next-label">Next Case Study</p>
+        <h3 class="next-title">Oud Collection Redesign</h3>
+        <p class="next-description">Transforming a fragrance website with poor UX into a luxury digital experience</p>
+        <span class="next-arrow">→</span>
+    </a>
 
     <footer>
         <div class="container">

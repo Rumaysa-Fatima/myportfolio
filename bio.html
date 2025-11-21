@@ -420,6 +420,7 @@
   align-items: center;
   margin-bottom: 20px;
   position: relative;
+  gap: 10px;
 }
 
 .timeline-year,
@@ -429,6 +430,7 @@
   opacity: 0;
   transform: translateY(20px);
   transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  flex-shrink: 0;
 }
 
 .timeline-year.animate,
@@ -483,14 +485,13 @@
 .timeline-divider.today-divider {
   position: absolute;
   top: 0;
-  left: calc(65%); /* match white bar's percentage */
+  left: 65%;
   transform: translateX(-50%);
 }
 
 .timeline-year.future-year {
   color: #fff;
 }
-
 
 /* Experience Bars */
 .experience-bars {
@@ -506,6 +507,7 @@
   opacity: 0;
   transform: translateX(-30px);
   transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-sizing: border-box;
 }
 
 .experience-bar.animate {
@@ -516,28 +518,37 @@
 /* Bar sizes and colors */
 .bar-large {
   width: 65%;
+  max-width: 715px;
   background: rgba(245, 245, 245, 0.9);
   transition-delay: 0.2s;
+  margin-left: 0;
+  margin-right: auto;
 }
 
 .bar-medium {
   width: 45%;
+  max-width: 495px;
   background: rgba(245, 245, 245, 0.8);
-  margin-left: 20%;
+  margin-left: auto;
+  margin-right: calc(35% + 2px);
   transition-delay: 0.4s;
 }
 
 .bar-small {
   width: 30%;
+  max-width: 330px;
   background: rgba(245, 245, 245, 0.7);
-  margin-left: 35%;
+  margin-left: auto;
+  margin-right: calc(35% + 2px);
   transition-delay: 0.6s;
 }
 
 .bar-future {
   width: 35%;
+  max-width: 385px;
   background: #A78989;
-  margin-left: 65%;
+  margin-left: auto;
+  margin-right: 0;
   transition-delay: 0.8s;
 }
 
@@ -551,6 +562,7 @@
   font-size: 0.9rem;
   color: #333;
   font-weight: 500;
+  white-space: nowrap;
 }
 
 .bar-future::before {
@@ -600,52 +612,95 @@
   box-shadow: 0 4px 15px rgba(167, 137, 137, 0.3);
 }
 
-/* Responsive */
+/* Mobile Responsive Styles */
 @media (max-width: 768px) {
   .timeline-section {
-    margin: 60px auto;
+    margin: 40px auto;
     padding: 40px 15px;
   }
-  
+
+  /* Responsive Timeline Header */
   .timeline-header {
-    flex-direction: column;
-    gap: 10px;
-    text-align: center;
+    font-size: 0.85rem;
+    gap: 5px;
   }
-  
-  .timeline-line-future {
-    flex: 0.4;
+
+  .timeline-year,
+  .timeline-divider {
+    font-size: 0.85rem;
   }
-  
+
+  .timeline-year.start-year {
+    min-width: 45px;
+  }
+
+  .timeline-divider.today-divider {
+    position: relative;
+    left: auto;
+    transform: none;
+  }
+
+  /* Ensure bars maintain their layout */
+  .experience-bars {
+    margin-bottom: 40px;
+  }
+
   .experience-bar {
     height: 35px;
     margin-bottom: 15px;
   }
-  
+
   .experience-bar::before {
     font-size: 0.8rem;
     left: 10px;
   }
-  
+
+  /* Bars scale proportionally on mobile */
   .bar-large {
-    width: 85%;
+    width: 65%;
   }
-  
+
   .bar-medium {
-    width: 55%;
-    margin-left: 15%;
-  }
-  
-  .bar-small {
-    width: 40%;
-    margin-left: 25%;
-  }
-  
-  .bar-future {
     width: 45%;
-    margin-left: 55%;
+  }
+
+  .bar-small {
+    width: 30%;
+  }
+
+  .bar-future {
+    width: 35%;
+  }
+
+  .experience-descriptions {
+    gap: 20px;
+  }
+
+  .experience-description {
+    font-size: 0.9rem;
   }
 }
+
+@media (max-width: 480px) {
+  .timeline-year,
+  .timeline-divider {
+    font-size: 0.75rem;
+  }
+
+  .experience-bar {
+    height: 32px;
+  }
+
+  .experience-bar::before {
+    font-size: 0.75rem;
+    left: 8px;
+  }
+
+  .experience-description {
+    font-size: 0.85rem;
+  }
+}
+
 
 /* My Tiny Superpowers Section */
 .superpowers-section {
@@ -1016,7 +1071,7 @@ footer{margin:4rem 0 2rem;text-align:center;font-size:.8rem;color:var(--clr-mute
 
   <!--My Tiny Superpowers Section -->
 <section class="superpowers-section">
-  <h1>My Tiny Superpowers</h1>
+  <h1>My Superpowers</h1>
   
   <div class="superpowers-grid">
     
