@@ -26,7 +26,52 @@
         flex-direction: column;
         align-items: center;
         line-height: 1;
-        }   
+        cursor: none;
+        } 
+        
+        /* Custom cursor */
+        .cursor {
+          position: fixed;
+          width: 20px;
+          height: 20px;
+          border: 1.5px solid #B09B9B;
+          border-radius: 50%;
+          pointer-events: none;
+          z-index: 9999;
+          transition: transform 0.15s ease;
+          mix-blend-mode: difference;
+        }
+
+        .cursor-dot {
+          position: fixed;
+          width: 7px;
+          height: 7px;
+          background-color: #B09B9B;
+          border-radius: 50%;
+          pointer-events: none;
+          z-index: 9999;
+          transition: transform 0.1s ease;
+        }
+
+        /* Cursor trail particles */
+        .trail-particle {
+          position: fixed;
+          pointer-events: none;
+          border-radius: 50%;
+          z-index: 9998;
+          animation: fadeOut 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeOut {
+          0% {
+            opacity: 0.7;
+            transform: scale(1);
+          }
+          100% {
+            opacity: 0;
+            transform: scale(0.3);
+          }
+        }
 
           /* Horizontal Rule */
         .section-break {
@@ -952,6 +997,11 @@ footer{margin:4rem 0 2rem;text-align:center;font-size:.8rem;color:var(--clr-mute
   </style>
 </head>
 <body>
+
+  <!-- Custom cursor elements -->
+  <div class="cursor"></div>
+  <div class="cursor-dot"></div>
+  
   <!-- Scroll progress bar -->
   <div class="scroll-progress" id="scrollProgress"></div>
 
@@ -1183,7 +1233,96 @@ footer{margin:4rem 0 2rem;text-align:center;font-size:.8rem;color:var(--clr-mute
   </div>
 </section>
 -->
+<script>
+  // Custom cursor with particle trail
+  const cursor = document.querySelector('.cursor');
+  const cursorDot = document.querySelector('.cursor-dot');
+  
+  let mouseX = 0, mouseY = 0;
+  let cursorX = 0, cursorY = 0;
+  let dotX = 0, dotY = 0;
 
+  // Color palette matching your theme
+  const colors = ['#B09B9B', '#A78989', '#633B48', '#5E4545', '#C49CA9'];
+  
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    
+    // Create particle trail
+    createParticle(e.clientX, e.clientY);
+  });
+
+  function createParticle(x, y) {
+    const particle = document.createElement('div');
+    particle.className = 'trail-particle';
+    
+    // Random size between 4-10px
+    const size = Math.random() * 6 + 4;
+    particle.style.width = size + 'px';
+    particle.style.height = size + 'px';
+    
+    // Random color from palette
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    particle.style.backgroundColor = color;
+    
+    // Slight random offset for natural look
+    const offsetX = (Math.random() - 0.5) * 20;
+    const offsetY = (Math.random() - 0.5) * 20;
+    
+    particle.style.left = (x + offsetX) + 'px';
+    particle.style.top = (y + offsetY) + 'px';
+    
+    document.body.appendChild(particle);
+    
+    // Remove particle after animation
+    setTimeout(() => {
+      particle.remove();
+    }, 800);
+  }
+
+  // Smooth cursor animation
+  function animateCursor() {
+    // Smooth follow with easing
+    cursorX += (mouseX - cursorX) * 0.15;
+    cursorY += (mouseY - cursorY) * 0.15;
+    
+    dotX += (mouseX - dotX) * 0.25;
+    dotY += (mouseY - dotY) * 0.25;
+    
+    cursor.style.left = cursorX + 'px';
+    cursor.style.top = cursorY + 'px';
+    
+    cursorDot.style.left = dotX + 'px';
+    cursorDot.style.top = dotY + 'px';
+    
+    requestAnimationFrame(animateCursor);
+  }
+  
+  animateCursor();
+
+  // Cursor interactions
+  const interactiveElements = document.querySelectorAll('a, button, .project-card');
+  
+  interactiveElements.forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.style.transform = 'scale(1.5)';
+      cursorDot.style.transform = 'scale(0)';
+    });
+    
+    el.addEventListener('mouseleave', () => {
+      cursor.style.transform = 'scale(1)';
+      cursorDot.style.transform = 'scale(1)';
+    });
+  });
+
+  // Hide custom cursor on touch devices
+  if ('ontouchstart' in window) {
+    cursor.style.display = 'none';
+    cursorDot.style.display = 'none';
+    document.body.style.cursor = 'auto';
+  }
+</script>
 
     <script>
     // Enhanced Intersection Observer for individual paragraph reveals
