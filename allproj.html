@@ -19,6 +19,78 @@
         box-sizing: border-box;
         }
 
+        html, body {
+          overflow-x: hidden;
+        }
+
+        /* Background circles inside scrollable flow */
+        .background-circles {
+          position: absolute; /* scrolls with page */
+          top: 0;
+          left: 0;
+          width: 100%;
+          pointer-events: none;
+          z-index: -1;
+        }
+
+        .circle {
+          position: absolute;
+          border-radius: 80%;
+          filter: blur(80px);
+          opacity: 0.4;
+          animation: move 5s ease-in-out infinite alternate; /* faster motion */
+        }
+
+        /* Custom circle positions */
+        .circle1 {
+          width: 400px;
+          height: 400px;
+          background-color: #fff;
+          top: -150px;     /* top right */
+          right: -120px;
+            --color1: #ffffff;
+            --color2: #5E4545;
+          animation-delay: 2s;
+          overflow: hidden;
+        }
+
+        .circle2 {
+          width: 600px;
+          height: 600px;
+          background-color: #5E4545;
+          top: 250px;    /* middle left */
+          left: -100px;
+          --color1: #5E4545;
+          --color2: #633b48;
+          animation-delay: 1s;
+        }
+
+        .circle3 {
+          width: 400px;
+          height: 400px;
+          background-color:#373737;
+          top: 900px;    /* near footer */
+          right: 10px;
+          --color1: #373737;
+          --color2: #B09B9B;
+          animation-delay: 0s;
+        }
+
+        /* Smooth movement */
+        @keyframes move {
+          0% {
+            transform: translate(0, 0) scale(1);
+            background-color: var(--color1);
+          }
+          50% {
+            transform: translate(20px, 20px) scale(1.05);
+          }
+          100% {
+            transform: translate(120px, -80px) scale(1.1);
+            background-color: var(--color2);
+          }
+        }
+
         body {
         font-family: lato;
         color: #f5f5f5;
@@ -129,14 +201,8 @@
         }
 
         /* Projects section */
-        .projects {
-        gap: 40px;
-        z-index: 1; 
-        margin-bottom: 300px;
-        }
-
         .project-card {
-          display: grid;
+          display: flex;
           flex-direction: column;
           justify-content: space-between;
           background-color: rgba(128, 128, 128, 0.2);
@@ -147,40 +213,58 @@
           transition: transform 0.3s ease;
           box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
         }
-
+ 
         .projects h2 {
           margin-bottom: 2rem;
           font-size: 1.5rem;
           align-items: center;
         }
-
+ 
         .project-grid {
           display: grid;
           grid-template-columns: repeat(3, 280px);
           justify-content: center;
           gap: 3rem;
         }
-
+ 
+        @media (max-width: 960px) {
+          .project-grid {
+            grid-template-columns: repeat(2, 280px);
+          }
+        }
+ 
+        @media (max-width: 640px) {
+          .project-grid {
+            grid-template-columns: 1fr;
+            width: 100%;
+            max-width: 340px;
+            gap: 1.5rem;
+          }
+          .project-card {
+            width: 100%;
+          }
+        }
+ 
         .project-card:hover {
           transform: translateY(-5px);
         }
-
+ 
         .project-card img {
           width: 100%;
           height: auto;
           display: block;
         }
-
+ 
         .project-info {
           padding: 1rem;
           text-align: left;
           line-height: 20px;
         }
-
+ 
         .project-info small {
           color: #B09B9B;
         }
-
+ 
           .card-icon-open {
           display: block;
           text-align: right;
@@ -190,7 +274,7 @@
           width: 20px;
           margin-left: auto;
         }
-
+ 
         .card-icon-none {
           display: block;
           text-align: right;
@@ -204,6 +288,12 @@
     </style>
 </head>
 <body>
+
+    <div class="background-circles">
+      <div class="circle circle1"></div>
+      <div class="circle circle2"></div>
+      <div class="circle circle3"></div>
+    </div>    
   <!-- Custom cursor elements -->
   <div class="cursor"></div>
   <div class="cursor-dot"></div>
