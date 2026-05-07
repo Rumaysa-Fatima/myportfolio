@@ -747,6 +747,95 @@
   }
 }
 
+/* ── EXTRACURRICULAR SECTION ── */
+      .extracurricular-section {
+        max-width: 1100px;
+        width: 100%;
+        padding: 60px 20px;
+        text-align: center;
+      }
+ 
+      .extracurricular-section h1 {
+        font-size: 2rem;
+        margin-bottom: 50px;
+        font-family: 'Labrada', serif;
+        font-weight: 700;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+      .extracurricular-section h1.animate { opacity: 1; transform: translateY(0); }
+ 
+      .extra-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+ 
+      .extra-card {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 28px 24px;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                    transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                    border-color 0.3s ease,
+                    box-shadow 0.3s ease;
+        cursor: default;
+      }
+ 
+      .extra-card.animate { opacity: 1; transform: translateY(0); }
+      .extra-card:nth-child(1) { transition-delay: 0.1s; }
+      .extra-card:nth-child(2) { transition-delay: 0.2s; }
+      .extra-card:nth-child(3) { transition-delay: 0.3s; }
+      .extra-card:nth-child(4) { transition-delay: 0.15s; }
+      .extra-card:nth-child(5) { transition-delay: 0.25s; }
+ 
+      .extra-card:hover {
+        border-color: rgba(167, 137, 137, 0.4);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        transform: translateY(-4px);
+      }
+ 
+      .extra-tag {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 1.2px;
+        color: #A78989;
+        font-weight: 600;
+        line-height: 1.4;
+      }
+ 
+      .extra-title {
+        font-family: 'Labrada', serif;
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #f5f5f5;
+        line-height: 1.3;
+      }
+ 
+      .extra-body {
+        font-size: 0.9rem;
+        color: rgba(245, 245, 245, 0.65);
+        line-height: 1.7;
+        margin-top: auto;
+        padding-top: 8px;
+      }
+ 
+      /* Responsive extras */
+      @media (max-width: 900px) {
+        .extra-grid { grid-template-columns: repeat(2, 1fr); }
+      }
+      @media (max-width: 580px) {
+        .extra-grid { grid-template-columns: 1fr; }
+      }
+
 
 /* My Tiny Superpowers Section */
 .superpowers-section {
@@ -1094,18 +1183,16 @@ footer{margin:4rem 0 2rem;text-align:center;font-size:.8rem;color:var(--clr-mute
 
       <!-- Experience bars -->
       <div class="experience-bars">
-        <div class="experience-bar bar-large" data-title="Smile for Kids"></div>
-        <div class="experience-bar bar-medium" data-title="Youth Nexus"></div>
+        <div class="experience-bar bar-large" data-title="Admin Assistant & Social media manager"></div>
+        <div class="experience-bar bar-medium" data-title="Student mentor"></div>
+        <div class="experience-bar bar-small" data-title="AI Experience Design Intern"></div>
         <div class="experience-bar bar-future" data-title="Future Role"></div>
       </div>
 
       <!-- Experience descriptions -->
       <div class="experience-descriptions">
         <div class="experience-description">
-          I work as a student mentor at Sirius College where I organise discussions and activities for after-school care programs, which gives me the opportunity to guide young people in exploring new ideas, self-reflection, and critical thinking. 
-        </div>
-        <div class="experience-description">
-          In addition, I work as an admin assistant and social media manager at Smile for Kids. Through this role, I've gained valuable experience in communications, digital content, and organisational management.
+          I work as a student mentor at Sirius College, leading after-school discussions and activities that encourage self-reflection and critical thinking. I also work as an admin assistant and social media manager at Smile for Kids, where I’ve developed skills in communication, digital content, and organisation. My internship at UoM allowed for real world UX experience.
         </div>
       </div>
     </div>
@@ -1113,11 +1200,40 @@ footer{margin:4rem 0 2rem;text-align:center;font-size:.8rem;color:var(--clr-mute
 
   <div class="section-break"></div>
 
+   <!-- Extracurriculars -->
+  <section class="extracurricular-section">
+    <h1>My Extracurriculars</h1>
+ 
+    <div class="extra-grid">
+ 
+      <div class="extra-card">
+        <span class="extra-tag">WIT × MTECH × EY <br> Unimelb</span>
+        <h3 class="extra-title">Digital Innovation Challenge</h3>
+        <p class="extra-body">Brainstormed 3 AI-supported technologies with a team to help improve customer satisfaction for fictional hospitals. Made it to the top 6 teams out of all submissions.</p>
+      </div>
+ 
+      <div class="extra-card">
+        <span class="extra-tag">UoM — Faculty's Diversity &amp; Inclusion Festival</span>
+        <h3 class="extra-title">Accessibility Mapping Workshop</h3>
+        <p class="extra-body">Facilitated a workshop exploring campus accessibility gaps. Mapped pain points experienced by students with disabilities and presented findings to faculty stakeholders.</p>
+      </div>
+ 
+      <div class="extra-card">
+        <span class="extra-tag">Wyndham - Youth Civic Participation Program</span>
+        <h3 class="extra-title">Young Person Participant</h3>
+        <p class="extra-body">Explored 3 different levels of Government and connected with local council members as well as MPs at both state and Federal level. </p>
+      </div>
+
+    </div>
+  </section>
   
+  </section>
+
+  <div class="section-break"></div>
 
   <!--My Tiny Superpowers Section -->
-<section class="superpowers-section">
-  <h1>My Superpowers</h1>
+  <section class="superpowers-section">
+    <h1>My Superpowers</h1>
 
   
   
@@ -1326,174 +1442,92 @@ footer{margin:4rem 0 2rem;text-align:center;font-size:.8rem;color:var(--clr-mute
   }
 </script>
 
-    <script>
-    // Enhanced Intersection Observer for individual paragraph reveals
-    const observerOptions = {
-      threshold: 0.4, // Reduced threshold for more natural timing
-      rootMargin: '0px 0px -20% 0px' // Less restrictive margins
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate');
-        }
-      });
-    }, observerOptions);
-
-    // Separate observer for image stack with different timing
-    const imageObserverOptions = {
-      threshold: 0.3,
-      rootMargin: '0px 0px -20% 0px'
-    };
-
-    const imageObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate');
-        }
-      });
-    }, imageObserverOptions);
-
+     <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Observe each bio paragraph individually
-      const bioParagraphs = document.querySelectorAll('.bio-paragraph');
-      const experienceParagraphs = document.querySelectorAll('.experience-paragraph');
-      const experienceHeading = document.querySelector('.experience-section h1');
-      const quoteText = document.querySelector('.quote-text');
-      const cardStack = document.querySelector('.card-stack');
-      
-      // Timeline elements
-      const timelineYears = document.querySelectorAll('.timeline-year');
-      const timelineDivider = document.querySelector('.timeline-divider');
-      const timelineLinePast = document.querySelector('.timeline-line-past');
-      const timelineLineFuture = document.querySelector('.timeline-line-future');
-      const experienceBars = document.querySelectorAll('.experience-bar');
-      const experienceDescriptions = document.querySelectorAll('.experience-description');
-      
-      // Observe bio paragraphs
-      bioParagraphs.forEach((paragraph, index) => {
-        observer.observe(paragraph);
-      });
-
-      // Observe experience section elements
-      if (experienceHeading) observer.observe(experienceHeading);
-      if (quoteText) observer.observe(quoteText);
-      
-      experienceParagraphs.forEach((paragraph) => {
-        observer.observe(paragraph);
-      });
-
-      // Observe timeline elements
-      timelineYears.forEach(year => observer.observe(year));
-      if (timelineDivider) observer.observe(timelineDivider);
-      if (timelineLinePast) observer.observe(timelineLinePast);
-      if (timelineLineFuture) observer.observe(timelineLineFuture);
-      
-      experienceBars.forEach(bar => observer.observe(bar));
-      experienceDescriptions.forEach(desc => observer.observe(desc));
-      
-      // Observe image stack separately
-      if (cardStack) {
-        imageObserver.observe(cardStack);
-      }
-      
-      // Enhanced scroll progress bar
+ 
+      /* ── SCROLL PROGRESS ── */
       const scrollProgress = document.getElementById('scrollProgress');
-      
       window.addEventListener('scroll', () => {
-        const windowHeight = window.innerHeight;
-        const documentHeight = document.documentElement.scrollHeight - windowHeight;
-        const scrolled = window.scrollY;
-        const progress = (scrolled / documentHeight) * 100;
-        
-        scrollProgress.style.width = progress + '%';
+        const prog = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+        scrollProgress.style.width = prog + '%';
       });
-
-      // Smooth parallax effect for background circle
+ 
+      /* ── SHARED OBSERVER OPTIONS ── */
+      const opts = { threshold: 0.15, rootMargin: '0px 0px -8% 0px' };
+ 
+      /* ── GENERAL OBSERVER (fade/slide classes) ── */
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('animate'); });
+      }, opts);
+ 
+      const generalTargets = [
+        ...document.querySelectorAll('.bio-paragraph'),
+        ...document.querySelectorAll('.experience-paragraph'),
+        ...document.querySelectorAll('.experience-description'),
+        ...document.querySelectorAll('.timeline-year'),
+        ...document.querySelectorAll('.timeline-divider'),
+        document.querySelector('.experience-section h1'),
+        document.querySelector('.quote-text'),
+        document.querySelector('.timeline-line-past'),
+        document.querySelector('.timeline-line-future'),
+        ...document.querySelectorAll('.experience-bar'),
+        document.querySelector('.extracurricular-section h1'),
+        document.querySelector('.superpowers-section h1'),
+        document.querySelector('.skills-philosophy'),
+      ].filter(Boolean);
+ 
+      generalTargets.forEach(el => observer.observe(el));
+ 
+      /* ── IMAGE STACK OBSERVER ── */
+      const imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('animate'); });
+      }, { threshold: 0.3, rootMargin: '0px 0px -20% 0px' });
+      const cardStack = document.querySelector('.card-stack');
+      if (cardStack) imageObserver.observe(cardStack);
+ 
+      /* ── EXTRACURRICULAR CARDS OBSERVER ── */
+      const extraObserver = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('animate'); });
+      }, { threshold: 0.1, rootMargin: '0px 0px -5% 0px' });
+      document.querySelectorAll('.extra-card').forEach(card => extraObserver.observe(card));
+ 
+      /* ── SUPERPOWERS OBSERVER (also triggers skill bars) ── */
+      const superpowersObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('animate');
+          if (entry.target.classList.contains('superpower-category')) {
+            entry.target.querySelectorAll('.skill-item').forEach((item, i) => {
+              setTimeout(() => {
+                item.classList.add('animate');
+                const bar = item.querySelector('.skill-progress');
+                const level = item.getAttribute('data-level');
+                setTimeout(() => { bar.style.setProperty('--progress-width', level+'%'); bar.style.width = level+'%'; }, 200);
+              }, i * 100 + 300);
+            });
+          }
+        });
+      }, { threshold: 0.3, rootMargin: '0px 0px -20% 0px' });
+      document.querySelectorAll('.superpower-category').forEach(c => superpowersObserver.observe(c));
+ 
+      /* ── PARALLAX CIRCLE ── */
       const circle = document.querySelector('.circle1');
       if (circle) {
         window.addEventListener('scroll', () => {
-          const scrolled = window.pageYOffset;
-          const rate = scrolled * -0.2;
-          circle.style.transform = `translate(-50%, calc(-50% + ${rate}px))`;
+          circle.style.transform = `translate(-50%, calc(-50% + ${window.pageYOffset * -0.2}px))`;
         });
       }
-
-      // Simple reading completion check for bio section
-      const bioSection = document.querySelector('.bio-section');
-      
-      const updateReadingProgress = () => {
-        const animatedBioParagraphs = document.querySelectorAll('.bio-paragraph.animate').length;
-        const totalBioParagraphs = bioParagraphs.length;
-        
-        if (animatedBioParagraphs === totalBioParagraphs && cardStack && !cardStack.classList.contains('celebrate')) {
-          setTimeout(() => {
-            cardStack.classList.add('celebrate');
-          }, 300);
+ 
+      /* ── BIO COMPLETION CELEBRATE ── */
+      const bioParagraphs = document.querySelectorAll('.bio-paragraph');
+      const mutationObserver = new MutationObserver(() => {
+        const animatedCount = document.querySelectorAll('.bio-paragraph.animate').length;
+        if (animatedCount === bioParagraphs.length && cardStack && !cardStack.classList.contains('celebrate')) {
+          setTimeout(() => cardStack.classList.add('celebrate'), 300);
         }
-      };
-
-      // Monitor when bio paragraphs become animated
-      const mutationObserver = new MutationObserver((mutations) => {
-        mutations.forEach((mutation) => {
-          if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-            if (mutation.target.classList.contains('bio-paragraph')) {
-              updateReadingProgress();
-            }
-          }
-        });
       });
-
-      bioParagraphs.forEach(paragraph => {
-        mutationObserver.observe(paragraph, { attributes: true });
-      });
+      bioParagraphs.forEach(p => mutationObserver.observe(p, { attributes: true }));
     });
   </script>
-  <script>
-document.addEventListener('DOMContentLoaded', () => {
-  // Observer for superpowers section elements
-  const superpowersObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('animate');
-        
-        // Special handling for skill items to animate progress bars
-        if (entry.target.classList.contains('superpower-category')) {
-          const skillItems = entry.target.querySelectorAll('.skill-item');
-          
-          skillItems.forEach((skillItem, index) => {
-            setTimeout(() => {
-              skillItem.classList.add('animate');
-              
-              // Animate the progress bar
-              const progressBar = skillItem.querySelector('.skill-progress');
-              const level = skillItem.getAttribute('data-level');
-              
-              setTimeout(() => {
-                progressBar.style.setProperty('--progress-width', level + '%');
-                progressBar.style.width = level + '%';
-              }, 200);
-              
-            }, index * 100 + 300);
-          });
-        }
-      }
-    });
-  }, {
-    threshold: 0.3,
-    rootMargin: '0px 0px -20% 0px'
-  });
-
-  // Observe superpowers elements
-  const superpowersHeading = document.querySelector('.superpowers-section h1');
-  const superpowerCategories = document.querySelectorAll('.superpower-category');
-  const skillsPhilosophy = document.querySelector('.skills-philosophy');
-  
-  if (superpowersHeading) superpowersObserver.observe(superpowersHeading);
-  superpowerCategories.forEach(category => superpowersObserver.observe(category));
-  if (skillsPhilosophy) superpowersObserver.observe(skillsPhilosophy);
-});
-</script>
 </body>
 </html>
