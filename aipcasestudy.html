@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Studio Case Study</title>
+    <link rel="icon" href="RumyLogo.png" type="image/png">
+    <link href='https://fonts.googleapis.com/css?family=Labrada' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #000;
+            color: #f5f5f5;
+            padding: 40px 20px;
+            line-height: 1.7;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: none;
+        }
+
+        /* Custom cursor */
+        .cursor {
+          position: fixed;
+          width: 20px;
+          height: 20px;
+          border: 1.5px solid #B09B9B;
+          border-radius: 50%;
+          pointer-events: none;
+          z-index: 9999;
+          transition: transform 0.15s ease;
+          mix-blend-mode: difference;
+        }
+
+        .cursor-dot {
+          position: fixed;
+          width: 7px;
+          height: 7px;
+          background-color: #B09B9B;
+          border-radius: 50%;
+          pointer-events: none;
+          z-index: 9999;
+          transition: transform 0.1s ease;
+        }
+
+        /* Cursor trail particles */
+        .trail-particle {
+          position: fixed;
+          pointer-events: none;
+          border-radius: 50%;
+          z-index: 9998;
+          animation: fadeOut 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeOut {
+          0% {
+            opacity: 0.7;
+            transform: scale(1);
+          }
+          100% {
+            opacity: 0;
+            transform: scale(0.3);
+          }
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Scroll progress indicator */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, #A78989, #633B48);
+            z-index: 1000;
+            transition: width 0.1s ease;
+        }
+
+        /* Navbar */
+        .navbar {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            position: fixed;
+            top: 0;
+            z-index: 999;
+            line-height: 1;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 10px;
+            padding: 10px 20px;
+            background: rgba(176, 176, 176, 0.39);
+            border-radius: 100px;
+            backdrop-filter: blur(40px);
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #f5f5f5;
+            padding: 6px 14px;
+            border-radius: 90px;
+            font-size: 14px;
+            transition: 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: rgba(196, 156, 169, 0.6);
+        }
+
+
+        /* Main Title */
+        h1 {
+            font-family: 'Labrada', serif;
+            font-size: 2.8rem;
+            font-weight: 300;
+            margin: 80px 0 20px;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #A78989;
+            text-align: center;
+            margin-bottom: 10px;
+            font-weight: 400;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+         
+        /* Footer */
+        footer {
+            margin-top: 100px;
+            padding: 50px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer p {
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        /* Next Case Study */
+        .next-case-study {
+            max-width: 800px;
+            margin: 80px auto 0;
+            padding: 50px 40px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .next-case-study:hover {
+            transform: translateY(-5px);
+            border-color: rgba(167, 137, 137, 0.3);
+        }
+
+        .next-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #A78989;
+            margin-bottom: 15px;
+        }
+
+        .next-title {
+            font-family: 'Labrada', serif;
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: #f5f5f5;
+            margin-bottom: 10px;
+        }
+
+        .next-description {
+            color: #999;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+        }
+
+        .next-arrow {
+            color: #A78989;
+            font-size: 1.2rem;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Custom cursor elements -->
+  <div class="cursor"></div>
+  <div class="cursor-dot"></div>
+
+    <!-- Scroll progress bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+    
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="allproj.html" class="active">Projects</a></li>
+            <li><a href="bio.html">Bio</a></li>
+            <li><a href="https://drive.google.com/file/d/1zK-V6wiQ66ybcEyTerjuPo0Z_oLqxKnx/view?usp=sharing" target="_blank">CV</a></li>
+        </ul>
+    </nav>
+
+    <h1 class="fade-in">Futures thinking</h1>
+    <p class="subtitle fade-in">AIP group project case study</p>
+
+    <a href="oudcollectioncs.html" class="next-case-study fade-in">
+        <p class="next-label">Next Case Study</p>
+        <h3 class="next-title">Oud Collection Redesign</h3>
+        <p class="next-description">Transforming a fragrance website with poor UX into a luxury digital experience</p>
+        <span class="next-arrow">→</span>
+    </a>
+
+    <footer>
+        <div class="container">
+            <p>CV Studio • UX Case Study • 2024</p>
+        </div>
+    </footer>
+    <script>
+    // Custom cursor with particle trail
+    const cursor = document.querySelector('.cursor');
+    const cursorDot = document.querySelector('.cursor-dot');
+    
+    let mouseX = 0, mouseY = 0;
+    let cursorX = 0, cursorY = 0;
+    let dotX = 0, dotY = 0;
+
+    // Color palette matching your theme
+    const colors = ['#B09B9B', '#A78989', '#633B48', '#5E4545', '#C49CA9'];
+    
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        
+        // Create particle trail
+        createParticle(e.clientX, e.clientY);
+    });
+
+    function createParticle(x, y) {
+        const particle = document.createElement('div');
+        particle.className = 'trail-particle';
+        
+        // Random size between 4-10px
+        const size = Math.random() * 6 + 4;
+        particle.style.width = size + 'px';
+        particle.style.height = size + 'px';
+        
+        // Random color from palette
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        particle.style.backgroundColor = color;
+        
+        // Slight random offset for natural look
+        const offsetX = (Math.random() - 0.5) * 20;
+        const offsetY = (Math.random() - 0.5) * 20;
+        
+        particle.style.left = (x + offsetX) + 'px';
+        particle.style.top = (y + offsetY) + 'px';
+        
+        document.body.appendChild(particle);
+        
+        // Remove particle after animation
+        setTimeout(() => {
+        particle.remove();
+        }, 800);
+    }
+
+    // Smooth cursor animation
+    function animateCursor() {
+        // Smooth follow with easing
+        cursorX += (mouseX - cursorX) * 0.15;
+        cursorY += (mouseY - cursorY) * 0.15;
+        
+        dotX += (mouseX - dotX) * 0.25;
+        dotY += (mouseY - dotY) * 0.25;
+        
+        cursor.style.left = cursorX + 'px';
+        cursor.style.top = cursorY + 'px';
+        
+        cursorDot.style.left = dotX + 'px';
+        cursorDot.style.top = dotY + 'px';
+        
+        requestAnimationFrame(animateCursor);
+    }
+    
+    animateCursor();
+
+    // Cursor interactions
+    const interactiveElements = document.querySelectorAll('a, button, .project-card');
+    
+    interactiveElements.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+        cursor.style.transform = 'scale(1.5)';
+        cursorDot.style.transform = 'scale(0)';
+        });
+        
+        el.addEventListener('mouseleave', () => {
+        cursor.style.transform = 'scale(1)';
+        cursorDot.style.transform = 'scale(1)';
+        });
+    });
+
+    // Hide custom cursor on touch devices
+    if ('ontouchstart' in window) {
+        cursor.style.display = 'none';
+        cursorDot.style.display = 'none';
+        document.body.style.cursor = 'auto';
+    }
+    </script>
+    <script>
+        // Scroll progress bar
+        const scrollProgress = document.getElementById('scrollProgress');
+        
+        window.addEventListener('scroll', () => {
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight - windowHeight;
+            const scrolled = window.scrollY;
+            const progress = (scrolled / documentHeight) * 100;
+            
+            scrollProgress.style.width = progress + '%';
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all animated elements
+        document.addEventListener('DOMContentLoaded', () => {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            const slideElements = document.querySelectorAll('.slide-in');
+            const staggerElements = document.querySelectorAll('.stagger-item');
+            
+            fadeElements.forEach(el => observer.observe(el));
+            slideElements.forEach(el => observer.observe(el));
+            
+            // Stagger animation for items in a group
+            staggerElements.forEach((el, index) => {
+                el.style.transitionDelay = `${index * 0.1}s`;
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>

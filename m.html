@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UMIS — University of Melbourne Islamic Society</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink:#060d1a; --navy:#0a1628; --navy-mid:#0e1e38; --navy-light:#152847;
+            --gold:#c9981a; --gold-lt:#e0b840; --gold-pale:#f5e4b0;
+            --gold-dim:rgba(201,152,26,.08); --gold-brd:rgba(201,152,26,.25);
+            --cream:#f2e8d5;
+            --w90:rgba(255,255,255,.9); --w70:rgba(255,255,255,.7);
+            --w45:rgba(255,255,255,.45); --w20:rgba(255,255,255,.12);
+        }
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+        html{scroll-behavior:smooth;}
+        body{font-family:'Poppins',sans-serif;background:var(--ink);color:var(--cream);overflow-x:hidden;cursor:none;}
+
+        .cursor{width:10px;height:10px;border-radius:50%;background:var(--gold);position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:screen;transition:width .25s,height .25s;}
+        .cursor-ring{width:36px;height:36px;border-radius:50%;border:1px solid rgba(201,152,26,.45);position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .4s,height .4s,border-color .3s;}
+        body:has(a:hover,button:hover) .cursor{width:18px;height:18px;background:var(--gold-lt);}
+        body:has(a:hover,button:hover) .cursor-ring{width:54px;height:54px;border-color:var(--gold);}
+
+        .tess-bg{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.048;
+            background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cdefs%3E%3Cpattern id='s' x='0' y='0' width='60' height='60' patternUnits='userSpaceOnUse'%3E%3Cpolygon fill='none' stroke='%23c9981a' stroke-width='.7' points='30,2 35,12 46,8 42,20 54,20 46,29 54,38 42,38 46,50 35,46 30,56 25,46 14,50 18,38 6,38 14,29 6,20 18,20 14,8 25,12'/%3E%3Ccircle fill='none' stroke='%23c9981a' stroke-width='.35' cx='30' cy='30' r='10'/%3E%3Ccircle fill='none' stroke='%23c9981a' stroke-width='.25' cx='30' cy='30' r='18'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='120' height='120' fill='url(%23s)'/%3E%3C/svg%3E");
+            background-size:120px 120px;}
+
+        /* BANNER */
+        .announce-bar{position:fixed;top:0;left:0;right:0;z-index:999;transition:transform .4s cubic-bezier(.23,1,.32,1);}
+        .announce-bar.hidden{transform:translateY(-100%);}
+        .announce-inner{padding:.6rem 2.5rem;display:flex;align-items:center;gap:1rem;border-bottom:1px solid rgba(201,152,26,.3);background:rgba(10,22,40,.97);backdrop-filter:blur(16px);}
+        .announce-inner.urgent{background:rgba(40,10,10,.97);border-bottom-color:rgba(224,122,95,.35);}
+        .announce-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;animation:dotPulse 2s ease-in-out infinite;}
+        .announce-inner.urgent .announce-dot{background:#e07a5f;}
+        @keyframes dotPulse{0%,100%{opacity:.4;transform:scale(.8)}50%{opacity:1;transform:scale(1)}}
+        .announce-text{flex:1;font-size:.72rem;color:var(--w70);letter-spacing:.3px;line-height:1.4;}
+        .announce-text strong{color:var(--gold);font-weight:600;}
+        .announce-inner.urgent .announce-text strong{color:#e07a5f;}
+        .announce-link{font-size:.63rem;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);white-space:nowrap;flex-shrink:0;display:flex;align-items:center;gap:.3rem;transition:opacity .2s;}
+        .announce-link:hover{opacity:.75;}
+        .announce-close{background:none;border:none;cursor:none;color:var(--w45);font-size:1rem;padding:.2rem .4rem;flex-shrink:0;line-height:1;transition:color .2s;}
+        .announce-close:hover{color:var(--w90);}
+
+        /* NAV */
+        nav#mainnav{position:fixed;left:0;right:0;z-index:1000;top:0;padding:1.3rem 3rem;display:flex;justify-content:space-between;align-items:center;transition:background .5s,padding .4s,border-color .5s,top .4s;border-bottom:1px solid transparent;}
+        nav#mainnav.scrolled{background:rgba(6,13,26,.96);backdrop-filter:blur(18px);padding:1rem 3rem;border-bottom-color:var(--gold-brd);}
+        .nav-logo img{height:40px;}
+        .nav-links{display:flex;gap:2rem;list-style:none;}
+        .nav-links a{font-size:.63rem;font-weight:400;letter-spacing:2.5px;text-transform:uppercase;color:var(--w70);transition:color .3s;position:relative;}
+        .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:center;transition:transform .35s;}
+        .nav-links a:hover{color:var(--gold-pale);}
+        .nav-links a:hover::after{transform:scaleX(1);}
+        .nav-links a.nav-statements{color:rgba(201,152,26,.7);}
+        .nav-links a.nav-statements:hover{color:var(--gold);}
+        .mobile-toggle{display:none;flex-direction:column;gap:5px;cursor:none;background:none;border:none;padding:6px;}
+        .mobile-toggle span{width:24px;height:1.5px;background:var(--w70);transition:all .3s;}
+
+        /* HERO */
+        .hero{min-height:100vh;display:grid;grid-template-rows:1fr auto;position:relative;overflow:hidden;}
+        .hero::before{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse 60% 52% at 50% 40%,rgba(201,152,26,.07),transparent 65%);}
+        .shamsa{position:absolute;top:50%;left:50%;transform:translate(-50%,-52%);width:min(660px,88vw);height:min(660px,88vw);pointer-events:none;z-index:0;opacity:.06;animation:shamsaSpin 150s linear infinite;}
+        @keyframes shamsaSpin{to{transform:translate(-50%,-52%) rotate(360deg);}}
+        .hero-main{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:9rem 2rem 3rem;position:relative;z-index:2;}
+        .hero-eyebrow{font-size:.62rem;font-weight:400;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:1.6rem;display:flex;align-items:center;justify-content:center;gap:1rem;opacity:0;animation:fadeUp 1.2s ease .3s both;}
+        .hero-eyebrow::before{content:'';flex:1;max-width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--gold));}
+        .hero-eyebrow::after{content:'';flex:1;max-width:60px;height:1px;background:linear-gradient(90deg,var(--gold),transparent);}
+        .hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3.2rem,9vw,7.5rem);font-weight:300;line-height:.92;letter-spacing:-2px;color:var(--cream);margin-bottom:.5rem;opacity:0;animation:fadeUp 1.4s ease .5s both;}
+        .hero-title em{font-style:italic;color:var(--gold);}
+        .hero-sub{font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,2.2vw,1.35rem);font-weight:300;font-style:italic;color:var(--w45);margin-bottom:2.8rem;opacity:0;animation:fadeUp 1.4s ease .7s both;}
+        .hero-ctas{display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap;justify-content:center;opacity:0;animation:fadeUp 1.4s ease .9s both;}
+        .btn-primary{font-size:.7rem;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:var(--ink);background:var(--gold);padding:.9rem 2.2rem;border:none;cursor:none;position:relative;overflow:hidden;transition:letter-spacing .35s;display:inline-flex;align-items:center;gap:.5rem;}
+        .btn-primary::before{content:'';position:absolute;inset:0;background:var(--gold-lt);transform:scaleX(0);transform-origin:left;transition:transform .35s;}
+        .btn-primary span{position:relative;z-index:1;}
+        .btn-primary:hover::before{transform:scaleX(1);}
+        .btn-primary:hover{letter-spacing:3.2px;}
+        .btn-ghost{font-size:.7rem;font-weight:400;letter-spacing:2.5px;text-transform:uppercase;color:var(--w70);background:none;border:1px solid rgba(255,255,255,.18);padding:.9rem 2.2rem;cursor:none;transition:all .35s;}
+        .btn-ghost:hover{border-color:var(--gold);color:var(--gold-pale);}
+        @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+        .scroll-hint{position:absolute;bottom:6.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.4rem;color:var(--w45);font-size:.55rem;letter-spacing:2.5px;text-transform:uppercase;z-index:2;opacity:0;animation:fadeUp 1.4s ease 1.5s both;pointer-events:none;}
+        .scroll-line{width:1px;height:40px;background:linear-gradient(180deg,var(--gold),transparent);animation:scrollPulse 2.5s ease-in-out infinite;}
+        @keyframes scrollPulse{0%,100%{opacity:.3;transform:scaleY(.65)}50%{opacity:1;transform:scaleY(1)}}
+
+        /* QUICK LINKS */
+        .ql-dock{position:relative;z-index:2;display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--gold-brd);opacity:0;animation:fadeUp 1.4s ease 1.15s both;}
+        .ql-item{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1.3rem .8rem 1.7rem;gap:.35rem;position:relative;overflow:hidden;border-right:1px solid rgba(201,152,26,.1);background:rgba(6,13,26,.55);backdrop-filter:blur(10px);text-align:center;transition:background .4s;}
+        .ql-item:last-child{border-right:none;}
+        .ql-item::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:center;transition:transform .5s cubic-bezier(.23,1,.32,1);}
+        .ql-item:hover{background:rgba(201,152,26,.065);}
+        .ql-item:hover::after{transform:scaleX(1);}
+        .ql-icon{font-size:1.1rem;line-height:1;transition:transform .3s;}
+        .ql-item:hover .ql-icon{transform:translateY(-3px);}
+        .ql-arabic{font-family:serif;font-size:.92rem;direction:rtl;color:var(--gold-pale);opacity:.6;transition:opacity .3s;}
+        .ql-item:hover .ql-arabic{opacity:1;}
+        .ql-label{font-size:.5rem;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--w45);transition:color .3s;}
+        .ql-item:hover .ql-label{color:var(--gold);}
+
+        /* SHARED */
+        .section{position:relative;z-index:1;}
+        .container{max-width:1100px;margin:0 auto;padding:0 2rem;}
+        .ornament{display:flex;align-items:center;justify-content:center;gap:1rem;}
+        .orn-line{flex:1;max-width:160px;height:1px;}
+        .orn-line.l{background:linear-gradient(90deg,transparent,var(--gold-brd));}
+        .orn-line.r{background:linear-gradient(90deg,var(--gold-brd),transparent);}
+        .orn-diamond{width:6px;height:6px;background:var(--gold);transform:rotate(45deg);flex-shrink:0;position:relative;}
+        .orn-diamond::before{content:'';position:absolute;inset:-7px;border:1px solid rgba(201,152,26,.22);}
+        .orn-text{font-family:'Cormorant Garamond',serif;font-size:.75rem;font-style:italic;letter-spacing:2px;color:var(--gold);opacity:.75;white-space:nowrap;}
+        .sec-eyebrow{font-size:.58rem;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;opacity:.85;}
+        .sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:400;color:var(--cream);letter-spacing:-.3px;line-height:1.05;}
+        .sec-title em{font-style:italic;color:var(--gold);}
+        .reveal{opacity:0;transform:translateY(26px);transition:opacity .95s cubic-bezier(.23,1,.32,1),transform .95s cubic-bezier(.23,1,.32,1);}
+        .reveal.visible{opacity:1;transform:translateY(0);}
+        .rd1{transition-delay:.1s;}.rd2{transition-delay:.2s;}.rd3{transition-delay:.3s;}
+
+        /* PRAYER */
+        .prayer-section{padding:3.5rem 2rem 0;}
+        .prayer-strip{max-width:1100px;margin:0 auto;border:1px solid var(--gold-brd);padding:1.3rem 2.2rem;display:flex;justify-content:space-between;align-items:center;gap:2rem;background:rgba(201,152,26,.025);flex-wrap:wrap;}
+        .prayer-left{display:flex;align-items:center;gap:1rem;}
+        .prayer-moon{font-size:1.2rem;color:var(--gold);}
+        .prayer-lbl{font-size:.56rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--w45);margin-bottom:.2rem;}
+        .prayer-val{font-family:'Cormorant Garamond',serif;font-size:1.2rem;}
+        .prayer-val .g{color:var(--gold);}
+        .prayer-link{font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--w45);display:flex;align-items:center;gap:.4rem;transition:color .3s;}
+        .prayer-link:hover{color:var(--gold);}
+
+        /* EVENTS */
+        .events-section{padding:4rem 2rem 3rem;}
+        .events-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2.5rem;gap:1rem;flex-wrap:wrap;}
+        .view-all{font-size:.6rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--w45);display:flex;align-items:center;gap:.4rem;transition:color .3s;flex-shrink:0;border-bottom:1px solid transparent;}
+        .view-all:hover{color:var(--gold);border-bottom-color:var(--gold);}
+        .events-grid{display:grid;grid-template-columns:58% 1fr;gap:2px;margin-bottom:2px;}
+        .ev-featured{background:var(--navy-mid);border:1px solid var(--gold-brd);overflow:hidden;position:relative;transition:border-color .4s;}
+        .ev-featured:hover{border-color:rgba(201,152,26,.55);}
+        .ev-img{width:100%;height:200px;background:var(--navy-light);overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative;}
+        .ev-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.23,1,.32,1);}
+        .ev-featured:hover .ev-img img{transform:scale(1.05);}
+        .ev-img-icon{font-size:3rem;color:var(--w20);}
+        .ev-body{padding:1.6rem 1.8rem 1.8rem;}
+        .ev-meta-row{display:flex;align-items:center;gap:.8rem;margin-bottom:.6rem;flex-wrap:wrap;}
+        .ev-tag{font-size:.56rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:.35rem;}
+        .ev-tag::before{content:'◆';font-size:.3rem;}
+        .ev-audience{font-size:.52rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:.2rem .55rem;border:1px solid;}
+        .ev-aud-all{color:var(--gold);border-color:var(--gold-brd);background:var(--gold-dim);}
+        .ev-aud-men{color:#7bafd4;border-color:rgba(123,175,212,.28);background:rgba(123,175,212,.07);}
+        .ev-aud-women{color:#c4a0c8;border-color:rgba(196,160,200,.28);background:rgba(196,160,200,.07);}
+        .ev-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,2.5vw,2rem);font-weight:400;color:var(--cream);line-height:1.15;margin-bottom:.8rem;letter-spacing:-.2px;}
+        .ev-details{display:flex;flex-wrap:wrap;gap:.7rem;margin-bottom:.9rem;}
+        .ev-detail{font-size:.7rem;color:var(--w45);display:flex;align-items:center;gap:.3rem;}
+        .ev-detail.gold{color:var(--gold);}
+        .ev-desc{font-size:.78rem;font-weight:300;color:var(--w45);line-height:1.8;margin-bottom:1.2rem;}
+        .btn-rsvp{font-size:.62rem;letter-spacing:2px;text-transform:uppercase;color:var(--ink);background:var(--gold);padding:.6rem 1.5rem;border:none;cursor:none;display:inline-flex;align-items:center;gap:.4rem;transition:background .3s,letter-spacing .3s;}
+        .btn-rsvp:hover{background:var(--gold-lt);letter-spacing:2.8px;}
+        .ev-stack{display:flex;flex-direction:column;gap:2px;}
+        .ev-card{flex:1;background:var(--navy-mid);border:1px solid rgba(201,152,26,.1);padding:1.3rem 1.5rem;position:relative;overflow:hidden;transition:border-color .35s,background .35s;}
+        .ev-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--gold);transform:scaleY(0);transform-origin:bottom;transition:transform .45s cubic-bezier(.23,1,.32,1);}
+        .ev-card:hover{border-color:var(--gold-brd);background:rgba(21,40,71,.6);}
+        .ev-card:hover::before{transform:scaleY(1);}
+        .ec-tags{display:flex;align-items:center;gap:.5rem;margin-bottom:.45rem;}
+        .ec-cat{font-size:.54rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:600;}
+        .ec-title{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:400;color:var(--cream);margin-bottom:.4rem;line-height:1.25;}
+        .ec-detail{font-size:.68rem;color:var(--w45);margin-bottom:.55rem;display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;}
+        .ec-desc{font-size:.73rem;font-weight:300;color:var(--w45);line-height:1.75;margin-bottom:.7rem;}
+        .ec-link{font-size:.6rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:.3rem;transition:gap .2s;}
+        .ec-link:hover{gap:.55rem;}
+
+        /* ONGOING */
+        .ongoing-section{padding:0 2rem 3rem;}
+        .ongoing-grid{max-width:1100px;margin:0 auto;}
+        .ongoing-label{font-size:.56rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--w45);margin-bottom:1rem;display:flex;align-items:center;gap:.8rem;}
+        .ongoing-label::after{content:'';flex:1;height:1px;background:var(--w20);}
+        .ongoing-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+        .ong-card{background:var(--navy-mid);border:1px solid rgba(201,152,26,.08);padding:1.2rem 1.4rem;position:relative;overflow:hidden;transition:border-color .3s,background .3s;}
+        .ong-card::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .4s;}
+        .ong-card:hover{border-color:var(--gold-brd);background:rgba(21,40,71,.5);}
+        .ong-card:hover::after{transform:scaleX(1);}
+        .ong-cat{font-size:.54rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.35rem;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;}
+        .ong-title{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:400;color:var(--cream);margin-bottom:.35rem;}
+        .ong-detail{font-size:.67rem;color:var(--w45);margin-bottom:.5rem;}
+        .ong-link{font-size:.58rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:.3rem;transition:gap .2s;}
+        .ong-link:hover{gap:.5rem;}
+
+        /* CHAPTER BAND */
+        .chapter-band{position:relative;overflow:hidden;min-height:280px;display:flex;align-items:center;justify-content:center;margin:1rem 0;}
+        .chapter-band-bg{position:absolute;inset:0;z-index:0;
+            background:
+                repeating-linear-gradient(0deg,transparent,transparent 31px,rgba(201,152,26,.03) 32px),
+                repeating-linear-gradient(90deg,transparent,transparent 31px,rgba(201,152,26,.03) 32px),
+                repeating-linear-gradient(45deg,rgba(201,152,26,.015) 0,rgba(201,152,26,.015) 1px,transparent 1px,transparent 22px),
+                repeating-linear-gradient(-45deg,rgba(201,152,26,.015) 0,rgba(201,152,26,.015) 1px,transparent 1px,transparent 22px),
+                linear-gradient(180deg,var(--ink) 0%,#0c1830 50%,var(--ink) 100%);}
+        .chapter-band::before{content:'';position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse 100% 100% at 50% 50%,transparent 30%,rgba(6,13,26,.82) 100%);pointer-events:none;}
+        .chapter-band::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;border-top:1px solid var(--gold-brd);border-bottom:1px solid var(--gold-brd);}
+        .chapter-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;padding:4rem 2rem;}
+        .chapter-word{font-family:serif;font-size:clamp(5rem,17vw,11rem);color:var(--gold);direction:rtl;line-height:1;text-shadow:0 0 60px rgba(201,152,26,.35),0 0 120px rgba(201,152,26,.15);letter-spacing:4px;opacity:0;transform:scale(.94);transition:opacity 1.4s cubic-bezier(.23,1,.32,1),transform 1.4s cubic-bezier(.23,1,.32,1);}
+        .chapter-word.lit{opacity:1;transform:scale(1);}
+        .chapter-translation{font-family:'Cormorant Garamond',serif;font-size:.72rem;font-style:italic;letter-spacing:4px;color:rgba(245,228,176,.22);text-transform:uppercase;margin-top:.9rem;opacity:0;transition:opacity 1.8s .4s;}
+        .chapter-word.lit ~ .chapter-translation{opacity:1;}
+
+        /* PORTRAIT FRAME */
+        .portrait-band{padding:3rem 2rem 4rem;display:flex;align-items:center;justify-content:center;}
+        .portrait-frame{max-width:560px;width:100%;border:1px solid var(--gold-brd);padding:3.5rem 3rem;position:relative;text-align:center;}
+        .portrait-frame::before{content:'◆';position:absolute;top:-6px;left:-6px;color:var(--gold);font-size:.5rem;}
+        .portrait-frame::after{content:'◆';position:absolute;bottom:-6px;right:-6px;color:var(--gold);font-size:.5rem;}
+        .pf-tr{position:absolute;top:-6px;right:-6px;color:var(--gold);font-size:.5rem;}
+        .pf-bl{position:absolute;bottom:-6px;left:-6px;color:var(--gold);font-size:.5rem;}
+        .pf-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(1.3rem,3vw,2rem);font-weight:300;font-style:italic;color:var(--w90);line-height:1.65;margin-bottom:1.4rem;}
+        .pf-quote em{color:var(--gold-pale);font-style:normal;}
+        .pf-ref{font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.7;}
+
+        /* STATEMENT MODULE */
+        .statement-section{padding:1rem 2rem 4rem;}
+        .statement-inner{max-width:1100px;margin:0 auto;}
+        .statement-card{border:1px solid var(--gold-brd);position:relative;overflow:hidden;background:rgba(14,30,56,.5);transition:border-color .4s;display:block;color:inherit;text-decoration:none;}
+        .statement-card:hover{border-color:rgba(201,152,26,.5);}
+        .statement-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent);transform:scaleX(0);transform-origin:left;transition:transform .7s cubic-bezier(.23,1,.32,1);}
+        .statement-card:hover::before{transform:scaleX(1);}
+        .statement-layout{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:2.5rem;padding:2.2rem 2.5rem;}
+        .statement-date-col{display:flex;flex-direction:column;align-items:center;gap:.3rem;flex-shrink:0;}
+        .statement-date-day{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;color:var(--gold);line-height:1;letter-spacing:-1px;}
+        .statement-date-month{font-size:.55rem;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--w45);}
+        .statement-divider{width:1px;height:60px;background:var(--gold-brd);flex-shrink:0;}
+        .statement-eyebrow{font-size:.56rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:.5rem;}
+        .statement-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.2rem,2.5vw,1.7rem);font-weight:400;color:var(--cream);line-height:1.25;margin-bottom:.7rem;letter-spacing:-.2px;}
+        .statement-excerpt{font-size:.78rem;font-weight:300;color:var(--w45);line-height:1.8;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+        .statement-arrow{width:44px;height:44px;flex-shrink:0;border:1px solid rgba(201,152,26,.2);display:flex;align-items:center;justify-content:center;color:var(--w45);transition:all .35s;}
+        .statement-card:hover .statement-arrow{border-color:var(--gold);color:var(--gold);background:var(--gold-dim);}
+        .statement-footer{padding:.8rem 2.5rem 1.2rem;border-top:1px solid rgba(201,152,26,.08);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;}
+        .statement-count{font-size:.58rem;color:var(--w45);font-style:italic;font-family:'Cormorant Garamond',serif;}
+        .statement-all-link{font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:.35rem;transition:gap .2s;}
+        .statement-all-link:hover{gap:.6rem;}
+
+        /* AYAH */
+        .ayah-section{padding:4rem 2rem 5rem;text-align:center;position:relative;overflow:hidden;}
+        .ayah-section::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 0%,rgba(201,152,26,.03) 50%,transparent 100%);pointer-events:none;}
+        .ayah-inner{max-width:720px;margin:0 auto;position:relative;z-index:1;}
+        .ayah-arabic{font-family:serif;direction:rtl;font-size:clamp(1.5rem,4.5vw,2.6rem);color:var(--gold-pale);line-height:1.7;margin-bottom:1.6rem;letter-spacing:2px;text-shadow:0 0 50px rgba(201,152,26,.2);}
+        .ayah-eng{font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,2.5vw,1.4rem);font-style:italic;font-weight:300;color:var(--w70);line-height:1.75;margin-bottom:.9rem;}
+        .ayah-ref{font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.7;}
+
+        /* SLIDESHOW */
+        .slideshow-section{padding:0 2rem 5rem;}
+        .slideshow-wrap{max-width:1100px;margin:0 auto;position:relative;}
+        .slideshow-inner{position:relative;overflow:hidden;border:1px solid var(--gold-brd);aspect-ratio:16/7;background:var(--navy-mid);}
+        .slide{position:absolute;inset:0;display:flex;align-items:flex-end;opacity:0;transition:opacity .9s cubic-bezier(.23,1,.32,1);}
+        .slide.active{opacity:1;}
+        .slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+        .slide::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(6,13,26,.88) 100%);}
+        .slide-content{position:relative;z-index:1;padding:2rem 2.5rem;}
+        .slide-tag{font-size:.56rem;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;}
+        .slide-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3vw,2.5rem);font-weight:400;color:var(--cream);line-height:1.15;letter-spacing:-.3px;}
+        .slide-sub{font-family:'Cormorant Garamond',serif;font-size:clamp(.9rem,1.5vw,1.1rem);font-style:italic;color:var(--w70);margin-top:.3rem;}
+        .slide-dots{position:absolute;bottom:1.2rem;right:1.8rem;display:flex;gap:.5rem;z-index:2;}
+        .dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.3);transition:all .3s;cursor:none;border:none;padding:0;}
+        .dot.active{background:var(--gold);width:20px;border-radius:3px;}
+        .slide-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:2;background:rgba(6,13,26,.6);border:1px solid var(--gold-brd);color:var(--w70);width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:none;transition:all .3s;backdrop-filter:blur(8px);}
+        .slide-arrow:hover{background:var(--gold-dim);border-color:var(--gold);color:var(--gold);}
+        .slide-arrow.prev{left:1rem;} .slide-arrow.next{right:1rem;}
+
+        /* MERCH */
+        .merch-section{padding:0 2rem 5rem;}
+        .merch-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--gold-brd);overflow:hidden;min-height:360px;}
+        .merch-left{padding:3.5rem 3rem;display:flex;flex-direction:column;justify-content:center;position:relative;}
+        .merch-left::after{content:'';position:absolute;right:0;top:2.5rem;bottom:2.5rem;width:1px;background:var(--gold-brd);}
+        .merch-eyebrow{font-size:.58rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem;}
+        .merch-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,6vw,5rem);font-weight:300;letter-spacing:-3px;line-height:.95;margin-bottom:1.2rem;}
+        .merch-collab{font-size:.8rem;color:var(--w45);letter-spacing:2px;margin-bottom:2.2rem;}
+        .merch-collab strong{color:var(--gold);}
+        .btn-merch{font-size:.67rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--ink);background:var(--gold);padding:.75rem 1.8rem;border:none;cursor:none;align-self:flex-start;display:inline-flex;align-items:center;gap:.4rem;transition:background .3s,letter-spacing .3s;}
+        .btn-merch:hover{background:var(--gold-lt);letter-spacing:3.2px;}
+        .merch-right{background:var(--navy-mid);display:flex;align-items:center;justify-content:center;font-size:3.5rem;color:var(--w20);position:relative;overflow:hidden;}
+        .merch-right img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+
+        /* FOOTER */
+        footer{position:relative;z-index:1;border-top:1px solid var(--gold-brd);padding:5rem 2rem 3rem;}
+        .footer-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:4rem;margin-bottom:3.5rem;}
+        .footer-brand{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;letter-spacing:3px;color:var(--gold-pale);margin-bottom:.7rem;display:flex;align-items:center;gap:.8rem;}
+        .footer-brand img{height:34px;}
+        .footer-copy{font-size:.78rem;font-weight:300;color:var(--w45);line-height:1.85;margin-bottom:.8rem;}
+        .footer-addr{font-size:.73rem;color:rgba(201,152,26,.55);line-height:1.7;}
+        .footer-col h4{font-size:.56rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;font-weight:600;}
+        .footer-links{list-style:none;}
+        .footer-links li{margin-bottom:.45rem;}
+        .footer-links a{font-size:.76rem;font-weight:300;color:var(--w45);transition:color .25s;}
+        .footer-links a:hover{color:var(--gold-pale);}
+        .footer-socials{display:flex;gap:.45rem;margin-top:1.1rem;flex-wrap:wrap;}
+        .soc-btn{width:32px;height:32px;border:1px solid var(--gold-brd);display:flex;align-items:center;justify-content:center;color:var(--w45);transition:all .3s;cursor:none;}
+        .soc-btn:hover{background:var(--gold-dim);border-color:var(--gold);color:var(--gold);}
+        .footer-bottom{max-width:1100px;margin:0 auto;border-top:1px solid var(--w20);padding-top:1.3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;}
+        .footer-bottom p{font-size:.66rem;font-weight:300;color:var(--w20);}
+        .footer-affil{font-size:.6rem;color:rgba(201,152,26,.35);display:flex;align-items:center;gap:.4rem;}
+
+        /* MOBILE NAV */
+        .nav-overlay{position:fixed;inset:0;background:rgba(0,0,0,.8);opacity:0;visibility:hidden;transition:all .4s;z-index:998;}
+        .nav-overlay.open{opacity:1;visibility:visible;}
+        .mobile-menu{position:fixed;top:0;right:-100%;width:280px;height:100vh;background:var(--navy);border-left:1px solid var(--gold-brd);z-index:999;transition:right .45s cubic-bezier(.68,-.55,.265,1.55);padding:6rem 2rem 2rem;display:flex;flex-direction:column;}
+        .mobile-menu.open{right:0;}
+        .mobile-menu a{font-size:.8rem;letter-spacing:2px;text-transform:uppercase;color:var(--w70);display:block;padding:.8rem 0;border-bottom:1px solid var(--w20);transition:color .3s;}
+        .mobile-menu a:hover{color:var(--gold);}
+
+        @media(max-width:960px){
+            nav#mainnav{padding:1.2rem 1.5rem;} nav#mainnav.scrolled{padding:.9rem 1.5rem;}
+            .nav-links{display:none;} .mobile-toggle{display:flex;}
+            .events-grid{grid-template-columns:1fr;}
+            .ongoing-cards{grid-template-columns:1fr 1fr;}
+            .statement-layout{grid-template-columns:1fr;gap:1.2rem;}
+            .statement-divider,.statement-date-col{display:none;}
+            .merch-inner{grid-template-columns:1fr;} .merch-left::after{display:none;} .merch-right{min-height:240px;}
+            .footer-grid{grid-template-columns:1fr;gap:2.5rem;}
+        }
+        @media(max-width:640px){
+            .ql-dock{grid-template-columns:repeat(3,1fr);}
+            .ql-item:nth-child(3){border-right:none;}
+            .ql-item:nth-child(4){border-top:1px solid rgba(201,152,26,.1);}
+            .ql-item:nth-child(5){border-top:1px solid rgba(201,152,26,.1);border-right:none;}
+            .ongoing-cards{grid-template-columns:1fr;}
+            .portrait-frame{padding:2.5rem 1.5rem;}
+            .announce-inner{padding:.6rem 1.2rem;}
+        }
+        @media(pointer:coarse){body{cursor:auto;} .cursor,.cursor-ring{display:none;} a,button{cursor:pointer;}}
+    </style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="tess-bg"></div>
+
+<!-- BANNER — shown when Google Sheet banner tab has active=yes -->
+<div class="announce-bar hidden" id="announceBanner">
+    <div class="announce-inner" id="announceInner">
+        <div class="announce-dot"></div>
+        <div class="announce-text" id="announceText"></div>
+        <a href="#" class="announce-link" id="announceLink" style="display:none"></a>
+        <button class="announce-close" id="announceClose" aria-label="Dismiss">✕</button>
+    </div>
+</div>
+
+<div class="nav-overlay" id="navOverlay"></div>
+<div class="mobile-menu" id="mobileMenu">
+    <a href="y.html">About Us</a>
+    <a href="y.html">Events</a>
+    <a href="y.html">Prayer</a>
+    <a href="#">Merch</a>
+    <a href="get-involved.html">Get Involved</a>
+    <a href="resources.html">Resources</a>
+    <a href="statements.html">Statements</a>
+    <a href="donate.html">Donate</a>
+</div>
+
+<nav id="mainnav">
+    <a href="index.html" class="nav-logo"><img src="UMISLOGOPNG.png" alt="UMIS"></a>
+    <ul class="nav-links">
+        <li><a href="y.html">About Us</a></li>
+        <li><a href="y.html">Events</a></li>
+        <li><a href="y.html">Prayer</a></li>
+        <li><a href="#">Merch</a></li>
+        <li><a href="get-involved.html">Get Involved</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="statements.html" class="nav-statements">Statements</a></li>
+        <li><a href="donate.html">Donate</a></li>
+    </ul>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero section">
+    <svg class="shamsa" viewBox="0 0 400 400" fill="none">
+        <circle cx="200" cy="200" r="185" stroke="#c9981a" stroke-width=".7" stroke-dasharray="3 9"/>
+        <circle cx="200" cy="200" r="148" stroke="#c9981a" stroke-width=".5"/>
+        <circle cx="200" cy="200" r="110" stroke="#c9981a" stroke-width=".65"/>
+        <circle cx="200" cy="200" r="74" stroke="#c9981a" stroke-width=".4"/>
+        <polygon points="200,18 378,122 378,278 200,382 22,278 22,122" stroke="#c9981a" stroke-width=".55" fill="none"/>
+        <polygon points="200,52 348,143 348,257 200,348 52,257 52,143" stroke="#c9981a" stroke-width=".35" fill="none"/>
+        <polygon points="200,86 318,162 318,238 200,314 82,238 82,162" stroke="#c9981a" stroke-width=".45" fill="none"/>
+        <path d="M200 18 L200 382 M22 200 L378 200 M68 68 L332 332 M332 68 L68 332" stroke="#c9981a" stroke-width=".22" opacity=".6"/>
+        <polygon points="200,174 206,194 226,200 206,206 200,226 194,206 174,200 194,194" stroke="#c9981a" stroke-width=".6" fill="none" opacity=".8"/>
+        <circle cx="200" cy="200" r="8" stroke="#c9981a" stroke-width=".7"/>
+        <circle cx="200" cy="200" r="3" fill="#c9981a" opacity=".5"/>
+    </svg>
+    <div class="hero-main" id="heroMain">
+        <div class="hero-eyebrow">University of Melbourne Islamic Society</div>
+        <h1 class="hero-title">Find your community<br><em>at UMIS</em></h1>
+        <p class="hero-sub">Building community, fostering faith, and creating lasting connections</p>
+        <div class="hero-ctas">
+            <a href="get-involved.html" class="btn-primary"><span>Join Today</span></a>
+            <a href="events.html" class="btn-ghost">See Events</a>
+        </div>
+    </div>
+    <div class="scroll-hint"><div class="scroll-line"></div>Scroll</div>
+    <nav class="ql-dock" aria-label="Quick navigation">
+        <a href="get-involved.html" class="ql-item">
+            <div class="ql-icon">🤝</div><div class="ql-arabic">عضوية</div><div class="ql-label">Membership</div>
+        </a>
+        <a href="#" class="ql-item">
+            <div class="ql-icon">🕌</div><div class="ql-arabic">عنّا</div><div class="ql-label">About Us</div>
+        </a>
+        <a href="#prayer" class="ql-item">
+            <div class="ql-icon">☽</div><div class="ql-arabic">صلاة</div><div class="ql-label">Prayer</div>
+        </a>
+        <a href="resources.html" class="ql-item">
+            <div class="ql-icon">📖</div><div class="ql-arabic">موارد</div><div class="ql-label">Resources</div>
+        </a>
+        <a href="get-involved.html#contact-section" class="ql-item">
+            <div class="ql-icon">✉</div><div class="ql-arabic">تواصل</div><div class="ql-label">Contact Us</div>
+        </a>
+    </nav>
+</section>
+
+<!-- PRAYER -->
+<div class="prayer-section reveal section" id="prayer">
+    <div class="prayer-strip">
+        <div class="prayer-left">
+            <div class="prayer-moon">☽</div>
+            <div>
+                <div class="prayer-lbl">Next Prayer · Iqama time</div>
+                <div class="prayer-val" id="prayerVal">Loading<span class="g">…</span></div>
+            </div>
+        </div>
+        <a href="#" class="prayer-link">View all times
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+    </div>
+</div>
+
+<!-- EVENTS -->
+<div class="events-section section">
+    <div class="container">
+        <div class="events-header reveal">
+            <div>
+                <div class="sec-eyebrow">What's On</div>
+                <h2 class="sec-title">Upcoming <em>Events</em></h2>
+            </div>
+            <a href="events.html" class="view-all">View all events
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+        <div class="events-grid" id="eventsGrid">
+            <div style="grid-column:1/-1;text-align:center;padding:3rem;font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--w45)">Loading events…</div>
+        </div>
+    </div>
+</div>
+
+<!-- ONGOING -->
+<div class="ongoing-section section" id="ongoingSection" style="display:none">
+    <div class="ongoing-grid">
+        <div class="ongoing-label reveal">Recurring &amp; Ongoing</div>
+        <div class="ongoing-cards" id="ongoingCards"></div>
+    </div>
+</div>
+
+<!-- ATMOSPHERIC ZONE -->
+<div class="chapter-band section">
+    <div class="chapter-band-bg"></div>
+    <div class="chapter-content">
+        <div class="chapter-word" id="chapterWord">أَهْلاً</div>
+        <div class="chapter-translation">Welcome · You belong here</div>
+    </div>
+</div>
+
+<div class="portrait-band section reveal">
+    <div class="portrait-frame">
+        <span class="pf-tr">◆</span>
+        <span class="pf-bl">◆</span>
+        <p class="pf-quote">A place where strangers arrive<br>and leave as <em>family</em></p>
+        <div class="pf-ref">Est. 1989 · University of Melbourne</div>
+    </div>
+</div>
+
+<!-- SOCIETY STATEMENT — hidden until sheet has published announcements -->
+<div class="statement-section section" id="statementSection" style="display:none">
+    <div class="statement-inner">
+        <div class="ornament reveal" style="margin-bottom:2rem;">
+            <div class="orn-line l"></div>
+            <div class="orn-diamond"></div>
+            <div class="orn-text">From UMIS</div>
+            <div class="orn-diamond"></div>
+            <div class="orn-line r"></div>
+        </div>
+        <div id="statementCard" class="reveal"></div>
+    </div>
+</div>
+
+<!-- AYAH -->
+<div class="ayah-section section">
+    <div class="ornament reveal">
+        <div class="orn-line l"></div><div class="orn-diamond"></div><div class="orn-line r"></div>
+    </div>
+    <div class="ayah-inner" style="margin-top:3rem;">
+        <div class="ayah-arabic reveal">وَاعْتَصِمُوا بِحَبْلِ اللَّهِ جَمِيعًا وَلَا تَفَرَّقُوا</div>
+        <p class="ayah-eng reveal rd1">"And hold firmly to the rope of Allah all together and do not become divided."</p>
+        <div class="ayah-ref reveal rd2">Surah Āl ʿImrān · 3:103</div>
+    </div>
+</div>
+
+<!-- SLIDESHOW -->
+<div class="slideshow-section section reveal">
+    <div class="slideshow-wrap">
+        <div class="ornament" style="margin-bottom:1.5rem;">
+            <div class="orn-line l"></div><div class="orn-diamond"></div>
+            <div class="orn-text">Featured</div>
+            <div class="orn-diamond"></div><div class="orn-line r"></div>
+        </div>
+        <div class="slideshow-inner">
+            <div class="slide active" style="background:var(--navy-light);">
+                <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--w20);font-size:1.5rem;font-family:'Cormorant Garamond',serif;font-style:italic;">Add slide images via Google Sheet</div>
+                <div class="slide-content">
+                    <div class="slide-tag">Featured</div>
+                    <div class="slide-title">THE UMIS MAGAZINE</div>
+                    <div class="slide-sub">Opening night on October 24th</div>
+                </div>
+            </div>
+            <div class="slide" style="background:var(--navy-mid);">
+                <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--w20);font-size:1.5rem;font-family:'Cormorant Garamond',serif;font-style:italic;">Slide 2</div>
+                <div class="slide-content">
+                    <div class="slide-tag">Community</div>
+                    <div class="slide-title">Ramadan 2025</div>
+                    <div class="slide-sub">Iftars, lectures, and late nights together</div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-dots">
+            <button class="dot active" onclick="goSlide(0)"></button>
+            <button class="dot" onclick="goSlide(1)"></button>
+        </div>
+        <button class="slide-arrow prev" onclick="stepSlide(-1)" aria-label="Previous">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        </button>
+        <button class="slide-arrow next" onclick="stepSlide(1)" aria-label="Next">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+    </div>
+</div>
+
+<!-- MERCH -->
+<div class="merch-section section">
+    <div class="merch-inner reveal">
+        <div class="merch-left">
+            <div class="merch-eyebrow">Shop Now</div>
+            <div class="merch-title">MERCH</div>
+            <div class="merch-collab">UMIS <strong>✕</strong> AMANAH</div>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdVQextN3vWmVpn2LVXfJwAEya-FExrAFvtYEB-zurMTjHSgQ/viewform" target="_blank" class="btn-merch">
+                Order Now <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+        <div class="merch-right">
+            <img src="umismerchpic.png" alt="UMIS Merch" onerror="this.style.display='none'">🧥
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-grid">
+        <div>
+            <div class="footer-brand">
+                <img src="UMISLOGOPNG.png" alt="UMIS" onerror="this.style.display='none'">UMIS
+            </div>
+            <p class="footer-copy">University of Melbourne Islamic Society — Building community, fostering faith, and creating lasting connections since 1989.</p>
+            <div class="footer-addr">📍 164 Little Pelham Street, Carlton VIC 3053<br>ABN: 66 897 134 867</div>
+            <div class="footer-socials">
+                <a href="https://instagram.com/umis.unimelb" target="_blank" class="soc-btn" aria-label="Instagram">
+                    <svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/></svg>
+                </a>
+                <a href="#" class="soc-btn" aria-label="Facebook">
+                    <svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/></svg>
+                </a>
+                <a href="#" class="soc-btn" aria-label="WhatsApp">
+                    <svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326z"/></svg>
+                </a>
+                <a href="#" class="soc-btn" aria-label="Discord">
+                    <svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M13.545 2.907a13.227 13.227 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.19 12.19 0 0 0-3.658 0 8.258 8.258 0 0 0-.412-.833.051.051 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.041.041 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032c.001.014.01.028.021.037a13.276 13.276 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019c.308-.42.582-.863.818-1.329a.05.05 0 0 0-.01-.059.051.051 0 0 0-.018-.011 8.875 8.875 0 0 1-1.248-.595.05.05 0 0 1-.02-.066.051.051 0 0 1 .015-.019c.084-.063.168-.129.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.052.052 0 0 1 .053.007c.08.066.164.132.248.195a.051.051 0 0 1-.004.085 8.254 8.254 0 0 1-1.249.594.05.05 0 0 0-.03.03.052.052 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.235 13.235 0 0 0 4.001-2.02.049.049 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.034.034 0 0 0-.02-.019z"/></svg>
+                </a>
+                <a href="mailto:umis@union.unimelb.edu.au" class="soc-btn" aria-label="Email">
+                    <svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="footer-col">
+            <h4>Explore</h4>
+            <ul class="footer-links">
+                <li><a href="#">About Us</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="#prayer">Prayer Times</a></li>
+                <li><a href="resources.html">Resources</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Engage</h4>
+            <ul class="footer-links">
+                <li><a href="get-involved.html">Become a Member</a></li>
+                <li><a href="donate.html">Donate</a></li>
+                <li><a href="statements.html">Statements</a></li>
+                <li><a href="get-involved.html#contact-section">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2025 University of Melbourne Islamic Society · ABN 66 897 134 867</p>
+        <p class="footer-affil">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            UMSU Affiliated Club
+        </p>
+    </div>
+</footer>
+
+<script>
+/* =========================================================
+   GOOGLE SHEETS CONFIGURATION
+   ---------------------------------------------------------
+   Paste your three published CSV URLs below.
+   Get them from: File → Share → Publish to web → CSV
+   ========================================================= */
+var SHEETS = {
+    banner:        'https://docs.google.com/spreadsheets/d/e/2PACX-1vQKgBikW2nqqkfubtRJXPZOOaubtMvhIYs-hj3J82Ng01lE18Hyr36AR-pJAoLtnyI2eHHQZHW9_1lc/pub?gid=1424845355&single=true&output=csv',
+    events:        'https://docs.google.com/spreadsheets/d/e/2PACX-1vQKgBikW2nqqkfubtRJXPZOOaubtMvhIYs-hj3J82Ng01lE18Hyr36AR-pJAoLtnyI2eHHQZHW9_1lc/pub?gid=591051841&single=true&output=csv',
+    announcements: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQKgBikW2nqqkfubtRJXPZOOaubtMvhIYs-hj3J82Ng01lE18Hyr36AR-pJAoLtnyI2eHHQZHW9_1lc/pub?gid=2020693641&single=true&output=csv'
+};
+
+/* =========================================================
+   CSV PARSER
+   Converts Google's exported CSV text into row objects.
+   Handles Windows-style \r\n line endings Google uses,
+   and quoted fields that contain commas.
+   ========================================================= */
+function parseCSV(text) {
+    var lines = text.trim().replace(/\r\n/g, '\n').replace(/\r/g, '\n').split('\n');
+    if (lines.length < 2) return [];
+    var headers = lines[0].split(',').map(function(h){ return h.trim().replace(/"/g,''); });
+    return lines.slice(1).map(function(line){
+        var values = [], cur = '', inQ = false;
+        for (var i = 0; i < line.length; i++) {
+            var ch = line[i];
+            if (ch === '"') { inQ = !inQ; }
+            else if (ch === ',' && !inQ) { values.push(cur.trim()); cur = ''; }
+            else { cur += ch; }
+        }
+        values.push(cur.trim());
+        var obj = {};
+        headers.forEach(function(h, i){ obj[h] = (values[i] || '').replace(/"/g,'').trim(); });
+        return obj;
+    });
+}
+
+/* =========================================================
+   FETCH SHEET
+   Gets a published Google Sheet tab as parsed row objects.
+   Uses corsproxy.io as middleman (needed for local/Neocities).
+   Returns empty array silently on any failure.
+   ========================================================= */
+function fetchSheet(url, cb) {
+    if (!url || url.indexOf('PASTE_') === 0) { cb([]); return; }
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'https://corsproxy.io/?' + encodeURIComponent(url));
+    xhr.onload = function() {
+        if (xhr.status === 200) { cb(parseCSV(xhr.responseText)); }
+        else { cb([]); }
+    };
+    xhr.onerror = function() { cb([]); };
+    xhr.send();
+}
+
+var IC_CAL = '<svg width="11" height="11" fill="currentColor" viewBox="0 0 16 16"><path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/></svg>';
+var IC_PIN = '<svg width="11" height="11" fill="currentColor" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>';
+var IC_ARR = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+function audClass(a){ return a==='Men'?'ev-aud-men':a==='Women'?'ev-aud-women':'ev-aud-all'; }
+
+/* =========================================================
+   LOAD BANNER
+   Reads banner tab. Finds first row where active=yes.
+   Shows it. Remembers dismissal for the session.
+   ========================================================= */
+function loadBanner() {
+    fetchSheet(SHEETS.banner, function(rows) {
+        var row = null;
+        for (var i = 0; i < rows.length; i++) {
+            if (rows[i].active === 'yes') { row = rows[i]; break; }
+        }
+        if (!row) return;
+        var key = 'bdismissed_' + (row.message || '').substring(0, 30);
+        if (sessionStorage.getItem(key)) return;
+        document.getElementById('announceText').innerHTML = row.message || '';
+        if (row.urgency === 'urgent') document.getElementById('announceInner').classList.add('urgent');
+        var linkEl = document.getElementById('announceLink');
+        if (row.link_text && row.link_url) {
+            linkEl.textContent = row.link_text;
+            linkEl.href = row.link_url;
+            linkEl.style.display = 'flex';
+            linkEl.innerHTML += ' ' + IC_ARR;
+        }
+        var banner = document.getElementById('announceBanner');
+        banner.classList.remove('hidden');
+        syncNav();
+        document.getElementById('announceClose').addEventListener('click', function() {
+            banner.classList.add('hidden');
+            sessionStorage.setItem(key, '1');
+            setTimeout(syncNav, 420);
+        });
+    });
+}
+
+/* =========================================================
+   LOAD EVENTS
+   Reads events tab. Splits into featured, upcoming, ongoing.
+   Falls back to hardcoded defaults if sheet not configured.
+   ========================================================= */
+function loadEvents() {
+    fetchSheet(SHEETS.events, function(rows) {
+        if (!rows.length) {
+            rows = [
+                {id:'e1',title:'UMIS Iftar',date:'Thursday 5th March',time:'6:30 PM – 8pm',location:'South Lawn',description:'Break your fast with fellow students during the blessed month of Ramadan.',rsvp_link:'https://www.trybooking.com/events/landing/1538433',image_url:'',category:'Community',audience:'All',status:'upcoming',featured:'yes'},
+                {id:'e2',title:'Beyond the Self',date:'Every Friday',time:'3pm',location:'Sisters Musallah',description:'Lecture series with Dr. Ovamir Anjum on the Quranic vision of the Muslim community.',rsvp_link:'',image_url:'',category:'Spiritual',audience:'All',status:'ongoing',featured:'no'},
+                {id:'e3',title:'Roots Circle',date:'Every Friday',time:'3pm',location:'A Room',description:'Weekly Islamic study circle for discussions on faith, community, and personal growth.',rsvp_link:'',image_url:'',category:'Spiritual',audience:'All',status:'ongoing',featured:'no'}
+            ];
+        }
+        var grid = document.getElementById('eventsGrid');
+        var feat = null, upcoming = [], ongoing = [];
+        for (var i = 0; i < rows.length; i++) {
+            var r = rows[i];
+            if (r.featured === 'yes' && r.status !== 'past') { feat = r; }
+            else if (r.status === 'upcoming' && upcoming.length < 2) { upcoming.push(r); }
+            else if (r.status === 'ongoing') { ongoing.push(r); }
+        }
+        if (!feat && !upcoming.length) {
+            grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:3rem;font-family:\'Cormorant Garamond\',serif;font-style:italic;color:var(--w45)">No upcoming events — check back soon.</div>';
+        } else {
+            var html = '';
+            if (feat) {
+                var img = feat.image_url ? '<div class="ev-img"><img src="'+feat.image_url+'" alt="'+feat.title+'"></div>' : '<div class="ev-img"><div class="ev-img-icon">🕌</div></div>';
+                var rsvp = feat.rsvp_link ? '<a href="'+feat.rsvp_link+'" class="btn-rsvp" target="_blank" rel="noopener">RSVP '+IC_ARR+'</a>' : '';
+                html += '<div class="ev-featured reveal">'+img+'<div class="ev-body"><div class="ev-meta-row"><div class="ev-tag">'+feat.category+'</div><div class="ev-audience '+audClass(feat.audience||'All')+'">'+( feat.audience||'All')+'</div></div><h3 class="ev-title">'+feat.title+'</h3><div class="ev-details"><span class="ev-detail gold">'+IC_CAL+' '+feat.date+(feat.time?' · '+feat.time:'')+'</span><span class="ev-detail">'+IC_PIN+' '+feat.location+'</span></div><p class="ev-desc">'+feat.description+'</p>'+rsvp+'</div></div>';
+            }
+            if (upcoming.length) {
+                html += '<div class="ev-stack">';
+                for (var j = 0; j < upcoming.length; j++) {
+                    var ev = upcoming[j];
+                    var cta = ev.rsvp_link ? '<a href="'+ev.rsvp_link+'" class="ec-link" target="_blank">RSVP '+IC_ARR+'</a>' : '<span class="ec-link">Learn More '+IC_ARR+'</span>';
+                    html += '<div class="ev-card reveal rd'+(j+1)+'"><div class="ec-tags"><div class="ec-cat">'+ev.category+'</div><div class="ev-audience '+audClass(ev.audience||'All')+'" style="font-size:.5rem;padding:.15rem .45rem;">'+( ev.audience||'All')+'</div></div><div class="ec-title">'+ev.title+'</div><div class="ec-detail">'+IC_CAL+' '+ev.date+(ev.time?' · '+ev.time:'')+' · '+IC_PIN+' '+ev.location+'</div><p class="ec-desc">'+ev.description+'</p>'+cta+'</div>';
+                }
+                html += '</div>';
+            } else {
+                grid.style.gridTemplateColumns = '1fr';
+            }
+            grid.innerHTML = html;
+            var newReveal = grid.querySelectorAll('.reveal');
+            for (var k = 0; k < newReveal.length; k++) revealObs.observe(newReveal[k]);
+        }
+        if (ongoing.length) {
+            document.getElementById('ongoingSection').style.display = 'block';
+            var oc = document.getElementById('ongoingCards');
+            var ohtml = '';
+            for (var m = 0; m < ongoing.length; m++) {
+                var oe = ongoing[m];
+                var octa = oe.rsvp_link ? '<a href="'+oe.rsvp_link+'" class="ong-link" target="_blank">RSVP '+IC_ARR+'</a>' : '<span class="ong-link">Learn More '+IC_ARR+'</span>';
+                ohtml += '<div class="ong-card reveal"><div class="ong-cat">'+oe.category+' <div class="ev-audience '+audClass(oe.audience||'All')+'" style="font-size:.5rem;padding:.15rem .4rem;display:inline-flex;">'+( oe.audience||'All')+'</div></div><div class="ong-title">'+oe.title+'</div><div class="ong-detail">'+IC_CAL+' '+oe.date+(oe.time?' · '+oe.time:'')+' · '+IC_PIN+' '+oe.location+'</div>'+octa+'</div>';
+            }
+            oc.innerHTML = ohtml;
+            var ocReveal = oc.querySelectorAll('.reveal');
+            for (var n = 0; n < ocReveal.length; n++) revealObs.observe(ocReveal[n]);
+        }
+    });
+}
+
+/* =========================================================
+   LOAD STATEMENTS
+   Shows most recent published announcement on homepage.
+   Full list on statements.html.
+   ========================================================= */
+function loadStatements() {
+    fetchSheet(SHEETS.announcements, function(rows) {
+        var published = rows.filter(function(r){ return r.published === 'yes'; });
+        if (!published.length) return;
+        var latest = published[0];
+        var total  = published.length;
+        var parts  = (latest.date || '').split(' ');
+        var day    = parts[0] || '';
+        var month  = parts.slice(1).join(' ') || latest.date || '';
+        var cardHref = latest.link_url || 'statements.html';
+        var target   = latest.link_url ? ' target="_blank" rel="noopener"' : '';
+        document.getElementById('statementCard').innerHTML =
+            '<a href="'+cardHref+'" class="statement-card"'+target+'>'+
+            '<div class="statement-layout">'+
+            '<div class="statement-date-col"><div class="statement-date-day">'+day+'</div><div class="statement-date-month">'+month+'</div></div>'+
+            '<div class="statement-divider"></div>'+
+            '<div class="statement-body"><div class="statement-eyebrow">Society Statement</div><div class="statement-title">'+latest.title+'</div><div class="statement-excerpt">'+latest.body+'</div></div>'+
+            '<div class="statement-arrow">'+IC_ARR+'</div>'+
+            '</div>'+
+            '<div class="statement-footer">'+
+            '<div class="statement-count">'+(total > 1 ? (total-1)+' more statement'+(total>2?'s':'')+' from UMIS' : 'View all statements')+'</div>'+
+            '<a href="statements.html" class="statement-all-link" onclick="event.stopPropagation()">All statements '+IC_ARR+'</a>'+
+            '</div></a>';
+        document.getElementById('statementSection').style.display = 'block';
+        revealObs.observe(document.getElementById('statementCard'));
+    });
+}
+
+/* =========================================================
+   SCROLL REVEAL
+   ========================================================= */
+var revealObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
+    });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(function(el){ revealObs.observe(el); });
+
+/* Chapter word bloom */
+var wordEl = document.getElementById('chapterWord');
+new IntersectionObserver(function(entries) {
+    if (entries[0].isIntersecting) wordEl.classList.add('lit');
+}, { threshold: 0.2 }).observe(wordEl);
+
+/* =========================================================
+   NAV + BANNER SYNC
+   ========================================================= */
+var nav      = document.getElementById('mainnav');
+var heroMain = document.getElementById('heroMain');
+var banner   = document.getElementById('announceBanner');
+function syncNav() {
+    var h = banner.classList.contains('hidden') ? 0 : banner.offsetHeight;
+    nav.style.top = h + 'px';
+    heroMain.style.paddingTop = (h + 80) + 'px';
+}
+syncNav();
+window.addEventListener('scroll', function() {
+    nav.classList.toggle('scrolled', window.scrollY > 80);
+}, { passive: true });
+
+/* =========================================================
+   MOBILE NAV
+   ========================================================= */
+var mmt = document.getElementById('mobileToggle');
+var mm  = document.getElementById('mobileMenu');
+var nov = document.getElementById('navOverlay');
+function toggleNav() {
+    var open = mm.classList.toggle('open');
+    nov.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+    var spans = mmt.querySelectorAll('span');
+    if (open) {
+        spans[0].style.transform = 'rotate(45deg) translate(7px,7px)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'rotate(-45deg) translate(6px,-6px)';
+    } else {
+        spans[0].style.transform = '';
+        spans[1].style.opacity = '';
+        spans[2].style.transform = '';
+    }
+}
+mmt.addEventListener('click', toggleNav);
+nov.addEventListener('click', toggleNav);
+mm.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', toggleNav); });
+
+/* =========================================================
+   CURSOR
+   ========================================================= */
+var curEl = document.getElementById('cursor');
+var ringEl = document.getElementById('cursorRing');
+var mx = 0, my = 0;
+document.addEventListener('mousemove', function(e) {
+    mx = e.clientX; my = e.clientY;
+    curEl.style.left = mx + 'px';
+    curEl.style.top  = my + 'px';
+});
+(function loop() {
+    ringEl.style.left = mx + 'px';
+    ringEl.style.top  = my + 'px';
+    requestAnimationFrame(loop);
+})();
+
+/* =========================================================
+   SLIDESHOW
+   ========================================================= */
+var cs = 0;
+var slides = document.querySelectorAll('.slide');
+var sdots  = document.querySelectorAll('.dot');
+var slideTimer;
+function goSlide(n) {
+    slides[cs].classList.remove('active');
+    if (sdots[cs]) sdots[cs].classList.remove('active');
+    cs = (n + slides.length) % slides.length;
+    slides[cs].classList.add('active');
+    if (sdots[cs]) sdots[cs].classList.add('active');
+    clearInterval(slideTimer);
+    slideTimer = setInterval(function(){ stepSlide(1); }, 5000);
+}
+function stepSlide(d) { goSlide(cs + d); }
+slideTimer = setInterval(function(){ stepSlide(1); }, 5000);
+
+/* =========================================================
+   PRAYER TIMES
+   ========================================================= */
+function addMins(t, m) {
+    var p = t.split(':').map(Number), d = new Date();
+    d.setHours(p[0], p[1] + m, 0);
+    return (d.getHours()+'').padStart(2,'0') + ':' + (d.getMinutes()+'').padStart(2,'0');
+}
+function fmt12(t) {
+    var p = t.split(':'), h = +p[0];
+    return (h % 12 || 12) + ':' + p[1] + ' ' + (h >= 12 ? 'PM' : 'AM');
+}
+function until(t) {
+    var now = new Date(), p = t.split(':').map(Number), g = new Date();
+    g.setHours(p[0], p[1], 0, 0);
+    if (g < now) g.setDate(g.getDate() + 1);
+    var d = g - now, hh = Math.floor(d / 3600000), mm = Math.floor((d % 3600000) / 60000);
+    return hh ? 'in ' + hh + 'h ' + mm + 'm' : 'in ' + mm + 'm';
+}
+function nextP(tm) {
+    var now = new Date();
+    var cur = (now.getHours()+'').padStart(2,'0') + ':' + (now.getMinutes()+'').padStart(2,'0');
+    var off = { Fajr:30, Dhuhr:5, Asr:5, Maghrib:6, Isha:5 };
+    var ps  = ['Fajr','Dhuhr','Asr','Maghrib','Isha'];
+    for (var i = 0; i < ps.length; i++) {
+        var iq = addMins(tm[ps[i]], off[ps[i]]);
+        if (iq > cur) return { name: ps[i], iqama: iq };
+    }
+    return { name: 'Fajr', iqama: addMins(tm.Fajr, 30), tom: true };
+}
+var pxhr = new XMLHttpRequest();
+pxhr.open('GET', 'https://corsproxy.io/?' + encodeURIComponent('https://api.aladhan.com/v1/timings?latitude=-37.8136&longitude=144.9631&method=3'));
+pxhr.onload = function() {
+    try {
+        var data = JSON.parse(pxhr.responseText);
+        var p = nextP(data.data.timings);
+        document.getElementById('prayerVal').innerHTML =
+            '<span class="g">' + p.name + ' &middot; ' + fmt12(p.iqama) + '</span>' +
+            '<span style="font-size:.8rem;color:var(--w45);font-family:\'Poppins\',sans-serif;margin-left:.5rem;">' + until(p.iqama) + (p.tom ? ' (tomorrow)' : '') + '</span>';
+    } catch(e) {
+        document.getElementById('prayerVal').innerHTML = '<span class="g">Prayer times unavailable</span>';
+    }
+};
+pxhr.onerror = function() {
+    document.getElementById('prayerVal').innerHTML = '<span class="g">Prayer times unavailable</span>';
+};
+pxhr.send();
+
+/* =========================================================
+   INIT
+   ========================================================= */
+loadBanner();
+loadEvents();
+loadStatements();
+</script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rumaysa Fatima</title>
+    <title>All projects</title>
     <link rel="icon" href="RumyLogo.png" type="image/png">
     <link href='https://fonts.googleapis.com/css?family=Labrada' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
@@ -29,10 +29,6 @@
         line-height: 1;
         cursor: none;
         }   
-
-        html, body {
-          overflow-x: hidden;
-        }
 
         /* Custom cursor */
         .cursor {
@@ -90,78 +86,6 @@
           transition: width 0.1s ease;
         }
 
-
-        /* Background circles inside scrollable flow */
-        .background-circles {
-          position: absolute; /* scrolls with page */
-          top: 0;
-          left: 0;
-          width: 100%;
-          pointer-events: none;
-          z-index: -1;
-        }
-
-        .circle {
-          position: absolute;
-          border-radius: 80%;
-          filter: blur(80px);
-          opacity: 0.4;
-          animation: move 5s ease-in-out infinite alternate; /* faster motion */
-        }
-
-        /* Custom circle positions */
-        .circle1 {
-          width: 400px;
-          height: 400px;
-          background-color: #fff;
-          top: -150px;     /* top right */
-          right: -120px;
-            --color1: #ffffff;
-            --color2: #5E4545;
-          animation-delay: 2s;
-          overflow: hidden;
-        }
-
-        .circle2 {
-          width: 600px;
-          height: 600px;
-          background-color: #5E4545;
-          top: 250px;    /* middle left */
-          left: -100px;
-          --color1: #5E4545;
-          --color2: #633b48;
-          animation-delay: 1s;
-        }
-
-        .circle3 {
-          width: 400px;
-          height: 400px;
-          background-color:#373737;
-          top: 900px;    /* near footer */
-          right: 10px;
-          --color1: #373737;
-          --color2: #B09B9B;
-          animation-delay: 0s;
-        }
-
-        /* Smooth movement */
-        @keyframes move {
-          0% {
-            transform: translate(0, 0) scale(1);
-            background-color: var(--color1);
-          }
-          50% {
-            transform: translate(20px, 20px) scale(1.05);
-          }
-          100% {
-            transform: translate(120px, -80px) scale(1.1);
-            background-color: var(--color2);
-          }
-        }
-        
-
-
-
         /* Navbar styling */
         .navbar {
         margin-top: 20px;
@@ -194,57 +118,31 @@
         background: rgba(196, 156, 169, 0.6);
         }
 
-        #home {
-          min-height: 100vh;
-        }
-
-
-        /* Intro text section */
-        .intro {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 250px 20px 80px;
-        }
-
-        .intro-text {
-        border-left: 2px solid #f5f5f5;
-        padding-left: 20px;
-        max-width: 500px;
-        height: 130px;
-        }
-
-        .intro-text h1 {
-        font-size: 30px;
-        margin-bottom: 10px;
-        font-family: labrada;
-        font-weight: 300;
-        }
-
-        .intro-text p {
-        font-size: 16px;
-        margin-bottom: 4px;
-        color: #cccccc;
-        font-family: lato;
+        h1 {
+            font-family: 'Labrada', serif;
+            font-size: 2.8rem;
+            font-weight: 300;
+            margin: 80px 0 20px;
+            text-align: center;
+            line-height: 1.2;
+            margin-bottom: 60px;
         }
 
         /* Projects section */
         .projects {
         gap: 40px;
-        z-index: 1; /* ensure projects are above background circles */
+        z-index: 1; 
         margin-bottom: 300px;
-
         }
 
-          .project-card {
-          display: flex;
+        .project-card {
+          display: grid;
           flex-direction: column;
           justify-content: space-between;
           background-color: rgba(128, 128, 128, 0.2);
           backdrop-filter: blur(40px);
           padding: 0;
           width: 280px;
-        
           overflow: hidden;
           transition: transform 0.3s ease;
           box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
@@ -257,10 +155,10 @@
         }
 
         .project-grid {
-          display: flex;
+          display: grid;
+          grid-template-columns: repeat(3, 280px);
           justify-content: center;
           gap: 3rem;
-          flex-wrap: wrap;
         }
 
         .project-card:hover {
@@ -303,73 +201,6 @@
           width: 20px;
           margin-left: auto;
         }
-
-        /* Footer */
-        .contact {
-        text-align: center;
-        padding: 60px 20px;
-        color: #f5f5f5;
-         font-size: 16px;
-         z-index: 1;
-        }
-
-        .contact-links {
-        margin-top: 12px;
-        margin-bottom: 28px;
-        }
-
-        .contact-links a {
-        margin: 0 10px;
-        text-decoration: none;
-        font-size: 14px;
-        transition: color 0.3s ease;
-        color:#B09B9B;
-        }
-
-        .contact-links a:hover {
-        color: #f5f5f5;
-        }
-
-        /* Scroll animation */
-
-        .wrapper {
-        width: 100%;
-        height: 18vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .wrapper .box span {
-        width: 15px;
-        height: 15px;
-        display: block;
-        border-right: 4px solid #B09B9B;
-        border-bottom: 4px solid #B09B9B;
-        transform: rotate(45deg);
-        animation: animate 3s infinite;
-      }
-
-      .wrapper .box span:nth-child(2) {
-        animation-delay: -0.2s;
-      }
-
-      .wrapper .box span:nth-child(3) {
-        animation-delay: -0.4s;
-      }
-
-      @keyframes animate {
-        0% {
-          opacity: 0;
-        }
-        50% {
-          opacity: 1;
-          transform: rotate(45deg) translate(10px, 10px);
-        }
-        100% {
-          opacity: 0;
-        }
-      }
     </style>
 </head>
 <body>
@@ -380,48 +211,19 @@
   <!-- Scroll progress bar -->
   <div class="scroll-progress" id="scrollProgress"></div>
 
-    <div class="background-circles">
-      <div class="circle circle1"></div>
-      <div class="circle circle2"></div>
-      <div class="circle circle3"></div>
-    </div>
-
-   <section id="home">
+  <!--  NAV  -->
   <nav class="navbar">
     <ul class="nav-links">
-      <li><a href="#home" class="active">Home</a></li>
-      <li><a href="allproj.html">Projects</a></li>
+      <li><a href="index.html" >Home</a></li>
+      <li><a href="allproj.html" class="active">Projects</a></li>
       <li><a href="bio.html">Bio</a></li>
       <li><a href="https://drive.google.com/file/d/1zK-V6wiQ66ybcEyTerjuPo0Z_oLqxKnx/view?usp=sharing" target="_blank">CV</a></li>
     </ul>
   </nav>
 
-  <main class="intro">
-    <div class="intro-text">
-      <h1>Rumaysa Fatima</h1>
-      <p>Third year student at Unimelb</p>
-      <p>Passionate learner</p>
-      <p>Generalist</p>
-      <p>Welcome to my portfolio!</p>
-    </div>
-  </main>
-
-  <div class="wrapper">
-    <a href="#projects">
-      <div class="box">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </a>
-  </div>
-</section>
-
-<h2 style="margin-bottom: 20px;" style="margin-top: 60px;">Featured Projects</h2>
-<a href="allproj.html" style="margin-bottom: 50px; color: #B09B9B; font-size: 14px; text-decoration: none;">View all projects →</a>
-
-<section class="projects" id="projects">
-    
+  <h1 class="fade-in">All projects</h1>
+ 
+  <section class="projects" id="projects"> 
     <div class="project-grid">
       <div class="project-card coming-soon">
         <img src="46shots_so.png" alt="Coming Soon" />
@@ -455,6 +257,14 @@
           </span>
         </div>
       </div>
+      <div class="project-card">
+        <img src="722shots_so.png" alt="UMIS website" />
+        <div class="project-info">
+          <small>UMIS website</small>
+          <h3>Coming Soon</h3>
+          <span class="card-icon-none"><img src="icon-park-solid_click.png"></span>
+        </div>
+      </div>
       <!-- <div class="project-card coming-soon">
         <img src="722shots_so.png" alt="Coming Soon" />
         <div class="project-info">
@@ -463,18 +273,9 @@
           <span class="card-icon-none"><img src="icon-park-solid_click.png"></span>
         </div>
       </div>  -->
-      </section>
+    </section>
 
-  <footer class="contact">
-    <p style="margin-bottom: 20px;">Reach out to me</p>
-    <div class="contact-links">
-      <a href="mailto:rumaysa.fatima09@gmail.com">Email</a>
-      <a href="https://www.linkedin.com/in/rumaysa-fatima/">LinkedIn</a>
-      <a href="https://www.behance.net/rumaysa_fatima">Behance</a>
-    </div>
-  </footer>
-
-<script>
+  <script>
   // Custom cursor with particle trail
   const cursor = document.querySelector('.cursor');
   const cursorDot = document.querySelector('.cursor-dot');
@@ -564,43 +365,48 @@
     document.body.style.cursor = 'auto';
   }
 </script>
-
-<!-- <script>
-  const sections = document.querySelectorAll("section[id]");
-  const navLinks = document.querySelectorAll(".nav-links a");
-
-  window.addEventListener("scroll", () => {
-    let current = "home"; // default to Home
-
-    sections.forEach((section) => {
-      const sectionTop = section.offsetTop - 120;
-      const sectionHeight = section.offsetHeight;
-
-      if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-        current = section.getAttribute("id");
-      }
-    });
-
-    navLinks.forEach((link) => {
-      link.classList.remove("active");
-      if (link.getAttribute("href") === `#${current}`) {
-        link.classList.add("active");
-      }
-    });
-  });
-</script>
--->
-<script>
-      const scrollProgress = document.getElementById('scrollProgress');
-      
-      window.addEventListener('scroll', () => {
-        const windowHeight = window.innerHeight;
-        const documentHeight = document.documentElement.scrollHeight - windowHeight;
-        const scrolled = window.scrollY;
-        const progress = (scrolled / documentHeight) * 100;
+    <script>
+        // Scroll progress bar
+        const scrollProgress = document.getElementById('scrollProgress');
         
-        scrollProgress.style.width = progress + '%';
-      });
-</script>
+        window.addEventListener('scroll', () => {
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight - windowHeight;
+            const scrolled = window.scrollY;
+            const progress = (scrolled / documentHeight) * 100;
+            
+            scrollProgress.style.width = progress + '%';
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all animated elements
+        document.addEventListener('DOMContentLoaded', () => {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            const slideElements = document.querySelectorAll('.slide-in');
+            const staggerElements = document.querySelectorAll('.stagger-item');
+            
+            fadeElements.forEach(el => observer.observe(el));
+            slideElements.forEach(el => observer.observe(el));
+            
+            // Stagger animation for items in a group
+            staggerElements.forEach((el, index) => {
+                el.style.transitionDelay = `${index * 0.1}s`;
+                observer.observe(el);
+            });
+        });
+    </script>
+
 </body>
-</html>
