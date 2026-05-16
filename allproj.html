@@ -9,89 +9,58 @@
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
   
     <style>
-      html {
-        scroll-behavior: smooth;
-      }
+      html { scroll-behavior: smooth; }
+
       @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700&display=swap');
-        * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        html, body {
-          overflow-x: hidden;
-        }
+      html, body { overflow-x: hidden; }
 
-        /* Background circles inside scrollable flow */
-        .background-circles {
-          position: absolute; /* scrolls with page */
-          top: 0;
-          left: 0;
-          width: 100%;
-          pointer-events: none;
-          z-index: -1;
-        }
+      .background-circles {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%;
+        pointer-events: none;
+        z-index: -1;
+      }
 
-        .circle {
-          position: absolute;
-          border-radius: 80%;
-          filter: blur(80px);
-          opacity: 0.4;
-          animation: move 5s ease-in-out infinite alternate; /* faster motion */
-        }
+      .circle {
+        position: absolute;
+        border-radius: 80%;
+        filter: blur(80px);
+        opacity: 0.4;
+        animation: move 5s ease-in-out infinite alternate;
+      }
 
-        /* Custom circle positions */
-        .circle1 {
-          width: 400px;
-          height: 400px;
-          background-color: #fff;
-          top: -150px;     /* top right */
-          right: -120px;
-            --color1: #ffffff;
-            --color2: #5E4545;
-          animation-delay: 2s;
-          overflow: hidden;
-        }
+      .circle1 {
+        width: 400px; height: 400px;
+        background-color: #fff;
+        top: -150px; right: -120px;
+        --color1: #ffffff; --color2: #5E4545;
+        animation-delay: 2s; overflow: hidden;
+      }
+      .circle2 {
+        width: 600px; height: 600px;
+        background-color: #5E4545;
+        top: 250px; left: -100px;
+        --color1: #5E4545; --color2: #633b48;
+        animation-delay: 1s;
+      }
+      .circle3 {
+        width: 400px; height: 400px;
+        background-color: #373737;
+        top: 900px; right: 10px;
+        --color1: #373737; --color2: #B09B9B;
+        animation-delay: 0s;
+      }
 
-        .circle2 {
-          width: 600px;
-          height: 600px;
-          background-color: #5E4545;
-          top: 250px;    /* middle left */
-          left: -100px;
-          --color1: #5E4545;
-          --color2: #633b48;
-          animation-delay: 1s;
-        }
+      @keyframes move {
+        0%   { transform: translate(0, 0) scale(1); background-color: var(--color1); }
+        50%  { transform: translate(20px, 20px) scale(1.05); }
+        100% { transform: translate(120px, -80px) scale(1.1); background-color: var(--color2); }
+      }
 
-        .circle3 {
-          width: 400px;
-          height: 400px;
-          background-color:#373737;
-          top: 900px;    /* near footer */
-          right: 10px;
-          --color1: #373737;
-          --color2: #B09B9B;
-          animation-delay: 0s;
-        }
-
-        /* Smooth movement */
-        @keyframes move {
-          0% {
-            transform: translate(0, 0) scale(1);
-            background-color: var(--color1);
-          }
-          50% {
-            transform: translate(20px, 20px) scale(1.05);
-          }
-          100% {
-            transform: translate(120px, -80px) scale(1.1);
-            background-color: var(--color2);
-          }
-        }
-
-        body {
+      body {
         font-family: lato;
         color: #f5f5f5;
         background: #000000;
@@ -100,191 +69,149 @@
         align-items: center;
         line-height: 1;
         cursor: none;
-        }   
+      }
 
-        /* Custom cursor */
-        .cursor {
-          position: fixed;
-          width: 20px;
-          height: 20px;
-          border: 1.5px solid #B09B9B;
-          border-radius: 50%;
-          pointer-events: none;
-          z-index: 9999;
-          transition: transform 0.15s ease;
-          mix-blend-mode: difference;
-        }
+      /* ── CURSOR ── */
+      .cursor {
+        position: fixed; width: 20px; height: 20px;
+        border: 1.5px solid #B09B9B; border-radius: 50%;
+        pointer-events: none; z-index: 9999;
+        transition: width 0.2s ease, height 0.2s ease,
+                    border-radius 0.2s ease, border-color 0.2s ease,
+                    background 0.2s ease, transform 0.15s ease;
+        mix-blend-mode: difference;
+      }
+      .cursor-dot {
+        position: fixed; width: 6px; height: 6px;
+        background-color: #B09B9B; border-radius: 50%;
+        pointer-events: none; z-index: 9999;
+        transition: transform 0.1s ease, opacity 0.15s ease;
+      }
+      .trail-particle {
+        position: fixed; pointer-events: none; border-radius: 50%;
+        z-index: 9998; animation: fadeOut 0.8s ease-out forwards;
+      }
+      @keyframes fadeOut {
+        0%   { opacity: 0.7; transform: scale(1); }
+        100% { opacity: 0;   transform: scale(0.3); }
+      }
 
-        .cursor-dot {
-          position: fixed;
-          width: 6px;
-          height: 6px;
-          background-color: #B09B9B;
-          border-radius: 50%;
-          pointer-events: none;
-          z-index: 9999;
-          transition: transform 0.1s ease;
-        }
-
-        /* Cursor trail particles */
-        .trail-particle {
-          position: fixed;
-          pointer-events: none;
-          border-radius: 50%;
-          z-index: 9998;
-          animation: fadeOut 0.8s ease-out forwards;
-        }
-
-        @keyframes fadeOut {
-          0% {
-            opacity: 0.7;
-            transform: scale(1);
-          }
-          100% {
-            opacity: 0;
-            transform: scale(0.3);
-          }
-        }
-
-        /* Scroll progress indicator */
-        .scroll-progress {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 0%;
-          height: 3px;
-          background: linear-gradient(90deg, #A78989, #633B48);
-          z-index: 1000;
-          transition: width 0.1s ease;
-        }
-
-        /* Navbar styling */
-        .navbar {
-        margin-top: 20px;
+      /* ── PILL CURSOR ── */
+      .cursor-pill {
         position: fixed;
-        top: 0;
-        z-index: 999; 
-        }
-
-        .nav-links {
-        list-style: none;
-        display: flex;
-        gap: 10px;
-        padding: 10px 20px;
-        background: rgba(176, 176, 176, 0.39);
-        border-radius: 100px;
-        backdrop-filter: blur(40px);
-        }
-
-        .nav-links a {
-        text-decoration: none;
+        font-size: 10px;
         color: #f5f5f5;
-        padding: 6px 14px;
-        border-radius: 90px;
-        font-size: 14px;
-        transition:  0.3s ease;
-        }
+        white-space: nowrap;
+        pointer-events: none;
+        z-index: 10000;
+        opacity: 0;
+        /* centres over the cursor position */
+        transform: translate(-50%, -50%);
+        letter-spacing: 1.2px;
+        transition: opacity 0.15s ease;
+        /* readable over any image */
+        background: rgba(15, 8, 10, 0.82);
+        backdrop-filter: blur(6px);
+        border: 1px solid rgba(167, 137, 137, 0.45);
+        border-radius: 20px;
+        padding: 7px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+      }
 
-        .nav-links a:hover,
-        .nav-links a.active {
-        background: rgba(196, 156, 169, 0.6);
-        }
+      /* ── COMING SOON PILL ── */
+      .cursor-pill-soon {
+        position: fixed;
+        font-size: 10px;
+        color: #B09B9B;
+        white-space: nowrap;
+        pointer-events: none;
+        z-index: 10000;
+        opacity: 0;
+        transform: translate(-50%, -50%);
+        letter-spacing: 1.2px;
+        transition: opacity 0.15s ease;
+        background: rgba(15, 8, 10, 0.75);
+        backdrop-filter: blur(6px);
+        border: 1px solid rgba(176, 155, 155, 0.25);
+        border-radius: 20px;
+        padding: 7px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+      }
 
-        h1 {
-            font-family: 'Labrada', serif;
-            font-size: 2.8rem;
-            font-weight: 300;
-            margin: 80px 0 20px;
-            text-align: center;
-            line-height: 1.2;
-            margin-bottom: 60px;
-        }
+      /* ── SCROLL PROGRESS ── */
+      .scroll-progress {
+        position: fixed; top: 0; left: 0; width: 0%; height: 3px;
+        background: linear-gradient(90deg, #A78989, #633B48);
+        z-index: 1000; transition: width 0.1s ease;
+      }
 
-        /* Projects section */
-        .project-card {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          background-color: rgba(128, 128, 128, 0.2);
-          backdrop-filter: blur(40px);
-          padding: 0;
-          width: 280px;
-          overflow: hidden;
-          transition: transform 0.3s ease;
-          box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
-        }
- 
-        .projects h2 {
-          margin-bottom: 2rem;
-          font-size: 1.5rem;
-          align-items: center;
-        }
- 
-        .project-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 280px);
-          justify-content: center;
-          gap: 3rem;
-        }
- 
-        @media (max-width: 960px) {
-          .project-grid {
-            grid-template-columns: repeat(2, 280px);
-          }
-        }
- 
-        @media (max-width: 640px) {
-          .project-grid {
-            grid-template-columns: 1fr;
-            width: 100%;
-            max-width: 340px;
-            gap: 1.5rem;
-          }
-          .project-card {
-            width: 100%;
-          }
-        }
- 
-        .project-card:hover {
-          transform: translateY(-5px);
-        }
- 
-        .project-card img {
-          width: 100%;
-          height: auto;
-          display: block;
-        }
- 
-        .project-info {
-          padding: 1rem;
-          text-align: left;
-          line-height: 20px;
-        }
- 
-        .project-info small {
-          color: #B09B9B;
-        }
- 
-          .card-icon-open {
-          display: block;
-          text-align: right;
-          margin-top: 20px;
-          font-size: 18px;
-          color: #fff;
-          width: 20px;
-          margin-left: auto;
-        }
- 
-        .card-icon-none {
-          display: block;
-          text-align: right;
-          margin-top: 20px;
-          font-size: 18px;
-          color: #fff;
-          opacity: 0.4;
-          width: 20px;
-          margin-left: auto;
-        }
+      /* ── NAV ── */
+      .navbar { margin-top: 20px; position: fixed; top: 0; z-index: 999; }
+      .nav-links {
+        list-style: none; display: flex; gap: 10px; padding: 10px 20px;
+        background: rgba(176, 176, 176, 0.39); border-radius: 100px; backdrop-filter: blur(40px);
+      }
+      .nav-links a {
+        text-decoration: none; color: #f5f5f5; padding: 6px 14px;
+        border-radius: 90px; font-size: 14px; transition: 0.3s ease;
+      }
+      .nav-links a:hover, .nav-links a.active { background: rgba(196, 156, 169, 0.6); }
+
+      h1 {
+        font-family: 'Labrada', serif;
+        font-size: 2.8rem; font-weight: 300;
+        margin: 80px 0 60px; text-align: center; line-height: 1.2;
+      }
+
+      /* ── PROJECT CARDS ── */
+      .project-card {
+        display: flex; flex-direction: column; justify-content: space-between;
+        background-color: rgba(128, 128, 128, 0.2);
+        backdrop-filter: blur(40px);
+        padding: 0; width: 280px; overflow: hidden;
+        transition: transform 0.3s ease;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+      }
+      .project-card:hover { transform: translateY(-5px); }
+      .project-card img { width: 100%; height: auto; display: block; }
+
+      /* coming-soon cards sit at reduced opacity and don't lift */
+      .project-card.coming-soon { opacity: 0.5; }
+      .project-card.coming-soon:hover { transform: none; }
+
+      .project-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 280px);
+        justify-content: center;
+        gap: 3rem;
+      }
+      @media (max-width: 960px) { .project-grid { grid-template-columns: repeat(2, 280px); } }
+      @media (max-width: 640px) {
+        .project-grid { grid-template-columns: 1fr; width: 100%; max-width: 340px; gap: 1.5rem; }
+        .project-card { width: 100%; }
+      }
+
+      .project-info { padding: 1rem; text-align: left; line-height: 20px; }
+      .project-info small { color: #B09B9B; }
+
+      .card-icon-open {
+        display: block; text-align: right; margin-top: 20px;
+        font-size: 18px; color: #fff; width: 20px; margin-left: auto;
+      }
+      .card-icon-none {
+        display: block; text-align: right; margin-top: 20px;
+        font-size: 18px; color: #fff; opacity: 0.4; width: 20px; margin-left: auto;
+      }
+
+      /* fade-in utility */
+      .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+      .fade-in.visible { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
@@ -293,214 +220,208 @@
       <div class="circle circle1"></div>
       <div class="circle circle2"></div>
       <div class="circle circle3"></div>
-    </div>    
-  <!-- Custom cursor elements -->
-  <div class="cursor"></div>
-  <div class="cursor-dot"></div>
+    </div>
 
-  <!-- Scroll progress bar -->
-  <div class="scroll-progress" id="scrollProgress"></div>
+    <div class="cursor"></div>
+    <div class="cursor-dot"></div>
+    <!-- pill for viewable cards -->
+    <div class="cursor-pill" id="cursor-pill">view →</div>
+    <!-- pill for coming-soon cards -->
+    <div class="cursor-pill-soon" id="cursor-pill-soon">coming soon</div>
 
-  <!--  NAV  -->
-  <nav class="navbar">
-    <ul class="nav-links">
-      <li><a href="index.html" >Home</a></li>
-      <li><a href="allproj.html" class="active">Projects</a></li>
-      <li><a href="bio.html">Bio</a></li>
-      <li><a href="https://drive.google.com/file/d/1zK-V6wiQ66ybcEyTerjuPo0Z_oLqxKnx/view?usp=sharing" target="_blank">CV</a></li>
-    </ul>
-  </nav>
+    <div class="scroll-progress" id="scrollProgress"></div>
 
-  <h1 class="fade-in">All projects</h1>
- 
-  <section class="projects" id="projects"> 
-    <div class="project-grid">
-      <div class="project-card">
-        <a href="CVStudio.html" style="text-decoration: none; color: white;">
-        <img src="46shots_so.png" alt="Coming Soon" />
-        <div class="project-info">
-          <small>UX Project</small>
-          <h3>AI CV Studio</h3>
-          <span class="card-icon-open">
-              <img src="icon-park-solid_click.png">
-          </span>
+    <nav class="navbar">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="allproj.html" class="active">Projects</a></li>
+        <li><a href="bio.html">Bio</a></li>
+        <li><a href="https://drive.google.com/file/d/1zK-V6wiQ66ybcEyTerjuPo0Z_oLqxKnx/view?usp=sharing" target="_blank">CV</a></li>
+      </ul>
+    </nav>
+
+    <h1 class="fade-in">All projects</h1>
+
+    <section class="projects" id="projects">
+      <div class="project-grid">
+
+        <div class="project-card" data-live="true">
+          <a href="CVStudio.html" style="text-decoration:none;color:white;">
+            <img src="46shots_so.png" alt="AI CV Studio" />
+            <div class="project-info">
+              <small>UX Project</small>
+              <h3>AI CV Studio</h3>
+              <span class="card-icon-open"><img src="icon-park-solid_click.png"></span>
+            </div>
+          </a>
         </div>
-        </a>
-      </div>
-      <div class="project-card">
-        <a href="oudcollectioncs.html" style="text-decoration: none; color: white;">
+
+        <div class="project-card" data-live="true">
+          <a href="oudcollectioncs.html" style="text-decoration:none;color:white;">
             <img src="324shots_so.png" alt="Oud Collection Redesign" />
             <div class="project-info">
-            <small>UI Project</small>
-            <h3>Oud Collection Redesign</h3>
-            <span class="card-icon-open">
-                <img src="icon-park-solid_click.png"></a>
-            </span>
+              <small>UI Project</small>
+              <h3>Oud Collection Redesign</h3>
+              <span class="card-icon-open"><img src="icon-park-solid_click.png"></span>
             </div>
-        </a>
-      </div>
-      <div class="project-card">
-        <a href="aipcasestudy.html" style="text-decoration: none; color: white;">
+          </a>
+        </div>
+
+        <div class="project-card" data-live="true">
+          <a href="aipcasestudy.html" style="text-decoration:none;color:white;">
             <img src="722shots_so.png" alt="AIP project" />
             <div class="project-info">
-            <small>Advanced Interface Prototyping</small>
-            <h3>Futures thinking</h3>
-            <span class="card-icon-open">
-                <img src="icon-park-solid_click.png">
-            </span>
+              <small>Advanced Interface Prototyping</small>
+              <h3>Futures thinking</h3>
+              <span class="card-icon-open"><img src="icon-park-solid_click.png"></span>
             </div>
-        </a>
-      </div>
-      <div class="project-card">
-        <img src="255shots_so.png" alt="UMIS website" />
-        <div class="project-info">
-          <small>UMIS website</small>
-          <h3>Coming Soon</h3>
-          <span class="card-icon-none"><img src="icon-park-solid_click.png"></span>
+          </a>
         </div>
-      </div>
-      <div class="project-card coming-soon">
-        <img src="722shots_so.png" alt="Coming Soon" />
-        <div class="project-info">
-          <small>AIP Project</small>
-          <h3>Coming Soon</h3>
-          <span class="card-icon-none"><img src="icon-park-solid_click.png"></span>
+
+        <div class="project-card coming-soon">
+          <img src="255shots_so.png" alt="UMIS website" />
+          <div class="project-info">
+            <small>UMIS website</small>
+            <h3>Coming Soon</h3>
+            <span class="card-icon-none"><img src="icon-park-solid_click.png"></span>
+          </div>
         </div>
-      </div>  
+
+        <div class="project-card coming-soon">
+          <img src="722shots_so.png" alt="Coming Soon" />
+          <div class="project-info">
+            <small>AIP Project</small>
+            <h3>Coming Soon</h3>
+            <span class="card-icon-none"><img src="icon-park-solid_click.png"></span>
+          </div>
+        </div>
+
+      </div>
     </section>
 
   <script>
-  // Custom cursor with particle trail
-  const cursor = document.querySelector('.cursor');
-  const cursorDot = document.querySelector('.cursor-dot');
-  
-  let mouseX = 0, mouseY = 0;
-  let cursorX = 0, cursorY = 0;
-  let dotX = 0, dotY = 0;
+    const cursor    = document.querySelector('.cursor');
+    const cursorDot = document.querySelector('.cursor-dot');
+    const pill      = document.getElementById('cursor-pill');
+    const pillSoon  = document.getElementById('cursor-pill-soon');
 
-  // Color palette matching your theme
-  const colors = ['#B09B9B', '#A78989', '#633B48', '#5E4545', '#C49CA9'];
-  
-  document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    
-    // Create particle trail
-    createParticle(e.clientX, e.clientY);
-  });
+    let mouseX=0, mouseY=0, cursorX=0, cursorY=0, dotX=0, dotY=0;
+    const colors = ['#B09B9B','#A78989','#633B48','#5E4545','#C49CA9'];
 
-  function createParticle(x, y) {
-    const particle = document.createElement('div');
-    particle.className = 'trail-particle';
-    
-    // Random size between 4-10px
-    const size = Math.random() * 6 + 4;
-    particle.style.width = size + 'px';
-    particle.style.height = size + 'px';
-    
-    // Random color from palette
-    const color = colors[Math.floor(Math.random() * colors.length)];
-    particle.style.backgroundColor = color;
-    
-    // Slight random offset for natural look
-    const offsetX = (Math.random() - 0.5) * 20;
-    const offsetY = (Math.random() - 0.5) * 20;
-    
-    particle.style.left = (x + offsetX) + 'px';
-    particle.style.top = (y + offsetY) + 'px';
-    
-    document.body.appendChild(particle);
-    
-    // Remove particle after animation
-    setTimeout(() => {
-      particle.remove();
-    }, 800);
-  }
-
-  // Smooth cursor animation
-  function animateCursor() {
-    // Smooth follow with easing
-    cursorX += (mouseX - cursorX) * 0.15;
-    cursorY += (mouseY - cursorY) * 0.15;
-    
-    dotX += (mouseX - dotX) * 0.25;
-    dotY += (mouseY - dotY) * 0.25;
-    
-    cursor.style.left = cursorX + 'px';
-    cursor.style.top = cursorY + 'px';
-    
-    cursorDot.style.left = dotX + 'px';
-    cursorDot.style.top = dotY + 'px';
-    
-    requestAnimationFrame(animateCursor);
-  }
-  
-  animateCursor();
-
-  // Cursor interactions
-  const interactiveElements = document.querySelectorAll('a, button, .project-card');
-  
-  interactiveElements.forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      cursor.style.transform = 'scale(1.5)';
-      cursorDot.style.transform = 'scale(0)';
+    document.addEventListener('mousemove', e => {
+      mouseX = e.clientX; mouseY = e.clientY;
+      createParticle(e.clientX, e.clientY);
     });
-    
-    el.addEventListener('mouseleave', () => {
-      cursor.style.transform = 'scale(1)';
-      cursorDot.style.transform = 'scale(1)';
+
+    function createParticle(x, y) {
+      const p = document.createElement('div');
+      p.className = 'trail-particle';
+      const size = Math.random() * 6 + 4;
+      p.style.width = p.style.height = size + 'px';
+      p.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      p.style.left = (x + (Math.random()-0.5)*20) + 'px';
+      p.style.top  = (y + (Math.random()-0.5)*20) + 'px';
+      document.body.appendChild(p);
+      setTimeout(() => p.remove(), 800);
+    }
+
+    function animateCursor() {
+      cursorX += (mouseX - cursorX) * 0.15;
+      cursorY += (mouseY - cursorY) * 0.15;
+      dotX    += (mouseX - dotX)    * 0.25;
+      dotY    += (mouseY - dotY)    * 0.25;
+
+      cursor.style.left    = cursorX + 'px';
+      cursor.style.top     = cursorY + 'px';
+      cursorDot.style.left = dotX + 'px';
+      cursorDot.style.top  = dotY + 'px';
+      pill.style.left      = cursorX + 'px';
+      pill.style.top       = cursorY + 'px';
+      pillSoon.style.left  = cursorX + 'px';
+      pillSoon.style.top   = cursorY + 'px';
+
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    /* scale on nav links only */
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursor.style.transform = 'scale(1.5)';
+        cursorDot.style.transform = 'scale(0)';
+      });
+      el.addEventListener('mouseleave', () => {
+        cursor.style.transform = 'scale(1)';
+        cursorDot.style.transform = 'scale(1)';
+      });
     });
-  });
 
-  // Hide custom cursor on touch devices
-  if ('ontouchstart' in window) {
-    cursor.style.display = 'none';
-    cursorDot.style.display = 'none';
-    document.body.style.cursor = 'auto';
-  }
-</script>
-    <script>
-        // Scroll progress bar
-        const scrollProgress = document.getElementById('scrollProgress');
-        
-        window.addEventListener('scroll', () => {
-            const windowHeight = window.innerHeight;
-            const documentHeight = document.documentElement.scrollHeight - windowHeight;
-            const scrolled = window.scrollY;
-            const progress = (scrolled / documentHeight) * 100;
-            
-            scrollProgress.style.width = progress + '%';
-        });
+    function resetCursor() {
+      cursor.style.width        = '20px';
+      cursor.style.height       = '20px';
+      cursor.style.borderRadius = '50%';
+      cursor.style.borderColor  = '#B09B9B';
+      cursor.style.background   = 'transparent';
+      cursor.style.mixBlendMode = 'difference';
+      cursor.style.transform    = 'scale(1)';
+      cursorDot.style.opacity   = '1';
+      pill.style.opacity        = '0';
+      pillSoon.style.opacity    = '0';
+    }
 
-        // Intersection Observer for scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-        
-        // Observe all animated elements
-        document.addEventListener('DOMContentLoaded', () => {
-            const fadeElements = document.querySelectorAll('.fade-in');
-            const slideElements = document.querySelectorAll('.slide-in');
-            const staggerElements = document.querySelectorAll('.stagger-item');
-            
-            fadeElements.forEach(el => observer.observe(el));
-            slideElements.forEach(el => observer.observe(el));
-            
-            // Stagger animation for items in a group
-            staggerElements.forEach((el, index) => {
-                el.style.transitionDelay = `${index * 0.1}s`;
-                observer.observe(el);
-            });
-        });
-    </script>
+    /* live cards → "view →" morph */
+    document.querySelectorAll('.project-card[data-live="true"]').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        cursor.style.width        = '64px';
+        cursor.style.height       = '26px';
+        cursor.style.borderRadius = '20px';
+        cursor.style.borderColor  = '#A78989';
+        cursor.style.background   = 'rgba(167,137,137,0.15)';
+        cursor.style.mixBlendMode = 'normal';
+        cursor.style.transform    = 'scale(1)';
+        cursorDot.style.opacity   = '0';
+        pill.style.opacity        = '1';
+      });
+      card.addEventListener('mouseleave', resetCursor);
+    });
+
+    /* coming-soon cards → "coming soon" muted pill */
+    document.querySelectorAll('.project-card.coming-soon').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        cursor.style.width        = '90px';
+        cursor.style.height       = '26px';
+        cursor.style.borderRadius = '20px';
+        cursor.style.borderColor  = 'rgba(176,155,155,0.3)';
+        cursor.style.background   = 'rgba(15,8,10,0.5)';
+        cursor.style.mixBlendMode = 'normal';
+        cursor.style.transform    = 'scale(1)';
+        cursorDot.style.opacity   = '0';
+        pillSoon.style.opacity    = '1';
+      });
+      card.addEventListener('mouseleave', resetCursor);
+    });
+
+    if ('ontouchstart' in window) {
+      cursor.style.display = cursorDot.style.display = 'none';
+      document.body.style.cursor = 'auto';
+    }
+  </script>
+
+  <script>
+    const scrollProgress = document.getElementById('scrollProgress');
+    window.addEventListener('scroll', () => {
+      const progress = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+      scrollProgress.style.width = progress + '%';
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    });
+  </script>
 
 </body>
+</html>

@@ -4,1530 +4,716 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rumaysa Fatima Bio</title>
   <link rel="icon" href="RumyLogo.png" type="image/png">
-
-  <!--  Google Fonts  -->
   <link href="https://fonts.googleapis.com/css2?family=Labrada:wght@200;400;600&family=Lato:wght@300;400;600&display=swap" rel="stylesheet" />
 
   <style>
-      html {
-        scroll-behavior: smooth;
-      }
-      @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700&display=swap');
-        * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        }
-
-        body {
-        font-family: lato;
-        color: #f5f5f5;
-        background: #000000;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        line-height: 1;
-        cursor: none;
-        } 
-        
-        /* Custom cursor */
-        .cursor {
-          position: fixed;
-          width: 20px;
-          height: 20px;
-          border: 1.5px solid #B09B9B;
-          border-radius: 50%;
-          pointer-events: none;
-          z-index: 9999;
-          transition: transform 0.15s ease;
-          mix-blend-mode: difference;
-        }
-
-        .cursor-dot {
-          position: fixed;
-          width: 7px;
-          height: 7px;
-          background-color: #B09B9B;
-          border-radius: 50%;
-          pointer-events: none;
-          z-index: 9999;
-          transition: transform 0.1s ease;
-        }
-
-        /* Cursor trail particles */
-        .trail-particle {
-          position: fixed;
-          pointer-events: none;
-          border-radius: 50%;
-          z-index: 9998;
-          animation: fadeOut 0.8s ease-out forwards;
-        }
-
-        @keyframes fadeOut {
-          0% {
-            opacity: 0.7;
-            transform: scale(1);
-          }
-          100% {
-            opacity: 0;
-            transform: scale(0.3);
-          }
-        }
-
-          /* Horizontal Rule */
-        .section-break {
-        width: 80%;
-        height: 1px;
-        background: #fff;
-        margin: 40px auto;
-        border-radius: 1px;
-        opacity: 0.4;
-        }
-
-    /* Navbar styling */
-        .navbar {
-        margin-top: 20px;
-        position: fixed;
-        top: 0;
-        z-index: 999; 
-        }
-
-        .nav-links {
-        list-style: none;
-        display: flex;
-        gap: 10px;
-        padding: 10px 20px;
-        background: rgba(176, 176, 176, 0.39);
-        border-radius: 100px;
-        backdrop-filter: blur(40px);
-        }
-
-        .nav-links a {
-        text-decoration: none;
-        color: #fff;
-        padding: 6px 14px;
-        border-radius: 90px;
-        font-size: 14px;
-        transition:  0.3s ease;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-        background: rgba(196, 156, 169, 0.6);
-        }
-
-        /* Custom circle positions */
-       .circle1 {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          width: 600px;
-          height: 400px;
-          background-color: #A78989;
-          border-radius: 80%;
-          filter: blur(80px);
-          opacity: 0.5;
-          pointer-events: none;
-          z-index: -1;
-        }
-
-/* Bio Section */
-.bio-section {
-  max-width: 1000px;
-  margin-top: 80px; 
-  padding: 40px 20px;
-  text-align: center;
-}
-
-.bio-section h1 {
-  font-size: 2rem;
-  margin-bottom: 40px;
-  font-family: 'Labrada', serif;
-  font-weight: 700;
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeInUp 1s ease forwards;
-}
-
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.bio-content {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 40px;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Bio Text */
-.bio-text {
-  flex: 1 1 400px;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  padding: 20px;
-  border-radius: 12px;
-  line-height: 1.6;
-  text-align: left;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-}
-
-/* Animation classes for bio paragraphs */
-.bio-paragraph {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  margin-bottom: 24px; /* Compact spacing */
-  position: relative;
-}
-
-.bio-paragraph:last-child {
-  margin-bottom: 0;
-}
-
-.bio-paragraph.animate {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Clean hover effects */
-.bio-paragraph {
-  cursor: default;
-  transition: all 0.3s ease, opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.bio-paragraph:hover {
-  transform: translateY(-2px);
-  color: rgba(255, 255, 255, 0.95);
-}
-
-/* Image Stack Animations */
-.bio-image {
-  flex: 1 1 300px;
-  display: flex;
-  justify-content: center;
-}
-
-.card-stack {
-  position: relative;
-  width: 400px;
-  height: 243px;
-  opacity: 0;
-  transform: translateX(50px) rotate(5deg);
-  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.card-stack.animate {
-  opacity: 1;
-  transform: translateX(0) rotate(0deg);
-  transition-delay: 0.3s;
-}
-
-.card {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.card-stack.animate .card1 {
-  animation: cardFloat1 3s ease-in-out infinite;
-  animation-delay: 0.5s;
-}
-
-.card-stack.animate .card2 {
-  animation: cardFloat2 3s ease-in-out infinite;
-  animation-delay: 1s;
-}
-
-@keyframes cardFloat1 {
-  0%, 100% { transform: rotate(-5.11deg) translateY(0px); }
-  50% { transform: rotate(-5.11deg) translateY(-5px); }
-}
-
-@keyframes cardFloat2 {
-  0%, 100% { transform: rotate(4deg) translateY(0px); }
-  50% { transform: rotate(4deg) translateY(3px); }
-}
-
-.card1 {
-  background: #A78989;
-  transform: rotate(-5.11deg);
-}
-
-.card2 {
-  background: #633B48;
-  transform: rotate(4deg);
-}
-
-.card3 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  overflow: hidden;
-}
-
-.card3 img {
-  transition: transform 0.3s ease;
-}
-
-.card-stack:hover .card3 img {
-  transform: scale(1.05);
-}
-
-/* Scroll progress indicator */
-.scroll-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 0%;
-  height: 3px;
-  background: linear-gradient(90deg, #A78989, #633B48);
-  z-index: 1000;
-  transition: width 0.1s ease;
-}
-
-/* Enhanced loading animation for the entire section */
-.bio-section {
-  opacity: 0;
-  animation: sectionFadeIn 1.5s ease forwards;
-  animation-delay: 0.5s;
-}
-
-@keyframes sectionFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Experience Section */
-.experience-section {
-  max-width: 1000px;
-  margin: 60px auto 0;
-   padding: 0 20px;
-  text-align: center;
-}
-
-.experience-section h1 {
-  font-size: 2rem;
-  margin-bottom: 40px;
-  font-family: 'Labrada', serif;
-  font-weight: 700;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.experience-section h1.animate {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Background band */
-.experience-background {
-  width: 100%;
-  background: rgba(255, 255, 255, 0.08);
-  padding: 40px 0; /* vertical space */
-}
-
-.experience-content {
-  max-width: 1000px;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 40px;
-  align-items: center;
-  justify-content: center;
-  min-height: 200px;
-}
-
-/* Experience Quote */
-.experience-quote {
-  flex: 1 1 350px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.quote-text {
-  font-family: 'Labrada', serif;
-  font-style: italic;
-  font-size: 1.5rem;
-  line-height: 1.4;
-  text-align: left;
-  color: #f5f5f5;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.quote-text.animate {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Experience Text */
-.experience-text {
-  flex: 1 1 400px;
-  text-align: left;
-}
-
-.experience-paragraph {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  margin-bottom: 24px;
-  position: relative;
-  line-height: 1.6;
-}
-
-.experience-paragraph:last-child {
-  margin-bottom: 0;
-}
-
-.experience-paragraph.animate {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-
-/* Responsive */
-@media (max-width: 768px) {
-  .experience-content {
-    flex-direction: column;
-    gap: 40px;
-  }
-  
-  .quote-text {
-    font-size: 1.3rem;
-    text-align: center;
-  }
-  
-  .experience-text {
-    text-align: left;
-  }
-}
-.card-stack.celebrate {
-  animation: celebrateComplete 0.6s ease-in-out;
-}
-
-@keyframes celebrateComplete {
-  0% { transform: translateX(0) rotate(0deg); }
-  50% { transform: translateX(0) rotate(1deg); }
-  100% { transform: translateX(0) rotate(0deg); }
-}
-
-/* Responsive adjustments for individual reveals */
-@media (max-width: 768px) {
-  .bio-content {
-    flex-direction: column;
-  }
-  
-  .card-stack {
-    width: 300px;
-    height: 182px;
-  }
-  
-  .bio-paragraph {
-    transform: translateY(25px);
-    margin-bottom: 20px;
-  }
-}
-
-/* Timeline Section */
-.timeline-section {
-  max-width: 1100px;
-  margin: 80px auto;
-  padding: 60px 20px;
-}
-
-.timeline-container {
-  position: relative;
-}
-
-/* Timeline Header */
-.timeline-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  position: relative;
-  gap: 10px;
-}
-
-.timeline-year,
-.timeline-divider {
-  font-size: 1rem;
-  color: #f5f5f5;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  flex-shrink: 0;
-}
-
-.timeline-year.animate,
-.timeline-divider.animate {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.future-year {
-  color: #A78989;
-}
-
-/* Timeline Line */
-.timeline-line {
-  position: relative;
-  height: 2px;
-  margin: 0 0 40px 0;
-  display: flex;
-}
-
-.timeline-line-past {
-  width: 65%;
-  background: #f5f5f5;
-  height: 100%;
-  opacity: 0;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.timeline-line-future {
-  background: #A78989;
-  height: 100%;
-  opacity: 0;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  transition-delay: 0.9s;
-  width: 35%;
-}
-
-.timeline-line-past.animate {
-  opacity: 1;
-  transform: scaleX(1);
-}
-
-.timeline-line-future.animate {
-  opacity: 1;
-  transform: scaleX(1);
-}
-
-.timeline-divider.today-divider {
-  position: absolute;
-  top: 0;
-  left: 65%;
-  transform: translateX(-50%);
-}
-
-.timeline-year.future-year {
-  color: #fff;
-}
-
-/* Experience Bars */
-.experience-bars {
-  margin-bottom: 60px;
-  position: relative;
-}
-
-.experience-bar {
-  height: 40px;
-  margin-bottom: 20px;
-  border-radius: 4px;
-  position: relative;
-  opacity: 0;
-  transform: translateX(-30px);
-  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  box-sizing: border-box;
-}
-
-.experience-bar.animate {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-/* Bar sizes and colors */
-.bar-large {
-  width: 65%;
-  max-width: 715px;
-  background: rgba(245, 245, 245, 0.9);
-  transition-delay: 0.2s;
-  margin-left: 0;
-  margin-right: auto;
-}
-
-.bar-medium {
-  width: 45%;
-  max-width: 495px;
-  background: rgba(245, 245, 245, 0.8);
-  margin-left: auto;
-  margin-right: calc(35% + 2px);
-  transition-delay: 0.4s;
-}
-
-.bar-small {
-  width: 30%;
-  max-width: 330px;
-  background: rgba(245, 245, 245, 0.7);
-  margin-left: auto;
-  margin-right: calc(35% + 2px);
-  transition-delay: 0.6s;
-}
-
-.bar-future {
-  width: 35%;
-  max-width: 385px;
-  background: #A78989;
-  margin-left: auto;
-  margin-right: 0;
-  transition-delay: 0.8s;
-}
-
-/* Bar labels */
-.experience-bar::before {
-  content: attr(data-title);
-  position: absolute;
-  left: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 0.9rem;
-  color: #333;
-  font-weight: 500;
-  white-space: nowrap;
-}
-
-.bar-future::before {
-  color: #fff;
-}
-
-/* Experience Descriptions */
-.experience-descriptions {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-}
-
-.experience-description {
-  line-height: 1.6;
-  color: #f5f5f5;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.experience-description.animate {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.experience-description:first-child {
-  transition-delay: 0.3s;
-}
-
-.experience-description:last-child {
-  transition-delay: 0.5s;
-}
-
-/* Hover effects */
-.experience-bar {
-  cursor: default;
-  transition: all 0.3s ease, opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.experience-bar:hover {
-  transform: translateX(0) translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-.bar-future:hover {
-  box-shadow: 0 4px 15px rgba(167, 137, 137, 0.3);
-}
-
-/* Mobile Responsive Styles */
-@media (max-width: 768px) {
-  .timeline-section {
-    margin: 40px auto;
-    padding: 40px 15px;
-  }
-
-  /* Responsive Timeline Header */
-  .timeline-header {
-    font-size: 0.85rem;
-    gap: 5px;
-  }
-
-  .timeline-year,
-  .timeline-divider {
-    font-size: 0.85rem;
-  }
-
-  .timeline-year.start-year {
-    min-width: 45px;
-  }
-
-  .timeline-divider.today-divider {
-    position: relative;
-    left: auto;
-    transform: none;
-  }
-
-  /* Ensure bars maintain their layout */
-  .experience-bars {
-    margin-bottom: 40px;
-  }
-
-  .experience-bar {
-    height: 35px;
-    margin-bottom: 15px;
-  }
-
-  .experience-bar::before {
-    font-size: 0.8rem;
-    left: 10px;
-  }
-
-  /* Bars scale proportionally on mobile */
-  .bar-large {
-    width: 65%;
-  }
-
-  .bar-medium {
-    width: 45%;
-  }
-
-  .bar-small {
-    width: 30%;
-  }
-
-  .bar-future {
-    width: 35%;
-  }
-
-  .experience-descriptions {
-    gap: 20px;
-  }
-
-  .experience-description {
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .timeline-year,
-  .timeline-divider {
-    font-size: 0.75rem;
-  }
-
-  .experience-bar {
-    height: 32px;
-  }
-
-  .experience-bar::before {
-    font-size: 0.75rem;
-    left: 8px;
-  }
-
-  .experience-description {
-    font-size: 0.85rem;
-  }
-}
-
-/* ── EXTRACURRICULAR SECTION ── */
-      .extracurricular-section {
-        max-width: 1100px;
-        width: 100%;
-        padding: 60px 20px;
-        text-align: center;
-      }
- 
-      .extracurricular-section h1 {
-        font-size: 2rem;
-        margin-bottom: 50px;
-        font-family: 'Labrada', serif;
-        font-weight: 700;
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      }
-      .extracurricular-section h1.animate { opacity: 1; transform: translateY(0); }
- 
-      .extra-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 24px;
-      }
- 
-      .extra-card {
-        background: rgba(255, 255, 255, 0.06);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 12px;
-        padding: 28px 24px;
-        text-align: left;
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        opacity: 0;
-        transform: translateY(40px);
-        transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                    transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                    border-color 0.3s ease,
-                    box-shadow 0.3s ease;
-        cursor: default;
-      }
- 
-      .extra-card.animate { opacity: 1; transform: translateY(0); }
-      .extra-card:nth-child(1) { transition-delay: 0.1s; }
-      .extra-card:nth-child(2) { transition-delay: 0.2s; }
-      .extra-card:nth-child(3) { transition-delay: 0.3s; }
-      .extra-card:nth-child(4) { transition-delay: 0.15s; }
-      .extra-card:nth-child(5) { transition-delay: 0.25s; }
- 
-      .extra-card:hover {
-        border-color: rgba(167, 137, 137, 0.4);
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-        transform: translateY(-4px);
-      }
- 
-      .extra-tag {
-        font-size: 0.75rem;
-        text-transform: uppercase;
-        letter-spacing: 1.2px;
-        color: #A78989;
-        font-weight: 600;
-        line-height: 1.4;
-      }
- 
-      .extra-title {
-        font-family: 'Labrada', serif;
-        font-size: 1.25rem;
-        font-weight: 600;
-        color: #f5f5f5;
-        line-height: 1.3;
-      }
- 
-      .extra-body {
-        font-size: 0.9rem;
-        color: rgba(245, 245, 245, 0.65);
-        line-height: 1.7;
-        margin-top: auto;
-        padding-top: 8px;
-      }
- 
-      /* Responsive extras */
-      @media (max-width: 900px) {
-        .extra-grid { grid-template-columns: repeat(2, 1fr); }
-      }
-      @media (max-width: 580px) {
-        .extra-grid { grid-template-columns: 1fr; }
-      }
-
-
-/* My Tiny Superpowers Section */
-.superpowers-section {
-  max-width: 1100px;
-  padding: 60px 20px;
-  text-align: center;
-}
-
-.superpowers-section h1 {
-  font-size: 2rem;
-  margin-bottom: 50px;
-  font-family: 'Labrada', serif;
-  font-weight: 700;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.superpowers-section h1.animate {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Skills Grid */
-.superpowers-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 40px;
-  margin-bottom: 60px;
-}
-
-/* Superpower Category */
-.superpower-category {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 16px;
-  padding: 30px 25px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.superpower-category.animate {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.superpower-category:nth-child(1) {
-  transition-delay: 0.1s;
-}
-
-.superpower-category:nth-child(2) {
-  transition-delay: 0.2s;
-}
-
-.superpower-category:nth-child(3) {
-  transition-delay: 0.3s;
-}
-
-/* Category Header */
-.category-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 25px;
-  justify-content: center;
-}
-
-.category-icon {
-  font-size: 1.5rem;
-  opacity: 0.9;
-}
-
-.category-header h3 {
-  font-family: 'Labrada', serif;
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin: 0;
-  color: #f5f5f5;
-}
-
-/* Skills Container */
-.skills-container {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-/* Individual Skill Items */
-.skill-item {
-  text-align: left;
-  opacity: 0;
-  transform: translateX(-20px);
-  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.skill-item.animate {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.skill-item:nth-child(1) { transition-delay: 0.4s; }
-.skill-item:nth-child(2) { transition-delay: 0.5s; }
-.skill-item:nth-child(3) { transition-delay: 0.6s; }
-.skill-item:nth-child(4) { transition-delay: 0.7s; }
-
-.skill-name {
-  display: block;
-  font-size: 0.9rem;
-  margin-bottom: 8px;
-  color: #f5f5f5;
-  font-weight: 400;
-}
-
-/* Skill Bars */
-.skill-bar {
-  width: 100%;
-  height: 6px;
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 3px;
-  overflow: hidden;
-  position: relative;
-}
-
-.skill-progress {
-  height: 100%;
-  background: linear-gradient(90deg, #A78989, #633B48);
-  border-radius: 3px;
-  width: 0%;
-  transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  position: relative;
-}
-
-.skill-progress::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  transform: translateX(-100%);
-  animation: shimmer 1.5s ease-in-out;
-  animation-delay: 1.5s;
-}
-
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
-.skill-item.animate .skill-progress {
-  width: var(--progress-width);
-}
-
-/* Skills Philosophy */
-.skills-philosophy {
-  margin-top: 50px;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.skills-philosophy.animate {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.philosophy-text {
-  max-width: 600px;
-  margin: 0 auto;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  padding: 25px 30px;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.philosophy-text p {
-  font-family: 'Labrada', serif;
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #f5f5f5;
-  margin: 0;
-  font-style: italic;
-}
-
-/* Hover Effects */
-.superpower-category:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
-}
-
-.skill-item:hover .skill-name {
-  color: #A78989;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .superpowers-section {
-    margin: 60px auto;
-    padding: 40px 15px;
-  }
-  
-  .superpowers-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
-    margin-bottom: 40px;
-  }
-  
-  .superpower-category {
-    padding: 25px 20px;
-  }
-  
-  .philosophy-text {
-    padding: 20px 25px;
-  }
-  
-  .philosophy-text p {
-    font-size: 0.95rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .superpowers-section h1 {
-    font-size: 1.8rem;
-    margin-bottom: 40px;
-  }
-  
-  .category-header {
-    justify-content: flex-start;
-  }
-  
-  .skills-container {
-    gap: 18px;
-  }
-  
-  .philosophy-text {
-    padding: 18px 20px;
-  }
-}
-
-
-/* Footer */
-footer{margin:4rem 0 2rem;text-align:center;font-size:.8rem;color:var(--clr-muted)}
-  
-</style>
+    html { scroll-behavior: smooth; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: lato;
+      color: #f5f5f5;
+      background: #000000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1;
+      cursor: none;
+    }
+
+    /* ── CURSOR ── */
+    .cursor {
+      position: fixed; width: 20px; height: 20px;
+      border: 1.5px solid #B09B9B; border-radius: 50%;
+      pointer-events: none; z-index: 9999;
+      transition: transform 0.15s ease; mix-blend-mode: difference;
+    }
+    .cursor-dot {
+      position: fixed; width: 7px; height: 7px;
+      background-color: #B09B9B; border-radius: 50%;
+      pointer-events: none; z-index: 9999; transition: transform 0.1s ease;
+    }
+    .trail-particle {
+      position: fixed; pointer-events: none; border-radius: 50%;
+      z-index: 9998; animation: fadeOut 0.8s ease-out forwards;
+    }
+    @keyframes fadeOut {
+      0% { opacity: 0.7; transform: scale(1); }
+      100% { opacity: 0; transform: scale(0.3); }
+    }
+
+    /* ── LAYOUT UTILITIES ── */
+    .section-break {
+      width: 80%; height: 1px; background: #fff;
+      margin: 40px auto; border-radius: 1px; opacity: 0.4;
+    }
+    .scroll-progress {
+      position: fixed; top: 0; left: 0; width: 0%; height: 3px;
+      background: linear-gradient(90deg, #A78989, #633B48); z-index: 1000; transition: width 0.1s ease;
+    }
+
+    /* ── NAV ── */
+    .navbar { margin-top: 20px; position: fixed; top: 0; z-index: 999; }
+    .nav-links {
+      list-style: none; display: flex; gap: 10px; padding: 10px 20px;
+      background: rgba(176, 176, 176, 0.39); border-radius: 100px; backdrop-filter: blur(40px);
+    }
+    .nav-links a {
+      text-decoration: none; color: #fff; padding: 6px 14px;
+      border-radius: 90px; font-size: 14px; transition: 0.3s ease;
+    }
+    .nav-links a:hover, .nav-links a.active { background: rgba(196, 156, 169, 0.6); }
+
+    /* ── BIO SECTION ── */
+    .bio-section {
+      max-width: 1000px; margin-top: 80px; padding: 40px 20px; text-align: center;
+      opacity: 0; animation: sectionFadeIn 1.5s ease forwards; animation-delay: 0.5s;
+    }
+    .bio-section h1 {
+      font-size: 2rem; margin-bottom: 40px; font-family: 'Labrada', serif; font-weight: 700;
+      opacity: 0; transform: translateY(30px); animation: fadeInUp 1s ease forwards;
+    }
+    @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+    @keyframes sectionFadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .bio-content { display: flex; flex-wrap: wrap; gap: 40px; align-items: center; justify-content: center; }
+    .bio-text {
+      flex: 1 1 400px; background: rgba(255,255,255,0.08); backdrop-filter: blur(10px);
+      padding: 20px; border-radius: 12px; line-height: 1.6; text-align: left;
+      border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 4px 30px rgba(0,0,0,0.2);
+      position: relative; overflow: hidden;
+    }
+    /* spotlight layer on bio-text */
+    .bio-text::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      border-radius: inherit; opacity: 0;
+      transition: opacity 0.3s ease;
+      background: radial-gradient(300px circle at 50% 50%, rgba(167,137,137,0.13) 0%, transparent 70%);
+    }
+    .bio-text:hover::after { opacity: 1; }
+
+    .bio-paragraph {
+      opacity: 0; transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); margin-bottom: 24px;
+      cursor: default; position: relative; z-index: 1;
+    }
+    .bio-paragraph:last-child { margin-bottom: 0; }
+    .bio-paragraph.animate { opacity: 1; transform: translateY(0); }
+    .bio-paragraph:hover { transform: translateY(-2px); color: rgba(255,255,255,0.95); }
+
+    .bio-image { flex: 1 1 300px; display: flex; justify-content: center; }
+    .card-stack {
+      position: relative; width: 400px; height: 243px;
+      opacity: 0; transform: translateX(50px) rotate(5deg);
+      transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .card-stack.animate { opacity: 1; transform: translateX(0) rotate(0deg); transition-delay: 0.3s; }
+    .card { position: absolute; width: 100%; height: 100%; border-radius: 10px; }
+    .card-stack.animate .card1 { animation: cardFloat1 3s ease-in-out infinite; animation-delay: 0.5s; }
+    .card-stack.animate .card2 { animation: cardFloat2 3s ease-in-out infinite; animation-delay: 1s; }
+    @keyframes cardFloat1 { 0%,100% { transform: rotate(-5.11deg) translateY(0px); } 50% { transform: rotate(-5.11deg) translateY(-5px); } }
+    @keyframes cardFloat2 { 0%,100% { transform: rotate(4deg) translateY(0px); } 50% { transform: rotate(4deg) translateY(3px); } }
+    .card1 { background: #A78989; transform: rotate(-5.11deg); }
+    .card2 { background: #633B48; transform: rotate(4deg); }
+    .card3 { display: flex; align-items: center; justify-content: center; font-size: 14px; overflow: hidden; }
+    .card3 img { transition: transform 0.3s ease; }
+    .card-stack:hover .card3 img { transform: scale(1.05); }
+    .card-stack.celebrate { animation: celebrateComplete 0.6s ease-in-out; }
+    @keyframes celebrateComplete {
+      0%   { transform: translateX(0) rotate(0deg); }
+      50%  { transform: translateX(0) rotate(1deg); }
+      100% { transform: translateX(0) rotate(0deg); }
+    }
+    .circle1 {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      width: 600px; height: 400px; background-color: #A78989; border-radius: 80%;
+      filter: blur(80px); opacity: 0.5; pointer-events: none; z-index: -1;
+    }
+
+    /* ── EXPERIENCE SECTION ── */
+    .experience-section { max-width: 1000px; margin: 60px auto 0; padding: 0 20px; text-align: center; }
+    .experience-section h1 {
+      font-size: 2rem; margin-bottom: 40px; font-family: 'Labrada', serif; font-weight: 700;
+      opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .experience-section h1.animate { opacity: 1; transform: translateY(0); }
+    .experience-background { width: 100%; background: rgba(255,255,255,0.08); padding: 40px 0; }
+    .experience-content {
+      max-width: 1000px; margin: 0 auto; display: flex; flex-wrap: wrap;
+      gap: 40px; align-items: center; justify-content: center; min-height: 200px;
+    }
+    .experience-quote { flex: 1 1 350px; display: flex; align-items: center; justify-content: center; }
+    .quote-text {
+      font-family: 'Labrada', serif; font-style: italic; font-size: 1.5rem; line-height: 1.4;
+      text-align: left; color: #f5f5f5; opacity: 0; transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .quote-text.animate { opacity: 1; transform: translateY(0); }
+    .experience-text { flex: 1 1 400px; text-align: left; }
+    .experience-paragraph {
+      opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      margin-bottom: 24px; line-height: 1.6;
+    }
+    .experience-paragraph:last-child { margin-bottom: 0; }
+    .experience-paragraph.animate { opacity: 1; transform: translateY(0); }
+
+    /* ── TIMELINE ── */
+    .timeline-section { max-width: 1100px; margin: 80px auto; padding: 60px 20px; }
+    .timeline-container { position: relative; }
+    .timeline-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 20px; position: relative; gap: 10px;
+    }
+    .timeline-year, .timeline-divider {
+      font-size: 1rem; color: #f5f5f5; opacity: 0; transform: translateY(20px);
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); flex-shrink: 0;
+    }
+    .timeline-year.animate, .timeline-divider.animate { opacity: 1; transform: translateY(0); }
+    .future-year { color: #A78989; }
+    .timeline-line { position: relative; height: 2px; margin: 0 0 40px 0; display: flex; }
+    .timeline-line-past {
+      width: 65%; background: #f5f5f5; height: 100%; opacity: 0; transform: scaleX(0);
+      transform-origin: left; transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .timeline-line-future {
+      background: #A78989; height: 100%; opacity: 0; transform: scaleX(0);
+      transform-origin: left; transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      transition-delay: 0.9s; width: 35%;
+    }
+    .timeline-line-past.animate { opacity: 1; transform: scaleX(1); }
+    .timeline-line-future.animate { opacity: 1; transform: scaleX(1); }
+    .timeline-divider.today-divider { position: absolute; top: 0; left: 65%; transform: translateX(-50%); }
+    .timeline-year.future-year { color: #fff; }
+    .experience-bars { margin-bottom: 60px; position: relative; }
+    .experience-bar {
+      height: 40px; margin-bottom: 20px; border-radius: 4px; position: relative;
+      opacity: 0; transform: translateX(-30px); transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      box-sizing: border-box; cursor: default;
+    }
+    .experience-bar.animate { opacity: 1; transform: translateX(0); }
+    .bar-large  { width: 65%; max-width: 715px; background: rgba(245,245,245,0.9); transition-delay: 0.2s; margin-left: 0; margin-right: auto; }
+    .bar-medium { width: 45%; max-width: 495px; background: rgba(245,245,245,0.8); margin-left: auto; margin-right: calc(35% + 2px); transition-delay: 0.4s; }
+    .bar-small  { width: 30%; max-width: 330px; background: rgba(245,245,245,0.7); margin-left: auto; margin-right: calc(35% + 2px); transition-delay: 0.6s; }
+    .bar-future { width: 35%; max-width: 385px; background: #A78989; margin-left: auto; margin-right: 0; transition-delay: 0.8s; }
+    .experience-bar::before {
+      content: attr(data-title); position: absolute; left: 15px; top: 50%;
+      transform: translateY(-50%); font-size: 0.9rem; color: #333; font-weight: 500; white-space: nowrap;
+    }
+    .bar-future::before { color: #fff; }
+    .experience-descriptions { display: flex; flex-direction: column; gap: 30px; }
+    .experience-description {
+      line-height: 1.6; color: #f5f5f5; opacity: 0; transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .experience-description.animate { opacity: 1; transform: translateY(0); }
+    .experience-bar:hover { transform: translateX(0) translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+    .bar-future:hover { box-shadow: 0 4px 15px rgba(167,137,137,0.3); }
+
+    /* ── EXTRACURRICULARS ── */
+    .extracurricular-section { max-width: 1100px; width: 100%; padding: 60px 20px; text-align: center; }
+    .extracurricular-section h1 {
+      font-size: 2rem; margin-bottom: 50px; font-family: 'Labrada', serif; font-weight: 700;
+      opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .extracurricular-section h1.animate { opacity: 1; transform: translateY(0); }
+
+    .extra-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+
+    /* spotlight card — overflow hidden so the glow clips to the border-radius */
+    .extra-card {
+      position: relative; overflow: hidden;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 28px 24px;
+      text-align: left;
+      display: flex; flex-direction: column; gap: 12px;
+      opacity: 0; transform: translateY(40px);
+      transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  border-color 0.3s ease;
+      cursor: default;
+    }
+    /* the radial spotlight — updated via JS inline style */
+    .extra-card::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      border-radius: inherit; opacity: 0;
+      background: radial-gradient(220px circle at 50% 50%, rgba(167,137,137,0.18) 0%, transparent 70%);
+      transition: opacity 0.35s ease;
+    }
+    .extra-card:hover::before { opacity: 1; }
+    .extra-card:hover { border-color: rgba(167,137,137,0.4); transform: translateY(-4px); }
+
+    /* keep text above the pseudo-element */
+    .extra-card > * { position: relative; z-index: 1; }
+
+    .extra-card.animate { opacity: 1; transform: translateY(0); }
+    .extra-card:nth-child(1) { transition-delay: 0.1s; }
+    .extra-card:nth-child(2) { transition-delay: 0.2s; }
+    .extra-card:nth-child(3) { transition-delay: 0.3s; }
+    .extra-card:nth-child(4) { transition-delay: 0.15s; }
+    .extra-card:nth-child(5) { transition-delay: 0.25s; }
+    .extra-card:nth-child(6) { transition-delay: 0.35s; }
+
+    .extra-tag  { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.2px; color: #A78989; font-weight: 600; line-height: 1.4; }
+    .extra-title { font-family: 'Labrada', serif; font-size: 1.25rem; font-weight: 600; color: #f5f5f5; line-height: 1.3; }
+    .extra-body { font-size: 0.9rem; color: rgba(245,245,245,0.65); line-height: 1.7; margin-top: auto; padding-top: 8px; }
+
+    @media (max-width: 900px) { .extra-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 580px) { .extra-grid { grid-template-columns: 1fr; } }
+
+    /* ── SUPERPOWERS / SKILLS ── */
+    .superpowers-section { max-width: 1100px; padding: 60px 20px; text-align: center; }
+    .superpowers-section h1 {
+      font-size: 2rem; margin-bottom: 50px; font-family: 'Labrada', serif; font-weight: 700;
+      opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .superpowers-section h1.animate { opacity: 1; transform: translateY(0); }
+
+    /* Three-column skills grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 48px 40px;
+      text-align: left;
+    }
+
+    .sk-col-label {
+      font-size: 0.68rem; text-transform: uppercase; letter-spacing: 2px;
+      color: #A78989; font-weight: 600; margin-bottom: 24px;
+      padding-bottom: 10px; border-bottom: 1px solid rgba(167,137,137,0.25);
+      opacity: 0; transform: translateY(16px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .sk-col-label.animate { opacity: 1; transform: translateY(0); }
+
+    /* UX skill items */
+    .sk-ux-item {
+      display: flex; align-items: flex-start; gap: 10px; margin-bottom: 18px;
+      opacity: 0; transform: translateX(-16px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .sk-ux-item.animate { opacity: 1; transform: translateX(0); }
+    .sk-ux-num { font-size: 0.65rem; color: #633B48; font-weight: 700; letter-spacing: 1px; min-width: 18px; padding-top: 3px; }
+    .sk-ux-text { font-size: 0.9rem; color: #f5f5f5; line-height: 1.4; }
+    .sk-ux-sub  { font-size: 0.75rem; color: #A78989; margin-top: 3px; }
+
+    /* Tool items */
+    .sk-tool-item {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 18px; opacity: 0; transform: translateY(10px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .sk-tool-item.animate { opacity: 1; transform: translateY(0); }
+    .sk-tool-name { font-size: 0.9rem; color: #f5f5f5; }
+    .sk-dots { display: flex; gap: 5px; }
+    .sk-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      border: 1.5px solid rgba(176,155,155,0.3); background: transparent;
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+    .sk-dot.dim { background: #3a2830; border-color: #633B48; }
+    .sk-dot.lit { background: #A78989; border-color: #A78989; }
+
+    /* Soft skill tags */
+    .sk-tag-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .sk-tag {
+      font-size: 0.72rem; padding: 5px 12px; border-radius: 20px;
+      border: 1px solid rgba(176,155,155,0.25); color: #B09B9B;
+      background: rgba(167,137,137,0.07); letter-spacing: 0.3px;
+      opacity: 0; transform: scale(0.88);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .sk-tag.animate { opacity: 1; transform: scale(1); }
+    .sk-tag:hover { border-color: rgba(167,137,137,0.5); color: #f5f5f5; }
+
+    @media (max-width: 860px) { .skills-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+    /* ── FOOTER ── */
+    footer { margin: 4rem 0 2rem; text-align: center; font-size: .8rem; color: #666; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .bio-content { flex-direction: column; }
+      .card-stack { width: 300px; height: 182px; }
+      .experience-content { flex-direction: column; gap: 40px; }
+      .quote-text { font-size: 1.3rem; text-align: center; }
+      .timeline-section { margin: 40px auto; padding: 40px 15px; }
+      .timeline-year, .timeline-divider { font-size: 0.85rem; }
+      .timeline-divider.today-divider { position: relative; left: auto; transform: none; }
+      .experience-bar { height: 35px; margin-bottom: 15px; }
+      .experience-bar::before { font-size: 0.8rem; left: 10px; }
+    }
+    @media (max-width: 480px) {
+      .timeline-year, .timeline-divider { font-size: 0.75rem; }
+      .experience-bar { height: 32px; }
+      .experience-bar::before { font-size: 0.75rem; left: 8px; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Custom cursor elements -->
   <div class="cursor"></div>
   <div class="cursor-dot"></div>
-  
-  <!-- Scroll progress bar -->
   <div class="scroll-progress" id="scrollProgress"></div>
 
-  <!--  NAV  -->
   <nav class="navbar">
     <ul class="nav-links">
-      <li><a href="index.html" >Home</a></li>
+      <li><a href="index.html">Home</a></li>
       <li><a href="allproj.html">Projects</a></li>
       <li><a href="bio.html" class="active">Bio</a></li>
       <li><a href="https://drive.google.com/file/d/1zK-V6wiQ66ybcEyTerjuPo0Z_oLqxKnx/view?usp=sharing" target="_blank">CV</a></li>
     </ul>
   </nav>
 
-   <!-- Bio Section -->
+  <!-- ── BIO ── -->
   <section class="bio-section">
     <h1>Hi, I am Rumaysa!</h1>
     <div class="bio-content">
-      
-      <!-- Left Text -->
-     <div class="bio-text">
-        <div class="bio-paragraph">
-          I'm a UI/UX design student with a background in visual design and a love for systems that feel effortless and human.
-        </div>
-        <div class="bio-paragraph">
-          To me, design is care, whether it's an interface, a journey, or a button, I aim to make it clear, warm, and purposeful. I'm drawn to accessibility, quiet storytelling, and experiences that guide rather than overwhelm.
-        </div>
-        <div class="bio-paragraph">
-          I'm still exploring my niche, but my direction is intentional: to build with empathy, design with meaning, and quietly improve lives through clarity, function, and beauty.
-        </div>
+      <div class="bio-text" id="bio-text-card">
+        <div class="bio-paragraph">I'm a UI/UX design student with a background in visual design and a love for systems that feel effortless and human.</div>
+        <div class="bio-paragraph">To me, design is care, whether it's an interface, a journey, or a button, I aim to make it clear, warm, and purposeful. I'm drawn to accessibility, quiet storytelling, and experiences that guide rather than overwhelm.</div>
+        <div class="bio-paragraph">I'm still exploring my niche, but my direction is intentional: to build with empathy, design with meaning, and quietly improve lives through clarity, function, and beauty.</div>
       </div>
-
-      <!-- Right Image Stack -->
       <div class="bio-image">
         <div class="card-stack">
           <div class="circle circle1"></div>
           <div class="card card1"></div>
           <div class="card card2"></div>
           <div class="card card3">
-            <img src="profheadshot.jpg" alt="headshot" style="width: 100%; height: 100%; border-radius: 10px; object-fit: cover;" />
+            <img src="profheadshot.jpg" alt="headshot" style="width:100%;height:100%;border-radius:10px;object-fit:cover;" />
           </div>
         </div>
       </div>
-
     </div>
   </section>
 
   <div class="section-break"></div>
 
-  <!-- Where I've Been Section -->
-   
+  <!-- ── WHERE I'VE BEEN ── -->
   <section class="experience-section">
-  <h1>Where I've been</h1>
-
-  <div class="experience-background">
-    <div class="experience-content">
-      <!-- Left Quote -->
-      <div class="experience-quote">
-        <div class="quote-text">
-          "Driven by curiosity, guided by purpose"
+    <h1>Where I've been</h1>
+    <div class="experience-background">
+      <div class="experience-content">
+        <div class="experience-quote">
+          <div class="quote-text">"Driven by curiosity, guided by purpose"</div>
         </div>
-      </div>
-
-      <!-- Right Text -->
-      <div class="experience-text">
-        <div class="experience-paragraph">
-          My path to UX design has been shaped by diverse experiences that taught me to listen, adapt, and design with empathy. Each role and opportunity has deepened my understanding of people, systems, and the small details that make experiences meaningful.
+        <div class="experience-text">
+          <div class="experience-paragraph">My path to UX design has been shaped by diverse experiences that taught me to listen, adapt, and design with empathy. Each role and opportunity has deepened my understanding of people, systems, and the small details that make experiences meaningful.</div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-   <!-- Timeline Section -->
+  <!-- ── TIMELINE ── -->
   <section class="timeline-section">
     <div class="timeline-container">
-      <!-- Timeline header -->
       <div class="timeline-header">
         <div class="timeline-year start-year">2022</div>
         <div class="timeline-divider today-divider">Today</div>
         <div class="timeline-year future-year">Tomorrow, with you.</div>
       </div>
-
-      <!-- Timeline line -->
       <div class="timeline-line">
         <div class="timeline-line-past"></div>
         <div class="timeline-line-future"></div>
       </div>
-
-      <!-- Experience bars -->
       <div class="experience-bars">
-        <div class="experience-bar bar-large" data-title="Admin Assistant & Social media manager"></div>
+        <div class="experience-bar bar-large"  data-title="Admin Assistant & Social media manager"></div>
         <div class="experience-bar bar-medium" data-title="Student mentor"></div>
-        <div class="experience-bar bar-small" data-title="AI Experience Design Intern"></div>
+        <div class="experience-bar bar-small"  data-title="AI Experience Design Intern"></div>
         <div class="experience-bar bar-future" data-title="Future Role"></div>
       </div>
-
-      <!-- Experience descriptions -->
       <div class="experience-descriptions">
-        <div class="experience-description">
-          I work as a student mentor at Sirius College, leading after-school discussions and activities that encourage self-reflection and critical thinking. I also work as an admin assistant and social media manager at Smile for Kids, where I’ve developed skills in communication, digital content, and organisation. My internship at UoM allowed for real world UX experience.
-        </div>
+        <div class="experience-description">I work as a student mentor at Sirius College, leading after-school discussions and activities that encourage self-reflection and critical thinking. I also work as an admin assistant and social media manager at Smile for Kids, where I've developed skills in communication, digital content, and organisation. My internship at UoM allowed for real world UX experience.</div>
       </div>
     </div>
   </section>
 
   <div class="section-break"></div>
 
-   <!-- Extracurriculars -->
+  <!-- ── EXTRACURRICULARS ── -->
   <section class="extracurricular-section">
     <h1>My Extracurriculars</h1>
- 
     <div class="extra-grid">
- 
+
       <div class="extra-card">
         <span class="extra-tag">WIT × MTECH × EY <br> Unimelb</span>
         <h3 class="extra-title">Digital Innovation Challenge</h3>
         <p class="extra-body">Brainstormed 3 AI-supported technologies with a team to help improve customer satisfaction for fictional hospitals. Made it to the top 6 teams out of all submissions.</p>
       </div>
- 
+
       <div class="extra-card">
         <span class="extra-tag">UoM — Faculty's Diversity &amp; Inclusion Festival</span>
         <h3 class="extra-title">Accessibility Mapping Workshop</h3>
         <p class="extra-body">Facilitated a workshop exploring campus accessibility gaps. Mapped pain points experienced by students with disabilities and presented findings to faculty stakeholders.</p>
       </div>
- 
+
       <div class="extra-card">
-        <span class="extra-tag">Wyndham - Youth Civic Participation Program</span>
+        <span class="extra-tag">Wyndham — Youth Civic Participation Program</span>
         <h3 class="extra-title">Young Person Participant</h3>
-        <p class="extra-body">Explored 3 different levels of Government and connected with local council members as well as MPs at both state and Federal level. </p>
+        <p class="extra-body">Explored 3 different levels of Government and connected with local council members as well as MPs at both state and Federal level.</p>
+      </div>
+
+      <div class="extra-card">
+        <span class="extra-tag">YLAB</span>
+        <h3 class="extra-title">Get into Digital Co-design Volunteer</h3>
+        <p class="extra-body">Contributed lived experiences and knowledge of working in tech to help design a program aimed at improving employment opportunities for women and gender diverse individuals.</p>
+      </div>
+
+      <div class="extra-card">
+        <span class="extra-tag">Muhsen <br> Australia </span>
+        <h3 class="extra-title">Event Volunteer</h3>
+        <p class="extra-body">Contributed to making spaces and events more accessible for all people, especially Muslims with disabilities, and increased empathy for accessibility needs across all individuals.</p>
+      </div>
+
+      <div class="extra-card">
+        <span class="extra-tag">University of Melbourne Islamic Society</span>
+        <h3 class="extra-title">Musallah Officer &amp; Website Designer</h3>
+        <p class="extra-body">Led the design, UX and research for the club website, gaining real-world experience in the product design process from start to finish.</p>
       </div>
 
     </div>
-  </section>
-  
   </section>
 
   <div class="section-break"></div>
 
-  <!--My Tiny Superpowers Section -->
+  <!-- ── SUPERPOWERS / SKILLS ── -->
   <section class="superpowers-section">
     <h1>My Superpowers</h1>
 
-  
-  
-  <div class="superpowers-grid">
-    
-    <!-- Design Skills 
-    <div class="superpower-category">
-      <div class="category-header">
-        <div class="category-icon">✨</div>
-        <h3>Design & Vision</h3>
-      </div>
-      <div class="skills-container">
-        <div class="skill-item" data-level="85">
-          <span class="skill-name">UI/UX Design</span>
-          <div class="skill-bar">
-            <div class="skill-progress"></div>
-          </div>
+    <div class="skills-grid">
+
+      <!-- Column 1: UX Skills -->
+      <div class="sk-col">
+        <div class="sk-col-label" data-delay="0">UX Skills</div>
+        <div class="sk-ux-item" data-delay="60">
+          <span class="sk-ux-num">01</span>
+          <div><div class="sk-ux-text">User research</div><div class="sk-ux-sub">Interviews · surveys · synthesis</div></div>
         </div>
-        <div class="skill-item" data-level="75">
-          <span class="skill-name">Visual Design</span>
-          <div class="skill-bar">
-            <div class="skill-progress"></div>
-          </div>
+        <div class="sk-ux-item" data-delay="130">
+          <span class="sk-ux-num">02</span>
+          <div><div class="sk-ux-text">Usability testing</div><div class="sk-ux-sub">Test planning · analysis · reporting</div></div>
         </div>
-        <div class="skill-item" data-level="70">
-          <span class="skill-name">Prototyping</span>
-          <div class="skill-bar">
-            <div class="skill-progress"></div>
-          </div>
+        <div class="sk-ux-item" data-delay="200">
+          <span class="sk-ux-num">03</span>
+          <div><div class="sk-ux-text">Wireframing &amp; prototyping</div><div class="sk-ux-sub">Lo-fi to hi-fi · interactive flows</div></div>
         </div>
-        <div class="skill-item" data-level="80">
-          <span class="skill-name">Design Systems</span>
-          <div class="skill-bar">
-            <div class="skill-progress"></div>
-          </div>
+        <div class="sk-ux-item" data-delay="270">
+          <span class="sk-ux-num">04</span>
+          <div><div class="sk-ux-text">Journey mapping &amp; personas</div><div class="sk-ux-sub">Empathy maps · user stories</div></div>
+        </div>
+        <div class="sk-ux-item" data-delay="340">
+          <span class="sk-ux-num">05</span>
+          <div><div class="sk-ux-text">Systems thinking</div><div class="sk-ux-sub">Service design · design systems</div></div>
         </div>
       </div>
+
+      <!-- Column 2: Technical Tools -->
+      <div class="sk-col">
+        <div class="sk-col-label" data-delay="80">Technical Tools</div>
+        <div class="sk-tool-item" data-delay="140" data-filled="3"><span class="sk-tool-name">Figma</span><div class="sk-dots"></div></div>
+        <div class="sk-tool-item" data-delay="200" data-filled="3"><span class="sk-tool-name">Miro</span><div class="sk-dots"></div></div>
+        <div class="sk-tool-item" data-delay="260" data-filled="3"><span class="sk-tool-name">Adobe XD / PS / AI</span><div class="sk-dots"></div></div>
+        <div class="sk-tool-item" data-delay="320" data-filled="3"><span class="sk-tool-name">HTML / CSS / JS</span><div class="sk-dots"></div></div>
+        <div class="sk-tool-item" data-delay="380" data-filled="4"><span class="sk-tool-name">AI tools</span><div class="sk-dots"></div></div>
+      </div>
+
+      <!-- Column 3: Soft Skills -->
+      <div class="sk-col">
+        <div class="sk-col-label" data-delay="160">Soft Skills</div>
+        <div class="sk-tag-row">
+          <span class="sk-tag" data-delay="220">Collaborative communication</span>
+          <span class="sk-tag" data-delay="270">Critical thinking</span>
+          <span class="sk-tag" data-delay="320">Creative thinking</span>
+          <span class="sk-tag" data-delay="370">Leadership</span>
+          <span class="sk-tag" data-delay="420">Mentoring</span>
+          <span class="sk-tag" data-delay="470">Project management</span>
+          <span class="sk-tag" data-delay="520">Growth mindset</span>
+          <span class="sk-tag" data-delay="570">Adaptability</span>
+        </div>
+      </div>
+
     </div>
+  </section>
 
-    <!-- Technical Skills 
-    <div class="superpower-category">
-      <div class="category-header">
-        <div class="category-icon">⚡</div>
-        <h3>Technical</h3>
-      </div>
-      <div class="skills-container">
-        <div class="skill-item" data-level="65">
-          <span class="skill-name">HTML/CSS</span>
-          <div class="skill-bar">
-            <div class="skill-progress"></div>
-          </div>
-        </div>
-        <div class="skill-item" data-level="55">
-          <span class="skill-name">JavaScript</span>
-          <div class="skill-bar">
-            <div class="skill-progress"></div>
-          </div>
-        </div>
-        <div class="skill-item" data-level="75">
-          <span class="skill-name">Figma</span>
-          <div class="skill-bar">
-            <div class="skill-progress"></div>
-          </div>
-        </div>
-        <div class="skill-item" data-level="60">
-          <span class="skill-name">Adobe Creative</span>
-          <div class="skill-bar">
-            <div class="skill-progress"></div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <footer>
+    <p>Rumaysa Fatima · UI/UX Design · Melbourne 2026</p>
+  </footer>
 
-    <!-- Soft Skills 
-    <div class="superpower-category">
-      <div class="category-header">
-        <div class="category-icon">💫</div>
-        <h3>Human Skills</h3>
-      </div>
-      <div class="skills-container">
-        <div class="skill-item" data-level="90">
-          <span class="skill-name">Empathy & Research</span>
-          <div class="skill-bar">
-            <div class="skill-progress"></div>
-          </div>
-        </div>
-        <div class="skill-item" data-level="85">
-          <span class="skill-name">Communication</span>
-          <div class="skill-bar">
-            <div class="skill-progress"></div>
-          </div>
-        </div>
-        <div class="skill-item" data-level="80">
-          <span class="skill-name">Problem Solving</span>
-          <div class="skill-bar">
-            <div class="skill-progress"></div>
-          </div>
-        </div>
-        <div class="skill-item" data-level="75">
-          <span class="skill-name">Mentoring</span>
-          <div class="skill-bar">
-            <div class="skill-progress"></div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <!-- ── CURSOR SCRIPT ── -->
+  <script>
+    const cursor    = document.querySelector('.cursor');
+    const cursorDot = document.querySelector('.cursor-dot');
+    let mouseX=0, mouseY=0, cursorX=0, cursorY=0, dotX=0, dotY=0;
+    const colors = ['#B09B9B','#A78989','#633B48','#5E4545','#C49CA9'];
 
-  </div>
-
-  <!-- Skills Philosophy 
-  <div class="skills-philosophy">
-    <div class="philosophy-text">
-      <p>I believe the best designs come from understanding people, not just pixels. My "tiny superpowers" aren't just technical skills—they're ways of seeing, listening, and caring that I bring to every project.</p>
-    </div>
-  </div>
-</section>
--->
-<script>
-  // Custom cursor with particle trail
-  const cursor = document.querySelector('.cursor');
-  const cursorDot = document.querySelector('.cursor-dot');
-  
-  let mouseX = 0, mouseY = 0;
-  let cursorX = 0, cursorY = 0;
-  let dotX = 0, dotY = 0;
-
-  // Color palette matching your theme
-  const colors = ['#B09B9B', '#A78989', '#633B48', '#5E4545', '#C49CA9'];
-  
-  document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    
-    // Create particle trail
-    createParticle(e.clientX, e.clientY);
-  });
-
-  function createParticle(x, y) {
-    const particle = document.createElement('div');
-    particle.className = 'trail-particle';
-    
-    // Random size between 4-10px
-    const size = Math.random() * 6 + 4;
-    particle.style.width = size + 'px';
-    particle.style.height = size + 'px';
-    
-    // Random color from palette
-    const color = colors[Math.floor(Math.random() * colors.length)];
-    particle.style.backgroundColor = color;
-    
-    // Slight random offset for natural look
-    const offsetX = (Math.random() - 0.5) * 20;
-    const offsetY = (Math.random() - 0.5) * 20;
-    
-    particle.style.left = (x + offsetX) + 'px';
-    particle.style.top = (y + offsetY) + 'px';
-    
-    document.body.appendChild(particle);
-    
-    // Remove particle after animation
-    setTimeout(() => {
-      particle.remove();
-    }, 800);
-  }
-
-  // Smooth cursor animation
-  function animateCursor() {
-    // Smooth follow with easing
-    cursorX += (mouseX - cursorX) * 0.15;
-    cursorY += (mouseY - cursorY) * 0.15;
-    
-    dotX += (mouseX - dotX) * 0.25;
-    dotY += (mouseY - dotY) * 0.25;
-    
-    cursor.style.left = cursorX + 'px';
-    cursor.style.top = cursorY + 'px';
-    
-    cursorDot.style.left = dotX + 'px';
-    cursorDot.style.top = dotY + 'px';
-    
-    requestAnimationFrame(animateCursor);
-  }
-  
-  animateCursor();
-
-  // Cursor interactions
-  const interactiveElements = document.querySelectorAll('a, button, .project-card');
-  
-  interactiveElements.forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      cursor.style.transform = 'scale(1.5)';
-      cursorDot.style.transform = 'scale(0)';
+    document.addEventListener('mousemove', e => {
+      mouseX = e.clientX; mouseY = e.clientY;
+      createParticle(e.clientX, e.clientY);
     });
-    
-    el.addEventListener('mouseleave', () => {
-      cursor.style.transform = 'scale(1)';
-      cursorDot.style.transform = 'scale(1)';
+
+    function createParticle(x, y) {
+      const p = document.createElement('div');
+      p.className = 'trail-particle';
+      const size = Math.random() * 6 + 4;
+      p.style.width = p.style.height = size + 'px';
+      p.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      p.style.left = (x + (Math.random()-0.5)*20) + 'px';
+      p.style.top  = (y + (Math.random()-0.5)*20) + 'px';
+      document.body.appendChild(p);
+      setTimeout(() => p.remove(), 800);
+    }
+
+    function animateCursor() {
+      cursorX += (mouseX - cursorX) * 0.15; cursorY += (mouseY - cursorY) * 0.15;
+      dotX    += (mouseX - dotX)    * 0.25; dotY    += (mouseY - dotY)    * 0.25;
+      cursor.style.left    = cursorX + 'px'; cursor.style.top    = cursorY + 'px';
+      cursorDot.style.left = dotX    + 'px'; cursorDot.style.top = dotY    + 'px';
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => { cursor.style.transform = 'scale(1.5)'; cursorDot.style.transform = 'scale(0)'; });
+      el.addEventListener('mouseleave', () => { cursor.style.transform = 'scale(1)';   cursorDot.style.transform = 'scale(1)'; });
     });
-  });
 
-  // Hide custom cursor on touch devices
-  if ('ontouchstart' in window) {
-    cursor.style.display = 'none';
-    cursorDot.style.display = 'none';
-    document.body.style.cursor = 'auto';
-  }
-</script>
+    if ('ontouchstart' in window) {
+      cursor.style.display = cursorDot.style.display = 'none';
+      document.body.style.cursor = 'auto';
+    }
+  </script>
 
-     <script>
+  <!-- ── SPOTLIGHT ON EXTRA CARDS ── -->
+  <script>
+    document.querySelectorAll('.extra-card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const r  = card.getBoundingClientRect();
+        const px = ((e.clientX - r.left) / r.width  * 100).toFixed(1);
+        const py = ((e.clientY - r.top)  / r.height * 100).toFixed(1);
+        card.style.setProperty('--sx', px + '%');
+        card.style.setProperty('--sy', py + '%');
+        card.style.background = `radial-gradient(220px circle at ${px}% ${py}%, rgba(167,137,137,0.18) 0%, rgba(255,255,255,0.06) 70%)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.background = 'rgba(255,255,255,0.06)';
+      });
+    });
+  </script>
+
+  <!-- ── SCROLL & INTERSECTION OBSERVERS ── -->
+  <script>
     document.addEventListener('DOMContentLoaded', () => {
- 
-      /* ── SCROLL PROGRESS ── */
+
+      /* scroll progress */
       const scrollProgress = document.getElementById('scrollProgress');
       window.addEventListener('scroll', () => {
-        const prog = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-        scrollProgress.style.width = prog + '%';
+        scrollProgress.style.width = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100) + '%';
       });
- 
-      /* ── SHARED OBSERVER OPTIONS ── */
-      const opts = { threshold: 0.15, rootMargin: '0px 0px -8% 0px' };
- 
-      /* ── GENERAL OBSERVER (fade/slide classes) ── */
-      const observer = new IntersectionObserver((entries) => {
+
+      /* general fade/slide observer */
+      const observer = new IntersectionObserver(entries => {
         entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('animate'); });
-      }, opts);
- 
-      const generalTargets = [
+      }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+
+      [
         ...document.querySelectorAll('.bio-paragraph'),
         ...document.querySelectorAll('.experience-paragraph'),
         ...document.querySelectorAll('.experience-description'),
         ...document.querySelectorAll('.timeline-year'),
         ...document.querySelectorAll('.timeline-divider'),
+        ...document.querySelectorAll('.experience-bar'),
         document.querySelector('.experience-section h1'),
         document.querySelector('.quote-text'),
         document.querySelector('.timeline-line-past'),
         document.querySelector('.timeline-line-future'),
-        ...document.querySelectorAll('.experience-bar'),
         document.querySelector('.extracurricular-section h1'),
         document.querySelector('.superpowers-section h1'),
-        document.querySelector('.skills-philosophy'),
-      ].filter(Boolean);
- 
-      generalTargets.forEach(el => observer.observe(el));
- 
-      /* ── IMAGE STACK OBSERVER ── */
-      const imageObserver = new IntersectionObserver((entries) => {
-        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('animate'); });
-      }, { threshold: 0.3, rootMargin: '0px 0px -20% 0px' });
+      ].filter(Boolean).forEach(el => observer.observe(el));
+
+      /* image stack observer */
       const cardStack = document.querySelector('.card-stack');
-      if (cardStack) imageObserver.observe(cardStack);
- 
-      /* ── EXTRACURRICULAR CARDS OBSERVER ── */
-      const extraObserver = new IntersectionObserver((entries) => {
+      if (cardStack) {
+        new IntersectionObserver(entries => {
+          entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('animate'); });
+        }, { threshold: 0.3, rootMargin: '0px 0px -20% 0px' }).observe(cardStack);
+      }
+
+      /* extracurricular cards observer */
+      const extraObserver = new IntersectionObserver(entries => {
         entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('animate'); });
       }, { threshold: 0.1, rootMargin: '0px 0px -5% 0px' });
-      document.querySelectorAll('.extra-card').forEach(card => extraObserver.observe(card));
- 
-      /* ── SUPERPOWERS OBSERVER (also triggers skill bars) ── */
-      const superpowersObserver = new IntersectionObserver((entries) => {
+      document.querySelectorAll('.extra-card').forEach(c => extraObserver.observe(c));
+
+      /* skills section observer — staggered via data-delay */
+      const skillsObserver = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if (!entry.isIntersecting) return;
-          entry.target.classList.add('animate');
-          if (entry.target.classList.contains('superpower-category')) {
-            entry.target.querySelectorAll('.skill-item').forEach((item, i) => {
-              setTimeout(() => {
-                item.classList.add('animate');
-                const bar = item.querySelector('.skill-progress');
-                const level = item.getAttribute('data-level');
-                setTimeout(() => { bar.style.setProperty('--progress-width', level+'%'); bar.style.width = level+'%'; }, 200);
-              }, i * 100 + 300);
-            });
-          }
+          /* build dots on first sight */
+          entry.target.querySelectorAll('.sk-tool-item[data-filled]').forEach(row => {
+            if (row.dataset.built) return;
+            row.dataset.built = '1';
+            const filled = +row.dataset.filled;
+            const dotsEl = row.querySelector('.sk-dots');
+            for (let i = 0; i < 5; i++) {
+              const d = document.createElement('div');
+              d.className = 'sk-dot' + (i < filled ? ' dim' : '');
+              dotsEl.appendChild(d);
+            }
+          });
+
+          /* animate labels */
+          entry.target.querySelectorAll('.sk-col-label[data-delay]').forEach(el => {
+            setTimeout(() => el.classList.add('animate'), +el.dataset.delay);
+          });
+          /* animate UX items */
+          entry.target.querySelectorAll('.sk-ux-item[data-delay]').forEach(el => {
+            setTimeout(() => el.classList.add('animate'), +el.dataset.delay);
+          });
+          /* animate tool items + light up dots */
+          entry.target.querySelectorAll('.sk-tool-item[data-delay]').forEach(el => {
+            const delay  = +el.dataset.delay;
+            const filled = +el.dataset.filled;
+            setTimeout(() => {
+              el.classList.add('animate');
+              el.querySelectorAll('.sk-dot.dim').forEach((d, i) => {
+                setTimeout(() => { d.classList.remove('dim'); d.classList.add('lit'); }, i * 70);
+              });
+            }, delay);
+          });
+          /* animate tags */
+          entry.target.querySelectorAll('.sk-tag[data-delay]').forEach(el => {
+            setTimeout(() => el.classList.add('animate'), +el.dataset.delay);
+          });
         });
-      }, { threshold: 0.3, rootMargin: '0px 0px -20% 0px' });
-      document.querySelectorAll('.superpower-category').forEach(c => superpowersObserver.observe(c));
- 
-      /* ── PARALLAX CIRCLE ── */
+      }, { threshold: 0.12, rootMargin: '0px 0px -5% 0px' });
+
+      const skillsGrid = document.querySelector('.skills-grid');
+      if (skillsGrid) skillsObserver.observe(skillsGrid);
+
+      /* parallax circle */
       const circle = document.querySelector('.circle1');
       if (circle) {
         window.addEventListener('scroll', () => {
           circle.style.transform = `translate(-50%, calc(-50% + ${window.pageYOffset * -0.2}px))`;
         });
       }
- 
-      /* ── BIO COMPLETION CELEBRATE ── */
+
+      /* bio celebrate */
       const bioParagraphs = document.querySelectorAll('.bio-paragraph');
-      const mutationObserver = new MutationObserver(() => {
-        const animatedCount = document.querySelectorAll('.bio-paragraph.animate').length;
-        if (animatedCount === bioParagraphs.length && cardStack && !cardStack.classList.contains('celebrate')) {
+      const mutObs = new MutationObserver(() => {
+        if (document.querySelectorAll('.bio-paragraph.animate').length === bioParagraphs.length
+            && cardStack && !cardStack.classList.contains('celebrate')) {
           setTimeout(() => cardStack.classList.add('celebrate'), 300);
         }
       });
-      bioParagraphs.forEach(p => mutationObserver.observe(p, { attributes: true }));
+      bioParagraphs.forEach(p => mutObs.observe(p, { attributes: true }));
     });
   </script>
+
 </body>
 </html>
