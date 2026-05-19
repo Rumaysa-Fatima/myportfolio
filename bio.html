@@ -5,6 +5,7 @@
   <title>Rumaysa Fatima Bio</title>
   <link rel="icon" href="RumyLogo.png" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Labrada:wght@200;400;600&family=Lato:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
 
   <style>
     html { scroll-behavior: smooth; }
@@ -333,6 +334,97 @@
 
     @media (max-width: 860px) { .skills-grid { grid-template-columns: 1fr; gap: 40px; } }
 
+    /* ── CURRENTLY SECTION ── */
+    .currently-section { max-width: 1100px; width: 100%; padding: 60px 20px; text-align: center; }
+    .currently-section h1 {
+      font-size: 2rem; margin-bottom: 50px; font-family: 'Labrada', serif; font-weight: 700;
+      opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .currently-section h1.animate { opacity: 1; transform: translateY(0); }
+    .currently-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 20px; }
+    .cur-tile {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 12px; padding: 24px 20px; display: flex; flex-direction: column; gap: 10px;
+      text-align: left; position: relative; overflow: hidden;
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.6s cubic-bezier(0.25,0.46,0.45,0.94), transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94), border-color 0.3s ease;
+      cursor: default;
+    }
+    .cur-tile::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none; border-radius: inherit;
+      opacity: 0; transition: opacity 0.35s ease;
+      background: radial-gradient(200px circle at 50% 50%, rgba(167,137,137,0.16) 0%, transparent 70%);
+    }
+    .cur-tile:hover::before { opacity: 1; }
+    .cur-tile:hover { border-color: rgba(167,137,137,0.35); }
+    .cur-tile > * { position: relative; z-index: 1; }
+    .cur-tile.animate { opacity: 1; transform: translateY(0); }
+    .cur-tile:nth-child(1) { transition-delay: 0.05s; }
+    .cur-tile:nth-child(2) { transition-delay: 0.15s; }
+    .cur-tile:nth-child(3) { transition-delay: 0.25s; }
+    .cur-type { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 1.8px; color: #A78989; font-weight: 600; }
+    .cur-icon { font-size: 1.4rem; color: #B09B9B; }
+    .cur-main { font-size: 0.95rem; color: #f5f5f5; font-weight: 500; line-height: 1.35; }
+    .cur-sub  { font-size: 0.75rem; color: rgba(245,245,245,0.42); line-height: 1.5; }
+    @media (max-width: 680px) { .currently-grid { grid-template-columns: 1fr; } }
+
+    /* ── HOBBIES SECTION ── */
+    .hobbies-section { max-width: 1100px; width: 100%; padding: 60px 20px; text-align: center; }
+    .hobbies-section h1 {
+      font-size: 2rem; margin-bottom: 50px; font-family: 'Labrada', serif; font-weight: 700;
+      opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .hobbies-section h1.animate { opacity: 1; transform: translateY(0); }
+    .hobbies-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; }
+    .hob-card {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px; padding: 20px 18px; display: flex; flex-direction: column; gap: 8px;
+      text-align: left; position: relative; overflow: hidden;
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.6s cubic-bezier(0.25,0.46,0.45,0.94), transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94), border-color 0.3s ease;
+      cursor: default;
+    }
+    .hob-card::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none; border-radius: inherit;
+      opacity: 0; transition: opacity 0.35s ease;
+      background: radial-gradient(180px circle at 50% 50%, rgba(167,137,137,0.15) 0%, transparent 70%);
+    }
+    .hob-card:hover::before { opacity: 1; }
+    .hob-card:hover { border-color: rgba(167,137,137,0.3); }
+    .hob-card > * { position: relative; z-index: 1; }
+    .hob-card.animate { opacity: 1; transform: translateY(0); }
+    .hob-card:nth-child(1) { transition-delay: 0.05s; }
+    .hob-card:nth-child(2) { transition-delay: 0.12s; }
+    .hob-card:nth-child(3) { transition-delay: 0.19s; }
+    .hob-card:nth-child(4) { transition-delay: 0.26s; }
+    .hob-card:nth-child(5) { transition-delay: 0.33s; }
+    .hob-card:nth-child(6) { transition-delay: 0.40s; }
+    .hob-icon { font-size: 1.3rem; color: #A78989; }
+    .hob-name { font-size: 0.88rem; color: #f5f5f5; font-weight: 500; }
+    .hob-line { font-size: 0.75rem; color: rgba(245,245,245,0.4); line-height: 1.6; font-style: italic; }
+    @media (max-width: 680px) { .hobbies-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 420px) { .hobbies-grid { grid-template-columns: 1fr; } }
+
+    /* ── CONTACT SECTION ── */
+    .contact-section {
+      max-width: 1100px; width: 100%; padding: 60px 20px 80px;
+      opacity: 0; transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .contact-section.animate { opacity: 1; transform: translateY(0); }
+    .contact-inner { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 48px; display: flex; flex-direction: column; gap: 24px; }
+    .contact-sign { font-family: 'Labrada', serif; font-style: italic; font-size: 1.3rem; color: #f5f5f5; line-height: 1.6; max-width: 600px; }
+    .contact-links { display: flex; gap: 12px; flex-wrap: wrap; }
+    .contact-link {
+      font-size: 0.78rem; padding: 8px 18px; border-radius: 20px;
+      border: 1px solid rgba(176,155,155,0.28); color: #B09B9B;
+      background: rgba(167,137,137,0.07); letter-spacing: 0.5px;
+      text-decoration: none; display: flex; align-items: center; gap: 7px;
+      transition: border-color 0.25s ease, color 0.25s ease, background 0.25s ease;
+    }
+    .contact-link:hover { border-color: rgba(167,137,137,0.55); color: #f5f5f5; background: rgba(167,137,137,0.14); }
+    .contact-link i { font-size: 14px; }
+
     /* ── FOOTER ── */
     footer { margin: 4rem 0 2rem; text-align: center; font-size: .8rem; color: #666; }
 
@@ -441,7 +533,7 @@
     <div class="extra-grid">
 
       <div class="extra-card">
-        <span class="extra-tag">WIT × MTECH × EY <br> Unimelb</span>
+        <span class="extra-tag">WIT × MTECH × EY · Unimelb</span>
         <h3 class="extra-title">Digital Innovation Challenge</h3>
         <p class="extra-body">Brainstormed 3 AI-supported technologies with a team to help improve customer satisfaction for fictional hospitals. Made it to the top 6 teams out of all submissions.</p>
       </div>
@@ -465,7 +557,7 @@
       </div>
 
       <div class="extra-card">
-        <span class="extra-tag">Muhsen <br> Australia </span>
+        <span class="extra-tag">Muhsen</span>
         <h3 class="extra-title">Event Volunteer</h3>
         <p class="extra-body">Contributed to making spaces and events more accessible for all people, especially Muslims with disabilities, and increased empathy for accessibility needs across all individuals.</p>
       </div>
@@ -540,6 +632,100 @@
     </div>
   </section>
 
+  <!-- ── CURRENTLY ── -->
+  <div class="section-break"></div>
+
+  <section class="currently-section">
+    <h1>Currently I am...</h1>
+    <div class="currently-grid">
+
+      <div class="cur-tile">
+        <span class="cur-type">Reading</span>
+        <i class="ti ti-book-2 cur-icon" aria-hidden="true"></i>
+        <span class="cur-main">One Third of Your Stomach</span>
+        <span class="cur-sub">Julide Turker</span>
+      </div>
+
+      <div class="cur-tile">
+        <span class="cur-type">Learning</span>
+        <i class="ti ti-pentagon cur-icon" aria-hidden="true"></i>
+        <span class="cur-main">Go</span>
+        <span class="cur-sub">The ancient board game of territory and patience</span>
+      </div>
+
+      <div class="cur-tile">
+        <span class="cur-type">Word of the moment</span>
+        <i class="ti ti-language cur-icon" aria-hidden="true"></i>
+        <span class="cur-main">Ihsan</span>
+        <span class="cur-sub">Arabic — to do something with excellence and beauty, as though you are being watched by God</span>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="section-break"></div>
+
+  <!-- ── HOBBIES ── -->
+  <section class="hobbies-section">
+    <h1>When I'm not designing</h1>
+    <div class="hobbies-grid">
+
+      <div class="hob-card">
+        <i class="ti ti-flower hob-icon" aria-hidden="true"></i>
+        <span class="hob-name">Pressing &amp; drying flowers</span>
+        <span class="hob-line">Turning something fleeting into something that lasts</span>
+      </div>
+
+      <div class="hob-card">
+        <i class="ti ti-books hob-icon" aria-hidden="true"></i>
+        <span class="hob-name">Reading</span>
+        <span class="hob-line">Anything that makes me think differently</span>
+      </div>
+
+      <div class="hob-card">
+        <i class="ti ti-headphones hob-icon" aria-hidden="true"></i>
+        <span class="hob-name">Lectures &amp; podcasts</span>
+        <span class="hob-line">Learning while the world moves around me</span>
+      </div>
+
+      <div class="hob-card">
+        <i class="ti ti-heart-handshake hob-icon" aria-hidden="true"></i>
+        <span class="hob-name">Volunteering</span>
+        <span class="hob-line">Community is how I stay grounded</span>
+      </div>
+
+      <div class="hob-card">
+        <i class="ti ti-heart hob-icon" aria-hidden="true"></i>
+        <span class="hob-name">Exploring Herbal teas</span>
+        <span class="hob-line">A philosophy, not just a drink</span>
+      </div>
+
+      <div class="hob-card">
+        <i class="ti ti-world hob-icon" aria-hidden="true"></i>
+        <span class="hob-name">Collecting words</span>
+        <span class="hob-line">Building a little bank of random words from every language I stumble into</span>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="section-break"></div>
+
+  <!-- ── CONTACT ── -->
+  <section class="contact-section">
+    <div class="contact-inner">
+      <p class="contact-sign">"If any of this resonates, my work, my values, or my curiosity, I'd love to hear from you."</p>
+      <div class="contact-links">
+        <a href="mailto:placeholder@email.com" class="contact-link">
+          <i class="ti ti-mail" aria-hidden="true"></i> Email me
+        </a>
+        <a href="https://linkedin.com" target="_blank" class="contact-link">
+          <i class="ti ti-brand-linkedin" aria-hidden="true"></i> LinkedIn
+        </a>
+      </div>
+    </div>
+  </section>
+
   <footer>
     <p>Rumaysa Fatima · UI/UX Design · Melbourne 2026</p>
   </footer>
@@ -588,19 +774,21 @@
     }
   </script>
 
-  <!-- ── SPOTLIGHT ON EXTRA CARDS ── -->
+  <!-- ── SPOTLIGHT ON EXTRA, HOBBY & CURRENTLY CARDS ── -->
   <script>
-    document.querySelectorAll('.extra-card').forEach(card => {
+    document.querySelectorAll('.extra-card, .cur-tile, .hob-card').forEach(card => {
       card.addEventListener('mousemove', e => {
         const r  = card.getBoundingClientRect();
         const px = ((e.clientX - r.left) / r.width  * 100).toFixed(1);
         const py = ((e.clientY - r.top)  / r.height * 100).toFixed(1);
-        card.style.setProperty('--sx', px + '%');
-        card.style.setProperty('--sy', py + '%');
-        card.style.background = `radial-gradient(220px circle at ${px}% ${py}%, rgba(167,137,137,0.18) 0%, rgba(255,255,255,0.06) 70%)`;
+        card.style.background = `radial-gradient(220px circle at ${px}% ${py}%, rgba(167,137,137,0.18) 0%, rgba(255,255,255,0.05) 70%)`;
       });
       card.addEventListener('mouseleave', () => {
-        card.style.background = 'rgba(255,255,255,0.06)';
+        const isExtra = card.classList.contains('extra-card');
+        const isCur   = card.classList.contains('cur-tile');
+        if (isExtra)     card.style.background = 'rgba(255,255,255,0.06)';
+        else if (isCur)  card.style.background = 'rgba(255,255,255,0.05)';
+        else             card.style.background = 'rgba(255,255,255,0.04)';
       });
     });
   </script>
@@ -633,6 +821,9 @@
         document.querySelector('.timeline-line-future'),
         document.querySelector('.extracurricular-section h1'),
         document.querySelector('.superpowers-section h1'),
+        document.querySelector('.currently-section h1'),
+        document.querySelector('.hobbies-section h1'),
+        document.querySelector('.contact-section'),
       ].filter(Boolean).forEach(el => observer.observe(el));
 
       /* image stack observer */
@@ -643,11 +834,11 @@
         }, { threshold: 0.3, rootMargin: '0px 0px -20% 0px' }).observe(cardStack);
       }
 
-      /* extracurricular cards observer */
+      /* extracurricular + currently + hobby cards observer */
       const extraObserver = new IntersectionObserver(entries => {
         entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('animate'); });
       }, { threshold: 0.1, rootMargin: '0px 0px -5% 0px' });
-      document.querySelectorAll('.extra-card').forEach(c => extraObserver.observe(c));
+      document.querySelectorAll('.extra-card, .cur-tile, .hob-card').forEach(c => extraObserver.observe(c));
 
       /* skills section observer — staggered via data-delay */
       const skillsObserver = new IntersectionObserver(entries => {
