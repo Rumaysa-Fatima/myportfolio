@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Futures Thinking Case study</title>
+    <title>AIP Case Study — Designing for Identity & Values-Driven Living</title>
     <link rel="icon" href="RumyLogo.png" type="image/png">
     <link href='https://fonts.googleapis.com/css?family=Labrada' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
@@ -28,60 +28,48 @@
 
         /* Custom cursor */
         .cursor {
-          position: fixed;
-          width: 20px;
-          height: 20px;
-          border: 1.5px solid #B09B9B;
-          border-radius: 50%;
-          pointer-events: none;
-          z-index: 9999;
-          transition: transform 0.15s ease;
-          mix-blend-mode: difference;
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border: 1.5px solid #B09B9B;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.15s ease;
+            mix-blend-mode: difference;
         }
 
         .cursor-dot {
-          position: fixed;
-          width: 7px;
-          height: 7px;
-          background-color: #B09B9B;
-          border-radius: 50%;
-          pointer-events: none;
-          z-index: 9999;
-          transition: transform 0.1s ease;
+            position: fixed;
+            width: 7px;
+            height: 7px;
+            background-color: #B09B9B;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
         }
 
-        /* Cursor trail particles */
         .trail-particle {
-          position: fixed;
-          pointer-events: none;
-          border-radius: 50%;
-          z-index: 9998;
-          animation: fadeOut 0.8s ease-out forwards;
+            position: fixed;
+            pointer-events: none;
+            border-radius: 50%;
+            z-index: 9998;
+            animation: fadeOut 0.8s ease-out forwards;
         }
 
         @keyframes fadeOut {
-          0% {
-            opacity: 0.7;
-            transform: scale(1);
-          }
-          100% {
-            opacity: 0;
-            transform: scale(0.3);
-          }
+            0% { opacity: 0.7; transform: scale(1); }
+            100% { opacity: 0; transform: scale(0.3); }
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+        a { text-decoration: none; color: inherit; }
 
-        /* Scroll progress indicator */
+        /* Scroll progress */
         .scroll-progress {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 3px;
+            top: 0; left: 0;
+            width: 0%; height: 3px;
             background: linear-gradient(90deg, #A78989, #633B48);
             z-index: 1000;
             transition: width 0.1s ease;
@@ -121,7 +109,7 @@
             background: rgba(196, 156, 169, 0.6);
         }
 
-        /* Main Title */
+        /* Typography */
         h1 {
             font-family: 'Labrada', serif;
             font-size: 2.8rem;
@@ -142,18 +130,14 @@
             margin-right: auto;
         }
 
-        /* Container */
         .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        section {
-            margin: 80px auto;
-        }
+        section { margin: 80px auto; }
 
-        /* Section Label */
         .section-label {
             text-transform: uppercase;
             font-size: 0.75rem;
@@ -164,7 +148,6 @@
             text-align: center;
         }
 
-        /* Horizontal Rule */
         .section-break {
             width: 80%;
             height: 1px;
@@ -173,7 +156,6 @@
             border-radius: 1px;
         }
 
-        /* Section Heading */
         h2 {
             font-family: 'Labrada', serif;
             font-size: 2rem;
@@ -206,39 +188,52 @@
             line-height: 1.8;
         }
 
+        /* Conceptual Image Grid */
+        .knowledge-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .knowledge-item {
+            text-align: center;
+        }
+
+        .knowledge-item img {
+            width: 100%;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .image-caption {
+            margin-top: 12px;
+            font-size: 0.85rem;
+            color: #666;
+            font-style: italic;
+        }
+
         /* Animations */
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
 
         .slide-in {
             opacity: 0;
             transform: translateX(-30px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
-
-        .slide-in.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
+        .slide-in.visible { opacity: 1; transform: translateX(0); }
 
         .stagger-item {
             opacity: 0;
             transform: translateY(15px);
             transition: opacity 0.5s ease-out, transform 0.5s ease-out;
         }
-
-        .stagger-item.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .stagger-item.visible { opacity: 1; transform: translateY(0); }
 
         /* Meta Grid */
         .meta-grid {
@@ -251,44 +246,261 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .meta-item {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
+        .meta-item { display: flex; flex-direction: column; gap: 8px; }
+        .meta-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px; color: #A78989; font-weight: 500; }
+        .meta-value { font-size: 1rem; color: #f5f5f5; }
 
-        .meta-label {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
+        /* Quote */
+        .quote {
+            border-left: 2px solid #A78989;
+            padding-left: 25px;
+            margin: 40px 0;
+            font-style: italic;
             color: #A78989;
-            font-weight: 500;
-        }
-
-        .meta-value {
             font-size: 1rem;
-            color: #f5f5f5;
+            line-height: 1.7;
         }
 
-         
-        /* Footer */
-        footer {
-            margin-top: 100px;
-            padding: 50px 20px;
+        /* Lists */
+        section ul { list-style: none; margin: 30px 0; }
+        section ul li {
+            padding-left: 25px;
+            position: relative;
+            margin-bottom: 18px;
+            color: #ccc;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+        section ul li:before { content: "—"; position: absolute; left: 0; color: #A78989; font-weight: 300; }
+        section ul li strong { color: #f5f5f5; }
+
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .stat {
             text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        footer p {
-            color: #666;
-            font-size: 0.85rem;
-        }
-
-        /* Next Case Study */
-        .next-case-study {
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 300;
+            font-family: 'Labrada', serif;
+            color: #A78989;
             display: block;
+            margin-bottom: 8px;
+        }
+
+        .stat-label { font-size: 0.85rem; color: #999; }
+
+        /* Assignment headers — new component consistent with existing card style */
+        .assignment-block {
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin: 40px 0 30px;
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+            position: relative;
+            overflow: hidden;
+            cursor: default;
+            transition: border-color 0.3s ease;
+        }
+        .assignment-block::before {
+            content: '';
+            position: absolute; inset: 0;
+            pointer-events: none; border-radius: inherit;
+            opacity: 0; transition: opacity 0.35s ease;
+            background: radial-gradient(320px circle at var(--mx,50%) var(--my,50%), rgba(167,137,137,0.12) 0%, transparent 70%);
+        }
+        .assignment-block:hover { border-color: rgba(167,137,137,0.25); }
+        .assignment-block:hover::before { opacity: 1; }
+        .assignment-block > * { position: relative; z-index: 1; }
+
+        .assignment-num {
+            font-family: 'Labrada', serif;
+            font-size: 3rem;
+            font-weight: 200;
+            color: rgba(167,137,137,0.25);
+            line-height: 1;
+            flex-shrink: 0;
+            padding-top: 4px;
+        }
+        .assignment-meta { display: flex; flex-direction: column; gap: 5px; }
+        .assignment-tag { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 2px; color: #A78989; font-weight: 600; }
+        .assignment-title { font-family: 'Labrada', serif; font-size: 1.5rem; font-weight: 300; color: #f5f5f5; }
+        .assignment-desc { font-size: 0.85rem; color: #666; margin-top: 2px; }
+
+        /* Signal / driver cards */
+        .signal-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .signal-card {
+            padding: 24px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative; overflow: hidden; cursor: default;
+            transition: border-color 0.3s ease, transform 0.3s ease;
+        }
+        .signal-card::before {
+            content: '';
+            position: absolute; inset: 0; pointer-events: none; border-radius: inherit;
+            opacity: 0; transition: opacity 0.3s ease;
+            background: radial-gradient(180px circle at var(--mx,50%) var(--my,50%), rgba(167,137,137,0.14) 0%, transparent 70%);
+        }
+        .signal-card:hover { border-color: rgba(167,137,137,0.25); transform: translateY(-2px); }
+        .signal-card:hover::before { opacity: 1; }
+        .signal-card > * { position: relative; z-index: 1; }
+        .signal-card h4 { color: #A78989; margin-bottom: 8px; font-size: 0.95rem; }
+        .signal-card p { color: #999; font-size: 0.9rem; margin: 0; line-height: 1.65; }
+
+        /* Forecast highlight */
+        .forecast-highlight {
+            background: rgba(99, 59, 72, 0.12);
+            border: 1px solid rgba(99, 59, 72, 0.3);
+            border-left: 3px solid #633B48;
+            border-radius: 8px;
+            padding: 30px;
+            margin: 40px 0;
+            position: relative; overflow: hidden;
+        }
+        .forecast-highlight::after {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 2px;
+            background: linear-gradient(90deg, #633B48, #A78989, transparent);
+        }
+        .forecast-tag { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #A78989; font-weight: 600; margin-bottom: 12px; }
+        .forecast-highlight h4 { font-family: 'Labrada', serif; font-size: 1.4rem; font-weight: 300; color: #f5f5f5; margin-bottom: 14px; }
+        .forecast-highlight p { color: #aaa; font-size: 0.95rem; margin: 0; line-height: 1.8; }
+
+        /* Concept cards */
+        .concept-grid { display: flex; flex-direction: column; gap: 16px; margin: 30px 0; }
+        .concept-card {
+            padding: 28px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex; gap: 22px; align-items: flex-start;
+            position: relative; overflow: hidden; cursor: default;
+            transition: border-color 0.3s ease;
+        }
+        .concept-card::before {
+            content: '';
+            position: absolute; inset: 0; pointer-events: none; border-radius: inherit;
+            opacity: 0; transition: opacity 0.3s ease;
+            background: radial-gradient(260px circle at var(--mx,30%) var(--my,50%), rgba(167,137,137,0.11) 0%, transparent 70%);
+        }
+        .concept-card:hover { border-color: rgba(167,137,137,0.22); }
+        .concept-card:hover::before { opacity: 1; }
+        .concept-card > * { position: relative; z-index: 1; }
+        .concept-card.featured { border-color: rgba(167,137,137,0.2); background: rgba(167,137,137,0.05); }
+        .concept-badge {
+            position: absolute; top: 14px; right: 16px;
+            font-size: 0.62rem; text-transform: uppercase; letter-spacing: 1.2px; color: #A78989; font-weight: 600;
+        }
+        .concept-num { font-family: 'Labrada', serif; font-size: 2.2rem; font-weight: 200; color: rgba(167,137,137,0.3); flex-shrink: 0; line-height: 1; }
+        .concept-content { flex: 1; }
+        .concept-content h4 { font-family: 'Labrada', serif; font-size: 1.1rem; font-weight: 400; margin-bottom: 8px; }
+        .concept-content p { font-size: 0.9rem; color: #999; line-height: 1.7; margin: 0; }
+
+        /* Process steps — matches CVStudio */
+        .process-steps { margin: 40px 0; }
+        .step {
+            margin-bottom: 40px;
+            padding-left: 60px;
+            position: relative;
+        }
+        .step-number {
+            position: absolute;
+            left: 0; top: 0;
+            width: 40px; height: 40px;
+            background: rgba(167, 137, 137, 0.2);
+            color: #A78989;
+            border: 1px solid rgba(167, 137, 137, 0.3);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 600; font-size: 0.95rem;
+        }
+        .step h4 { margin-bottom: 10px; color: #f5f5f5; }
+        .step p { color: #999; margin: 0; font-size: 0.95rem; line-height: 1.7; }
+
+        /* AI reflection split */
+        .reflection-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 40px 0;
+        }
+        .reflection-col {
+            padding: 28px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            border-left: 3px solid #A78989;
+        }
+        .reflection-col.dim { border-left-color: rgba(255,255,255,0.15); background: rgba(255,255,255,0.02); }
+        .reflection-col h4 { font-family: 'Labrada', serif; font-size: 1.1rem; font-weight: 300; margin-bottom: 18px; color: #A78989; }
+        .reflection-col.dim h4 { color: #666; }
+        .reflection-col ul { margin: 0; }
+        .reflection-col ul li { font-size: 0.9rem; color: #999; margin-bottom: 12px; line-height: 1.65; }
+
+        /* Takeaways — matches CVStudio exactly */
+        .takeaway-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin: 40px 0;
+        }
+        .takeaway {
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .takeaway h4 { margin-bottom: 15px; color: #f5f5f5; }
+        .takeaway p { font-size: 0.95rem; color: #999; margin: 0; line-height: 1.7; }
+
+        /* Feature grid — matches CVStudio */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 35px;
+            margin: 40px 0;
+        }
+        .feature { display: flex; flex-direction: column; gap: 12px; }
+        .feature h4 { font-size: 1.05rem; font-weight: 600; color: #f5f5f5; }
+        .feature p { font-size: 0.95rem; color: #999; margin: 0; line-height: 1.6; }
+
+        /* Reading strip */
+        .reading-strip {
+            display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+            padding: 14px 20px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 8px;
+            margin: 28px 0;
+        }
+        .reading-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 1.5px; color: #A78989; font-weight: 600; flex-shrink: 0; }
+        .reading-item { font-size: 0.85rem; color: #999; }
+        .reading-dot { color: rgba(167,137,137,0.4); }
+
+        /* Next case study */
+        .next-case-study {
             max-width: 800px;
-            width: 100%;
             margin: 80px auto 0;
             padding: 50px 40px;
             background: #262123;
@@ -296,52 +508,51 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
             text-align: center;
             transition: transform 0.3s ease, border-color 0.3s ease;
+            display: block;
         }
- 
         .next-case-study:hover {
             transform: translateY(-5px);
             border-color: rgba(167, 137, 137, 0.3);
         }
- 
-        .next-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: #A78989;
-            margin-bottom: 15px;
-        }
- 
-        /* Scoped h3 inside next-case-study — overrides the global h3 margin */
+        .next-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; color: #A78989; margin-bottom: 15px; }
         .next-case-study .next-title {
             font-family: 'Labrada', serif;
-            font-size: 1.8rem;
-            font-weight: 300;
-            color: #f5f5f5;
-            margin: 0 0 10px 0;
-            text-align: center;
+            font-size: 1.8rem; font-weight: 300; color: #f5f5f5;
+            margin: 0 0 10px; text-align: center;
         }
- 
-        .next-description {
-            color: #999;
-            font-size: 0.95rem;
-            margin-bottom: 25px;
-        }
- 
-        .next-arrow {
-            color: #A78989;
-            font-size: 1.2rem;
-        }
+        .next-description { color: #999; font-size: 0.95rem; margin-bottom: 25px; }
+        .next-arrow { color: #A78989; font-size: 1.2rem; }
 
+        /* Footer */
+        footer {
+            margin-top: 100px;
+            padding: 50px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        footer p { color: #666; font-size: 0.85rem; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; margin: 60px 0 15px; }
+            h2 { font-size: 1.6rem; }
+            h3 { font-size: 1.2rem; }
+            .meta-grid, .stats-grid, .signal-grid, .reflection-split,
+            .takeaway-grid, .feature-grid { grid-template-columns: 1fr; }
+            section { margin: 60px auto; }
+            .step { padding-left: 50px; }
+            .step-number { width: 35px; height: 35px; font-size: 0.85rem; }
+            .assignment-block { flex-direction: column; gap: 12px; }
+            .assignment-num { font-size: 2rem; }
+        }
     </style>
 </head>
 <body>
-    <!-- Custom cursor elements -->
-  <div class="cursor"></div>
-  <div class="cursor-dot"></div>
 
-    <!-- Scroll progress bar -->
+    <div class="cursor"></div>
+    <div class="cursor-dot"></div>
     <div class="scroll-progress" id="scrollProgress"></div>
-    
+
     <nav class="navbar">
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
@@ -351,15 +562,17 @@
         </ul>
     </nav>
 
-    <h1 class="fade-in">Futures thinking</h1>
-    <p class="subtitle fade-in">AIP group project case study</p>
+    <h1 class="fade-in">Designing for Identity &amp;<br>Values-Driven Living</h1>
+    <p class="subtitle fade-in">Advanced Interface Prototyping — INFO30005 group project case study</p>
 
     <div class="container">
+
+        <!-- META -->
         <section class="fade-in">
             <div class="meta-grid">
                 <div class="meta-item">
-                    <span class="meta-label">Role</span>
-                    <span class="meta-value">..</span>
+                    <span class="meta-label">My Role</span>
+                    <span class="meta-value">Researcher, Visual direction, Chatbot design</span>
                 </div>
                 <div class="meta-item">
                     <span class="meta-label">Team</span>
@@ -367,40 +580,268 @@
                 </div>
                 <div class="meta-item">
                     <span class="meta-label">Duration</span>
-                    <span class="meta-value">12 weeks</span>
+                    <span class="meta-value">12 weeks · Semester 1, 2025</span>
                 </div>
                 <div class="meta-item">
                     <span class="meta-label">Tools</span>
-                    <span class="meta-value">Figma...</span>
+                    <span class="meta-value">Figma, Voiceflow, Miro, Claude, ChatGPT</span>
                 </div>
             </div>
         </section>
 
-    <section class="fade-in">
-        <p class="section-label">Context</p>
-        <h2>Project overview</h2>
-        <p>This case study is a reflection of the team assigmnets done in the subject INFO30005 Advanced Interface Prototyping where I will be exploring my skills and learnings from the assigments in this subject.</p>
-        <p>The problem space in which all the assignments were written from is Identity and Values Driven Living. The assignments explored potential futures of technology, how technology beyond the screens can look for a world in context of the problem space and finally, prototyping the conversation design of an AI chatbot.</p>
-    </section>
+        <!-- OVERVIEW -->
+        <section class="fade-in">
+            <p class="section-label">Overview</p>
+            <h2>One question, three assignments</h2>
+            <p>This case study is a reflection of the team assignments done in the subject INFO30005 Advanced Interface Prototyping where I will be exploring my skills and learnings from the assignments in this subject.</p>
+            <p>This semester-long project explored a single overarching question. <em>What does it mean to design technology for how people actually want to live?</em> While exploring potential futures of technology beyond the screens we worked within the problem space of identity and values-driven living, our team moved through three interconnected assignments, futures thinking, conceptual design, and a refined chatbot prototype.</p>
+            <p>What united all three was a shared concern that much of digital design today optimises for engagement and efficiency at the expense of the things that actually matter such as agency, reflection, connection, and growth. Our work tried to push in the opposite direction. Not always loudly. Sometimes just by asking: what if we designed for the person instead of the metric?</p>
+        </section>
 
-    <section class="fade-in">
-        <p class="section-label">Overview</p>
-        <h2>My contributions</h2>
-        <p>Before I explain my involvements in the assignments I must explore the submissions that my team and I have done.</p>
-        <p>Assignment 1: Futures Thinking... My role specifically was... <br> Assignment 2: Conceptual Design... My role specifically was...<br> Assignment 3: Refine Prototype... My role specifically was... </p>
-    </section>
+        <div class="section-break"></div>
 
-    <section class="fade-in">
-        <p class="section-label">Tools</p>
-        <h2>AI in the process of Design</h2>
-        <p> I used AI...I didnt use AI when I was... <br> What worked was...What didnt work and produced generic results was...</p>
-    </section>
+        <!-- ASSIGNMENT 1 -->
+        <section class="fade-in">
+            <p class="section-label">Assignment 1</p>
+            <h2>Futures Thinking</h2>
 
-    <section class="fade-in">
-        <p class="section-label">Reflections</p>
-        <h2>Skills & Learnings</h2>
-        <p> I knew... <br> What I came to know... <br> What shifted was... <br> The skills I built were... <br> How I'd conntinue to develop these is... </p>
-    </section>
+            <div class="assignment-block stagger-item" id="ab1">
+                <span class="assignment-num">01</span>
+                <div class="assignment-meta">
+                    <span class="assignment-tag">My contributions</span>
+                    <span class="assignment-title">Background research · Driving team discussions · Slide deck visual direction</span>
+                </div>
+            </div>
+
+            <h3 class="slide-in">Where do you imagine the future?</h3>
+            <p class="slide-in">When you think of the future, what are the first things that come to mind? Do you imagine an optimistic future or a pessimistic future? Early in the process I drove the discussions of these concepts with my team and when it comes from the perspective of technology and values driven living. We kept reflecting on some of the books and films we were taught in school. </p>
+
+            <div class="reading-strip fade-in">
+                <span class="reading-label">Shared influences</span>
+                <span class="reading-item">Fahrenheit 451</span>
+                <span class="reading-dot">·</span>
+                <span class="reading-item">Wall-E</span>
+                <span class="reading-dot">·</span>
+                <span class="reading-item">Black Mirror</span>
+            </div>
+
+            <p class="slide-in">These drove our desire to create a future that optimised for human flourishing and a resistance against hyper-individualisation. We brainstormed and surfaced four key drivers of change.</p>
+
+            <h3 class="slide-in">Drivers of Change</h3>
+            <div class="signal-grid">
+                <div class="signal-card stagger-item">
+                    <h4>AI-driven cognitive atrophy</h4>
+                    <p>Research suggesting over-reliance on AI tools is quietly eroding independent thinking and memory formation over time.</p>
+                </div>
+                <div class="signal-card stagger-item">
+                    <h4>Australia's loneliness epidemic</h4>
+                    <p>Growing isolation among young Australians, despite, or perhaps because of, constant digital connectivity.</p>
+                </div>
+                <div class="signal-card stagger-item">
+                    <h4>The rise of analogue hobbies</h4>
+                    <p>Gen Z embracing slow, tactile activities such as baking, DIY cyberdecks, crocheting and foraging as quiet resistance to optimisation culture.</p>
+                </div>
+                <div class="signal-card stagger-item">
+                    <h4>Paid belonging communities</h4>
+                    <p>The proliferation of subscription communities signals both a hunger for genuine belonging and its rapid commodification.</p>
+                </div>
+            </div>
+
+            <h3 class="slide-in">Arriving at the Central Forecast</h3>
+            <p class="slide-in">My main role during brainstorming was ensuring the team came up with strong research and motivations which was creating an artefact that was thoughtful and, hopefully, effective. I helped synthesise these signals into coherent drivers of change and worked with the team to develop forecasts that were specific and grounded rather than vague.</p>
+
+            <img src="Forecasts gif.gif" alt="All Forecasts GIF" class="fade-in" style="width: 100%; border-radius: 12px; margin: 30px 0;">
+
+            <div class="forecast-highlight fade-in">
+                <div class="forecast-tag">Central Forecast · 2035</div>
+                <h4>The Friction Movement</h4>
+                <p>By the mid-2030s, a cultural backlash against frictionless living would emerge, with people beginning to value effort, reflection, and meaningful struggle as necessary parts of a good life. The "convenience at all costs" paradigm would begin to crack, not from a single event, but from an accumulation of quiet losses: attention spans shortened, skills atrophied, relationships thinned by the very tools designed to deepen them.</p>
+            </div>
+
+            <p class="slide-in">I also led the visual direction of the slide deck, steering toward soft, warm tones that reinforced the optimistic orientation we had toward the future we were imagining.</p>
+
+            <div class="quote fade-in">
+                "The key deliverable: a government-funded Friction Zone — a community space where frictionless technology is architecturally restricted, restoring human-paced interaction and shared skill."
+            </div>
+        </section>
+
+        <div class="section-break"></div>
+
+        <!-- ASSIGNMENT 2 -->
+        <section class="fade-in">
+            <p class="section-label">Assignment 2</p>
+            <h2>Conceptual Design</h2>
+
+            <div class="assignment-block stagger-item" id="ab2">
+                <span class="assignment-num">02</span>
+                <div class="assignment-meta">
+                    <span class="assignment-tag">My contributions</span>
+                    <span class="assignment-title">Leading Proposal 3 · Desk research across all proposals</span>
+                </div>
+            </div>
+
+            <h3 class="slide-in">Designing connection without forcing it</h3>
+            <p class="slide-in">For our second assignment we were to design three non-screen-based interaction concepts for 2036. The world we live in today is one that struggles to go out of its way to engage with people. I thought: if we can't force people to meet one another, to converse, to share, so why not create the conditions for it?</p>
+            <p class="slide-in">Do you remember the ice cream vans that used to come to suburban streets? Kids poured out of their houses, drawn by familiar music. Moments like those were memorable because they created opportunities for communal interaction without requiring anything of anyone. That logic underpinned my primary contribution.</p>
+
+            <div class="concept-grid">
+                <div class="concept-card stagger-item">
+                    <span class="concept-num">01</span>
+                    <div class="concept-content">
+                        <h4>The No-Scroll Carriage</h4>
+                        <p>A dedicated train carriage where screens are socially discouraged. Recommended as the preferred proposal because it embeds meaningful offline social interaction into an existing daily routine, removing the activation energy barrier entirely.</p>
+                    </div>
+                </div>
+                <div class="concept-card featured stagger-item">
+                    <span class="concept-badge">My primary contribution</span>
+                    <span class="concept-num">02</span>
+                    <div class="concept-content">
+                        <h4>The Knowledge Exchange</h4>
+                        <p>A mobile robotic book exchange station that travels through suburban streets, offering books, audiobook devices, multilingual and braille materials. No app required. No behavioural data collected. The service doesn't learn you and sell you back to yourself. It just offers something, and lets you decide.</p>
+                    </div>
+                </div>
+                <div class="concept-card stagger-item">
+                    <span class="concept-num">03</span>
+                    <div class="concept-content">
+                        <h4>Festival Portals</h4>
+                        <p>Pop-up "portals" that appear in public spaces during festivals, offering immersive, shared experiences that encourage people to step out of their individual bubbles and connect with others through collective storytelling, games, or creative activities.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <p>For the other two proposals, I ran desk research sessions with teammates to sharpen the framing, ensuring each concept was grounded in the broader Friction Movement forecast and coherent with our shared design intent.</p>
+            
+            <div class="knowledge-grid">
+                <div class="knowledge-item stagger-item">
+                    <img src="Lego prototype 1.png" alt="Knowledge Exchange Lego prototype 1">
+                    <p class="image-caption">Knowledge Exchange Lego prototype 1</p>
+                </div>
+                <div class="knowledge-item stagger-item">
+                    <img src="Lego prototype 2.png" alt="Knowledge Exchange Lego prototype 2">
+                    <p class="image-caption">Knowledge Exchange Lego prototype 2</p>
+                </div>
+            </div>
+            
+            <div class="quote fade-in">
+                "The design intent was deliberate: encourage slow, shared experiences rather than replicate the logic of hyper-personalised digital media."
+            </div>
+        </section>
+
+        <div class="section-break"></div>
+
+        <!-- ASSIGNMENT 3 -->
+        <section class="fade-in">
+            <p class="section-label">Assignment 3 — Vita</p>
+            <h2>Chatbot Prototype</h2>
+
+            <div class="assignment-block stagger-item" id="ab3">
+                <span class="assignment-num">03</span>
+                <div class="assignment-meta">
+                    <span class="assignment-tag">My contributions</span>
+                    <span class="assignment-title">Conceptual framing · Voiceflow build · Playbook authoring · Iterative prompting</span>
+                </div>
+            </div>
+
+            <h3 class="slide-in">Helping students find direction without giving them answers</h3>
+            <p class="slide-in">The chatbot helps first and second-year university students explore meaningful career pathways, not by giving them the 'perfect' answers but by guiding reflective conversations about their energisers, values, circumstances, and assumptions.</p>
+            <p class="slide-in">A successful conversation ends with a student feeling genuinely heard, and leaving with two to four possible directions framed as possibilities to explore. The chatbot must not tell anyone which career is "correct" for them. That boundary is intentional and built into the architecture.</p>
+
+            <h3 class="slide-in">How we built Vita</h3>
+            <div class="process-steps">
+                <div class="step slide-in">
+                    <div class="step-number">1</div>
+                    <h4>Ideation</h4>
+                    <p>We brainstormed ideas on how we can help students through a webchat service. Exploring all existing AI topics in the problem space and trying to understand what differentiates between the need for something to be AI and whether the same can be done without it being a chatbot. We also explored the book “Designing your life” and Morrisby to gain inspiration.</p>
+                </div>
+                <div class="step slide-in">
+                    <div class="step-number">2</div>
+                    <h4>Chatbot design drafting</h4>
+                    <p>I drafted playbooks, direction, knowledgebase, dummy data and a few instructions governing the agent's tone, scope, and the boundary it must not cross. This helped frame the way Vita works</p>
+                </div>
+                <div class="step slide-in">
+                    <div class="step-number">3</div>
+                    <h4>Building the chatbot</h4>
+                    <p>This was mostly done by the other team members however, I chipped in where I can in terms of revising and editing things like the playbooks so that the AI is well instructed</p>
+                </div>
+                <div class="step slide-in">
+                    <div class="step-number">4</div>
+                    <h4>Happy and sad path testing</h4>
+                    <p>Our team systematically tested both expected flows and edge cases as well as out-of-scope requests, and ambiguous requests.</p>
+                </div>
+                <div class="step slide-in">
+                    <div class="step-number">5</div>
+                    <h4>Iterative calibration</h4>
+                    <p>Our team watched where the agent gave responses that were technically correct but missed the human moment, then adjusted. I aided in annotating where the AI was working well and where other responses would have been stronger instead. The quality lives in those small calibrations.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-break"></div>
+
+        <!-- AI REFLECTION -->
+        <!-- AI REFLECTION -->
+        <section class="fade-in">
+            <p class="section-label">Honest Reflection</p>
+            <h2>On using AI in the design process</h2>
+            <p class="slide-in">Across all three assignments, our team used AI tools extensively, and I think we used them well in some places and less well in others. Being honest about that distinction matters.</p>
+
+            <div class="reflection-split">
+                <div class="reflection-col stagger-item">
+                    <h4>Where it genuinely helped</h4>
+                    <p>I used Claude to surface a range of directions around identity and self-improvement that I might not have reached as quickly alone. The judgment about which were interesting, which connected to our direction, and which to discard was entirely mine. AI expanded the possibility space, it didn't evaluate it. When our team had messy, scattered research notes across a Figma board, ChatGPT helped organise and categorise the material, the equivalent of a faster sticky note sort. The research itself, the reading, the sense-making, that was ours.</p>
+                </div>
+                <div class="reflection-col dim stagger-item">
+                    <h4>Where it became a problem</h4>
+                    <p>AI's suggestions were often generic, flattening the specialty of certain concepts. For the Knowledge Exchange, AI could never creatively generate the accessibility aspects of the smart device, the idea for braille communication through changing air pockets under the screen was a personal creative idea, drawn from personal knowledge. AI can speed up research and surface general knowledge in areas you might not have reached, but it can't generate that kind of "unique creativity." When designing for humans, only humans can truly understand what other humans need.</p>
+                </div>
+            </div>
+
+            <p class="slide-in">This connects to something I think about more broadly. The most valuable insights in UX research often come from conversations that can't be reduced to a data point. Sitting with someone and genuinely listening to what they make of the world. An elderly person on a train explaining their relationship with technology. A student articulating the gap between who they are and what they feel pressured to become.</p>
+            <p class="slide-in">AI is genuinely useful for processing and organising information. It is not a substitute for that kind of listening. And in a field where empathy is the actual foundation of good work, that distinction matters more than efficiency.</p>
+            <p class="slide-in">For the chatbot specifically: there's a meaningful tension in using AI to build an AI-powered tool designed to help someone feel heard. Getting the conversational quality right, curious rather than procedural and open rather than leading, isn't something you can shortcut. It requires iterative human judgment about what a good conversation actually feels like, from the inside.</p>
+        </section>
+
+        <div class="section-break"></div>
+
+        <!-- SKILLS & LEARNING -->
+        <section class="fade-in">
+            <p class="section-label">Skills & Learning</p>
+            <h2>What this semester taught me</h2>
+            <p>The hardest thing this semester wasn't any single task. It was the transition from divergent to convergent thinking, from a wide field of interesting ideas to committing to one and making it specific enough to be real. Each time, closing down the possibility space felt like a kind of loss, even when the final choice was clearly stronger.</p>
+
+            <div class="takeaway-grid">
+                <div class="takeaway stagger-item">
+                    <h4>Convergence as a design skill</h4>
+                    <p>Deciding what not to pursue, and explaining why, is as important as the generative work that precedes it. Convergence isn't the enemy of creativity. It's what makes creativity useful.</p>
+                </div>
+                <div class="takeaway stagger-item">
+                    <h4>Positive computing</h4>
+                    <p>My research introduced me to positive computing, a design philosophy oriented around human flourishing rather than task completion. It gave language to something I'd been circling intuitively all semester.</p>
+                </div>
+                <div class="takeaway stagger-item">
+                    <h4>Conversation design</h4>
+                    <p>I want to develop stronger skills here, not because it's technically interesting, but because a chatbot guiding values clarification is doing something psychologically significant. Getting that right matters.</p>
+                </div>
+                <div class="takeaway stagger-item">
+                    <h4>Inclusive design practice</h4>
+                    <p>Designing for people whose experiences differ from your own requires genuine effort, not just a checklist, but a willingness to sit with perspectives that challenge your assumptions. That's ongoing work.</p>
+                </div>
+            </div>
+
+            <h3 class="slide-in">What I want to keep working on</h3>
+            <ul>
+                <li class="stagger-item">Deepen skills in <strong>agentic AI and conversation design</strong>, one of the most consequential design spaces right now</li>
+                <li class="stagger-item">Continue developing <strong>inclusive design practice</strong> through both community work and formal research</li>
+                <li class="stagger-item">Practise the discipline of <strong>convergent thinking</strong>, choosing what to cut, and defending the choice</li>
+                <li class="stagger-item">Keep asking: <strong>good for whom, and toward what end?</strong></li>
+            </ul>
+
+            <div class="quote fade-in">
+                "The design that insists on asking good for whom, and toward what end, is the design I want to do."
+            </div>
+        </section>
+
+    </div>
 
     <a href="oudcollectioncs.html" class="next-case-study fade-in">
         <p class="next-label">Next Case Study</p>
@@ -411,140 +852,76 @@
 
     <footer>
         <div class="container">
-            <p>Futures Thinking • Advanced Interface Prototyping • 2026</p>
+            <p>Designing for Identity & Values-Driven Living • Advanced Interface Prototyping • 2025</p>
         </div>
     </footer>
+
     <script>
-    // Custom cursor with particle trail
-    const cursor = document.querySelector('.cursor');
-    const cursorDot = document.querySelector('.cursor-dot');
-    
-    let mouseX = 0, mouseY = 0;
-    let cursorX = 0, cursorY = 0;
-    let dotX = 0, dotY = 0;
+        const cursor    = document.querySelector('.cursor');
+        const cursorDot = document.querySelector('.cursor-dot');
+        let mouseX=0, mouseY=0, cursorX=0, cursorY=0, dotX=0, dotY=0;
+        const colors = ['#B09B9B','#A78989','#633B48','#5E4545','#C49CA9'];
 
-    // Color palette matching your theme
-    const colors = ['#B09B9B', '#A78989', '#633B48', '#5E4545', '#C49CA9'];
-    
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        
-        // Create particle trail
-        createParticle(e.clientX, e.clientY);
-    });
-
-    function createParticle(x, y) {
-        const particle = document.createElement('div');
-        particle.className = 'trail-particle';
-        
-        // Random size between 4-10px
-        const size = Math.random() * 6 + 4;
-        particle.style.width = size + 'px';
-        particle.style.height = size + 'px';
-        
-        // Random color from palette
-        const color = colors[Math.floor(Math.random() * colors.length)];
-        particle.style.backgroundColor = color;
-        
-        // Slight random offset for natural look
-        const offsetX = (Math.random() - 0.5) * 20;
-        const offsetY = (Math.random() - 0.5) * 20;
-        
-        particle.style.left = (x + offsetX) + 'px';
-        particle.style.top = (y + offsetY) + 'px';
-        
-        document.body.appendChild(particle);
-        
-        // Remove particle after animation
-        setTimeout(() => {
-        particle.remove();
-        }, 800);
-    }
-
-    // Smooth cursor animation
-    function animateCursor() {
-        // Smooth follow with easing
-        cursorX += (mouseX - cursorX) * 0.15;
-        cursorY += (mouseY - cursorY) * 0.15;
-        
-        dotX += (mouseX - dotX) * 0.25;
-        dotY += (mouseY - dotY) * 0.25;
-        
-        cursor.style.left = cursorX + 'px';
-        cursor.style.top = cursorY + 'px';
-        
-        cursorDot.style.left = dotX + 'px';
-        cursorDot.style.top = dotY + 'px';
-        
-        requestAnimationFrame(animateCursor);
-    }
-    
-    animateCursor();
-
-    // Cursor interactions
-    const interactiveElements = document.querySelectorAll('a, button, .project-card');
-    
-    interactiveElements.forEach(el => {
-        el.addEventListener('mouseenter', () => {
-        cursor.style.transform = 'scale(1.5)';
-        cursorDot.style.transform = 'scale(0)';
+        document.addEventListener('mousemove', e => {
+            mouseX = e.clientX; mouseY = e.clientY;
+            createParticle(e.clientX, e.clientY);
         });
-        
-        el.addEventListener('mouseleave', () => {
-        cursor.style.transform = 'scale(1)';
-        cursorDot.style.transform = 'scale(1)';
+        function createParticle(x, y) {
+            const p = document.createElement('div');
+            p.className = 'trail-particle';
+            const s = Math.random() * 6 + 4;
+            p.style.width = p.style.height = s + 'px';
+            p.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            p.style.left = (x + (Math.random()-.5)*20) + 'px';
+            p.style.top  = (y + (Math.random()-.5)*20) + 'px';
+            document.body.appendChild(p);
+            setTimeout(() => p.remove(), 800);
+        }
+        function animateCursor() {
+            cursorX += (mouseX-cursorX)*.15; cursorY += (mouseY-cursorY)*.15;
+            dotX    += (mouseX-dotX)   *.25; dotY    += (mouseY-dotY)   *.25;
+            cursor.style.left    = cursorX+'px'; cursor.style.top    = cursorY+'px';
+            cursorDot.style.left = dotX+'px';    cursorDot.style.top  = dotY+'px';
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('mouseenter', () => { cursor.style.transform = 'scale(1.5)'; cursorDot.style.transform = 'scale(0)'; });
+            el.addEventListener('mouseleave', () => { cursor.style.transform = 'scale(1)';   cursorDot.style.transform = 'scale(1)'; });
         });
-    });
-
-    // Hide custom cursor on touch devices
-    if ('ontouchstart' in window) {
-        cursor.style.display = 'none';
-        cursorDot.style.display = 'none';
-        document.body.style.cursor = 'auto';
-    }
+        if ('ontouchstart' in window) { cursor.style.display = cursorDot.style.display = 'none'; document.body.style.cursor = 'auto'; }
     </script>
+
     <script>
-        // Scroll progress bar
+        /* spotlight on interactive cards */
+        document.querySelectorAll('.signal-card, .concept-card, .assignment-block').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const r = card.getBoundingClientRect();
+                card.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%');
+                card.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%');
+            });
+        });
+    </script>
+
+    <script>
         const scrollProgress = document.getElementById('scrollProgress');
-        
         window.addEventListener('scroll', () => {
-            const windowHeight = window.innerHeight;
-            const documentHeight = document.documentElement.scrollHeight - windowHeight;
-            const scrolled = window.scrollY;
-            const progress = (scrolled / documentHeight) * 100;
-            
-            scrollProgress.style.width = progress + '%';
+            scrollProgress.style.width = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100) + '%';
         });
 
-        // Intersection Observer for scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-        
-        // Observe all animated elements
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
         document.addEventListener('DOMContentLoaded', () => {
-            const fadeElements = document.querySelectorAll('.fade-in');
-            const slideElements = document.querySelectorAll('.slide-in');
-            const staggerElements = document.querySelectorAll('.stagger-item');
-            
-            fadeElements.forEach(el => observer.observe(el));
-            slideElements.forEach(el => observer.observe(el));
-            
-            // Stagger animation for items in a group
-            staggerElements.forEach((el, index) => {
-                el.style.transitionDelay = `${index * 0.1}s`;
+            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+            document.querySelectorAll('.slide-in').forEach(el => observer.observe(el));
+            document.querySelectorAll('.stagger-item').forEach((el, i) => {
+                el.style.transitionDelay = `${i * 0.1}s`;
                 observer.observe(el);
             });
         });
     </script>
+
 </body>
+</html>
